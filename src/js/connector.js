@@ -3,13 +3,13 @@ console.log('Hello world')
 const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg';
 
 const onBtnClick = (t, opts) => {
-  console.log('t');
+  console.log(t);
 };
 
 const addRelativeDueDate = (t, option) => 
 
 window.TrelloPowerUp.initialize({
-  'card-buttons': async (t, opts) => {
+  'card-buttons': (t, opts) => {
 
     return [{
       // usually you will provide a callback function to be run on button click
