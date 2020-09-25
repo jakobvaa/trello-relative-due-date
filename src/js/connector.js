@@ -6,7 +6,7 @@ const onBtnClick = (t, opts) => {
   console.log('clicked the button');
 };
 
-const addRelativeDueDate = (t, option) => 
+
 
 window.TrelloPowerUp.initialize({
   'card-buttons': (t, opts) => {
