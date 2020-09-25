@@ -7,7 +7,7 @@ const onBtnClick = function (t, opts) {
 };
 
 window.TrelloPowerUp.initialize({
-  'card-buttons': async (t, opts) => {
+  'card-buttons': (t, opts) => {
     return [{
       // usually you will provide a callback function to be run on button click
       // we recommend that you use a popup on click generally
