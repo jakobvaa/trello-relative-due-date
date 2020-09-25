@@ -1,0 +1,23 @@
+{
+  "name": "trello-relative-due-date",
+  "version": "1.0.0",
+  "description": "Relative due date power-up for trello",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build src/html/*.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinjoha/trello-relative-due-date.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/martinjoha/trello-relative-due-date/issues"
+  },
+  "homepage": "https://github.com/martinjoha/trello-relative-due-date#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
