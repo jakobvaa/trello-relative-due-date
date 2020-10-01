@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:client": "parcel build src/html/*.html",
-    "build": "./nodel_modules/.bin/netlify-lambda build src"
+    "build": " npm run build:client && ./nodel_modules/.bin/netlify-lambda build src"
   },
   "repository": {
     "type": "git",
