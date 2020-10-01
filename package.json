@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:client": "parcel build src/html/*.html",
-    "build": " npm run build:client &&  ./nodel_modules/.bin/netlify-lambda build src"
+    "build": "parcel build src/html/*.html"
   },
   "repository": {
     "type": "git",
@@ -25,12 +24,10 @@
     "cors": "^2.8.5",
     "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1",
-    "netlify-lambda": "^2.0.1",
     "parcel-bundler": "^1.12.4",
     "reaact": "0.0.1-security",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "rimraf": "^3.0.2",
-    "serverless-http": "^2.6.0"
+    "rimraf": "^3.0.2"
   }
 }
