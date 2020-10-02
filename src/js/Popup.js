@@ -36,17 +36,19 @@ const Popup = (props) => {
 		}
 	}, [cards])
 
-	const renderCards = () => {
+
+
+	const renderCards = () => (
 		<div>
 			<ul className='pop-over-list js-list navigable'>
 				{cards.map(card => (
 					<li key={card.id}>
-						{card.name} {card.due && `(${card.due})`}
+						fdfdfd
 					</li>
 				))}
 			</ul>
 		</div> 
-	}
+	)
 
 	return (
 		<div>
