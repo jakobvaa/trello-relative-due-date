@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/martinjoha/trello-relative-due-date#readme",
   "dependencies": {
+    "axios": "^0.20.0",
     "babel": "^6.23.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
