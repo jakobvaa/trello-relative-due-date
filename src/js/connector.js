@@ -36,7 +36,7 @@ window.TrelloPowerUp.initialize({
         if (isAuthorized) {
           return [{
             text: 'Relative due date',
-            callback: test
+            callback: onBtnClick
           }];
         } else {
           return [{
