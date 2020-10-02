@@ -18,6 +18,7 @@ const Popup = (props) => {
 	const [cards, setCards] = useState([])
 	const [selected, setSelected] = useState(null)
 	const [loading, setLoading] = useState(false)
+	const [difference, setDifference] = useState(0)
 
 	useEffect(() => {
 		if(!loading && cards.length === 0) {
@@ -48,6 +49,14 @@ const Popup = (props) => {
 		scrollToRef(ref)
 	}
 
+	const increment = () => {
+		setDifference(difference + 0.5)
+	}
+
+	const decrement = () => {
+		setDifference(difference - 0.5)
+	}
+
 	const renderCards = () => (
 		<div className='js-results'>
 			<ul className='pop-over-list js-list navigable'>
@@ -57,7 +66,12 @@ const Popup = (props) => {
 					</li>
 				))}
 			</ul>
-			<button ref={ref}>Create Relative Due Date</button>
+			<span>
+				<button onClick={() => decrement()}>-</button>
+				<input type='number' disabled></input>
+				<button onClick={() => increment()}>+</button>
+			</span>
+			<button ref={ref}>Set Relative Due Date</button>
 		</div> 
 	)
 
