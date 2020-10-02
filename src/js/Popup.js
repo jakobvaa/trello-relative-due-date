@@ -11,7 +11,7 @@ const t = TrelloPowerUp.iframe({
 })
 const BASE_URL = 'https://api.trello.com/1/'
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
+const scrollToRef = (ref) => window.scrollTo(200, ref.current.offsetTop)
 
 const Popup = (props) => {
 	const ref = useRef(null)
