@@ -17,6 +17,15 @@ const showIrame = (t) => {
   })
 }
 
+const test = (t) => {
+  return t.popup({
+    title: 'cards',
+    items: [{
+      name: 'fdfd'
+    }]
+  })
+}
+
 window.TrelloPowerUp.initialize({
   'card-buttons': (t) => {
     return t.getRestApi()
@@ -25,7 +34,7 @@ window.TrelloPowerUp.initialize({
         if (isAuthorized) {
           return [{
             text: 'Relative due date',
-            callback: onBtnClick
+            callback: test
           }];
         } else {
           return [{
