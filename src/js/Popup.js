@@ -19,7 +19,7 @@ const Popup = (props) => {
 				url: `${BASE_URL}members/me/boards?fields=name,url&key=${appKey}&token=${token}`
 			}).then(boards => {
 				console.log(boards)
-				myBoard = boards.data.filter(board => board.name === 'IEEE Conference')[0]
+				const myBoard = boards.data.find(board => board.name === 'IEEE Conference')
 				axios({
 					url: `${BASE_URL}boards/${myBoard.id}/cards?key=${appKey}&token=${token}`
 				}).then(cards => {
