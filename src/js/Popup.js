@@ -15,7 +15,7 @@ const Popup = (props) => {
 	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
-		if(!loading && cards.lenght === 0) {
+		if(!loading && cards.length === 0) {
 			setLoading(true)
 			t.getRestApi().getToken()
 			.then(token => {
@@ -36,8 +36,22 @@ const Popup = (props) => {
 		}
 	}, [cards])
 
+	const renderCards = () => {
+		<div>
+			<ul className='pop-over-list js-list navigable'>
+				{cards.map(card => (
+					<li key={card.id}>
+						{card.name} {card.due && `(${card.due})`}
+					</li>
+				))}
+			</ul>
+		</div> 
+	}
+
 	return (
-		<div>funket</div>
+		<div>
+			{cards.length > 0 ? renderCards() : 'ffff'}
+		</div>
 	)
 }
 
