@@ -68,7 +68,7 @@ const Popup = (props) => {
 			</ul>
 			<span>
 				<button onClick={() => decrement()}>-</button>
-				<input type='number' disabled></input>
+				<input type='number' disabled>{difference}</input>
 				<button onClick={() => increment()}>+</button>
 			</span>
 			<button ref={ref}>Set Relative Due Date</button>
