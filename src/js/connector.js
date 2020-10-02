@@ -2,33 +2,27 @@ console.log('Hello world')
 const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg';
 
 const onBtnClick = (t, opts) => {
-  return t.popup({
-    title: 'Possible cards',
-    items: [{
-      text: 'Test 1'
-    }, {
-      text: 'Test 2'
-    }]
-  })  
+  t.getRestApi().isAuthorized()
+  .then((auth) => {
+    console.log(auth)
+    return t.popup({
+      title: 'Possible cards',
+      items: [{
+        text: 'Test 1'
+      }, {
+        text: 'Test 2'
+      }]
+    })  
+  })
 };
 
 
 
 window.TrelloPowerUp.initialize({
   'card-buttons': (t, opts) => {
-
-    return t.getRestApi().isAuthorized()
-    .then((isAuthorized) => {
-      if(isAuthorized) {
-        return [{
-          text: 'Relative due date',
-          callback: onBtnClick
-        }]
-      } else {
-        return [{
-          text: 'Not Authorized'
-        }]
-      }
-    })
+    return [{
+      text: 'Relative due date',
+      callback: onBtnClick
+    }]
   }
 });
