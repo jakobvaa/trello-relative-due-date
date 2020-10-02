@@ -43,7 +43,7 @@ const Popup = (props) => {
 			<ul className='pop-over-list js-list navigable'>
 				{cards.map(card => (
 					<li key={card.id}>
-						fdfdfd
+						{card.name} {card.due ? `(${card.due})` : ''}
 					</li>
 				))}
 			</ul>
