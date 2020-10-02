@@ -15,18 +15,20 @@ const onBtnClick = (t, opts) => {
 
 
 window.TrelloPowerUp.initialize({
-  'card-buttons': async (t, opts) => {
-    const rest = await t.getRestApi()
-    const isAuthorized = rest.isAuthorized()
-    if (isAuthorized) {
-      return [{
-        text: 'Relative due date',
-        callback: onBtnClick
-      }]
-    } else {
-      return [{
-        text: 'Unauthorized'
-      }]
-    }
+  'card-buttons': (t, opts) => {
+
+    return t.getRestApi().isAuthorized()
+    .then((isAuthorized) => {
+      if(isAuthorized) {
+        return [{
+          text: 'Relative due date',
+          callback: onBtnClick
+        }]
+      } else {
+        return [{
+          text: 'Not Authorized'
+        }]
+      }
+    })
   }
 });
