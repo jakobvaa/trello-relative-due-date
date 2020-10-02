@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
+
 const t = TrelloPowerUp.iframe({
 	appKey: 'f37ab50db205f3dc8f32dc97971117f4',
 	appName: 'relative-due-date'
@@ -12,23 +13,29 @@ const Popup = (props) => {
 
 	const [cards, setCards] = useState([])
 	const [loading, setLoading] = useState(false)
+
 	useEffect(() => {
-		t.getRestApi().getToken()
-		.then(token => {
-			axios({
-				url: `${BASE_URL}members/me/boards?fields=name,url&key=${appKey}&token=${token}`
-			}).then(boards => {
-				console.log(boards)
-				const myBoard = boards.data.find(board => board.name === 'IEEE Conference')
+		if(!loading && cards.lenght === 0) {
+			setLoading(true)
+			t.getRestApi().getToken()
+			.then(token => {
 				axios({
-					url: `${BASE_URL}boards/${myBoard.id}/cards?key=${appKey}&token=${token}`
-				}).then(cards => {
-					console.log(cards.data)
-					setCards(cards.data)
-				})
-			}) 
-		})
-	})
+					url: `${BASE_URL}members/me/boards?fields=name,url&key=${appKey}&token=${token}`
+				}).then(boards => {
+					console.log(boards)
+					const myBoard = boards.data.find(board => board.name === 'IEEE Conference')
+					axios({
+						url: `${BASE_URL}boards/${myBoard.id}/cards?key=${appKey}&token=${token}`
+					}).then(cards => {
+						console.log(cards.data)
+						setCards(cards.data)
+						setLoading(false)
+					})
+				}) 
+			})
+		}
+	}, [cards])
+
 	return (
 		<div>funket</div>
 	)
