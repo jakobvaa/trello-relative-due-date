@@ -21,7 +21,9 @@ const test = (t) => {
   return t.popup({
     title: 'cards',
     items: [{
-      name: 'fdfd'
+      text: 'fdfd'
+    }, {
+      text: 'fdfdfdfss'
     }]
   })
 }
