@@ -2,28 +2,26 @@ console.log('Hello world')
 const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg'
 
 const onBtnClick = (t, opts) => {
+  t.getRestApi().getToken()
+
   return t.popup({
-    title: 'Possible cards',
-    items: [{
-      text: 'Test 1'
-    }, {
-      text: 'Test 2'
-    }]
+    title: 'Cards',
+    url: './popup.html'
   })
 }
 
 const showIrame = (t) => {
   return t.popup({
     title: 'Authorize to continue',
-    url: '../html/authorize.html'
+    url: './authorize.html'
   })
 }
 
 window.TrelloPowerUp.initialize({
-  'card-buttons': function(t) {
+  'card-buttons': (t) => {
     return t.getRestApi()
       .isAuthorized()
-      .then(function(isAuthorized) {
+      .then((isAuthorized) => {
         if (isAuthorized) {
           return [{
             text: 'Relative due date',
@@ -31,13 +29,13 @@ window.TrelloPowerUp.initialize({
           }];
         } else {
           return [{
-            text: 'David\'s Power-Up',
+            text: 'Relative due date',
             callback: showIframe
           }];
         }
       });
   }
 }, {
-  appKey: 'your-app-key',
-  appName: 'My Great Power-Up'
+  appKey: 'f37ab50db205f3dc8f32dc97971117f4',
+	appName: 'relative-due-date'
 })
