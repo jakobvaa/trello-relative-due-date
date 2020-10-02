@@ -7,7 +7,7 @@ const t = TrelloPowerUp.iframe({
 	appKey: 'f37ab50db205f3dc8f32dc97971117f4',
 	appName: 'relative-due-date'
 })
-
+const BASE_URL = 'https://api.trello.com/1/'
 const Popup = (props) => {
 
 	const [cards, setCards] = useState([])
@@ -16,9 +16,15 @@ const Popup = (props) => {
 		t.getRestApi().getToken()
 		.then(token => {
 			axios({
-				url: `https://api.trello.com/1/members/me/boards?fields=name,url&key=${appKey}&token=${token}`
+				url: `${BASE_URL}members/me/boards?fields=name,url&key=${appKey}&token=${token}`
 			}).then(boards => {
-				console.log(boards)
+				myBoard = boards.data.filter(board => board.name === 'IEEE Conference')[0]
+				axios({
+					url: `${BASE_URL}boards/${myBoard.id}/cards?key=${appKey}&token=${token}`
+				}).then(cards => {
+					console.log(cards.data)
+					setCards(cards.data)
+				})
 			}) 
 		})
 	})
