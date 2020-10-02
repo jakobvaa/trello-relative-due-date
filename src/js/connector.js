@@ -17,13 +17,18 @@ const onBtnClick = (t, opts) => {
 window.TrelloPowerUp.initialize({
   'card-buttons': (t, opts) => {
 
-    return [{
-      // usually you will provide a callback function to be run on button click
-      // we recommend that you use a popup on click generally
-      icon: GRAY_ICON, // don't use a colored icon here
-      text: 'Relative Due Date',
-      callback: onBtnClick,
-      condition: 'edit'
-    }];
+    return t.getRestApi().isAuthorized()
+    .then((isAuthorized) => {
+      if(isAuthorized) {
+        return [{
+          text: 'Relative due date',
+          callback: onBtnClick
+        }]
+      } else {
+        return [{
+          text: 'Not Authorized'
+        }]
+      }
+    })
   }
 });
