@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 
 import axios from 'axios'
@@ -10,8 +10,11 @@ const t = TrelloPowerUp.iframe({
 	appName: 'relative-due-date'
 })
 const BASE_URL = 'https://api.trello.com/1/'
-const Popup = (props) => {
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
+
+const Popup = (props) => {
+	const ref = useRef(null)
 	const [cards, setCards] = useState([])
 	const [selected, setSelected] = useState(null)
 	const [loading, setLoading] = useState(false)
@@ -40,15 +43,21 @@ const Popup = (props) => {
 
 	console.log(selected)
 
+	const setCard = (card) => {
+		setSelected(card)
+		scrollToRef(ref)
+	}
+
 	const renderCards = () => (
 		<div className='js-results'>
 			<ul className='pop-over-list js-list navigable'>
 				{cards.map(card => (
-					<li key={card.id} style={{cursor: 'pointer'}} onClick={() => setSelected(card.name)}>
+					<li key={card.id} style={{cursor: 'pointer'}} onClick={() => setCard(card.name)}>
 						{card.name} {card.due ? `(${card.due})` : ''}
 					</li>
 				))}
 			</ul>
+			<button ref={ref}>Create Relative Due Date</button>
 		</div> 
 	)
 
