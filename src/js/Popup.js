@@ -70,7 +70,7 @@ const Popup = (props) => {
 			<div style={{display:'flex', alignItems:'center'}}>
 				<button disabled={!!selected} style ={{ margin: 0 }} onClick={() => decrement()}>-</button>
 				<input style={{margin: 0, width: '75px', textAlign: 'center'}} type='number' disabled placeholder={difference}/>
-				<button disabled={!!disabled} style={{margin: 0}} onClick={() => increment()}>+</button>
+				<button disabled={!!selected} style={{margin: 0}} onClick={() => increment()}>+</button>
 			</div>
 			<button ref={ref}>Set Relative Due Date</button>
 		</div> 
