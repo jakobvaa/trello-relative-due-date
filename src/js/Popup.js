@@ -25,6 +25,7 @@ const BASE_URL = 'https://api.trello.com/1/'
 const Popup = (props) => {
 
 	const [cards, setCards] = useState([])
+	const [selected, setSelected] = useState(null)
 	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
@@ -55,7 +56,7 @@ const Popup = (props) => {
 		<div className='js-results'>
 			<ul className='pop-over-list js-list navigable'>
 				{cards.map(card => (
-					<li key={card.id}>
+					<li key={card.id} style={{cursor: 'pointer'}} onClick={() => setSelected(card.name)}>
 						{card.name} {card.due ? `(${card.due})` : ''}
 					</li>
 				))}
