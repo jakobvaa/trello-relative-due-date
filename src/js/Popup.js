@@ -48,7 +48,7 @@ const Popup = (props) => {
 		.then((card) => {
 			console.log(card)
 			setCurrentCard(card)
-		}))
+		})
 	})
 
 	console.log(selectedParent)
