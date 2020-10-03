@@ -22,7 +22,7 @@ const Popup = (props) => {
 	const [difference, setDifference] = useState(0)
 
 	useEffect(() => {
-		if(!loading && cards.length === 0) {
+		if(!loading && cards.length === 0 && currentCard) {
 			setLoading(true)
 			t.getRestApi().getToken()
 			.then(token => {
