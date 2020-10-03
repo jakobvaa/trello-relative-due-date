@@ -4,7 +4,7 @@ const app = express()
 app.use(express.static('dist'));
 
 
-app.post('trelloCallback', async (res, res) => {
+app.post('trelloCallback', async (req, res) => {
 	return res.send({message: 'Webhook created'})
 })
 
