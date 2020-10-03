@@ -1,8 +1,8 @@
 import Axios from 'axios'
 import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
-
 import axios from 'axios'
+import fs from 'fs'
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
 
 const t = TrelloPowerUp.iframe({
@@ -16,7 +16,8 @@ const scrollToRef = (ref) => window.scrollTo(200, ref.current.offsetTop)
 const Popup = (props) => {
 	const ref = useRef(null)
 	const [cards, setCards] = useState([])
-	const [selected, setSelected] = useState(null)
+	const [currentCard, setCurrentCard] = useState(null)
+	const [selectedParent, setSelectedParent] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [difference, setDifference] = useState(0)
 
@@ -42,10 +43,18 @@ const Popup = (props) => {
 		}
 	}, [cards])
 
-	console.log(selected)
+	useEffect(() => {
+		t.card('all'
+		.then((card) => {
+			console.log(card)
+			setCurrentCard(card)
+		}))
+	})
 
-	const setCard = (card) => {
-		setSelected(card)
+	console.log(selectedParent)
+
+	const setParent = (card) => {
+		setSelectedParent(card)
 		setDifference(0)
 		scrollToRef(ref)
 	}
@@ -57,28 +66,41 @@ const Popup = (props) => {
 	const decrement = () => {
 		setDifference(difference - 0.5)
 	}
+	
+	const canSetDate = () => difference && selectedParent
+
+	const setRelativeDueDate = (card) => {
+		
+	}
 
 	const renderCards = () => (
 		<div className='js-results'>
 			<ul className='pop-over-list js-list navigable'>
 				{cards.map(card => (
-					<li key={card.id} style={{cursor: 'pointer'}} onClick={() => setCard(card.name)}>
+					<li key={card.id} style={{cursor: 'pointer'}} onClick={() => setParent(card)}>
 						{card.name} {card.due ? `(${card.due})` : ''}
 					</li>
 				))}
 			</ul>
-			<div style={{display:'flex', alignItems:'center'}}>
-				<button disabled={!selected} style ={{ margin: 0 }} onClick={() => decrement()}>-</button>
-				<input style={{margin: 0, width: '75px', textAlign: 'center'}} type='number' disabled placeholder={difference}/>
-				<button disabled={!selected} style={{margin: 0}} onClick={() => increment()}>+</button>
-			</div>
-			<button ref={ref}>Set Relative Due Date</button>
 		</div> 
 	)
-
+	
 	return (
 		<div>
 			{cards.length > 0 ? renderCards() : 'ffff'}
+			<div style={{display:'flex', alignItems:'center'}}>
+				<button disabled={!selectedParent} style ={{ margin: 0 }} onClick={() => decrement()}>-</button>
+				<input style={{margin: 0, width: '75px', textAlign: 'center'}} type='number' disabled placeholder={difference}/>
+				<button disabled={!selectedParent} style={{margin: 0}} onClick={() => increment()}>+</button>
+			</div>
+			{selectedParent && 
+				<ul>
+					<li style={{backgroundColor: 'grey'}}>
+						{selectedParent.name} {selectedParent.name} {selectedParent.due ? `(${selectedParent.due})` : ''}
+					</li>
+				</ul>
+			}
+			<button ref={ref}>Set Relative Due Date</button>
 		</div>
 	)
 }
