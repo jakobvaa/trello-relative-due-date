@@ -33,7 +33,7 @@ const Popup = (props) => {
 					axios({
 						url: `${BASE_URL}boards/${myBoard.id}/cards?key=${appKey}&token=${token}`
 					}).then(cards => {
-						setCards(cards.data)
+						setCards(cards.data.filter(card => card.id !== currentCard.id))
 						setLoading(false)
 					})
 				}) 
