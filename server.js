@@ -12,7 +12,7 @@ app.post('/trelloCallback', async (req, res) => {
 app.get('/changeduedate', async (req, res) => {
 	const {child, parent, difference, boardid} = req.query
 	try {
-		const doc = JSON.parse(await read('../dates.json'))
+		const doc = JSON.parse(await read('./dates.json'))
 		console.log(doc)
 		const currentDates = doc[boardId]
 
