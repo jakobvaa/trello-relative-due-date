@@ -44,14 +44,12 @@ const Popup = (props) => {
 	}, [cards])
 
 	useEffect(() => {
-		t.card('all')
+		return t.card('all')
 		.then((card) => {
 			console.log(card)
 			setCurrentCard(card)
 		})
 	})
-
-	console.log(selectedParent)
 
 	const setParent = (card) => {
 		setSelectedParent(card)
