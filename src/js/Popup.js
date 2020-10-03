@@ -29,12 +29,10 @@ const Popup = (props) => {
 				axios({
 					url: `${BASE_URL}members/me/boards?fields=name,url&key=${appKey}&token=${token}`
 				}).then(boards => {
-					console.log(boards)
 					const myBoard = boards.data.find(board => board.name === 'IEEE Conference')
 					axios({
 						url: `${BASE_URL}boards/${myBoard.id}/cards?key=${appKey}&token=${token}`
 					}).then(cards => {
-						console.log(cards.data)
 						setCards(cards.data)
 						setLoading(false)
 					})
@@ -49,7 +47,7 @@ const Popup = (props) => {
 			console.log(card)
 			setCurrentCard(card)
 		})
-	})
+	}, [])
 
 	const setParent = (card) => {
 		setSelectedParent(card)
