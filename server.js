@@ -1,12 +1,11 @@
 const express = require('express')
 const app = express()
 
-app.use(express.static('dist'));
-
-
-app.post('trelloCallback', async (req, res) => {
-	return res.send({message: 'Webhook created'})
+app.post('/trelloCallback', async (req, res) => {
+	return res.status(200).send({message: 'Webhook created'})
 })
+
+app.use(express.static('dist'));
 
 app.get('*', (req, res) => {
 	res.sendFile(__dirname + '/dist/index.html')
