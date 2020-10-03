@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 
 app.post('/trelloCallback', async (req, res) => {
+	console.log('Change happened')
+	console.log(req.action.type)
 	return res.status(200).send({message: 'Webhook created'})
 })
 
