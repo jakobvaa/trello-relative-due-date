@@ -9,7 +9,7 @@ app.post('/trelloCallback', async (req, res) => {
 	return res.status(200).send({message: 'Webhook created'})
 })
 
-app.get('changeduedate', async (req, res) => {
+app.get('/changeduedate', async (req, res) => {
 	const {child, parent, difference, boardid} = req.query
 	try {
 		const doc = JSON.parse(await read('../dates.json'))
