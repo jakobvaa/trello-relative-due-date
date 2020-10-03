@@ -31,6 +31,9 @@
     "rimraf": "^3.0.2",
     "styled-components": "^5.2.0"
   },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ],
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-decorators": "^7.10.5"
