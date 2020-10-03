@@ -14,8 +14,8 @@ app.get('/changeduedate', async (req, res) => {
 	try {
 		const doc = JSON.parse(await read('./dates.json'))
 		console.log(doc)
-		const currentDates = doc[boardid]
-
+		let currentDates = doc[boardid]
+		
 		if(!currentDates) {
 			currentDates = {
 				[child] : {
