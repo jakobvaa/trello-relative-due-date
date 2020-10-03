@@ -70,6 +70,7 @@ const Popup = (props) => {
 	const canSetDate = () => !(difference && selectedParent)
 
 	const setRelativeDueDate = async () => {
+		console.log('fdfdf')
 		await axios({
 			url: `/changeduedate?child=${currentCard.id}&parent=${selectedParent.id}&difference=${difference}&boardid=${currentBoardId}`
 		})
