@@ -70,37 +70,9 @@ const Popup = (props) => {
 	const canSetDate = () => !(difference && selectedParent)
 
 	const setRelativeDueDate = async () => {
-		const doc = JSON.parse(await read('../dates.json'))
-		const currentDates = doc[currentBoardId]
-		try {
-			if(!currentDates) {
-				currentDates = {
-					[currentCard.id] : {
-						parent: currentParent.id,
-						difference,
-					},
-					[currentParent.id]: {
-						children: [currentCard.id]
-					}
-				}
-			} else {
-				currentDates[currentCard.id] = {
-					parent: currentParent.id,
-					difference,
-					...currentDates[currentCard]
-				}
-				if (currentDates[currentParent.id].children) {
-					currentDates[currentParent.id].children = [...currentDates[currentParent.id].children, currentCard.id]
-				}
-				else { 
-					currentDates[currentParent.id].children = [currentCard.id]
-				}
-			}
-			await write('../dates.json', doc)
-			console.log('successfully added new date')
-		} catch(err) {
-			console.log(err)
-		}
+		await axios({
+			url: `/changeduedate?child=${currentCard.id}&parent=${selectedParent.id}&difference=${difference}&boardid=${currentBoardId}`
+		})
 	}
 
 	const renderCards = () => (
@@ -130,7 +102,7 @@ const Popup = (props) => {
 				<input style={{margin: 0, width: '75px', textAlign: 'center'}} type='number' disabled placeholder={difference}/>
 				<button disabled={!selectedParent} style={{margin: 0}} onClick={() => increment()}>+</button>
 			</div>
-			<button ref={ref} disabled={() => canSetDate()} onClick={() => setRelativeDueDate()}>Set Relative Due Date</button>
+			<button ref={ref} disabled={canSetDate()} onClick={() => setRelativeDueDate()}>Set Relative Due Date</button>
 		</div>
 	)
 }
