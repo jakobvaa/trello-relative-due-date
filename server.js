@@ -55,7 +55,6 @@ app.get('/callback', (req, res) => {
 app.post('/trelloCallback', async (req, res) => {
 	console.log('Change happened')
 	login(req, res)
-	return res.status(200).send({message: 'Webhook created'})
 })
 
 app.get('/changeduedate', async (req, res) => {
