@@ -25,7 +25,7 @@ const oauth_secrets = {}
 const oauth = new OAuth(requestURL, accessURL, key, secret, '1.0A', loginCallback, 'HMAC-SHA1')
 
 const login = (req, res) => {
-	oauth.getOAuthRequestToken((err, token, tokenSecret, res) => {
+	oauth.getOAuthRequestToken((err, token, tokenSecret, results) => {
 		oauth_secrets[token] = tokenSecret
 		res.redirect(`${authorizeURL}?oauth_toke=${token}&name=${app_name}&scope=${scope}&expiration=${expiration}`)
 	})
