@@ -9,7 +9,7 @@ app.use(express.json())
 const OAuth = require('oauth').OAuth
 const url = require('url')
 
-const scope = 'read, write'
+const scope = 'read,write'
 const requestURL = "https://trello.com/1/OAuthGetRequestToken"
 const accessURL = "https://trello.com/1/OAuthGetAccessToken"
 const authorizeURL = "https://trello.com/1/OAuthAuthorizeToken"
