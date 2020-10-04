@@ -1,11 +1,60 @@
 const express = require('express')
 const app = express()
 const {read, write } = require('./readWritePromise')
+require('dotenv').config()
 app.use(express.json())
+
+// Setup authorization
+
+const OAuth = require('oath')
+const url = require('url')
+
+const scope = 'read, write'
+const requestURL = "https://trello.com/1/OAuthGetRequestToken"
+const accessURL = "https://trello.com/1/OAuthGetAccessToken"
+const authorizeURL = "https://trello.com/1/OAuthAuthorizeToken"
+const appName = 'relative-due-date'
+const expiration = '1hour'
+
+const key = process.env.APP_KEY
+const secret = process.env.APP_SECRET
+
+const loginCallback = `${process.env.REDIRECT_URL}callback`
+
+const oauth_secrets = {}
+const oauth = new OAuth(requestURL, accessURL, key, secret, '1.0A', loginCallback, 'HMAC-SHA1')
+
+const login = (req, res) => {
+	oauth.getOAuthRequestToken((err, token, tokenSecret, res) => {
+		oauth_secrets[token] = tokenSecret
+		res.redirect(`${authorizeURL}?oauth_toke=${token}&name=${app_name}&scope=${scope}&expiration=${expiration}`)
+	})
+}
+
+const callback = (req, res) => {
+	const query = req.parse(req.url, true).query
+	const token = query.oauth_token
+	const tokenSecret = oauth_secrets[token]
+	const verifier = query.oauth_verifier
+	oauth.getOAuthAccessToken(token, tokenSecret, verifier, (err, accessToken, accessTokenSecret, res) => {
+    oauth.getProtectedResource("https://api.trello.com/1/members/me", "GET", accessToken, accessTokenSecret, (error, data, response) => {
+			console.log(accessToken)
+		})
+	})
+}
+
+app.get('/login', (req, res) => {
+	login(req, res)
+})
+
+app.get('/callback', (req, res) => {
+	callback(req, res)
+})
+
 
 app.post('/trelloCallback', async (req, res) => {
 	console.log('Change happened')
-	console.log(req.body)
+	login(req, res)
 	return res.status(200).send({message: 'Webhook created'})
 })
 
@@ -32,14 +81,14 @@ app.get('/changeduedate', async (req, res) => {
 				difference,
 				...currentDates[child]
 			}
-			if (currentDates[parent].children) {
+			if (currentDates[parent]) {
 				currentDates[parent].children = [...currentDates[parent].children, child]
 			}
 			else { 
 				currentDates[parent].children = [child]
 			}
 		}
-		await write('../dates.json', doc)
+		await write('./dates.json', JSON.stringify(doc))
 		console.log('successfully added new date')
 	} catch(err) {
 		console.log(err)

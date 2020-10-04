@@ -18,6 +18,7 @@ const write = (filename, data) => {
 	})
 }
 
+
 module.exports = {
 	read,
 	write

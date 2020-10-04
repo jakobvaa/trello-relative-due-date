@@ -23,13 +23,16 @@
     "babel": "^6.23.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1",
+    "oauth": "^0.9.15",
     "parcel-bundler": "^1.12.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "rimraf": "^3.0.2",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "url": "^0.11.0"
   },
   "browserslist": [
     "last 2 Chrome versions"
