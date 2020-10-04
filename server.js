@@ -6,7 +6,7 @@ app.use(express.json())
 
 // Setup authorization
 
-const OAuth = require('oauth')
+const OAuth = require('oauth').OAuth
 const url = require('url')
 
 const scope = 'read, write'
