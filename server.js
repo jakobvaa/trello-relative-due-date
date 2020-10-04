@@ -40,6 +40,8 @@ const callback = (req, res) => {
 	oauth.getOAuthAccessToken(token, tokenSecret, verifier, (err, accessToken, accessTokenSecret, results) => {
     oauth.getProtectedResource("https://api.trello.com/1/members/me", "GET", accessToken, accessTokenSecret, (error, data, response) => {
 			console.log(accessToken)
+
+			res.send('success')
 		})
 	})
 }
