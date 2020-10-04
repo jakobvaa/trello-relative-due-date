@@ -33,7 +33,7 @@ const login = (req, res) => {
 }
 
 const callback = (req, res) => {
-	const query = req.parse(req.url, true).query
+	const query = url.parse(req.url, true).query
 	const token = query.oauth_token
 	const tokenSecret = oauth_secrets[token]
 	const verifier = query.oauth_verifier
