@@ -48,6 +48,7 @@ app.get('/login', (req, res) => {
 })
 
 app.get('/callback', (req, res) => {
+	console.log('fdsfds')
 	callback(req, res)
 })
 
