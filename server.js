@@ -27,7 +27,7 @@ const oauth = new OAuth(requestURL, accessURL, key, secret, '1.0A', loginCallbac
 const login = (req, res) => {
 	oauth.getOAuthRequestToken((err, token, tokenSecret, results) => {
 		oauth_secrets[token] = tokenSecret
-		res.redirect(`${authorizeURL}?oauth_toke=${token}&name=${app_name}&scope=${scope}&expiration=${expiration}`)
+		res.redirect(`${authorizeURL}?oauth_toke=${token}&name=${appName}&scope=${scope}&expiration=${expiration}`)
 	})
 }
 
