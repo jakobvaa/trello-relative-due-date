@@ -36,7 +36,7 @@ const callback = (req, res) => {
 	const token = query.oauth_token
 	const tokenSecret = oauth_secrets[token]
 	const verifier = query.oauth_verifier
-	oauth.getOAuthAccessToken(token, tokenSecret, verifier, (err, accessToken, accessTokenSecret, res) => {
+	oauth.getOAuthAccessToken(token, tokenSecret, verifier, (err, accessToken, accessTokenSecret, results) => {
     oauth.getProtectedResource("https://api.trello.com/1/members/me", "GET", accessToken, accessTokenSecret, (error, data, response) => {
 			console.log(accessToken)
 		})
