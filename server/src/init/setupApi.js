@@ -17,7 +17,7 @@ const addNewCard = async (data) => {
 // Adds a child to a parent
 const addChildToParent = async (childId, parentId) => {
 	try {
-		const parentCard = await Card.find({ cardId: parentId })
+		const parentCard = await Card.findOne({ cardId: parentId })
 		const {children} = parentCard
 		if(!parentCard.children.includes(childId)) {
 			children = [...children, childId]
@@ -33,13 +33,13 @@ const addChildToParent = async (childId, parentId) => {
 // Add parent to child, and remove the child from previous parent if applicable
 const addParentToChild = async (childId, parentId, difference) => {
 	try {
-		const childCard = await Card.find({ cardId: childId })
+		const childCard = await Card.findOne({ cardId: childId })
 		if(childCard.parent) {
-			const previousParent = await Card.find({ cardId: childCard.parent })
+			const previousParent = await Card.findOne({ cardId: childCard.parent })
 			previousParent.children = previousParent.children.filter(id => id !== childId)
 			await previousParent.save()
 		}
-		const newParent = await Card.find({cardId: parentId})
+		const newParent = await Card.findOne({cardId: parentId})
 		childCard.parent = parentId
 		childCard.difference = difference
 		if(newParent.due_date) {
@@ -63,7 +63,7 @@ const changeChildrenDueDates = async (card) => {
 		}
 		const timestamp = Date.parse(card.due_date)
 		for(childId in card.children) {
-			const child = await Card.find({cardId: childId})
+			const child = await Card.findOne({cardId: childId})
 			const childTimestamp = timestap + 1000 * 3600 * 24 * difference
 			const childDate = new Date(childTimestamp)
 			child.due_date = childDate.toISOString()
@@ -79,7 +79,7 @@ module.exports = (app) => {
 	app.post('/verifydate', async (req, res) => {
 		const {cardId, boardId, cardName, due_date } = req.body
 		try {
-			const cardData = await Card.find({
+			const cardData = await Card.findOne({
 				cardId,
 				boardId
 			})
