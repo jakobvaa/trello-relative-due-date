@@ -4,7 +4,7 @@ const Baord = require('../models/board')
 const addNewCard = async (data) => {
 	try {
 		await new Card({
-			...card,
+			...data.card,
 			boardId
 		}).save()
 		return 'Success'
