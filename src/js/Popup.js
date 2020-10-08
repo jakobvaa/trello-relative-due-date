@@ -71,9 +71,16 @@ const Popup = (props) => {
 
 	const setRelativeDueDate = async () => {
 		console.log('fdfdf')
-		await axios({
-			url: `/changeduedate?child=${currentCard.id}&parent=${selectedParent.id}&difference=${difference}&boardid=${currentBoardId}`
+		const response = await axios({
+			method: 'POST',
+			url: '/addparent',
+			data: {
+				cardId: currentCard.id,
+				newParent: selectedParent.id,
+				difference
+			}
 		})
+		console.log(response.data)
 	}
 
 	const renderCards = () => (
