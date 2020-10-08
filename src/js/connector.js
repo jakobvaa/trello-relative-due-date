@@ -41,6 +41,7 @@ const verifyCard = async (t) => {
   const boardId = boards.data.find(board => board.name === 'IEEE Conference')
   const verify = await axios({
     method: 'POST',
+    url: '/verifydate',
     data: {
       cardName: card.name,
       cardId: card.id,
