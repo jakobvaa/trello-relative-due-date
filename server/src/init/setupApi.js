@@ -10,7 +10,7 @@ module.exports = (app) => {
 				boardId: req.body.boardId,
 			})
 			console.log(cardData)
-			if(!cardData.length === 0) {
+			if(cardData.length === 0) {
 				await new Card({
 					cardId,
 					boardId,
