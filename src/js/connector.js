@@ -49,6 +49,17 @@ const verifyCard = async (t) => {
       boardId: boardId.id
     }
   })
+
+  const card = await axios({
+    url: `/getcard?cardId=${card.id}`
+  })
+  if(card.data.parent) {
+    const parent = await axios({
+      url: `/getcard?cardId=${card.data.parent}`
+    })
+    return [{text: `Dependency of ${parent.data.CardName}`}]
+  }
+
   return [{text: 'fdfd'}]
 }
 
