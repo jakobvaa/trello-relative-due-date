@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-const setupDB = require('./init/setubDB')
+const setupDB = require('./init/setupDB')
 const setupLogger = require('./init/setupLogger')
 const api = require('./init/setupApi')
 
