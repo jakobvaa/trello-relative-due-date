@@ -93,9 +93,10 @@ module.exports = (app) => {
 			console.log(Date.parse(cardData.due_date))
 			console.log(Date.parse(due_date))
 			if(Date.parse(cardData.due_date) !== Date.parse(due_date)) {
-				console.log('different')
 				cardData.due_date = due_date
 				await cardData.save()
+				const changedCards = await changeChildrenDueDates(cardData)
+				console.log(changedCards)
 			}
 			return res.send({message: 'ok'})
 		} catch(err) {
