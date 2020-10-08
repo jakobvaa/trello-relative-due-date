@@ -111,9 +111,7 @@ module.exports = (app) => {
 	app.get('/getcard', async (req, res) => {
 		try {
 			const { cardid } = req.query
-			console.log(cardid)
 			const card = await Card.findOne({cardId: cardid})
-			console.log(card)
 			res.send({card})
 		} catch(err) {
 			console.log(err)
