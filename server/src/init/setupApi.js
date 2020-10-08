@@ -16,7 +16,6 @@ module.exports = (app) => {
 					boardId,
 					cardName,
 					due_date,
-					parent: [],
 					children: []
 				}).save()
 				console.log('success')
