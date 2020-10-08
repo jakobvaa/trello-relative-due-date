@@ -9,6 +9,7 @@ module.exports = (app) => {
 				cardId: req.body.cardId,
 				boardId: req.body.boardId,
 			})
+			console.log(cardData)
 			if(!cardData) {
 				await new Card({
 					cardId,
@@ -18,6 +19,7 @@ module.exports = (app) => {
 					parent: [],
 					children: []
 				}).save()
+				console.log('success')
 				res.send({message: 'new user added successfully'})
 			}
 		} catch(err) {
