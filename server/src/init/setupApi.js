@@ -113,6 +113,8 @@ module.exports = (app) => {
 			const { cardId } = req.query
 			const card = Card.findOne({cardId})
 			res.send({card})
+		} catch(err) {
+			console.log(err)
 		}
 	})
 }
