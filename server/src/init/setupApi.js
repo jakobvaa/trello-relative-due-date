@@ -35,7 +35,9 @@ const addParentToChild = async (childId, parentId, difference) => {
 		const childCard = await Card.findOne({ cardId: childId })
 		if(childCard.parent && !childCard.parent === parentId) {
 			const previousParent = await Card.findOne({ cardId: childCard.parent })
+			console.log(previousParent.children)
 			previousParent.children = previousParent.children.filter(id => id !== childId)
+			console.log(previousParent.children)
 			await previousParent.save()
 		}
 		const newParent = await Card.findOne({cardId: parentId})
@@ -62,9 +64,7 @@ const changeChildrenDueDates = async (card) => {
 		}
 		const timestamp = Date.parse(card.due_date)
 		for(let childId of card.children) {
-			console.log(childId)
 			const child = await Card.findOne({cardId: childId})
-			console.log(child)
 			const childTimestamp = timestamp + 1000 * 3600 * 24 * child.difference
 			const childDate = new Date(childTimestamp)
 			child.due_date = childDate.toISOString()
