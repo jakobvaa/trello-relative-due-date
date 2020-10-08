@@ -4,6 +4,7 @@ const app = express()
 const setupDB = require('./init/setupDB')
 const setupLogger = require('./init/setupLogger')
 const api = require('./init/setupApi')
+const setupApi = require('./init/setupApi')
 
 const start = async() => {
 	let log = undefined
@@ -22,7 +23,7 @@ const start = async() => {
 		await setupDB(app)
 
 		app.use(express.static('dist'));
-
+		setupApi(app)
 		app.get('*', (req, res) => {
 			res.sendFile(__dirname + '/dist/index.html')
 		})
