@@ -61,7 +61,7 @@ const changeChildrenDueDates = async (card) => {
 			return
 		}
 		const timestamp = Date.parse(card.due_date)
-		for(childId in card.children) {
+		for(let childId of card.children) {
 			console.log(childId)
 			const child = await Card.findOne({cardId: childId})
 			console.log(child)
