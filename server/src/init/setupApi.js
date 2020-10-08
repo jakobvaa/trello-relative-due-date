@@ -63,7 +63,7 @@ const changeChildrenDueDates = async (card) => {
 		const timestamp = Date.parse(card.due_date)
 		for(childId in card.children) {
 			const child = await Card.findOne({cardId: childId})
-			const childTimestamp = timestap + 1000 * 3600 * 24 * difference
+			const childTimestamp = timestamp + 1000 * 3600 * 24 * difference
 			const childDate = new Date(childTimestamp)
 			child.due_date = childDate.toISOString()
 			await child.save()
