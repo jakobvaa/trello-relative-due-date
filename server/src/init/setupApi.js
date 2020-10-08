@@ -53,14 +53,14 @@ const addParentToChild = async (childId, parentId, difference) => {
 			childCard.due_date = childDate.toISOString()
 		}
 		await childCard.save()
-		await changeChildrenDueDates(childCard)
-		return childCard
+		const changed = await changeChildrenDueDates(childCard, [(childCard.cardId, childDate)])
+		return changed
 	} catch(err) {
 		throw err
 	}
 }
 
-const changeChildrenDueDates = async (card) => {
+const changeChildrenDueDates = async (card, currentChanged) => {
 	try {
 		if(card.children.length === 0) {  
 			return
@@ -72,7 +72,8 @@ const changeChildrenDueDates = async (card) => {
 			const childDate = new Date(childTimestamp)
 			child.due_date = childDate.toISOString()
 			await child.save()
-			changeChildrenDueDates(child)
+			const changed = changeChildrenDueDates(child, [...currentChanged, (childId, childDate)])
+			return changed
 		}
 	} catch(err) {
 		throw err
@@ -91,6 +92,10 @@ module.exports = (app) => {
 				await addNewCard(req.body)
 				return res.send({message: 'new user added successfully'})
 			}
+			if(cardData.due_date !== due_date) {
+				cardData.due_date = due_date
+				await cardData.save()
+			}
 			return res.send({message: 'ok'})
 		} catch(err) {
 			console.log(err)
@@ -101,7 +106,8 @@ module.exports = (app) => {
 		const { cardId, newParent, difference } = req.body
 		try {
 			await addChildToParent(cardId, newParent)
-			await addParentToChild(cardId, newParent, difference)
+			const changedDates = await addParentToChild(cardId, newParent, difference)
+			console.log(changedDates)
 			return res.send({message: 'success'})
 		} catch(err) {
 			console.log(err)
