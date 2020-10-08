@@ -46,7 +46,7 @@ const verifyCard = async (t) => {
       cardName: card.name,
       cardId: card.id,
       due_date: card.due,
-      boardId
+      boardId: boardId.id
     }
   })
   return [{text: 'fdfd'}]
