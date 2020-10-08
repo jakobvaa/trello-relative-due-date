@@ -1,4 +1,9 @@
+const axios = require('axios')
 const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg'
+const BASE_URL = 'https://api.trello.com/1/'
+const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
+const appName = 'relative-due-date'
+
 
 const onBtnClick = (t, opts) => {
   t.getRestApi().getToken()
@@ -27,6 +32,25 @@ const test = (t) => {
   })
 }
 
+const verifyCard = async (t) => {
+  const card = await t.card('all')
+  const boards = await axios ({
+    url: `${BASE_URL}members/me/boards?fields=name,url&key=${appKey}&token=${token}`
+  })
+  const boardId = boards.data.find(board => board.name === 'IEEE Conference')
+  const verify = await axios({
+    method: 'POST',
+    data: {
+      cardName: card.name,
+      cardId: card.id,
+      due_date: card.due,
+      boardId
+    }
+  })
+  return [{text: 'fdfd'}]
+}
+
+
 const getCardBadges = (t, opts) => {
   t.card('all').then(card => {
     console.log(card)
@@ -52,7 +76,7 @@ window.TrelloPowerUp.initialize({
         }
       });
     },
-  'card-badges': getCardBadges,
+  'card-badges': verifyCard,
 },
 {
   appKey: 'f37ab50db205f3dc8f32dc97971117f4',
