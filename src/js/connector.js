@@ -51,7 +51,7 @@ const verifyCard = async (t) => {
   })
 
   const cardMetadata = await axios({
-    url: `/getcard?cardId=${card.id}`
+    url: `/getcard?cardid=${card.id}`
   })
   if(cardMetadata.data.parent) {
     const parent = await axios({
