@@ -69,7 +69,7 @@ const changeChildrenDueDates = async (card) => {
 			const childDate = new Date(childTimestamp)
 			child.due_date = childDate.toISOString()
 			await child.save()
-			changeChildrenDueDates(childCard)
+			changeChildrenDueDates(child)
 		}
 	} catch(err) {
 		throw err
