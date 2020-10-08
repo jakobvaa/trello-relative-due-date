@@ -68,7 +68,7 @@ const changeChildrenDueDates = async (card, currentChanged=[]) => {
 			const child = await Card.findOne({cardId: childId})
 			const childTimestamp = timestamp + 1000 * 3600 * 24 * child.difference
 			const childDate = new Date(childTimestamp)
-			child.due_date = childDate.toISOString()
+			child.due_date = childDate ? childDate.toISOString() : null
 			await child.save()
 			const changed = changeChildrenDueDates(child, [...currentChanged, (childId, childDate)])
 			return changed
@@ -92,7 +92,7 @@ module.exports = (app) => {
 			}
 			const cardTimestamp = Date.parse(cardData.due_date)
 			const trelloTimestamp = Date.parse(due_date)
-			if(cardTimestamp !== trelloTimestamp && !(!cardTimestamp && !trelloTimestamp)) {
+			if(cardTimestamp !== trelloTimestamp) {
 				cardData.due_date = due_date
 				await cardData.save()
 				const changedCards = await changeChildrenDueDates(cardData)
