@@ -17,7 +17,7 @@ module.exports = (app) => {
 					due_date,
 					parent: [],
 					children: []
-				})
+				}).save()
 				res.send({message: 'new user added successfully'})
 			}
 		} catch(err) {
