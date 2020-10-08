@@ -110,8 +110,8 @@ module.exports = (app) => {
 
 	app.get('/getcard', async (req, res) => {
 		try {
-			const { cardId } = req.query
-			const card = Card.findOne({cardId})
+			const { cardid } = req.query
+			const card = Card.findOne({cardId: cardid})
 			res.send({card})
 		} catch(err) {
 			console.log(err)
