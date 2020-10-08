@@ -5,7 +5,6 @@ const addNewCard = async (data) => {
 	try {
 		await new Card({
 			...data.card,
-			boardId
 		}).save()
 		return 'Success'
 	} catch(err) {
