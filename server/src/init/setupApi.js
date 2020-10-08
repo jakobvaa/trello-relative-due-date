@@ -18,9 +18,8 @@ const addNewCard = async (data) => {
 const addChildToParent = async (childId, parentId) => {
 	try {
 		const parentCard = await Card.findOne({ cardId: parentId })
-		const {children} = parentCard
 		if(!parentCard.children.includes(childId)) {
-			children = [...children, childId]
+			parentCard.children = [...children, childId]
 		}
 		await parentCard.save()
 		return 
