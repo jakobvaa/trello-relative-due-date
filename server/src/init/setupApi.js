@@ -108,7 +108,7 @@ module.exports = (app) => {
 		}
 	})
 
-	app.get('getcard', async (req, res) => {
+	app.get('/getcard', async (req, res) => {
 		try {
 			const { cardId } = req.query
 			const card = Card.findOne({cardId})
