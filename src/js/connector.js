@@ -50,12 +50,12 @@ const verifyCard = async (t) => {
     }
   })
 
-  const card = await axios({
+  const cardMetadata = await axios({
     url: `/getcard?cardId=${card.id}`
   })
-  if(card.data.parent) {
+  if(cardMetadata.data.parent) {
     const parent = await axios({
-      url: `/getcard?cardId=${card.data.parent}`
+      url: `/getcard?cardId=${cardMetadata.data.parent}`
     })
     return [{text: `Dependency of ${parent.data.CardName}`}]
   }
