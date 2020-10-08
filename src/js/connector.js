@@ -27,6 +27,13 @@ const test = (t) => {
   })
 }
 
+const getCardBadges = (t, opts) => {
+  t.card('all').then(card => {
+    console.log(card)
+  })
+  return [{text: 'fdfd'}]
+}
+
 window.TrelloPowerUp.initialize({
   'card-buttons': (t) => {
     return t.getRestApi()
@@ -44,8 +51,10 @@ window.TrelloPowerUp.initialize({
           }];
         }
       });
-  }
-}, {
+    },
+  'card-badges': getCardBadges,
+},
+{
   appKey: 'f37ab50db205f3dc8f32dc97971117f4',
 	appName: 'relative-due-date'
 })
