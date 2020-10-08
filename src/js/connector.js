@@ -44,7 +44,7 @@ const verifyCard = async (t) => {
   })
   if(cardMetadata.data.card.parent) {
     const parent = await axios({
-      url: `/getcard?cardid=${cardMetadata.data.parent}`
+      url: `/getcard?cardid=${cardMetadata.data.card.parent}`
     })
     return [{text: `Dependency of ${parent.data.card.cardName}`}]
   }
