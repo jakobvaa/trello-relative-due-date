@@ -3,7 +3,7 @@ const Baord = require('../models/board')
 
 module.exports = (app) => {
 	app.post('/verifydate', async (req, res) => {
-		
+		const {cardId, boardId, cardName, due_date } = req.body
 		try {
 			const cardData = await Card.find({
 				cardId: req.body.cardId,
