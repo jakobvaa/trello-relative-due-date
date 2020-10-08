@@ -84,7 +84,7 @@ module.exports = (app) => {
 				cardId,
 				boardId
 			})
-			if(cardData.length === 0) {
+			if(!cardData) {
 				await addNewCard(req.body)
 				return res.send({message: 'new user added successfully'})
 			}
