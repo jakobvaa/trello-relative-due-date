@@ -68,7 +68,7 @@ const changeChildrenDueDates = async (card, currentChanged=[]) => {
 			const child = await Card.findOne({cardId: childId})
 			const childTimestamp = timestamp + 1000 * 3600 * 24 * child.difference
 			const childDate = new Date(childTimestamp)
-			child.due_date = childDate ? childDate.toISOString() : null
+			child.due_date = !isNaN(childDate) ? childDate.toISOString() : null
 			await child.save()
 			const changed = changeChildrenDueDates(child, [...currentChanged, (childId, childDate)])
 			return changed
