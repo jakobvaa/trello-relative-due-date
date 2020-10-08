@@ -90,9 +90,9 @@ module.exports = (app) => {
 				await addNewCard(req.body)
 				return res.send({message: 'new user added successfully'})
 			}
-			console.log(Date.parse(cardData.due_date))
-			console.log(Date.parse(due_date))
-			if(Date.parse(cardData.due_date) !== Date.parse(due_date)) {
+			const cardTimestamp = Date.parse(cardData.due_date)
+			const trelloTimestamp = Date.parse(due_date)
+			if(cardTimestamp !== trelloTimestamp && !(!cardTimestamp && !trelloTimestamp)) {
 				cardData.due_date = due_date
 				await cardData.save()
 				const changedCards = await changeChildrenDueDates(cardData)
