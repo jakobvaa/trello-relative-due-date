@@ -34,9 +34,9 @@ const addChildToParent = async (childId, parentId) => {
 // Add parent to child, and remove the child from previous parent if applicable
 const addParentToChild = async (childId, parentId, difference) => {
 	try {
-		const childCard = await Card.find({ cardId: childId })[0]
+		const childCard = await Card.find({ cardId: childId })
 		if(childCard.parent) {
-			const previousParent = await Card.find({ cardId: childCard.parent })[0]
+			const previousParent = await Card.find({ cardId: childCard.parent })
 			previousParent.children = previousParent.children.filter(id => id !== childId)
 			await previousParent.save()
 		}
