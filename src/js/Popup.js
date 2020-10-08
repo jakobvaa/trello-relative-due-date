@@ -25,7 +25,7 @@ const Popup = (props) => {
 
 	useEffect(() => {
 		if(!loading && cards.length === 0 && currentCard) {
-			console.log(currentCard.id)
+
 			setLoading(true)
 			t.getRestApi().getToken()
 			.then(token => {
@@ -48,7 +48,6 @@ const Popup = (props) => {
 	useEffect(() => {
 		return t.card('all')
 		.then((card) => {
-			console.log(card)
 			setCurrentCard(card)
 		})
 	}, [])
@@ -70,7 +69,6 @@ const Popup = (props) => {
 	const canSetDate = () => !(difference && selectedParent)
 
 	const setRelativeDueDate = async () => {
-		console.log('fdfdf')
 		const response = await axios({
 			method: 'POST',
 			url: '/addparent',
@@ -80,7 +78,6 @@ const Popup = (props) => {
 				difference
 			}
 		})
-		console.log(response.data)
 	}
 
 	const renderCards = () => (
@@ -97,7 +94,7 @@ const Popup = (props) => {
 	
 	return (
 		<div>
-			{cards.length > 0 ? renderCards() : 'ffff'}
+			{cards.length > 0 ? renderCards() : 'Loading cards'}
 			{selectedParent && 
 				<ul>
 					<li style={{backgroundColor: 'grey'}}>
