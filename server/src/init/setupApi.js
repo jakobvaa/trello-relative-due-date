@@ -3,8 +3,12 @@ const Baord = require('../models/board')
 
 const addNewCard = async (data) => {
 	try {
+		const {cardId, cardName, boardId, due_date} = data
 		await new Card({
-			...data.card,
+			cardId,
+			cardName,
+			boardId,
+			due_date,
 		}).save()
 		return 'Success'
 	} catch(err) {
