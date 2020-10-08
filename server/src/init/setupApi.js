@@ -17,8 +17,7 @@ const addNewCard = async (data) => {
 // Adds a child to a parent
 const addChildToParent = async (childId, parentId) => {
 	try {
-		const parentCard = await Card.find({ cardId: parentId })[0]
-		const childCard = await Card.find({ cardId: childId })[0]
+		const parentCard = await Card.find({ cardId: parentId })
 		const {children} = parentCard
 		if(!parentCard.children.includes(childId)) {
 			children = [...children, childId]
@@ -83,8 +82,7 @@ module.exports = (app) => {
 			const cardData = await Card.find({
 				cardId,
 				boardId
-			})[0]
-			console.log(cardData)
+			})
 			if(cardData.length === 0) {
 				await addNewCard(req.body)
 				return res.send({message: 'new user added successfully'})
