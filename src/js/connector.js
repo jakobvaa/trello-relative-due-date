@@ -14,21 +14,10 @@ const onBtnClick = (t, opts) => {
   })
 }
 
-const showIrame = (t) => {
+const showIframe = (t) => {
   return t.popup({
     title: 'Authorize to continue',
     url: './authorize.html'
-  })
-}
-
-const test = (t) => {
-  return t.popup({
-    title: 'cards',
-    items: [{
-      text: 'fdfd'
-    }, {
-      text: 'fdfdfdfss'
-    }]
   })
 }
 
@@ -57,7 +46,7 @@ const verifyCard = async (t) => {
     const parent = await axios({
       url: `/getcard?cardId=${cardMetadata.data.parent}`
     })
-    return [{text: `Dependency of ${parent.data.CardName}`}]
+    return [{text: `Dependency of ${parent.data.cardName}`}]
   }
 
   return [{text: 'fdfd'}]
