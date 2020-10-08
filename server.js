@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const {read, write } = require('./readWritePromise')
+const setupDB = require('./server/src/init/setubDB')
 require('dotenv').config()
 app.use(express.json())
 
@@ -46,6 +47,8 @@ const callback = (req, res) => {
 	})
 }
 
+setupDB(app)
+
 app.get('/login', (req, res) => {
 	login(req, res)
 })
@@ -59,43 +62,6 @@ app.get('/callback', (req, res) => {
 app.post('/trelloCallback', async (req, res) => {
 	console.log('Change happened')
 	login(req, res)
-})
-
-app.get('/changeduedate', async (req, res) => {
-	const {child, parent, difference, boardid} = req.query
-	try {
-		const doc = JSON.parse(await read('./dates.json'))
-		console.log(doc)
-		const currentDates = doc[boardid]
-		
-		if(!currentDates) {
-			doc[boardid] = {
-				[child] : {
-					parent: parent,
-					difference,
-				},
-				[parent]: {
-					children: [child]
-				}
-			}
-		} else {
-			currentDates[child] = {
-				parent: parent,
-				difference,
-				...currentDates[child]
-			}
-			if (currentDates[parent]) {
-				currentDates[parent].children = [...currentDates[parent].children, child]
-			}
-			else { 
-				currentDates[parent].children = [child]
-			}
-		}
-		await write('./dates.json', JSON.stringify(doc))
-		console.log('successfully added new date')
-	} catch(err) {
-		console.log(err)
-	}
 })
 
 app.use(express.static('dist'));
