@@ -58,7 +58,7 @@ const addParentToChild = async (childId, parentId, difference) => {
 	}
 }
 
-const changeChildrenDueDates = async (card, currentChanged) => {
+const changeChildrenDueDates = async (card, currentChanged=[]) => {
 	try {
 		if(card.children.length === 0) {  
 			return
@@ -90,7 +90,9 @@ module.exports = (app) => {
 				await addNewCard(req.body)
 				return res.send({message: 'new user added successfully'})
 			}
-			if(cardData.due_date !== due_date) {
+			
+			if(Date.parse(cardData.due_date) !== Date.parse(due_date)) {
+				console.log('different')
 				cardData.due_date = due_date
 				await cardData.save()
 			}
