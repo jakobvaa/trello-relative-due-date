@@ -34,7 +34,7 @@ const test = (t) => {
 
 const verifyCard = async (t) => {
   const card = await t.card('all')
-  const token = t.getRestApi().getToken()
+  const token = await t.getRestApi().getToken()
   const boards = await axios ({
     url: `${BASE_URL}members/me/boards?fields=name,url&key=${appKey}&token=${token}`
   })
