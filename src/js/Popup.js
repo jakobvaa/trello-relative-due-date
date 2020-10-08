@@ -2,7 +2,7 @@ import Axios from 'axios'
 import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
-import { read, write } from '../../readWritePromise'
+
 
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
 
