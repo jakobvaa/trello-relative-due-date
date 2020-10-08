@@ -112,7 +112,7 @@ module.exports = (app) => {
 		try {
 			const { cardid } = req.query
 			console.log(cardid)
-			const card = Card.findOne({cardId: cardid})
+			const card = await Card.findOne({cardId: cardid})
 			console.log(card)
 			res.send({card})
 		} catch(err) {
