@@ -89,7 +89,7 @@ module.exports = (app) => {
 				await addNewCard(req.body)
 				return res.send({message: 'new user added successfully'})
 			}
-			res.send({message: 'ok'})
+			return res.send({message: 'ok'})
 		} catch(err) {
 			console.log(err)
 		}
