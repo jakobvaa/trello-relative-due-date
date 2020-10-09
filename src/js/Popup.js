@@ -36,7 +36,7 @@ const Popup = (props) => {
 			setCards(boardCards.filter(card => card.id !== myCard.id ))
 			setLoading(false)
 		}
-	})
+	},[])
 
 	const setParent = (card) => {
 		setSelectedParent(card)
