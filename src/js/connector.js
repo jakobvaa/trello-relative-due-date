@@ -46,7 +46,6 @@ const verifyCard = async (t) => {
     })
   }
   if(trelloCard.due !== relativeCard.due_date) {
-    relativeCard.due_date = trelloCard.due
     if(relativeCard.parent){
       const {cardId, due_date} = relativeCard
       await axios({
@@ -55,6 +54,7 @@ const verifyCard = async (t) => {
       })
       return
     }
+    relativeCard.due_date = trelloCard.due
     await axios({
       method: 'POST',
       url: '/updatedate',
