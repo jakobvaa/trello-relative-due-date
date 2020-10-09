@@ -24,7 +24,7 @@ const showIframe = (t) => {
 const verifyCard = async (t) => {
   const trelloCard = await t.card('all')
   const cardMetadata = await axios({
-    url: `/getcard?cardid=${card.id}`
+    url: `/getcard?cardid=${trelloCard.id}`
   })
   const relativeCard = cardMetadata.data.card
   if(!relativeCard) {
@@ -46,7 +46,7 @@ const verifyCard = async (t) => {
       method: 'POST',
       url: '/updatedate',
       data: {
-        cardId: card.cardId,
+        cardId: relativeCard.cardId,
         due_date: relativeCard.due_date
       }
     })
