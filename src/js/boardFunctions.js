@@ -7,7 +7,7 @@ export const checkBoard = async (t, opts) => {
 		url: `/getboard?boardid=${boardId.id}`
 	}) 
 	const trelloIds = trelloCards.map(card => card.id)
-	const relativeCards = relativeBoard.data.board.filter(card => !trelloIds.includes(card.cardId))
+	const relativeCards = relativeBoard.data.board.filter(card => trelloIds.includes(card.cardId))
 	console.log(relativeCards)
 	console.log(trelloCards)
 	return [{
