@@ -48,6 +48,7 @@ const verifyCard = async (t) => {
   if(trelloCard.due !== relativeCard.due_date) {
     if(relativeCard.parent){
       const {cardId, due_date} = relativeCard
+      console.log(`${BASE_URL}cards/${cardId}?key=${appKey}&token=${token}&due=${due_date}`)
       await axios({
         method: 'PUT',
         url: `${BASE_URL}cards/${cardId}?key=${appKey}&token=${token}&due=${due_date}`
