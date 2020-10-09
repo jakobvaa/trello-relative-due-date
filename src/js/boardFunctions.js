@@ -30,9 +30,7 @@ export const checkBoard = async (t, opts) => {
 			await updateChildren(card, relativeCards, token)
 		}
 	})
-	return [{
-		text: 'Sync Relative Dates'
-	}]
+	return 
 }
 
 export const updateChildren = async (currentCard, relativeCards, token) => {

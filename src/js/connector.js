@@ -3,7 +3,7 @@ const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-
 const BASE_URL = 'https://api.trello.com/1/'
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
 const appName = 'relative-due-date'
-const { checkBoard } = require('./boardFunctions')
+const { checkBoard, updateChildren } = require('./boardFunctions')
 
 const onBtnClick = (t, opts) => {
   t.getRestApi().getToken()
@@ -22,27 +22,47 @@ const showIframe = (t) => {
 }
 
 const verifyCard = async (t) => {
-  const card = await t.card('all')
-  console.log('rendering')
+  const trelloCard = await t.card('all')
   const cardMetadata = await axios({
     url: `/getcard?cardid=${card.id}`
   })
-  if(!cardMetadata.data.card) {
+  const relativeCard = cardMetadata.data.card
+  if(!relativeCard) {
     const boardId = await t.board('id')
     await axios({
       method: 'PUT',
       url: '/addcard',
       data: {
         boardId: boardId.id,
-        cardId: card.id,
-        due_date: card.due,
-        cardName: card.name
+        cardId: trelloCard.id,
+        due_date: trelloCard.due,
+        cardName: trelloCard.name
       }
     })
   }
-  if(cardMetadata.data.card.parent) {
+  if(trelloCard.due !== relativeCard.due_date) {
+    relativeCard.due_date = trelloCard.due
+    await axios({
+      method: 'POST',
+      url: '/updatedate',
+      data: {
+        cardId: card.cardId,
+        due_date: relativeCard.due_date
+      }
+    })
+    const token = await t.getRestApi().getToken()
+    const board = await t.board('id')
+    const { id } = board
+    const relativeBoard = await axios({
+      url: `/getboard?boardid=${id}`
+    })
+    const relativeCards = relativeBoard.data.board
+    await updateChildren(relativeCard, relativeCards, token)
+  }
+
+  if(relativeCard.parent) {
     const parent = await axios({
-      url: `/getcard?cardid=${cardMetadata.data.card.parent}`
+      url: `/getcard?cardid=${relativeCard.parent}`
     })
     return [{text: `Dependency of ${parent.data.card.cardName}`}]
   }
@@ -77,7 +97,12 @@ window.TrelloPowerUp.initialize({
       });
     },
   'card-badges': verifyCard,
-  'board-buttons': checkBoard
+  'board-buttons': (t, opts) => {
+    return [{
+      text: 'Sync Relative Dates',
+      callback: checkBoard
+    }]
+  }
 },
 {
   appKey: 'f37ab50db205f3dc8f32dc97971117f4',
