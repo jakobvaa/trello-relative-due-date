@@ -78,6 +78,7 @@ const Popup = (props) => {
 				difference
 			}
 		})
+		console.log(response.data)
 	}
 
 	const renderCards = () => (

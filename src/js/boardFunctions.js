@@ -12,7 +12,6 @@ export const checkBoard = async (t, opts) => {
 	}) 
 	const trelloIds = trelloCards.map(card => card.id)
 	const relativeCards = relativeBoard.data.board.filter(card => trelloIds.includes(card.cardId))
-	const checkedCards = []
 	relativeCards.forEach(async card => {
 		const trelloCard = trelloCards.find(trelloCard => trelloCard.id === card.cardId)
 		const trelloTimestamp = Date.parse(trelloCard.due)
