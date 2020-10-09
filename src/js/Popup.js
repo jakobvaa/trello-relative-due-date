@@ -2,6 +2,7 @@ import Axios from 'axios'
 import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+import { updateChildren } from './boardFunctions'
 
 
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
@@ -19,38 +20,19 @@ const Popup = (props) => {
 	const [cards, setCards] = useState([])
 	const [currentCard, setCurrentCard] = useState(null)
 	const [selectedParent, setSelectedParent] = useState(null)
-	const [currentBoardId, setCurrentBoardId] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [difference, setDifference] = useState(0)
 
 	useEffect(() => {
-		if(!loading && cards.length === 0 && currentCard) {
-
+		if(!loading && cards.length === 0) {
 			setLoading(true)
-			t.getRestApi().getToken()
-			.then(token => {
-				axios({
-					url: `${BASE_URL}members/me/boards?fields=name,url&key=${appKey}&token=${token}`
-				}).then(boards => {
-					const myBoard = boards.data.find(board => board.name === 'IEEE Conference')
-					setCurrentBoardId(myBoard.id)
-					axios({
-						url: `${BASE_URL}boards/${myBoard.id}/cards?key=${appKey}&token=${token}`
-					}).then(cards => {
-						setCards(cards.data.filter(card => card.id !== currentCard.id))
-						setLoading(false)
-					})
-				}) 
-			})
+			const myCard = await t.card('all')
+			const boardCards = await t.cards('all')
+			setCurrentCard(myCard)
+			setCards(boardCards.filter(card => card.id !== myCard.id ))
+			setLoading(false)
 		}
-	}, [currentCard])
-
-	useEffect(() => {
-		return t.card('all')
-		.then((card) => {
-			setCurrentCard(card)
-		})
-	}, [])
+	})
 
 	const setParent = (card) => {
 		setSelectedParent(card)
@@ -78,7 +60,17 @@ const Popup = (props) => {
 				difference
 			}
 		})
-		console.log(response.data)
+		const token = await t.getRestApi().getToken()
+		const board = await t.board('id')
+		const boardId = board.id
+		const relativeBoard = await axios({
+			url: `/getboard?boardid=${boardId}`
+		})
+		await axios({
+			method: 'PUT',
+			url: `${BASE_URL}cards/${card.cardId}?key=${appKey}&token=${token}&due=${card.due_date}`
+		})
+		await updateChildren(response.data.card, relativeBoard.data.board, token)
 	}
 
 	const renderCards = () => (
