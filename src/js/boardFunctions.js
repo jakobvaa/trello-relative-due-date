@@ -42,7 +42,8 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 		currentCard.children.forEach(async childId => {
 			const childCard = relativeCards.find(card => card.cardId === childId)
 			const childTimestamp = currentTimestamp + 1000 * 3600 * 24 * childCard.difference
-			const childDate = new Date(childTimestamp).toISOString()
+			let childDate = new Date(childTimestamp)
+			
 			childCard.due_date = childDate
 			const [relativeResponse, trelloResponse] = await Promise.all([
 				axios({
@@ -50,12 +51,12 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 					url: '/updatedate',
 					data: {
 						cardId: childId,
-						due_date: childDate
+						due_date: childDate.toISOString()
 					}
 				}),
 				axios({
 					method: 'PUT',
-					url: `${BASE_URL}cards/${childId}?key=${appKey}&token=${token}&due=${childDate}`
+					url: `${BASE_URL}cards/${childId}?key=${appKey}&token=${token}&due=${childDate.toISOString()}`
 				})
 			])
 			await updateChildren(childCard, relativeCards, token)
