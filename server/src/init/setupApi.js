@@ -132,7 +132,6 @@ module.exports = (app) => {
 		try {
 			await addChildToParent(cardId, newParent)
 			const newChild = await addParentToChild(cardId, newParent, difference)
-			console.log(changedDates)
 			return res.send({card: newChild})
 		} catch(err) {
 			console.log(err)
