@@ -1,8 +1,9 @@
 const axios = require('axios')
 
 export const checkBoard = async (t, opts) => {
-	const trelloBoard = await t.cards('all')
-	console.log(trelloBoard)
+	const trelloCards = await t.cards('all')
+	const boardId = await t.board('id')
+	console.log(boardId)
 	const relativeBoard = await axios({
 		url: `/getboard?boardid=${trelloBoard.id}`
 	}) 
