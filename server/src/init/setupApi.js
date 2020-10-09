@@ -139,7 +139,7 @@ module.exports = (app) => {
 	app.post('/updatedate', async (req, res) => {
 		try {
 			const {cardId, due_date} = req.body
-			const card = await Card.find({cardId})
+			const card = await Card.findOne({cardId})
 			card.due_date = due_date
 			await card.save()
 			return res.status(200)
