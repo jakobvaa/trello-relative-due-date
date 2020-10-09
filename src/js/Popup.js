@@ -1,4 +1,4 @@
-import Axios from 'axios'
+import axios from 'axios'
 import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
@@ -30,8 +30,6 @@ const Popup = (props) => {
 				t.card('all'),
 				t.cards('all')
 			])
-			console.log(myCard)
-			console.log(boardCards)
 			setCurrentCard(myCard)
 			setCards(boardCards.filter(card => card.id !== myCard.id ))
 			setLoading(false)
