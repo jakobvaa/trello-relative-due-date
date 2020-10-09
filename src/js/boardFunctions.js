@@ -43,7 +43,7 @@ const updateChildren = async (currentCard, trelloCards, relativeCards, token) =>
 		}
 		const currentTrelloCard = trelloCards.find(card => card.id === currentCard.cardId)
 		const currentTimestamp = Date.parse(currentCard.due_date)
-		currentCard.children.forEach(child => {
+		currentCard.children.forEach(async child => {
 			const childCard = currentCard.find(card => card.id === child)
 			const childTimestamp = currentTimestamp + 1000 * 3600 * 24 * difference
 			const childDate = new Date(childTimestamp).toISOString()
