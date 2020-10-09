@@ -6,8 +6,10 @@ export const checkBoard = async (t, opts) => {
 	const relativeBoard = await axios({
 		url: `/getboard?boardid=${boardId.id}`
 	}) 
-	console.log(relativeBoard.data)
-
+	const trelloIds = trelloCards.map(card => card.id)
+	const relativeCards = relativeBoard.data.board.filter(card => !trelloIds.includes(card.cardId))
+	console.log(relativeCards)
+	console.log(trelloCards)
 	return [{
 		text: 'Sync Relative Dates'
 	}]
