@@ -120,7 +120,17 @@ module.exports = (app) => {
 		try {
 			const { cardid } = req.query
 			const card = await Card.findOne({cardId: cardid})
-			res.send({card})
+			return res.send({card})
+		} catch(err) {
+			console.log(err)
+		}
+	})
+
+	app.get('/getboard', async (req, res) => {
+		try { 
+			const {boardid} = req.query
+			const board = await Card.find({boardid: boardId})
+			return res.send({ board })
 		} catch(err) {
 			console.log(err)
 		}
