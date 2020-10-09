@@ -23,7 +23,7 @@ const Popup = (props) => {
 	const [loading, setLoading] = useState(false)
 	const [difference, setDifference] = useState(0)
 
-	useEffect(() => {
+	useEffect(async () => {
 		if(!loading && cards.length === 0) {
 			setLoading(true)
 			const myCard = await t.card('all')
