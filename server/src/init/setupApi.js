@@ -164,7 +164,7 @@ module.exports = (app) => {
 			const {cardId, due_date} = req.body
 			const card = await Card.findOne({cardId})
 			card.due_date = due_date
-			console.log(card)
+			console.log(due_date)
 			await card.save()
 			return res.status(200).send({message: 'OK'})
 		} catch (err) {
