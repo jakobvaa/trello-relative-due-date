@@ -23,22 +23,6 @@ const showIframe = (t) => {
 
 const verifyCard = async (t) => {
   const card = await t.card('all')
-  const token = await t.getRestApi().getToken()
-  const boards = await axios ({
-    url: `${BASE_URL}members/me/boards?fields=name,url&key=${appKey}&token=${token}`
-  })
-  const boardId = boards.data.find(board => board.name === 'IEEE Conference')
-  const verify = await axios({
-    method: 'POST',
-    url: '/verifydate',
-    data: {
-      cardName: card.name,
-      cardId: card.id,
-      due_date: card.due,
-      boardId: boardId.id
-    }
-  })
-
   const cardMetadata = await axios({
     url: `/getcard?cardid=${card.id}`
   })
@@ -49,7 +33,7 @@ const verifyCard = async (t) => {
     return [{text: `Dependency of ${parent.data.card.cardName}`}]
   }
 
-  return [{text: 'fdfd'}]
+  return [{text: 'No dependencies'}]
 }
 
 

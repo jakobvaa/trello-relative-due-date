@@ -135,4 +135,24 @@ module.exports = (app) => {
 			console.log(err)
 		}
 	})
+
+	app.post('/updatedate', async (req, res) => {
+		try {
+			const {cardId, due_date} = req.body
+			const card = await Card.find({cardId})
+			card.due_date = due_date
+			await Card.save()
+			return res.status(200)
+		} catch (err) {
+			console.log(err)
+		}
+	})
+
+	app.put('/addcard', async (req, res) => {
+		try { 
+			await addNewCard(req.body)
+		} catch (err) { 
+			console.log(err)
+		}
+	})
 }
