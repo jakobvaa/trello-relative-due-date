@@ -38,12 +38,10 @@ export const checkBoard = async (t, opts) => {
 
 const updateChildren = async (currentCard, trelloCards, relativeCards, token) => {
 	try {
-		if(currentCard.children.length === 0) {
-			return
-		}
-		const currentTrelloCard = trelloCards.find(card => card.id === currentCard.cardId)
-		const currentTimestamp = Date.parse(currentCard.due_date)
-		currentCard.children.forEach(async child => {
+	const currentTrelloCard = trelloCards.find(card => card.id === currentCard.cardId)
+	const currentTimestamp = Date.parse(currentCard.due_date)
+	currentCard.children.forEach(async child => {
+		if(!visited.includes(child)) {
 			const childCard = currentCard.find(card => card.id === child)
 			const childTimestamp = currentTimestamp + 1000 * 3600 * 24 * difference
 			const childDate = new Date(childTimestamp).toISOString()
@@ -62,6 +60,7 @@ const updateChildren = async (currentCard, trelloCards, relativeCards, token) =>
 				})
 			])
 			updateChildren(childCard, trelloCards, relativeCards, token)
+			}
 		})
 	} catch (err) {
 		console.log(err)

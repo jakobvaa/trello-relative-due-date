@@ -74,7 +74,7 @@ const addParentToChild = async (childId, parentId, difference) => {
 			const childDate = new Date(childTimestamp).toISOString()
 			childCard.due_date = childDate
 			await childCard.save()
-			return res.send({ card: childCard })
+			return childCard
 		}
 	} catch (err) {
 		console.log(err)
@@ -131,9 +131,9 @@ module.exports = (app) => {
 		const { cardId, newParent, difference } = req.body
 		try {
 			await addChildToParent(cardId, newParent)
-			const changedDates = await addParentToChild(cardId, newParent, difference)
+			const newChild = await addParentToChild(cardId, newParent, difference)
 			console.log(changedDates)
-			return res.send({message: 'success'})
+			return res.send({card: newChild})
 		} catch(err) {
 			console.log(err)
 		}
