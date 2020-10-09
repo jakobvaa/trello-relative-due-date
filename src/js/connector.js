@@ -23,7 +23,7 @@ const showIframe = (t) => {
 
 const generateBadgeText = (card, parent) => {
   const beforeOrAfter = card.difference > 0 ? 'After' : 'Before'
-  return `Dependency of ${parent.cardName} (${card.difference} days ${beforeOrAfter})`
+  return `${Math.abs(card.difference)} days ${beforeOrAfter} ${parent.cardName} `
 }
 
 const verifyCard = async (t) => {
