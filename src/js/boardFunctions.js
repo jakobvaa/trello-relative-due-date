@@ -28,7 +28,7 @@ export const checkBoard = async (t, opts) => {
 				}
 			})		
 			const token = await t.getRestApi().getToken()
-			updateChildren(card, trelloCards, relativeCards, token)
+			await updateChildren(card, trelloCards, relativeCards, token)
 		}
 	})
 	return [{
@@ -60,7 +60,7 @@ const updateChildren = async (currentCard, trelloCards, relativeCards, token) =>
 					url: `${BASE_URL}cards/${child}?key=${appKey}&token=${token}&due=${childDate}`
 				})
 			])
-			updateChildren(childCard, trelloCards, relativeCards, token)
+			await updateChildren(childCard, trelloCards, relativeCards, token)
 		})
 	} catch (err) {
 		console.log(err)
