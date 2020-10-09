@@ -35,7 +35,7 @@ export const checkBoard = async (t, opts) => {
 	}]
 }
 
-const updateChildren = async (currentCard, relativeCards, token) => {
+export const updateChildren = async (currentCard, relativeCards, token) => {
 	try {
 		if(currentCard.children.length === 0) {
 			return
