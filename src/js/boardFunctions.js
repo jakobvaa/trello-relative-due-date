@@ -52,12 +52,12 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 					url: '/updatedate',
 					data: {
 						cardId: childId,
-						due_date: childDate.toISOString()
+						due_date: childDate
 					}
 				}),
 				axios({
 					method: 'PUT',
-					url: `${BASE_URL}cards/${childId}?key=${appKey}&token=${token}&due=${childDate.toISOString()}`
+					url: `${BASE_URL}cards/${childId}?key=${appKey}&token=${token}&due=${childDate}`
 				})
 			])
 			await updateChildren(childCard, relativeCards, token)
