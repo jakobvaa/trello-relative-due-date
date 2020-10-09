@@ -23,7 +23,7 @@ const showIframe = (t) => {
 
 const verifyCard = async (t) => {
   const card = await t.card('all')
-
+  console.log('rendering')
   const cardMetadata = await axios({
     url: `/getcard?cardid=${card.id}`
   })

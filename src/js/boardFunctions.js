@@ -5,7 +5,6 @@ const appName = 'relative-due-date'
 
 
 export const checkBoard = async (t, opts) => {
-	console.log('need to re render')
 	const trelloCards = await t.cards('all')
 	const boardId = await t.board('id')
 	const relativeBoard = await axios({
