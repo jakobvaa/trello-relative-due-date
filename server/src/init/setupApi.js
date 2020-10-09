@@ -175,7 +175,7 @@ module.exports = (app) => {
 	app.put('/addcard', async (req, res) => {
 		try { 
 			await addNewCard(req.body)
-			return res.status(200)
+			return res.status(200).send({message: 'ok'})
 		} catch (err) { 
 			console.log(err)
 		}
