@@ -3,7 +3,7 @@ const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-
 const BASE_URL = 'https://api.trello.com/1/'
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
 const appName = 'relative-due-date'
-const checkBoard = require('./boardFunctions')
+const { checkBoard } = require('./boardFunctions')
 
 const onBtnClick = (t, opts) => {
   t.getRestApi().getToken()
