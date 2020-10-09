@@ -33,31 +33,6 @@ const addChildToParent = async (childId, parentId) => {
 
 
 // Add parent to child, and remove the child from previous parent if applicable
-const addParentToChild2 = async (childId, parentId, difference) => {
-	try {
-		const childCard = await Card.findOne({ cardId: childId })
-		if(childCard.parent && childCard.parent !== parentId) {
-			const previousParent = await Card.findOne({ cardId: childCard.parent })
-			previousParent.children = previousParent.children.filter(id => id !== childId)
-			await previousParent.save()
-		}
-		const newParent = await Card.findOne({cardId: parentId})
-		childCard.parent = parentId
-		childCard.difference = difference
-		if(newParent.due_date) {
-			const timestamp = Date.parse(newParent.due_date)
-			const childTimestamp = timestamp + 1000 * 3600 * 24 * difference
-			const childDate = new Date(childTimestamp)
-			childCard.due_date = childDate.toISOString()
-		}
-		await childCard.save()
-		const changed = await changeChildrenDueDates(childCard, [(childCard.cardId, childDate)])
-		return changed
-	} catch(err) {
-		throw err
-	}
-}
-
 const addParentToChild = async (childId, parentId, difference) => {
 	try {
 		const childCard = await Card.findOne({cardId: childId})
@@ -78,7 +53,7 @@ const addParentToChild = async (childId, parentId, difference) => {
 			return childCard
 		}
 	} catch (err) {
-		console.log(err)
+		res.status(500).send({message: 'Internal Server Error.'})
 	}
 }
 
@@ -110,7 +85,7 @@ module.exports = (app) => {
 			const newChild = await addParentToChild(cardId, newParent, difference)
 			return res.send({card: newChild})
 		} catch(err) {
-			console.log(err)
+			res.status(500).send({message: 'Internal Server Error.'})
 		}
 	})
 
@@ -120,7 +95,7 @@ module.exports = (app) => {
 			const card = await Card.findOne({cardId: cardid})
 			return res.send({card})
 		} catch(err) {
-			console.log(err)
+			res.status(500).send({message: 'Internal Server Error.'})
 		}
 	})
 
@@ -130,7 +105,7 @@ module.exports = (app) => {
 			const board = await Card.find({boardId: boardid})
 			return res.send({ board })
 		} catch(err) {
-			console.log(err)
+			res.status(500).send({message: 'Internal Server Error.'})
 		}
 	})
 
@@ -143,7 +118,7 @@ module.exports = (app) => {
 			await card.save()
 			return res.status(200).send({message: 'OK'})
 		} catch (err) {
-			console.log(err)
+			res.status(500).send({message: 'Internal Server Error.'})
 		}
 	})
 
@@ -152,7 +127,7 @@ module.exports = (app) => {
 			await addNewCard(req.body)
 			return res.status(200).send({message: 'ok'})
 		} catch (err) { 
-			console.log(err)
+			res.status(500).send({message: 'Internal Server Error.'})
 		}
 	})
 }
