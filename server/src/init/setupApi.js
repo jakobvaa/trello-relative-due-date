@@ -128,8 +128,8 @@ module.exports = (app) => {
 
 	app.get('/getboard', async (req, res) => {
 		try { 
-			const {boardid} = req.query
-			const board = await Card.find({boardid: boardId})
+			const { boardid } = req.query
+			const board = await Card.find({boardId: boardid})
 			return res.send({ board })
 		} catch(err) {
 			console.log(err)
