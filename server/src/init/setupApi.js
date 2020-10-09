@@ -33,7 +33,7 @@ const addChildToParent = async (childId, parentId) => {
 
 
 // Add parent to child, and remove the child from previous parent if applicable
-const addParentToChild = async (childId, parentId, difference) => {
+const addParentToChild2 = async (childId, parentId, difference) => {
 	try {
 		const childCard = await Card.findOne({ cardId: childId })
 		if(childCard.parent && childCard.parent !== parentId) {
@@ -55,6 +55,29 @@ const addParentToChild = async (childId, parentId, difference) => {
 		return changed
 	} catch(err) {
 		throw err
+	}
+}
+
+const addParentToChild = (childId, parentId, difference) => {
+	try {
+		const childCard = await Card.findOne({cardId: childId})
+		if(childCard.parent && childCard.parent !== parentId) {
+			const previousParent = await Card.findOne({ cardId: childCard.parent })
+			previousParent.children = previousParent.children.filter(id => id !== childId)
+			await previousParent.save()
+		}
+		const newParent = await Card.findOne({cardId: parentId})
+		childCard.parent = parentId
+		if (newParent.due_date) {
+			const timestamp = Date.parse(newParent.due_date)
+			const childTimestamp = timestamp + 1000 * 3600 * 24 * difference
+			const childDate = new Date(childTimestamp).toISOString()
+			childCard.due_date = childDate
+			await childCard.save()
+			return res.send({ card: childCard })
+		}
+	} catch (err) {
+		console.log(err)
 	}
 }
 
@@ -142,7 +165,7 @@ module.exports = (app) => {
 			const card = await Card.findOne({cardId})
 			card.due_date = due_date
 			await card.save()
-			return res.status(200)
+			return res.status(200).send({message: 'OK'})
 		} catch (err) {
 			console.log(err)
 		}
