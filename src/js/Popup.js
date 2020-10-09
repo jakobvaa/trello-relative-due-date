@@ -26,9 +26,11 @@ const Popup = (props) => {
 	useEffect(async () => {
 		if(!loading && cards.length === 0) {
 			setLoading(true)
-			const myCard = await t.card('all')
+			const [myCard, boardCards] = await Promise.all([
+				t.card('all'),
+				t.cards('all')
+			])
 			console.log(myCard)
-			const boardCards = await t.cards('all')
 			console.log(boardCards)
 			setCurrentCard(myCard)
 			setCards(boardCards.filter(card => card.id !== myCard.id ))
