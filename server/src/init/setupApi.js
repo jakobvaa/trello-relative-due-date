@@ -58,7 +58,7 @@ const addParentToChild2 = async (childId, parentId, difference) => {
 	}
 }
 
-const addParentToChild = (childId, parentId, difference) => {
+const addParentToChild = async (childId, parentId, difference) => {
 	try {
 		const childCard = await Card.findOne({cardId: childId})
 		if(childCard.parent && childCard.parent !== parentId) {
