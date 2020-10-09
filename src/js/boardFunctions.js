@@ -42,8 +42,8 @@ const updateChildren = async (currentCard, trelloCards, relativeCards, token) =>
 			return
 		}
 		const currentTimestamp = Date.parse(currentCard.due_date)
-		currentCard.children.forEach(async child => {
-			const childCard = currentCard.find(card => card.id === child)
+		currentCard.children.forEach(async childId => {
+			const childCard = relativeCards.find(card => card.id === childId)
 			const childTimestamp = currentTimestamp + 1000 * 3600 * 24 * difference
 			const childDate = new Date(childTimestamp).toISOString()
 			const [relativeResponse, trelloResponse] = await Promise.all([
