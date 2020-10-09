@@ -141,7 +141,7 @@ module.exports = (app) => {
 			const {cardId, due_date} = req.body
 			const card = await Card.find({cardId})
 			card.due_date = due_date
-			await Card.save()
+			await card.save()
 			return res.status(200)
 		} catch (err) {
 			console.log(err)

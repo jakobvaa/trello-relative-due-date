@@ -3,7 +3,6 @@ const app = express()
 
 const setupDB = require('./init/setupDB')
 const setupLogger = require('./init/setupLogger')
-const api = require('./init/setupApi')
 const setupApi = require('./init/setupApi')
 
 const start = async() => {
