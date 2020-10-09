@@ -23,9 +23,23 @@ const showIframe = (t) => {
 
 const verifyCard = async (t) => {
   const card = await t.card('all')
+
   const cardMetadata = await axios({
     url: `/getcard?cardid=${card.id}`
   })
+  if(!cardMetadata.data.card) {
+    const boardId = await t.board('id')
+    await axios({
+      method: 'PUT',
+      url: '/addcard',
+      data: {
+        boardId: boardId.id,
+        cardId: card.id,
+        due_date: card.due,
+        name: card.name
+      }
+    })
+  }
   if(cardMetadata.data.card.parent) {
     const parent = await axios({
       url: `/getcard?cardid=${cardMetadata.data.card.parent}`
