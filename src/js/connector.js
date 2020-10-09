@@ -21,6 +21,11 @@ const showIframe = (t) => {
   })
 }
 
+const generateBadgeText = (card, parent) => {
+  const beforeOrAfter = card.difference > 0 ? 'After' : 'Before'
+  return `Dependency of ${parent.cardName} (${card.difference} days ${beforeOrAfter})`
+}
+
 const verifyCard = async (t) => {
   const trelloCard = await t.card('all')
   const cardMetadata = await axios({
@@ -64,7 +69,7 @@ const verifyCard = async (t) => {
     const parent = await axios({
       url: `/getcard?cardid=${relativeCard.parent}`
     })
-    return [{text: `Dependency of ${parent.data.card.cardName}`}]
+    return [{text: generateBadgeText(relativeCard, parent.data.card)}]
   }
 
   return [{text: 'No dependencies'}]

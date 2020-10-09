@@ -103,31 +103,6 @@ const changeChildrenDueDates = async (card, currentChanged=[]) => {
 }
 
 module.exports = (app) => {
-	app.post('/verifydate', async (req, res) => {
-		const {cardId, boardId, cardName, due_date } = req.body
-		try {
-			const cardData = await Card.findOne({
-				cardId,
-				boardId
-			})
-			if(!cardData) {
-				await addNewCard(req.body)
-				return res.send({message: 'new user added successfully'})
-			}
-			const cardTimestamp = Date.parse(cardData.due_date)
-			const trelloTimestamp = Date.parse(due_date)
-			if(cardTimestamp !== trelloTimestamp) {
-				cardData.due_date = due_date
-				await cardData.save()
-				const changedCards = await changeChildrenDueDates(cardData)
-				console.log(changedCards)
-			}
-			return res.send({message: 'ok'})
-		} catch(err) {
-			console.log(err)
-		}
-	})
-
 	app.post('/addParent', async (req, res) => {
 		const { cardId, newParent, difference } = req.body
 		try {
