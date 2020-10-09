@@ -41,7 +41,6 @@ const updateChildren = async (currentCard, trelloCards, relativeCards, token) =>
 		if(currentCard.children.length === 0) {
 			return
 		}
-		const currentTrelloCard = trelloCards.find(card => card.id === currentCard.cardId)
 		const currentTimestamp = Date.parse(currentCard.due_date)
 		currentCard.children.forEach(async child => {
 			const childCard = currentCard.find(card => card.id === child)
