@@ -43,7 +43,7 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 			const childCard = relativeCards.find(card => card.cardId === childId)
 			const childTimestamp = currentTimestamp + 1000 * 3600 * 24 * childCard.difference
 			let childDate = new Date(childTimestamp)
-			
+			console.log(isNaN(childDate))
 			childCard.due_date = childDate
 			const [relativeResponse, trelloResponse] = await Promise.all([
 				axios({
