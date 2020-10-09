@@ -64,6 +64,7 @@ const Popup = (props) => {
 				difference
 			}
 		})
+		const { card } = response.data
 		const token = await t.getRestApi().getToken()
 		const board = await t.board('id')
 		const boardId = board.id
