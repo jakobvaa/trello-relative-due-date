@@ -36,7 +36,7 @@ const verifyCard = async (t) => {
         boardId: boardId.id,
         cardId: card.id,
         due_date: card.due,
-        name: card.name
+        cardName: card.name
       }
     })
   }
