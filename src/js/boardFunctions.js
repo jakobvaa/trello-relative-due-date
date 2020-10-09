@@ -51,13 +51,13 @@ const updateChildren = async (currentCard, relativeCards, token) => {
 					method: 'POST',
 					url: '/updatedate',
 					data: {
-						cardId: child,
+						cardId: childId,
 						dueDate: childDate
 					}
 				}),
 				axios({
 					method: 'PUT',
-					url: `${BASE_URL}cards/${child}?key=${appKey}&token=${token}&due=${childDate}`
+					url: `${BASE_URL}cards/${childId}?key=${appKey}&token=${token}&due=${childDate}`
 				})
 			])
 			await updateChildren(childCard, relativeCards, token)
