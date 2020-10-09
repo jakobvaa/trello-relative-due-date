@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const checkBoard = async (t, opts) => {
+export const checkBoard = async (t, opts) => {
 	const trelloBoard = await t.board('all')
 	console.log(trelloBoard)
 	const relativeBoard = await axios({
