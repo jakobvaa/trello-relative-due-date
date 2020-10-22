@@ -35,6 +35,7 @@ const addChildToParent = async (childId, parentId) => {
 // Add parent to child, and remove the child from previous parent if applicable
 const addParentToChild = async (childId, parentId, difference) => {
 	try {
+		console.log(parentId)
 		const childCard = await Card.findOne({cardId: childId})
 		childCard.difference = difference
 		if(childCard.parent && childCard.parent !== parentId) {
