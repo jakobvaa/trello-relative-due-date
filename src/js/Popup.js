@@ -93,7 +93,7 @@ const Popup = (props) => {
 			{selectedParent && 
 				<ul>
 					<li style={{backgroundColor: 'grey'}}>
-						{selectedParent.name} {selectedParent.name} {selectedParent.due ? `(${selectedParent.due})` : ''}
+						{selectedParent.name} {selectedParent.due ? `(${selectedParent.due})` : ''}
 					</li>
 				</ul>
 			}
