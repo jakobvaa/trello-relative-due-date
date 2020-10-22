@@ -1,7 +1,6 @@
 const axios = require('axios')
 const BASE_URL = 'https://api.trello.com/1/'
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
-const appName = 'relative-due-date'
 
 
 export const checkBoard = async (t, opts) => {
@@ -41,7 +40,7 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 		const currentTimestamp = Date.parse(currentCard.due_date)
 		currentCard.children.forEach(async childId => {
 			const childCard = relativeCards.find(card => card.cardId === childId)
-			const childTimestamp = currentTimestamp + 1000 * 3600 * 24 * childCard.difference
+			const childTimestamp = currentTimestamp + 1000 * 3600 * 24 * 31 *  childCard.difference
 			let childDate = new Date(childTimestamp)
 			if(isNaN(childDate)) {childDate = null}
 			else {childDate = childDate.toISOString()}

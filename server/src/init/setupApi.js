@@ -46,7 +46,7 @@ const addParentToChild = async (childId, parentId, difference) => {
 		childCard.parent = parentId
 		if (newParent.due_date) {
 			const timestamp = Date.parse(newParent.due_date)
-			const childTimestamp = timestamp + 1000 * 3600 * 24 * difference
+			const childTimestamp = timestamp + 1000 * 3600 * 24 * 31 * difference
 			const childDate = new Date(childTimestamp).toISOString()
 			childCard.due_date = childDate
 			await childCard.save()
@@ -65,7 +65,7 @@ const changeChildrenDueDates = async (card, currentChanged=[]) => {
 		const timestamp = Date.parse(card.due_date)
 		for(let childId of card.children) {
 			const child = await Card.findOne({cardId: childId})
-			const childTimestamp = timestamp + 1000 * 3600 * 24 * child.difference
+			const childTimestamp = timestamp + 1000 * 3600 * 24 * 31 * child.difference
 			const childDate = new Date(childTimestamp)
 			child.due_date = !isNaN(childDate) ? childDate.toISOString() : null
 			await child.save()
