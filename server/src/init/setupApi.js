@@ -50,31 +50,11 @@ const addParentToChild = async (childId, parentId, difference) => {
 			const childTimestamp = timestamp + 1000 * 3600 * 24 * 31 * difference
 			const childDate = new Date(childTimestamp).toISOString()
 			childCard.due_date = childDate
-			await childCard.save()
-			return childCard
 		}
+		await childCard.save()
+		return childCard
 	} catch (err) {
 		res.status(500).send({message: 'Internal Server Error.'})
-	}
-}
-
-const changeChildrenDueDates = async (card, currentChanged=[]) => {
-	try {
-		if(card.children.length === 0) {  
-			return
-		}
-		const timestamp = Date.parse(card.due_date)
-		for(let childId of card.children) {
-			const child = await Card.findOne({cardId: childId})
-			const childTimestamp = timestamp + 1000 * 3600 * 24 * 31 * child.difference
-			const childDate = new Date(childTimestamp)
-			child.due_date = !isNaN(childDate) ? childDate.toISOString() : null
-			await child.save()
-			const changed = changeChildrenDueDates(child, [...currentChanged, (childId, childDate)])
-			return changed
-		}
-	} catch(err) {
-		throw err
 	}
 }
 
