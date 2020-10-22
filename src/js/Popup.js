@@ -49,7 +49,7 @@ const Popup = (props) => {
 		setDifference(difference - 0.5)
 	}
 	
-	const canSetDate = () => !(difference && selectedParent)
+	const canSetDate = () => !(selectedParent)
 
 	const setRelativeDueDate = async () => {
 		const response = await axios({
