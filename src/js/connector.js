@@ -45,8 +45,8 @@ const verifyCard = async (t) => {
         cardName: trelloCard.name
       }
     })
+    relativeCard.data.card
   }
-  console.log(relativeCard)
   if(trelloCard.due !== relativeCard.due_date) {
     if(relativeCard.parent){
       const {cardId, due_date} = relativeCard
