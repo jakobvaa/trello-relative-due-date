@@ -66,6 +66,7 @@ module.exports = (app) => {
 			const newChild = await addParentToChild(cardId, newParent, difference)
 			return res.send({card: newChild})
 		} catch(err) {
+			console.log(err)
 			res.status(500).send({message: 'Internal Server Error.'})
 		}
 	})

@@ -56,7 +56,7 @@ const Popup = (props) => {
 			method: 'POST',
 			url: '/addparent',
 			data: {
-				cardId: currentCard.id,
+				cardId: currentCard.name,
 				newParent: selectedParent.name,
 				difference
 			}
