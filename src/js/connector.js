@@ -22,9 +22,9 @@ const showIframe = (t) => {
   })
 }
 
-const generateBadgeText = (card, parent) => {
+const generateBadgeText = (card) => {
   const beforeOrAfter = card.difference > 0 ? 'After' : 'Before'
-  return `${Math.abs(card.difference)} months ${beforeOrAfter} ${parent.cardName} `
+  return `${Math.abs(card.difference)} months ${beforeOrAfter} ${card.parent} `
 }
 
 const verifyCard = async (t) => {
@@ -78,9 +78,6 @@ const verifyCard = async (t) => {
   }
 
   if(relativeCard.parent) {
-    const parent = await axios({
-      url: `/getcard?cardname=${relativeCard.parent}&boardid=${id}`
-    })
     return [{text: generateBadgeText(relativeCard, parent.data.card)}]
   }
 
