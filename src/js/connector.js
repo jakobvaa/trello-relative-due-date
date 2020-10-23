@@ -79,7 +79,7 @@ const verifyCard = async (t) => {
 
   if(relativeCard.parent) {
     const parent = await axios({
-      url: `/getcard?cardid=${relativeCard.parent}`
+      url: `/getcard?cardname=${relativeCard.parent}&boardid=${id}`
     })
     return [{text: generateBadgeText(relativeCard, parent.data.card)}]
   }
