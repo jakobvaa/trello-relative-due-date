@@ -57,6 +57,7 @@ const verifyCard = async (t) => {
       return
     }
     relativeCard.due_date = trelloCard.due
+    console.log(relativeCard.due_date)
     await axios({
       method: 'POST',
       url: '/updatedate',
