@@ -43,7 +43,7 @@ const addParentToChild = async (childName, parentName, difference, boardId) => {
 			await previousParent.save()
 		}
 		const newParent = await Card.findOne({cardName: parentName, boardId})
-		childCard.parent = parentId
+		childCard.parent = parentName
 		if (newParent.due_date) {
 			const timestamp = Date.parse(newParent.due_date)
 			const childTimestamp = timestamp + 1000 * 3600 * 24 * 31 * difference
