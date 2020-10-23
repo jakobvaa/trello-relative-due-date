@@ -53,13 +53,13 @@ const addParentToChild = async (childName, parentName, difference, boardId) => {
 		await childCard.save()
 		return childCard
 	} catch (err) {
-		res.status(500).send({message: 'Internal Server Error.'})
+		throw err
 	}
 }
 
 module.exports = (app) => {
 	app.post('/addParent', async (req, res) => {
-		const { cardId, newParent, difference, boardId } = req.body
+		const { cardName, newParent, difference, boardId } = req.body
 		try {
 			await addChildToParent(cardId, newParent, boardId)
 			const newChild = await addParentToChild(cardId, newParent, difference, boardId)
