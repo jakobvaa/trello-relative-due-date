@@ -8,11 +8,11 @@ const t = window.TrelloPowerUp.iframe({
   appKey: 'f37ab50db205f3dc8f32dc97971117f4',
   appName: 'relative-due-date'
 });
-const checkBoard = async (t) => {
+const verifyBoard = async (t) => {
   const boardId = t.board('id')
   console.log(boardId)
 }
-await checkBoard(t)
+await verifyBoard(t)
 
 const onBtnClick = (t, opts) => {
   t.getRestApi().getToken()
