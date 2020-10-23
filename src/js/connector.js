@@ -4,15 +4,7 @@ const BASE_URL = 'https://api.trello.com/1/'
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
 const appName = 'relative-due-date'
 const { checkBoard, updateChildren } = require('./boardFunctions')
-const t = window.TrelloPowerUp.iframe({
-  appKey: 'f37ab50db205f3dc8f32dc97971117f4',
-  appName: 'relative-due-date'
-});
-const verifyBoard = async (t) => {
-  const boardId = t.board('id')
-  console.log(boardId)
-}
-verifyBoard(t)
+
 
 const onBtnClick = (t, opts) => {
   t.getRestApi().getToken()

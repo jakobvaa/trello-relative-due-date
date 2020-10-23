@@ -4,13 +4,13 @@ const Baord = require('../models/board')
 const addNewCard = async (data) => {
 	try {
 		const {cardId, cardName, boardId, due_date} = data
-		await new Card({
+		const card = await new Card({
 			cardId,
 			cardName,
 			boardId,
 			due_date,
 		}).save()
-		return 'Success'
+		return card
 	} catch(err) {
 		throw err
 	}
@@ -105,8 +105,8 @@ module.exports = (app) => {
 
 	app.put('/addcard', async (req, res) => {
 		try { 
-			await addNewCard(req.body)
-			return res.status(200).send({message: 'ok'})
+			const card = await addNewCard(req.body)
+			return res.status(200).send({message: 'ok', card})
 		} catch (err) { 
 			res.status(500).send({message: 'Internal Server Error.'})
 		}

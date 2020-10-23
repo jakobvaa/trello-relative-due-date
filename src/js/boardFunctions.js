@@ -40,7 +40,7 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 		const currentTimestamp = Date.parse(currentCard.due_date)
 		currentCard.children.forEach(async childId => {
 			const childCard = relativeCards.find(card => card.cardId === childId)
-			const childTimestamp = currentTimestamp + 1000 * 3600 * 24 * 31 *  childCard.difference
+			const childTimestamp = currentTimestamp + 1000 * 3600 * 24 * 31 * childCard.difference
 			let childDate = new Date(childTimestamp)
 			if(isNaN(childDate)) {childDate = null}
 			else {childDate = childDate.toISOString()}
