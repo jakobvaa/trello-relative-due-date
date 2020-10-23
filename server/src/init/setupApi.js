@@ -35,14 +35,14 @@ const addChildToParent = async (childName, parentName, boardId) => {
 // Add parent to child, and remove the child from previous parent if applicable
 const addParentToChild = async (childName, parentName, difference, boardId) => {
 	try {
-		const childCard = await Card.findOne({cardId: childId, boardId})
+		const childCard = await Card.findOne({cardName: childName, boardId})
 		childCard.difference = difference
-		if(childCard.parent && childCard.parent !== parentId) {
-			const previousParent = await Card.findOne({ cardId: childCard.parent })
-			previousParent.children = previousParent.children.filter(id => id !== childId)
+		if(childCard.parent && childCard.parent !== parentName) {
+			const previousParent = await Card.findOne({ cardName: childCard.parent, boardId })
+			previousParent.children = previousParent.children.filter(name => name !== childName)
 			await previousParent.save()
 		}
-		const newParent = await Card.findOne({cardId: parentId})
+		const newParent = await Card.findOne({cardName: parentName, boardId})
 		childCard.parent = parentId
 		if (newParent.due_date) {
 			const timestamp = Date.parse(newParent.due_date)
