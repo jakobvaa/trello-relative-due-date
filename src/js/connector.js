@@ -32,10 +32,10 @@ const verifyCard = async (t) => {
   const cardMetadata = await axios({
     url: `/getcard?cardid=${trelloCard.id}`
   })
-  const relativeCard = cardMetadata.data.card
+  let relativeCard = cardMetadata.data.card
   if(!relativeCard) {
     const boardId = await t.board('id')
-    await axios({
+    relativeCard = await axios({
       method: 'PUT',
       url: '/addcard',
       data: {
