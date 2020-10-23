@@ -78,7 +78,7 @@ const verifyCard = async (t) => {
   }
 
   if(relativeCard.parent) {
-    return [{text: generateBadgeText(relativeCard, parent.data.card)}]
+    return [{text: generateBadgeText(relativeCard)}]
   }
 
   return [{text: 'No dependencies'}]
