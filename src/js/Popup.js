@@ -52,19 +52,21 @@ const Popup = (props) => {
 	const canSetDate = () => !(selectedParent)
 
 	const setRelativeDueDate = async () => {
+		const token = await t.getRestApi().getToken()
+		const board = await t.board('id')
+		const boardId = board.id
 		const response = await axios({
 			method: 'POST',
 			url: '/addparent',
 			data: {
-				cardId: currentCard.name,
+				cardName: currentCard.name,
 				newParent: selectedParent.name,
-				difference
+				difference,
+				boardId
 			}
 		})
 		const { card } = response.data
-		const token = await t.getRestApi().getToken()
-		const board = await t.board('id')
-		const boardId = board.id
+		
 		const relativeBoard = await axios({
 			url: `/getboard?boardid=${boardId}`
 		})

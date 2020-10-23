@@ -18,11 +18,11 @@ const addNewCard = async (data) => {
 
 
 // Adds a child to a parent
-const addChildToParent = async (childId, parentId) => {
+const addChildToParent = async (childName, parentName, boardId) => {
 	try {
-		const parentCard = await Card.findOne({ cardId: parentId })
-		if(!parentCard.children.includes(childId)) {
-			parentCard.children = [...parentCard.children, childId]
+		const parentCard = await Card.findOne({ cardName: parentName, boardId })
+		if(!parentCard.children.includes(childName)) {
+			parentCard.children = [...parentCard.children, childName]
 		}
 		await parentCard.save()
 		return 
@@ -33,10 +33,9 @@ const addChildToParent = async (childId, parentId) => {
 
 
 // Add parent to child, and remove the child from previous parent if applicable
-const addParentToChild = async (childId, parentId, difference) => {
+const addParentToChild = async (childName, parentName, difference, boardId) => {
 	try {
-		console.log(parentId)
-		const childCard = await Card.findOne({cardId: childId})
+		const childCard = await Card.findOne({cardId: childId, boardId})
 		childCard.difference = difference
 		if(childCard.parent && childCard.parent !== parentId) {
 			const previousParent = await Card.findOne({ cardId: childCard.parent })
@@ -60,10 +59,10 @@ const addParentToChild = async (childId, parentId, difference) => {
 
 module.exports = (app) => {
 	app.post('/addParent', async (req, res) => {
-		const { cardId, newParent, difference } = req.body
+		const { cardId, newParent, difference, boardId } = req.body
 		try {
-			await addChildToParent(cardId, newParent)
-			const newChild = await addParentToChild(cardId, newParent, difference)
+			await addChildToParent(cardId, newParent, boardId)
+			const newChild = await addParentToChild(cardId, newParent, difference, boardId)
 			return res.send({card: newChild})
 		} catch(err) {
 			console.log(err)
