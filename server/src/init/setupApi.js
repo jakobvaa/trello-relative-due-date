@@ -99,6 +99,7 @@ module.exports = (app) => {
 			await card.save()
 			return res.status(200).send({message: 'OK'})
 		} catch (err) {
+			console.log(err)
 			res.status(500).send({message: 'Internal Server Error.'})
 		}
 	})
