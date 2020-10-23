@@ -73,7 +73,9 @@ module.exports = (app) => {
 	app.get('/getcard', async (req, res) => {
 		try {
 			const { cardid, cardname, boardid } = req.query
-			const card = await Card.findOne({cardId: cardid, cardName: cardname, boardId: boardid})
+			let card
+			if(cardid) card = await Card.findOne({cardId: cardid})
+			else card = await Card.findOne({ cardName: cardname, boardId: boardid })
 			return res.send({card})
 		} catch(err) {
 			res.status(500).send({message: 'Internal Server Error.'})
