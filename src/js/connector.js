@@ -12,7 +12,7 @@ const verifyBoard = async (t) => {
   const boardId = t.board('id')
   console.log(boardId)
 }
-await verifyBoard(t)
+verifyBoard(t)
 
 const onBtnClick = (t, opts) => {
   t.getRestApi().getToken()
