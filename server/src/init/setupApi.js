@@ -61,8 +61,8 @@ module.exports = (app) => {
 	app.post('/addParent', async (req, res) => {
 		const { cardName, newParent, difference, boardId } = req.body
 		try {
-			await addChildToParent(cardId, newParent, boardId)
-			const newChild = await addParentToChild(cardId, newParent, difference, boardId)
+			await addChildToParent(cardName, newParent, boardId)
+			const newChild = await addParentToChild(cardName, newParent, difference, boardId)
 			return res.send({card: newChild})
 		} catch(err) {
 			console.log(err)
