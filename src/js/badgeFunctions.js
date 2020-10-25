@@ -1,3 +1,5 @@
+const axios = require('axios')
+
 const generateBadgeText = (card) => {
   const beforeOrAfter = card.difference > 0 ? 'After' : 'Before'
   return `${Math.abs(card.difference)} months ${beforeOrAfter} ${card.parent} `
