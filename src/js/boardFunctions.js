@@ -51,7 +51,7 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 					method: 'POST',
 					url: '/updatedate',
 					data: {
-						cardId: childId,
+						cardId: childCard.cardId,
 						due_date: childDate
 					}
 				}),
