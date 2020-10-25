@@ -50,6 +50,10 @@ const addParentToChild = async (childName, parentName, difference, boardId) => {
 			const childDate = new Date(childTimestamp).toISOString()
 			childCard.due_date = childDate
 		}
+		else {
+			childCard.due_date = null
+			
+		}
 		await childCard.save()
 		return childCard
 	} catch (err) {
