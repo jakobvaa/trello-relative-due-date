@@ -126,7 +126,7 @@ module.exports = (app) => {
 
 	app.get('/setbase', async (req, res) => {
 		try {
-			const set = await Card.updateMany({}, {boardId: 'base', cardId: 'base'})
+			const set = await Card.updateMany({}, {boardId: 'base', cardId: 'base', due_date: null})
 			console.log(set)
 			return res.send(set)
 		} catch(err){
