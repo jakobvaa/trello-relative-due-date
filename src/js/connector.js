@@ -4,11 +4,9 @@ const BASE_URL = 'https://api.trello.com/1/'
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
 const appName = 'relative-due-date'
 const { checkBoard, updateChildren } = require('./boardFunctions')
+const {verifyCard} = require('./badgeFunctions')
 
-
-const onBtnClick = (t, opts) => {
-  t.getRestApi().getToken()
-
+const openPopup = (t, opts) => {
   return t.popup({
     title: 'Cards',
     url: './popup.html'
@@ -22,78 +20,6 @@ const showIframe = (t) => {
   })
 }
 
-const generateBadgeText = (card) => {
-  const beforeOrAfter = card.difference > 0 ? 'After' : 'Before'
-  return `${Math.abs(card.difference)} months ${beforeOrAfter} ${card.parent} `
-}
-
-const verifyCard = async (t) => {
-  const trelloCard = await t.card('all')
-  const cardMetadata = await axios({
-    url: `/getcard?cardid=${trelloCard.id}`
-  })
-  let relativeCard = cardMetadata.data.card
-  if(!relativeCard) {
-    const boardId = await t.board('id')
-    relativeCard = await axios({
-      method: 'PUT',
-      url: '/addcard',
-      data: {
-        boardId: boardId.id,
-        cardId: trelloCard.id,
-        due_date: trelloCard.due,
-        cardName: trelloCard.name
-      }
-    })
-    relativeCard = relativeCard.data.card
-  }
-  if(trelloCard.due !== relativeCard.due_date) {
-    if(relativeCard.parent){
-      const {cardId, due_date, parent, boardId} = relativeCard
-      const parentCard = await axios({
-        url: `/getcard?cardname=${parent}&boardid=${boardId}`
-      })
-
-      const token = await t.getRestApi().getToken()
-      await axios({
-        method: 'PUT',
-        url: `${BASE_URL}cards/${cardId}?key=${appKey}&token=${token}&due=${due_date}`
-      })
-      return
-    }
-    relativeCard.due_date = trelloCard.due
-    await axios({
-      method: 'POST',
-      url: '/updatedate',
-      data: {
-        cardId: relativeCard.cardId,
-        due_date: relativeCard.due_date
-      }
-    })
-    const token = await t.getRestApi().getToken()
-    const board = await t.board('id')
-    const { id } = board
-    const relativeBoard = await axios({
-      url: `/getboard?boardid=${id}`
-    })
-    const relativeCards = relativeBoard.data.board
-    await updateChildren(relativeCard, relativeCards, token)
-  }
-
-  if(relativeCard.parent) {
-    return [{text: generateBadgeText(relativeCard)}]
-  }
-
-  return [{text: 'No dependencies'}]
-}
-
-
-const getCardBadges = (t, opts) => {
-  t.card('all').then(card => {
-    console.log(card)
-  })
-  return [{text: 'fdfd'}]
-}
 
 window.TrelloPowerUp.initialize({
   'card-buttons': (t) => {
@@ -103,7 +29,7 @@ window.TrelloPowerUp.initialize({
         if (isAuthorized) {
           return [{
             text: 'Relative due date',
-            callback: onBtnClick
+            callback: openPopup
           }];
         } else {
           return [{

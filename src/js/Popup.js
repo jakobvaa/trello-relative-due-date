@@ -75,6 +75,7 @@ const Popup = (props) => {
 			url: `${BASE_URL}cards/${card.cardId}?key=${appKey}&token=${token}&due=${card.due_date}`
 		})
 		await updateChildren(response.data.card, relativeBoard.data.board, token)
+		t.closePopup()
 	}
 
 	const renderCards = () => (
