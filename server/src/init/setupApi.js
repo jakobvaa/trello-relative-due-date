@@ -4,13 +4,27 @@ const Baord = require('../models/board')
 const addNewCard = async (data) => {
 	try {
 		const {cardId, cardName, boardId, due_date} = data
-		const card = await new Card({
-			cardId,
-			cardName,
-			boardId,
-			due_date,
-		}).save()
-		return card
+		const baseCard = await Card.findOne({cardName, boardId: 'base'})
+		if (baseCard) {
+			const card = await new Card({
+				cardId,
+				cardName,
+				boardId,
+				due_date,
+				difference: baseCard.difference,
+				parent: baseCard.parent,
+				children: baseCard.children
+			}).save()
+			return card
+		} else {
+			const card = await new Card({
+				cardId,
+				cardName,
+				boardId,
+				due_date,
+			}).save()
+			return card
+		}
 	} catch(err) {
 		throw err
 	}
