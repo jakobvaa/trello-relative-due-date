@@ -4,7 +4,6 @@ const generateBadgeText = (card) => {
   const beforeOrAfter = card.difference > 0 ? 'After' : 'Before'
   return `${Math.abs(card.difference)} months ${beforeOrAfter} ${card.parent} `
 }
-
 export const verifyCard = async (t) => {
   const trelloCard = await t.card('all')
   const cardMetadata = await axios({
@@ -23,11 +22,15 @@ export const verifyCard = async (t) => {
         cardName: trelloCard.name
       }
     })
-		relativeCard = relativeCard.data.card
+    relativeCard = relativeCard.data.card
   }
   if(trelloCard.due !== relativeCard.due_date) {
     if(relativeCard.parent){
       const {cardId, due_date, parent, boardId} = relativeCard
+      const parentCard = await axios({
+        url: `/getcard?cardname=${parent}&boardid=${boardId}`
+      })
+
       const token = await t.getRestApi().getToken()
       await axios({
         method: 'PUT',
