@@ -52,7 +52,7 @@ const addParentToChild = async (childName, parentName, difference, boardId) => {
 		}
 		else {
 			childCard.due_date = null
-			
+
 		}
 		await childCard.save()
 		return childCard
@@ -107,6 +107,15 @@ module.exports = (app) => {
 		} catch (err) {
 			console.log(err)
 			res.status(500).send({message: 'Internal Server Error.'})
+		}
+	})
+
+	app.get('/setbase', async (req, res) => {
+		try {
+			const res = await Card.updateMany({}, {boardId: 'base'})
+			console.log(res)
+		} catch(err){
+			res.status(500).send({message: 'Internal server error.'})
 		}
 	})
 
