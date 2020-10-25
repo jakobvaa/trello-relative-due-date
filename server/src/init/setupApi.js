@@ -137,8 +137,8 @@ module.exports = (app) => {
 	app.delete('/deleteboard', async (req, res) => {
 		try {
 			const {boardid} = req.query
-			const delete = await Card.deleteMany({boardId: boardid})
-			return res.send({delete})
+			const del  = await Card.deleteMany({boardId: boardid})
+			return res.send({del })
 		} catch (err) {
 			res.status(500).send({message: 'Internal server error. '})
 		}
