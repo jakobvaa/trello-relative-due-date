@@ -126,7 +126,7 @@ module.exports = (app) => {
 
 	app.get('/setbase', async (req, res) => {
 		try {
-			const res = await Card.updateMany({}, {boardId: 'base'})
+			const res = await Card.updateMany({}, {boardId: 'base', cardId: 'base'})
 			console.log(res)
 		} catch(err){
 			res.status(500).send({message: 'Internal server error.'})
