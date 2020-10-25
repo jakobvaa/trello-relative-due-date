@@ -24,12 +24,6 @@ export const verifyCard = async (t) => {
       }
     })
 		relativeCard = relativeCard.data.card
-		if(trelloCard.name === 'Conference Start Date') {
-			t.popup({
-				title: 'Welcome to Trello template for IEEE Conferences.',
-				url: './board-form.html'
-			})
-		}
   }
   if(trelloCard.due !== relativeCard.due_date) {
     if(relativeCard.parent){

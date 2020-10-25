@@ -45,6 +45,13 @@ window.TrelloPowerUp.initialize({
       text: 'Sync Relative Dates',
       callback: checkBoard
     }]
+  },
+  'on-enable': (t, opts) => {
+    return t.modal({
+      url: './board-form.html',
+      height: 500,
+      title: 'Welcome to the Trello template for IEEE Conferences'
+    })
   }
 },
 {
