@@ -26,10 +26,6 @@ export const verifyCard = async (t) => {
   if(trelloCard.due !== relativeCard.due_date) {
     if(relativeCard.parent){
       const {cardId, due_date, parent, boardId} = relativeCard
-      const parentCard = await axios({
-        url: `/getcard?cardname=${parent}&boardid=${boardId}`
-      })
-
       const token = await t.getRestApi().getToken()
       await axios({
         method: 'PUT',
