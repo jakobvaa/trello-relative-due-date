@@ -53,7 +53,7 @@ const verifyCard = async (t) => {
       const parentCard = await axios({
         url: `/getcard?cardname=${parent}&boardid=${boardId}`
       })
-      
+
       const token = await t.getRestApi().getToken()
       await axios({
         method: 'PUT',
@@ -62,7 +62,6 @@ const verifyCard = async (t) => {
       return
     }
     relativeCard.due_date = trelloCard.due
-    console.log(relativeCard.due_date)
     await axios({
       method: 'POST',
       url: '/updatedate',
