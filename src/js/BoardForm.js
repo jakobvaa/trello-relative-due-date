@@ -40,7 +40,7 @@ const BoardForm = (props) => {
 	}
 
 	return (
-		<div style={{display: 'flex', flexDirection: 'column', padding: '50em'}}>
+		<div style={{display: 'flex', flexDirection: 'column', padding: '5em'}}>
 			<form onSubmit={handleSubmit}>
 				<select value={confType} onChange={(e) => setConfType(e.target.value)}>
 					<option value='wcii'>WCII</option>
