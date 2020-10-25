@@ -31,7 +31,7 @@ const BoardForm = (props) => {
 	}
 
 	const openDaterPicker = () => {
-		return t.popup({
+		t.popup({
 			type: 'date',
 			title: 'When does your conference start?',
 			date: Date.now(),
@@ -40,7 +40,7 @@ const BoardForm = (props) => {
 	}
 
 	return (
-		<div style={{display: 'flex', flexDirection: 'column', width: '100%', padding: '50em'}}>
+		<div style={{display: 'flex', flexDirection: 'column', padding: '50em'}}>
 			<form onSubmit={handleSubmit}>
 				<select value={confType} onChange={(e) => setConfType(e.target.value)}>
 					<option value='wcii'>WCII</option>
