@@ -4,6 +4,24 @@ const generateBadgeText = (card) => {
   const beforeOrAfter = card.difference > 0 ? 'After' : 'Before'
   return `${Math.abs(card.difference)} months ${beforeOrAfter} ${card.parent} `
 }
+
+
+const BASE_URL = 'https://api.trello.com/1/'
+const appKey = 'f37ab50db205f3dc8f32dc97971117f4'    
+export const checkVerification = async(t) => {
+    const isAuth = await t.getRestApi().isAuthorized()
+    console.log(isAuth)
+    if(!isAuth) {
+        return t.popup({
+            title: 'Authorize to continue',
+            url: './auth.html'
+        })
+    } else {
+        return true
+    }
+
+}
+
 export const verifyCard = async (t) => {
   const trelloCard = await t.card('all')
   const cardMetadata = await axios({

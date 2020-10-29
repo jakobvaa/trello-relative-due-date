@@ -1,7 +1,6 @@
-import Axios from 'axios'
+import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import ReactDOM from 'react-dom'
-import axios from 'axios'
 const t = TrelloPowerUp.iframe({
 	appKey: 'f37ab50db205f3dc8f32dc97971117f4',
 	appName: 'relative-due-date'

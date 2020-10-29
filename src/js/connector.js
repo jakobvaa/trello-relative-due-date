@@ -40,11 +40,19 @@ window.TrelloPowerUp.initialize({
       });
     },
   'card-badges': verifyCard,
-  'board-buttons': (t, opts) => {
-    return [{
-      text: 'Sync Relative Dates',
-      callback: checkBoard
-    }]
+  'board-buttons': async (t, opts) => {
+      const isAuth = await t.getRestApi().isAuthorized()
+      if(isAuth) {
+        return [{
+            text: 'Sync relative Due Dates',
+            callback: checkBoard 
+        }]
+      } else {
+        return [{
+            text: 'Authorize Power up',
+            callback: showIframe
+        }]
+      }
   },
   'on-enable': (t, opts) => {
     return t.modal({

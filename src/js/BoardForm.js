@@ -14,29 +14,23 @@ const BoardForm = (props) => {
 	const [startDate, setStartDate] = useState(null)
 
 	useEffect(async () => {
-		const boardId = await  t.board('id')
+		const boardId = await t.board('id')
 		const cards = await t.cards('all')
-		console.log(boardId)
-		console.log(cards.length)
 	})
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
 	} 
 
-	
-
 	const dateCallback = (t, opts) => {
 		setStartDate(opts.date)
 	}
 
 	const openDaterPicker = () => {
-		t.popup({
-			type: 'date',
-			title: 'When does your conference start?',
-			date: Date.now(),
-			callback: dateCallback
-		})
+	    t.popup({
+            title: 'Hei',
+            items: [{text: 'halla'}]
+        })
 	}
 
 	return (
