@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 import { updateChildren } from './boardFunctions'
-
-
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
 
 const t = TrelloPowerUp.iframe({
@@ -18,6 +16,7 @@ const Popup = (props) => {
 	const ref = useRef(null)
 	const [cards, setCards] = useState([])
 	const [currentCard, setCurrentCard] = useState(null)
+  const [relativeCard, setRelativeCard] = useState(null)
 	const [selectedParent, setSelectedParent] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [difference, setDifference] = useState(0)
@@ -29,8 +28,13 @@ const Popup = (props) => {
 				t.card('all'),
 				t.cards('all')
 			])
+      
 			setCurrentCard(myCard)
 			setCards(boardCards.filter(card => card.id !== myCard.id ))
+      const relativeCard = await axsios({
+        url: `/getcard?cardid=${currentCard.id}`
+      }
+      setRelativeCard(relativeCard.date)
 			setLoading(false)
 		}
 	},[])

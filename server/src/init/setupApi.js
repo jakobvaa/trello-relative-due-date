@@ -123,7 +123,20 @@ module.exports = (app) => {
 			res.status(500).send({message: 'Internal Server Error.'})
 		}
 	})
-
+    app.post('/updatename', async (req, res) => {
+        try {
+            const {cardId, cardName} = req.body
+            const card = await Card.findOne({cardId: cardId})
+            const oldName = card.cardName
+            card.cardName = cardName
+            await Card.updateMany({parent: oldName}, {parent: cardName})
+            await card.save()
+            return res.send({card, message: 'ok'})
+        } catch(err) {
+            console.log(err)
+            res.status(500).send({message: 'Internal Server Error.'})
+        } 
+    })
 	app.get('/setbase', async (req, res) => {
 		try {
 			const set = await Card.updateMany({}, {boardId: 'base', cardId: 'base', due_date: null})
