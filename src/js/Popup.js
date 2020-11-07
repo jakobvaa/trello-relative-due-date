@@ -45,6 +45,7 @@ const StickySubmit = styled.div`
 	padding: 12px 4px;
 	background-color: white;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	z-index: 10;
 `
@@ -162,9 +163,11 @@ const Popup = (props) => {
 			</div>
 			{cards.length > 0 ? renderCards() : 'Loading cards'}
 			<StickySubmit sticky={!!selectedParent}>
-				<button disabled={!selectedParent} style ={{ margin: 0 }} onClick={() => decrement()}>-</button>
-				<input style={{margin: 0, width: '75px', textAlign: 'center'}} type='number' disabled placeholder={difference}/>
-				<button disabled={!selectedParent} style={{margin: 0}} onClick={() => increment()}>+</button>
+				<div style={{display: 'flex', alignItems: 'center'}}>
+					<button disabled={!selectedParent} style ={{ margin: 0 }} onClick={() => decrement()}>-</button>
+					<input style={{margin: 0, width: '75px', textAlign: 'center'}} type='number' disabled placeholder={difference}/>
+					<button disabled={!selectedParent} style={{margin: 0}} onClick={() => increment()}>+</button>
+				</div>
 				<button ref={ref} disabled={canSetDate()} onClick={() => setRelativeDueDate()}>Set Relative Due Date</button>
 			</StickySubmit>
 		</Container>
