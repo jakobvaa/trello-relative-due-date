@@ -30,6 +30,14 @@ const List = styled.ul`
 	width: calc(100% - 24px);
 `
 
+const Container = styled.div`
+	--webkit-scrollbar: {
+		display: none;
+	}
+	--ms-overflow-style: none;
+	scrollbar-width: none;
+`
+
 const Popup = (props) => {
 	const ref = useRef(null)
 	const [cards, setCards] = useState([])
@@ -133,7 +141,7 @@ const Popup = (props) => {
 	}
 
 	return (
-		<div style={{'overflow-y': 'hidden'}}>
+		<Container>
 			{relativeCard.parent && 
 			<div>
 				<p>Current parent: {relativeCard.parent}({generateDifference(relativeCard)})</p>
@@ -148,7 +156,7 @@ const Popup = (props) => {
 				<button disabled={!selectedParent} style={{margin: 0}} onClick={() => increment()}>+</button>
 			</div>
 			<button ref={ref} disabled={canSetDate()} onClick={() => setRelativeDueDate()}>Set Relative Due Date</button>
-		</div>
+		</Container>
 	)
 }
 
