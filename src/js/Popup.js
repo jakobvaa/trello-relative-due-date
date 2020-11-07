@@ -116,11 +116,10 @@ const Popup = (props) => {
 
 	return (
 		<div>
-			{cards.length > 0 ? renderSelect() : 'Loading cards'}
 			<div>
 				<input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Type Card Name'/>
 			</div>
-			{renderCards()}
+			{cards.length > 0 ? renderCards() : 'Loading cards'}
 			<div style={{display:'flex', alignItems:'center'}}>
 				<button disabled={!selectedParent} style ={{ margin: 0 }} onClick={() => decrement()}>-</button>
 				<input style={{margin: 0, width: '75px', textAlign: 'center'}} type='number' disabled placeholder={difference}/>
