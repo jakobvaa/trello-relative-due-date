@@ -40,7 +40,7 @@ const Container = styled.div`
 
 const StickySubmit = styled.div`
 	width: calc(100% - 24px);
-	position: ${props.sticky ? 'sticky' : 'none'};
+	position: ${props => props.sticky ? 'sticky' : 'none'};
 	bottom: 0;
 	padding: 12px 4px;
 	background-color: white;
