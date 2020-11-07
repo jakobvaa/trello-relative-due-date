@@ -80,7 +80,7 @@ const Popup = (props) => {
 	const setParent = (card) => {
 		setSelectedParent(card)
 		setDifference(0)
-		scrollToRef(ref)
+		//scrollToRef(ref)
 	}
 
 	const increment = () => {
