@@ -42,7 +42,7 @@ const StickySubmit = styled.div`
 	width: calc(100% - 24px);
 	position: ${props => props.sticky ? 'sticky' : 'none'};
 	bottom: 0;
-	padding: 12px 4px;
+	padding: 4px 12px;
 	background-color: white;
 	display: flex;
 	flex-direction: column;
@@ -136,7 +136,7 @@ const Popup = (props) => {
 				.map(card => (
 					<ListItem
 						active={card === selectedParent} 
-						onClick = {() => setParent(card)}>
+						onClick = {() => card === selectedParent ? setParent(null) : setParent(card)}>
 						{card.name} {card.due ? `(${new Date(card.due).toDateString()})` : ''}
 					</ListItem>
 				))}
