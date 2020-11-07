@@ -31,7 +31,7 @@ const List = styled.ul`
 `
 
 const Container = styled.div`
-	--webkit-scrollbar: {
+	&:--scrollbar-style {
 		display: none;
 	}
 	--ms-overflow-style: none;
