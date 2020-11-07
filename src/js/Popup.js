@@ -15,7 +15,6 @@ const scrollToRef = (ref) => window.scrollTo(200, ref.current.offsetTop)
 
 const ListItem = styled.li`
 	width: 100%;
-	margin: 5px 0;
 	cursor: pointer;
 	&:hover {
 		background-color: lightblue;
