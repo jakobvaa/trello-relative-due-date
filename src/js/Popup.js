@@ -20,7 +20,7 @@ const ListItem = styled.li`
 	&:hover {
 		background-color: lightblue;
 	}
-	background-color: ${(props) => props.active ? 'blue' : 'white'};
+	background-color: ${(props) => props.active ? '#0079bf' : 'white'};
 `
 
 const List = styled.ul`
