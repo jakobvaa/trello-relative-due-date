@@ -124,7 +124,7 @@ const Popup = (props) => {
 		</div>
 	)
 
-	if(loading) {
+	if(loading || !relativeCard) {
 		return (
 			<div>
 				Loading Cards and info.
