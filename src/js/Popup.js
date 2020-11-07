@@ -17,8 +17,9 @@ const ListItem = styled.li`
 	width: 100%;
 	cursor: pointer;
 	padding: 0 12px;
+	color: ${props => props.active ? 'white' : 'black'};
 	&:hover {
-		background-color: lightblue;
+		background-color: ${(props) => props.active ? '#0079bf' : 'lightgray'};
 	}
 	background-color: ${(props) => props.active ? '#0079bf' : 'white'};
 `
