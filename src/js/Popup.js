@@ -108,7 +108,7 @@ const Popup = (props) => {
 					return (
 
 					<ListItem
-						active={currentCard === selectedParent} 
+						active={card === selectedParent} 
 						onClick = {() => setParent(card)}>
 						{card.name} {card.due ? `(${new Date(card.due).toDateString()})` : ''}
 					</ListItem>
