@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { updateChildren } from './boardFunctions'
 import axios from 'axios'
+import styled from 'styled-components'
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
 
 const t = TrelloPowerUp.iframe({
@@ -11,6 +12,16 @@ const t = TrelloPowerUp.iframe({
 const BASE_URL = 'https://api.trello.com/1/'
 
 const scrollToRef = (ref) => window.scrollTo(200, ref.current.offsetTop)
+
+const ListItem = styled.li`
+	width: 100%;
+	margin: 5px 0;
+	cursor: pointer;
+	&:hover {
+		background-color: lightblue;
+	}
+	background-color: ${(props) => props.active ? 'blue' : 'white'};
+`
 
 const Popup = (props) => {
 	const ref = useRef(null)
@@ -97,9 +108,9 @@ const Popup = (props) => {
 					return card.name.toLowerCase().includes(search.toLowerCase())
 				})
 				.map(card => (
-					<li>
+					<ListItem onClick = {() => setParent(card)}>
 						{card.name} {card.due ? `(${new Date(card.due).toDateString()})` : ''}
-					</li>
+					</ListItem>
 				))}
 			</ul>
 		</div>
