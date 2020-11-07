@@ -107,10 +107,7 @@ const Popup = (props) => {
 	const renderCards = () => (
 		<div>
 			<List>
-				{cards.filter(card => {
-					console.log(card.name)
-					return card.name.toLowerCase().includes(search.toLowerCase())
-				})
+				{cards.filter(card => (card.name.toLowerCase().includes(search.toLowerCase())))
 				.map(card => (
 					<ListItem
 						active={currentCard === card} 
