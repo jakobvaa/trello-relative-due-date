@@ -165,8 +165,8 @@ const Popup = (props) => {
 				<button disabled={!selectedParent} style ={{ margin: 0 }} onClick={() => decrement()}>-</button>
 				<input style={{margin: 0, width: '75px', textAlign: 'center'}} type='number' disabled placeholder={difference}/>
 				<button disabled={!selectedParent} style={{margin: 0}} onClick={() => increment()}>+</button>
+				<button ref={ref} disabled={canSetDate()} onClick={() => setRelativeDueDate()}>Set Relative Due Date</button>
 			</StickySubmit>
-			<button ref={ref} disabled={canSetDate()} onClick={() => setRelativeDueDate()}>Set Relative Due Date</button>
 		</Container>
 	)
 }
