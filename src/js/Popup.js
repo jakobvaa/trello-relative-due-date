@@ -92,7 +92,10 @@ const Popup = (props) => {
 	const renderCards = () => (
 		<div>
 			<ul>
-				{cards.filter(card => card.name.toLowerCase().includes(search.toLowerCase()))
+				{cards.filter(card => {
+					console.log(card.name)
+					return card.name.toLowerCase().includes(search.toLowerCase())
+				})
 				.map(card => (
 					<li>
 						{card.name} {card.due ? `(${new Date(card.due).toDateString()})` : ''}
