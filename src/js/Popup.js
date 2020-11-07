@@ -23,6 +23,10 @@ const ListItem = styled.li`
 	background-color: ${(props) => props.active ? 'blue' : 'white'};
 `
 
+const List = styled.ul`
+	margin-bottom: 10px;
+`
+
 const Popup = (props) => {
 	const ref = useRef(null)
 	const [cards, setCards] = useState([])
@@ -102,17 +106,19 @@ const Popup = (props) => {
   }
 	const renderCards = () => (
 		<div>
-			<ul>
+			<List>
 				{cards.filter(card => {
 					console.log(card.name)
 					return card.name.toLowerCase().includes(search.toLowerCase())
 				})
 				.map(card => (
-					<ListItem onClick = {() => setParent(card)}>
+					<ListItem
+						active={currentCard === card} 
+						onClick = {() => setParent(card)}>
 						{card.name} {card.due ? `(${new Date(card.due).toDateString()})` : ''}
 					</ListItem>
 				))}
-			</ul>
+			</List>
 		</div>
 	)
 	
