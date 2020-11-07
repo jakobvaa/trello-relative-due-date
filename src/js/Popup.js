@@ -133,7 +133,7 @@ const Popup = (props) => {
 	}
 
 	return (
-		<div>
+		<div style={{'overflow-y': 'hidden'}}>
 			{relativeCard.parent && 
 			<div>
 				<p>Current parent: {relativeCard.parent}({generateDifference(relativeCard)})</p>
