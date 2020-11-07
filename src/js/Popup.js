@@ -103,18 +103,13 @@ const Popup = (props) => {
 		<div>
 			<List>
 				{cards.filter(card => (card.name.toLowerCase().includes(search.toLowerCase())))
-				.map(card => {
-					console.log(card === selectedParent)
-					return (
-
+				.map(card => (
 					<ListItem
 						active={card === selectedParent} 
 						onClick = {() => setParent(card)}>
 						{card.name} {card.due ? `(${new Date(card.due).toDateString()})` : ''}
 					</ListItem>
-					)
-				}
-				)}
+				))}
 			</List>
 		</div>
 	)

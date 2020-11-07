@@ -21,6 +21,32 @@ const showIframe = (t) => {
   })
 }
 
+const testPopup = (t, opts) => {
+  return t.popup({
+    title: 'Pull Requests',
+    items: [{
+      text: '#135 attempt to fix trello/api-docs#134',
+
+      url: 'https://github.com/trello/api-docs/pull/135'
+    }, {
+      text: '#133 Removing duplicate `status` property',
+
+      url: 'https://github.com/trello/api-docs/pull/133'
+    }, {
+      text: '#131 Update New Action Default',
+      url: 'https://github.com/trello/api-docs/pull/131'
+    }, {
+      alwaysVisible: true, // non-search option, always shown
+      text: 'Choose a different repo...',
+    }],
+    search: {
+      count: 10, // number of items to display at a time
+      placeholder: 'Search pull requests',
+      empty: 'No pull requests found'
+    }
+  });
+}
+
 
 window.TrelloPowerUp.initialize({
   'card-buttons': (t) => {
@@ -30,7 +56,7 @@ window.TrelloPowerUp.initialize({
         if (isAuthorized) {
           return [{
             text: 'Relative due date',
-            callback: openPopup
+            callback: testPopup
           }];
         } else {
           return [{
