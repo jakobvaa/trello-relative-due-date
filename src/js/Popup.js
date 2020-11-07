@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
-import axios from 'axios'
 import { updateChildren } from './boardFunctions'
+import axios from 'axios'
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
 
 const t = TrelloPowerUp.iframe({
@@ -31,10 +31,10 @@ const Popup = (props) => {
       
 			setCurrentCard(myCard)
 			setCards(boardCards.filter(card => card.id !== myCard.id ))
-      const relativeCard = await axsios({
-        url: `/getcard?cardid=${currentCard.id}`
-      }
-      setRelativeCard(relativeCard.date)
+      const relativeCard = await axios({
+        url: `/getcard?cardid=${myCard.id}`
+      })
+      setRelativeCard(relativeCard.data)
 			setLoading(false)
 		}
 	},[])
@@ -81,29 +81,38 @@ const Popup = (props) => {
 		await updateChildren(response.data.card, relativeBoard.data.board, token)
 		t.closePopup()
 	}
-
+  const renderOptions = () => {
+    return cards.map(card => (
+      <option value={card.name}>
+						{card.name} {card.due ? `(${new Date(card.due).toDateString()})` : ''}
+      </option>
+    ))
+  }
 	const renderCards = () => (
 		<div className='js-results'>
 			<ul className='pop-over-list js-list navigable'>
 				{cards.map(card => (
 					<li key={card.id} style={{cursor: 'pointer'}} onClick={() => setParent(card)}>
-						{card.name} {card.due ? `(${card.due})` : ''}
+						{card.name} {card.due ? `(${new Date(card.due).toDateString()})` : ''}
 					</li>
 				))}
 			</ul>
 		</div> 
 	)
 	
+  const renderSelect = () => (
+    
+          <select
+            style={{width: '50%'}}
+            value={selectedParent} onChange={(e) => setSelectedParent(e.target.value)}>
+            {renderOptions()}
+          </select>
+  )
+
+
 	return (
 		<div>
-			{cards.length > 0 ? renderCards() : 'Loading cards'}
-			{selectedParent && 
-				<ul>
-					<li style={{backgroundColor: 'grey'}}>
-						{selectedParent.name} {selectedParent.due ? `(${selectedParent.due})` : ''}
-					</li>
-				</ul>
-			}
+			{cards.length > 0 ? renderSelect() : 'Loading cards'}
 			<div style={{display:'flex', alignItems:'center'}}>
 				<button disabled={!selectedParent} style ={{ margin: 0 }} onClick={() => decrement()}>-</button>
 				<input style={{margin: 0, width: '75px', textAlign: 'center'}} type='number' disabled placeholder={difference}/>

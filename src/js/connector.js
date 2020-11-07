@@ -9,7 +9,8 @@ const {verifyCard} = require('./badgeFunctions')
 const openPopup = (t, opts) => {
   return t.popup({
     title: 'Cards',
-    url: './popup.html'
+    url: './popup.html',
+    height: 280
   })
 }
 
