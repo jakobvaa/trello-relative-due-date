@@ -20,6 +20,7 @@ const Popup = (props) => {
 	const [selectedParent, setSelectedParent] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [difference, setDifference] = useState(0)
+	const [search, setSearch] = useState(null)
 
 	useEffect(async () => {
 		if(!loading && cards.length === 0) {
@@ -89,15 +90,16 @@ const Popup = (props) => {
     ))
   }
 	const renderCards = () => (
-		<div className='js-results'>
-			<ul className='pop-over-list js-list navigable'>
-				{cards.map(card => (
-					<li key={card.id} style={{cursor: 'pointer'}} onClick={() => setParent(card)}>
+		<div>
+			<ul>
+				{cards.filter(card => card.name.toLowerCase().includes(search.toLowerCase()))
+				.map(card => (
+					<li>
 						{card.name} {card.due ? `(${new Date(card.due).toDateString()})` : ''}
 					</li>
 				))}
 			</ul>
-		</div> 
+		</div>
 	)
 	
   const renderSelect = () => (
@@ -107,12 +109,18 @@ const Popup = (props) => {
             value={selectedParent} onChange={(e) => setSelectedParent(e.target.value)}>
             {renderOptions()}
           </select>
-  )
+	)
+	
+
 
 
 	return (
 		<div>
 			{cards.length > 0 ? renderSelect() : 'Loading cards'}
+			<div>
+				<input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Type Card Name'/>
+			</div>
+			{renderCards()}
 			<div style={{display:'flex', alignItems:'center'}}>
 				<button disabled={!selectedParent} style ={{ margin: 0 }} onClick={() => decrement()}>-</button>
 				<input style={{margin: 0, width: '75px', textAlign: 'center'}} type='number' disabled placeholder={difference}/>
