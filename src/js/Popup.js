@@ -22,7 +22,7 @@ const ListItem = styled.li`
 		background-color: ${(props) => props.active ? '#0079bf' : 'lightgray'};
 	}
 	background-color: ${(props) => props.active ? '#0079bf' : 'white'};
-	border-bottom: 0 0 .5px solid lightgrey;
+	border-bottom: .5px solid lightgrey;
 `
 
 const List = styled.ul`
@@ -36,6 +36,17 @@ const Container = styled.div`
 	}
 	--ms-overflow-style: none;
 	scrollbar-width: none;
+`
+
+const StickySubmit = styled.div`
+	width: calc(100% - 24px);
+	position: sticky;
+	bottom: 0;
+	padding: 12px 4px;
+	background-color: white;
+	display: flex;
+	align-items: center;
+	z-index: 10;
 `
 
 const Popup = (props) => {
@@ -150,11 +161,11 @@ const Popup = (props) => {
 				<input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Type Card Name'/>
 			</div>
 			{cards.length > 0 ? renderCards() : 'Loading cards'}
-			<div style={{display:'flex', alignItems:'center'}}>
+			<StickySubmit>
 				<button disabled={!selectedParent} style ={{ margin: 0 }} onClick={() => decrement()}>-</button>
 				<input style={{margin: 0, width: '75px', textAlign: 'center'}} type='number' disabled placeholder={difference}/>
 				<button disabled={!selectedParent} style={{margin: 0}} onClick={() => increment()}>+</button>
-			</div>
+			</StickySubmit>
 			<button ref={ref} disabled={canSetDate()} onClick={() => setRelativeDueDate()}>Set Relative Due Date</button>
 		</Container>
 	)
