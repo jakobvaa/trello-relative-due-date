@@ -40,7 +40,7 @@ const Container = styled.div`
 
 const StickySubmit = styled.div`
 	width: calc(100% - 24px);
-	position: sticky;
+	position: ${props.sticky ? 'sticky' : 'none'};
 	bottom: 0;
 	padding: 12px 4px;
 	background-color: white;
@@ -161,7 +161,7 @@ const Popup = (props) => {
 				<input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Type Card Name'/>
 			</div>
 			{cards.length > 0 ? renderCards() : 'Loading cards'}
-			<StickySubmit>
+			<StickySubmit sticky={!!selectedParent}>
 				<button disabled={!selectedParent} style ={{ margin: 0 }} onClick={() => decrement()}>-</button>
 				<input style={{margin: 0, width: '75px', textAlign: 'center'}} type='number' disabled placeholder={difference}/>
 				<button disabled={!selectedParent} style={{margin: 0}} onClick={() => increment()}>+</button>
