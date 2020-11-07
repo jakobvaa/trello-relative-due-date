@@ -128,12 +128,12 @@ module.exports = (app) => {
             const {cardId, cardName} = req.body
             const card = await Card.findOne({cardId: cardId})
             const oldName = card.cardName
-						card.cardName = cardName
 						if(card.parent) {
 							const parentCard = await Card.findOne({boardId: card.boardId, cardName: card.parent})
 							parentCard.children = [...parentCard.children.filter(card => card.cardName !== oldName), cardName]
 							await parentCard.save()
 						}
+						card.cardName = cardName
             await Card.updateMany({parent: oldName}, {parent: cardName})
             await card.save()
             return res.send({card, message: 'ok'})
