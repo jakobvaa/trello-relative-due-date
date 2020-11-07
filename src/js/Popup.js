@@ -49,6 +49,11 @@ const StickySubmit = styled.div`
 	z-index: 10;
 `
 
+const SearchField = styled.input`
+	position: sticky; 
+	top: 0;
+`
+
 const Popup = (props) => {
 	const ref = useRef(null)
 	const [cards, setCards] = useState([])
@@ -158,7 +163,7 @@ const Popup = (props) => {
 				<p>Current parent: {relativeCard.parent}({generateDifference(relativeCard)})</p>
 			</div>}
 			<div>
-				<input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Type Card Name'/>
+				<SearchField type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Type Card Name'/>
 			</div>
 			{cards.length > 0 ? renderCards() : 'Loading cards'}
 			<StickySubmit sticky={!!selectedParent}>
