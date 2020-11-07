@@ -131,7 +131,7 @@ module.exports = (app) => {
 						console.log(oldName)
 						if(card.parent) {
 							const parentCard = await Card.findOne({boardId: card.boardId, cardName: card.parent})
-							parentCard.children = [...parentCard.children.filter(card => card.cardName !== oldName), cardName]
+							parentCard.children = [...parentCard.children.filter(chld => child !== oldName), cardName]
 							await parentCard.save()
 						}
 						card.cardName = cardName
