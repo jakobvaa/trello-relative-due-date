@@ -16,12 +16,13 @@ const scrollToRef = (ref) => window.scrollTo(200, ref.current.offsetTop)
 const ListItem = styled.li`
 	width: 100%;
 	cursor: pointer;
-	padding: 0 12px;
+	padding: 3px 12px;
 	color: ${props => props.active ? 'white' : 'black'};
 	&:hover {
 		background-color: ${(props) => props.active ? '#0079bf' : 'lightgray'};
 	}
 	background-color: ${(props) => props.active ? '#0079bf' : 'white'};
+	border-bottom: 0 0 .5px solid lightgrey;
 `
 
 const List = styled.ul`
@@ -100,6 +101,14 @@ const Popup = (props) => {
 		t.closePopup()
 	}
 
+	const generateDifference = (card) => {
+		const beforeOrAfter = card.difference > 0 ? 'After' : 'Before'
+		const isPlural = card.difference !== 1 ? 's' : ''
+		return `${Math.abs(card.difference)} month${isPlural} ${beforeOrAfter}`
+	}
+	
+
+
 	const renderCards = () => (
 		<div>
 			<List>
@@ -117,6 +126,10 @@ const Popup = (props) => {
 
 	return (
 		<div>
+			{relativeCard.parent && 
+			<div>
+				<p>Current parent: {relativeCard.parent}({generateDifference(relativeCard)})</p>
+			</div>}
 			<div>
 				<input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Type Card Name'/>
 			</div>
