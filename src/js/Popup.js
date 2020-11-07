@@ -20,7 +20,7 @@ const Popup = (props) => {
 	const [selectedParent, setSelectedParent] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [difference, setDifference] = useState(0)
-	const [search, setSearch] = useState(null)
+	const [search, setSearch] = useState('')
 
 	useEffect(async () => {
 		if(!loading && cards.length === 0) {
