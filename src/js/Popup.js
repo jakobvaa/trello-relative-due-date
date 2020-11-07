@@ -124,6 +124,14 @@ const Popup = (props) => {
 		</div>
 	)
 
+	if(loading) {
+		return (
+			<div>
+				Loading Cards and info.
+			</div>
+		)
+	}
+
 	return (
 		<div>
 			{relativeCard.parent && 
