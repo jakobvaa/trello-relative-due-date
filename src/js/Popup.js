@@ -53,7 +53,7 @@ const Popup = (props) => {
       const relativeCard = await axios({
         url: `/getcard?cardid=${myCard.id}`
       })
-      setRelativeCard(relativeCard.data)
+      setRelativeCard(relativeCard.data.card)
 			setLoading(false)
 		}
 	},[])
