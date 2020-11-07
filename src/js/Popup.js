@@ -16,6 +16,7 @@ const scrollToRef = (ref) => window.scrollTo(200, ref.current.offsetTop)
 const ListItem = styled.li`
 	width: 100%;
 	cursor: pointer;
+	padding: 0 12px;
 	&:hover {
 		background-color: lightblue;
 	}
@@ -96,39 +97,26 @@ const Popup = (props) => {
 		await updateChildren(response.data.card, relativeBoard.data.board, token)
 		t.closePopup()
 	}
-  const renderOptions = () => {
-    return cards.map(card => (
-      <option value={card.name}>
-						{card.name} {card.due ? `(${new Date(card.due).toDateString()})` : ''}
-      </option>
-    ))
-  }
+
 	const renderCards = () => (
 		<div>
 			<List>
 				{cards.filter(card => (card.name.toLowerCase().includes(search.toLowerCase())))
-				.map(card => (
+				.map(card => {
+					console.log(card === currentCard)
+					return (
+
 					<ListItem
 						active={currentCard === card} 
 						onClick = {() => setParent(card)}>
 						{card.name} {card.due ? `(${new Date(card.due).toDateString()})` : ''}
 					</ListItem>
-				))}
+					)
+				}
+				)}
 			</List>
 		</div>
 	)
-	
-  const renderSelect = () => (
-    
-          <select
-            style={{width: '50%'}}
-            value={selectedParent} onChange={(e) => setSelectedParent(e.target.value)}>
-            {renderOptions()}
-          </select>
-	)
-	
-
-
 
 	return (
 		<div>
