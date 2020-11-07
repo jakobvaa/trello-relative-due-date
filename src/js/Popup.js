@@ -25,6 +25,7 @@ const ListItem = styled.li`
 
 const List = styled.ul`
 	margin-bottom: 10px;
+	width: calc(100% - 24px);
 `
 
 const Popup = (props) => {
@@ -103,11 +104,11 @@ const Popup = (props) => {
 			<List>
 				{cards.filter(card => (card.name.toLowerCase().includes(search.toLowerCase())))
 				.map(card => {
-					console.log(card === currentCard)
+					console.log(card === selectedParent)
 					return (
 
 					<ListItem
-						active={currentCard === card} 
+						active={currentCard === selectedParent} 
 						onClick = {() => setParent(card)}>
 						{card.name} {card.due ? `(${new Date(card.due).toDateString()})` : ''}
 					</ListItem>
