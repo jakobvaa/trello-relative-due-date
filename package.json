@@ -27,6 +27,7 @@
     "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1",
     "file-save": "^0.2.0",
+    "file-saver": "^2.0.2",
     "ics": "^2.26.1",
     "mongoose": "^5.10.8",
     "oauth": "^0.9.15",
