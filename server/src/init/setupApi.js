@@ -81,6 +81,56 @@ const addParentToChild = async (childName, parentName, difference, boardId) => {
 	}
 }
 
+const createCalendarLink = async (boardId, label) => {
+	try {
+		const cards = await Card.find({boardId})
+		const versionProperty = new Property({name: 'VERSION', value: 2})
+		let calendar
+		calendar = new Component({name: 'VCALENDAR'})
+		calendar = calendar.pushProperty(versionProperty)
+		const calendarCards = []
+		cards.forEach(card => {
+			if(card.labels.includes(label) && card.due) {
+				calendarCards.push(card)
+				let event
+				event = new Component({name: 'VEVENT'})
+				const start = new Property({
+					name: 'DTSTART',
+					parameters: {VALUE: 'DATE'},
+					value: new Date(card.due_date)
+				})
+				event = event.pushProperty(start)
+				const duration = new Property({
+					name: 'DURATION',
+					value: 'PT1H'
+				})
+				event = event.pushProperty(duration)
+				const description = new Property({
+					name: 'DESCRIPTION',
+					value: card.description
+				})
+				event = event.pushProperty(description)
+				const url = new Property({
+					name: 'URL',
+					value: card.url
+				})
+				event = event.pushProperty(url)
+				const title = new Property({
+					name: 'SUMMARY',
+					value: card.cardName
+				})
+				event = event.pushProperty(title)
+				calendar = calendar.pushComponent(event)
+			}
+		})
+		const blob = new Blob([calendar.toString()], {type: 'text/plain;charset=utf-8'})
+		return blob
+	} catch(err) {
+		throw err
+	}
+}
+
+
 module.exports = (app) => {
 	app.post('/addParent', async (req, res) => {
 		const { cardName, newParent, difference, boardId } = req.body
@@ -199,6 +249,17 @@ module.exports = (app) => {
 			const card = await addNewCard(req.body)
 			return res.status(200).send({message: 'ok', card})
 		} catch (err) { 
+			res.status(500).send({message: 'Internal Server Error.'})
+		}
+	})
+
+	app.get('/calendar', async (req, res) => {
+		try {
+			const {boardid, label} = req.query
+			const blob = createCalendarLink(boardid, label)
+			res.send(blob)
+		} catch (err) {
+			console.log(err) 
 			res.status(500).send({message: 'Internal Server Error.'})
 		}
 	})
