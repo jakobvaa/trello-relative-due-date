@@ -31,6 +31,7 @@ const addNewCard = async (data) => {
 			return card
 		}
 	} catch(err) {
+		console.log(err)
 		throw err
 	}
 }
