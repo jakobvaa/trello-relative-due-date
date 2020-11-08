@@ -255,7 +255,7 @@ module.exports = (app) => {
 	app.get('/calendar', async (req, res) => {
 		try {
 			const {boardid, label} = req.query
-			const calendar = createCalendarLink(boardid, label)
+			const calendar = await createCalendarLink(boardid, label)
 			res.send(calendar)
 		} catch (err) {
 			console.log(err) 
