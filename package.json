@@ -27,6 +27,7 @@
     "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1",
     "ics": "^2.26.1",
+    "immutable-ics": "^0.4.0",
     "mongoose": "^5.10.8",
     "oauth": "^0.9.15",
     "parcel-bundler": "^1.12.4",
