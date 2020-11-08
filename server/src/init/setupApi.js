@@ -1,5 +1,5 @@
 const Card = require('../models/card')
-
+const {Component, Property} = require('immutable-ics')
 const addNewCard = async (data) => {
 	try {
 		const {cardId, cardName, boardId, due_date, url, description, labels} = data
