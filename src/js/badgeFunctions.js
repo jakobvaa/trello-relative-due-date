@@ -18,6 +18,8 @@ export const verifyCard = async (t) => {
   let relativeCard = cardMetadata.data.card
   if(!relativeCard) {
     const boardId = await t.board('id')
+    const labels = trelloCard.labels.map(label => label.name)
+    const description = trelloCard.desc
     relativeCard = await axios({
       method: 'PUT',
       url: '/addcard',
@@ -25,7 +27,9 @@ export const verifyCard = async (t) => {
         boardId: boardId.id,
         cardId: trelloCard.id,
         due_date: trelloCard.due,
-        cardName: trelloCard.name
+        cardName: trelloCard.name,
+        labels: labels,
+        description
       }
     })
     relativeCard = relativeCard.data.card
@@ -64,15 +68,38 @@ export const verifyCard = async (t) => {
   }
 
   if(trelloCard.name !== relativeCard.cardName) {
-        relativeCard = await axios({
-            method: 'POST',
-            url: 'updatename',
-            data: {
-                cardId: relativeCard.cardId,
-                cardName: trelloCard.name
-            }
-        })
-    }
+    relativeCard = await axios({
+      method: 'POST',
+      url: '/updatename',
+      data: {
+          cardId: relativeCard.cardId,
+          cardName: trelloCard.name
+      }
+    })
+  }
+  const labels = trelloCard.labels.map(label => label.name)
+  if(trelloCard.labels !== relativeCard.labels) {
+    relativeCard = await axios({
+      method: 'POST',
+      url: '/updatelabels',
+      data: {
+        cardId: relativeCard.cardId,
+        labels: labels
+      }
+    })
+  }
+  if(trelloCard.desc !== trelloCard.description) {
+    relativeCard = await axios({
+      method: 'POST',
+      url: '/updatedescription',
+      data: {
+        cardId: relativeCard.cardId,
+        labels: trelloCard.desc
+      }
+    })
+  }
+
+
   if(relativeCard.parent) {
     return [{text: generateBadgeText(relativeCard)}]
   }

@@ -25,6 +25,12 @@ const CardSchema = new mongoose.Schema({
 	},
 	difference: {
 		type: Number,
+	},
+	labels: {
+		type: [String]
+	},
+	description: {
+		type: String
 	}
 })
 

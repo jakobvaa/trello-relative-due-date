@@ -1,5 +1,4 @@
 const Card = require('../models/card')
-const Baord = require('../models/board')
 
 const addNewCard = async (data) => {
 	try {
@@ -124,25 +123,50 @@ module.exports = (app) => {
 		}
 	})
     app.post('/updatename', async (req, res) => {
-        try {
-            const {cardId, cardName} = req.body
-            const card = await Card.findOne({cardId: cardId})
-						const oldName = card.cardName
-						console.log(oldName)
-						if(card.parent) {
-							const parentCard = await Card.findOne({boardId: card.boardId, cardName: card.parent})
-							parentCard.children = [...parentCard.children.filter(child => child !== oldName), cardName]
-							await parentCard.save()
-						}
-						card.cardName = cardName
-            await Card.updateMany({parent: oldName}, {parent: cardName})
-            await card.save()
-            return res.send({card, message: 'ok'})
-        } catch(err) {
-            console.log(err)
-            res.status(500).send({message: 'Internal Server Error.'})
-        } 
-    })
+			try {
+				const {cardId, cardName} = req.body
+				const card = await Card.findOne({cardId: cardId})
+				const oldName = card.cardName
+				console.log(oldName)
+				if(card.parent) {
+					const parentCard = await Card.findOne({boardId: card.boardId, cardName: card.parent})
+					parentCard.children = [...parentCard.children.filter(child => child !== oldName), cardName]
+					await parentCard.save()
+				}
+				card.cardName = cardName
+				await Card.updateMany({parent: oldName}, {parent: cardName})
+				await card.save()
+				return res.send({card, message: 'ok'})
+			} catch(err) {
+				console.log(err)
+				res.status(500).send({message: 'Internal Server Error.'})
+			} 
+	})
+	app.post('/updatelabels', async (req, res) => {
+		try {
+			const {cardId, labels} = req.body
+			const card = await Card.findOne({cardId})
+			card.labels = labels
+			await card.save()
+			res.send({card, message: 'OK'})
+		} catch(err) {
+			console.log(err)
+			res.status(500).send({message: 'Internal Server Error'})
+		}
+	})
+	app.post('/updatedescription', async (req, res) => {
+		try {
+			const {cardId, description} = req.body
+			const card = await Card.findOne({cardId})
+			card.description = description
+			await card.save()
+			res.send({card, message: 'OK'})
+		} catch(err) {
+			console.log(err)
+			res.status(500).send({message: 'Internal Server Error'})
+		}
+	})
+
 	app.get('/setbase', async (req, res) => {
 		try {
 			const set = await Card.updateMany({}, {boardId: 'base', cardId: 'base', due_date: null})
