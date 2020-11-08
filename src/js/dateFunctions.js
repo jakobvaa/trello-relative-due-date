@@ -1,7 +1,7 @@
 const ics = require('ics')
 const {saveAs} = require('file-saver')
 const generateCalendar = async (t, label) => {
-	const cards = t.cards('all')
+	const cards = await  t.cards('all')
 	const calendarCards = []
 	cards.forEach(card => {
 		const calendarCard = card.labels.find(lab => lab.name === label)
