@@ -123,8 +123,7 @@ const createCalendarLink = async (boardId, label) => {
 				calendar = calendar.pushComponent(event)
 			}
 		})
-		const blob = new Blob([calendar.toString()], {type: 'text/plain;charset=utf-8'})
-		return blob
+		return calendar.toString()
 	} catch(err) {
 		throw err
 	}
@@ -256,8 +255,8 @@ module.exports = (app) => {
 	app.get('/calendar', async (req, res) => {
 		try {
 			const {boardid, label} = req.query
-			const blob = createCalendarLink(boardid, label)
-			res.send(blob)
+			const calendar = createCalendarLink(boardid, label)
+			res.send(calendar)
 		} catch (err) {
 			console.log(err) 
 			res.status(500).send({message: 'Internal Server Error.'})
