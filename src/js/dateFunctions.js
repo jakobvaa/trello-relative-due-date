@@ -1,5 +1,5 @@
 const ics = require('ics')
-const 
+const {saveAs} = require('file-saver')
 const generateCalendar = async (t, label) => {
 	const cards = t.cards('all')
 	const calendarCards = []
