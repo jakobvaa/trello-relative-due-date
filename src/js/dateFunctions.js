@@ -6,6 +6,7 @@ const generateCalendar = async (t, label) => {
 	const versionProperty = new Property({name: 'VERSION', value: 2})
 	const calendar = new Component({name: 'VCALENDAR'})
 	calendar.pushProperty(versionProperty)
+	const calendarCards = []
 	cards.forEach(card => {
 		const hasLabel = card.labels.find(lab => lab.name === label)
 		if(hasLabel && card.due) {
