@@ -5,6 +5,7 @@ const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
 const appName = 'relative-due-date'
 const { checkBoard, updateChildren } = require('./boardFunctions')
 const {verifyCard} = require('./badgeFunctions')
+const {calendarPopup} = require('./dateFunctions')
 
 const openPopup = (t, opts) => {
   return t.popup({
@@ -43,10 +44,16 @@ window.TrelloPowerUp.initialize({
   'board-buttons': async (t, opts) => {
       const isAuth = await t.getRestApi().isAuthorized()
       if(isAuth) {
-        return [{
+        return [
+          {
             text: 'Sync relative Due Dates',
             callback: checkBoard 
-        }]
+          },
+          {
+            text: 'Sync Calendar',
+            callback: calendarPopup
+          }
+      ]
       } else {
         return [{
             text: 'Authorize Power up',

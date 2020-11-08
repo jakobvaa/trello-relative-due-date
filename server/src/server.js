@@ -20,7 +20,6 @@ const start = async() => {
 		app.set('etag', true)
 		app.use(express.json())
 		await setupDB(app)
-        console.log('hei')
         
 		app.use(express.static('dist'));
 		setupApi(app)
