@@ -35,27 +35,27 @@ export const calendarPopup = (t, opts) => {
 		items: [
 			{
 				text: 'General Chair',
-				callback: generateCalendar(t, 'GC')
+				callback: () =>  generateCalendar(t, 'GC')
 			},
 			{
 				text: 'Technical Program Chair',
-				callback: generateCalendar(t, 'TPC')
+				callback: () => generateCalendar(t, 'TPC')
 			},
 			{
 				text: 'Financial Chair',
-				callback: generateCalendar(t, 'FC')
+				callback: () => generateCalendar(t, 'FC')
 			},
 			{
 				text: 'Publicity Chair',
-				callback: generateCalendar(t, 'PuC')
+				callback: () => generateCalendar(t, 'PuC')
 			},
 			{
 				text: 'Local Chair',
-				callback: generateCalendar(t, 'LC')
+				callback: () => generateCalendar(t, 'LC')
 			},
 			{
 				text: 'Proceedings Chair',
-				callback: generateCalendar(t, 'PrC')
+				callback: () => generateCalendar(t, 'PrC')
 			}
 		]
 	})
