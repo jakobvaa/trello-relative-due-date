@@ -29,7 +29,8 @@ export const verifyCard = async (t) => {
         due_date: trelloCard.due,
         cardName: trelloCard.name,
         labels: labels,
-        description
+        url: trelloCard.url,
+        description,
       }
     })
     relativeCard = relativeCard.data.card

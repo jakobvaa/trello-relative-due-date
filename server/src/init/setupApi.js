@@ -10,6 +10,9 @@ const addNewCard = async (data) => {
 				cardName,
 				boardId,
 				due_date,
+				url,
+				description,
+				labels,
 				difference: baseCard.difference,
 				parent: baseCard.parent,
 				children: baseCard.children
@@ -21,6 +24,9 @@ const addNewCard = async (data) => {
 				cardName,
 				boardId,
 				due_date,
+				url,
+				description,
+				labels
 			}).save()
 			return card
 		}
