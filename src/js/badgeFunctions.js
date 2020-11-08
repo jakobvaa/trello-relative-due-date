@@ -89,7 +89,7 @@ export const verifyCard = async (t) => {
       }
     })
   }
-  if(trelloCard.desc !== trelloCard.description) {
+  if(trelloCard.desc !== relativeCard.description) {
     relativeCard = await axios({
       method: 'POST',
       url: '/updatedescription',
