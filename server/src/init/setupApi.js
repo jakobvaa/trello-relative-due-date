@@ -90,7 +90,7 @@ const createCalendarLink = async (boardId, label) => {
 		calendar = calendar.pushProperty(versionProperty)
 		const calendarCards = []
 		cards.forEach(card => {
-			if(card.labels.includes(label) && card.due) {
+			if(card.labels.includes(label) && card.due_date) {
 				calendarCards.push(card)
 				let event
 				event = new Component({name: 'VEVENT'})
