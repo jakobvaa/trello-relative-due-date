@@ -2,7 +2,7 @@ const Card = require('../models/card')
 
 const addNewCard = async (data) => {
 	try {
-		const {cardId, cardName, boardId, due_date} = data
+		const {cardId, cardName, boardId, due_date, url, description, labels} = data
 		const baseCard = await Card.findOne({cardName, boardId: 'base'})
 		if (baseCard) {
 			const card = await new Card({
