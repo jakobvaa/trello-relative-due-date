@@ -79,7 +79,7 @@ export const verifyCard = async (t) => {
     })
   }
   const labels = trelloCard.labels.map(label => label.name)
-  if(trelloCard.labels !== relativeCard.labels) {
+  if(JSON.stringify(trelloCard.labels) !== JSON.stringify(relativeCard.labels)) {
     relativeCard = await axios({
       method: 'POST',
       url: '/updatelabels',
@@ -95,7 +95,7 @@ export const verifyCard = async (t) => {
       url: '/updatedescription',
       data: {
         cardId: relativeCard.cardId,
-        labels: trelloCard.desc
+        description: trelloCard.desc
       }
     })
   }
