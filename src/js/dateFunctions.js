@@ -38,6 +38,11 @@ const generateCalendar = async (t, label) => {
 			value: card.url
 		})
 		event = event.pushProperty(url)
+		const title = new Property({
+			name: 'SUMMARY',
+			value: card.name
+		})
+		event = event.pushProperty(title)
 		calendar = calendar.pushComponent(event)
 	})
 	// const calendarEvents = calendarCards.map(card => {
