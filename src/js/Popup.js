@@ -73,6 +73,7 @@ const Popup = (props) => {
 			])
       
 			setCurrentCard(myCard)
+			console.log(myCard)
 			setCards(boardCards.filter(card => card.id !== myCard.id ))
       const relativeCard = await axios({
         url: `/getcard?cardid=${myCard.id}`
