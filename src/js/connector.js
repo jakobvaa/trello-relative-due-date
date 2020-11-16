@@ -4,7 +4,7 @@ const BASE_URL = 'https://api.trello.com/1/'
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
 const appName = 'relative-due-date'
 const { checkBoard, updateChildren } = require('./boardFunctions')
-const {verifyCard} = require('./badgeFunctions')
+const {verifyCard, generateBadgeText} = require('./badgeFunctions')
 const {calendarPopup} = require('./dateFunctions')
 
 const openPopup = (t, opts) => {
@@ -67,6 +67,16 @@ window.TrelloPowerUp.initialize({
       height: 500,
       title: 'Welcome to the Trello template for IEEE Conferences'
     })
+  },
+  'card-detail-badges': async (t, opts) => {
+    const card= await t.card('all')
+    const response = await axios(`/getcard?cardid=${card.id}`)
+    const relativeCard = response.data.card
+    if(relativeCard.parent) {
+      return [{ text: generateBadgeText(card) }]
+    } else {
+      return []
+    }
   }
 },
 {

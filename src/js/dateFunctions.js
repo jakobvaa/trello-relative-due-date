@@ -45,35 +45,27 @@ const generateCalendar = async (t, label) => {
 		event = event.pushProperty(title)
 		calendar = calendar.pushComponent(event)
 	})
-	// const calendarEvents = calendarCards.map(card => {
-	// 	const dueDate = new Date(card.due)
-	// 	return {
-	// 		start: [
-	// 			dueDate.getFullYear(),
-	// 			dueDate.getMonth(),
-	// 			dueDate.getDate(),
-	// 			10,
-	// 			0
-	// 		],
-	// 		duration: {hours: 1},
-	// 		description: card.desc,
-	// 		url: card.url,
-	// 	}
-	// })
-	// console.log(calendarEvents)
-	// const {err, value} = ics.createEvent(calendarEvents)
-	// console.log(value)
 	const blob = new Blob([calendar.toString()], {type: 'text/plain;charset=utf-8'})
 	saveAs(blob, `${label}-calendar.ics`)
 }
 
-export const calendarPopup = (t, opts) => {
+const openSecondaryPopup = (t, label) => {
+	return t.popup({
+		'title': 'Download Calendar or subscribe to it',
+		items: [{
+			text: 'GC',
+			callback: () => generateCalendar()
+		}]
+	})
+}
+
+export const calendarPopup = (t, label) => {
 	return t.popup({
 		title: 'Sync Calendar based on label',
 		items: [
 			{
 				text: 'General Chair',
-				callback: () =>  generateCalendar(t, 'GC')
+				callback: () =>  openSecondaryPopup(t, 'GC')
 			},
 			{
 				text: 'Technical Program Chair',
