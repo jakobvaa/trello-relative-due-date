@@ -54,7 +54,7 @@ const openSecondaryPopup = (t, label) => {
 		'title': 'Download Calendar or subscribe to it',
 		items: [{
 			text: 'GC',
-			callback: () => generateCalendar()
+			callback: (t) => generateCalendar(t, label)
 		}]
 	})
 }
