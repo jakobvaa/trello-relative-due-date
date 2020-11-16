@@ -74,7 +74,7 @@ window.TrelloPowerUp.initialize({
     const relativeCard = response.data.card
     console.log(relativeCard)
     if(relativeCard.parent) {
-      return [{ text: generateBadgeText(relativeCard) }]
+      return [{ title: 'Parent', text: generateBadgeText(relativeCard) }]
     } else {
       return []
     }
