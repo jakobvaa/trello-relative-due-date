@@ -69,11 +69,12 @@ window.TrelloPowerUp.initialize({
     })
   },
   'card-detail-badges': async (t, opts) => {
-    const card= await t.card('all')
+    const card = await t.card('all')
     const response = await axios(`/getcard?cardid=${card.id}`)
     const relativeCard = response.data.card
+    console.log(relativeCard)
     if(relativeCard.parent) {
-      return [{ text: generateBadgeText(card) }]
+      return [{ text: generateBadgeText(relativeCard) }]
     } else {
       return []
     }
