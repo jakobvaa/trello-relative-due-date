@@ -11,7 +11,7 @@ const openPopup = (t, opts) => {
   return t.popup({
     title: 'Cards',
     url: './popup.html',
-    height: 280
+    height: 350
   })
 }
 

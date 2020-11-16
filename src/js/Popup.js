@@ -168,9 +168,10 @@ const Popup = (props) => {
 			</SearchField>
 			{cards.length > 0 ? renderCards() : 'Loading cards'}
 			<StickySubmit sticky={!!selectedParent}>
+				<h3>Set difference in months</h3>
 				<div style={{display: 'flex', alignItems: 'center'}}>
 					<button disabled={!selectedParent} style ={{ margin: 0 }} onClick={() => decrement()}>-</button>
-					<input style={{margin: 0, width: '75px', textAlign: 'center'}} type='number' disabled placeholder={difference}/>
+					<input type='number' step={0.01} placeholder={difference} onChange={(e) => setDifference(e.target.value)} value={difference}/>
 					<button disabled={!selectedParent} style={{margin: 0}} onClick={() => increment()}>+</button>
 				</div>
 				<button ref={ref} disabled={canSetDate()} onClick={() => setRelativeDueDate()}>Set Relative Due Date</button>
