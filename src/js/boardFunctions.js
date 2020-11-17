@@ -40,7 +40,7 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 		const currentTimestamp = Date.parse(currentCard.due_date)
 		currentCard.children.forEach(async childName => {
 			const childCards = relativeCards.filter(card => card.cardName === childName)
-			childCards.forEach(childCard => {
+			childCards.forEach( async childCard => {
 				if(childCard.parent === currentCard.cardName) {   // ensure the card actually has the correct parent
 					const childTimestamp = currentTimestamp + 1000 * 3600 * 24 * 31 * childCard.difference
 					let childDate = new Date(childTimestamp)
