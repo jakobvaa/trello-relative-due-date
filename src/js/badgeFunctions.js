@@ -12,6 +12,8 @@ const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
 
 export const verifyCard = async (t) => {
   const trelloCard = await t.card('all')
+  const list = await t.list('name')
+  const listName = list.name
   const cardMetadata = await axios({
     url: `/getcard?cardid=${trelloCard.id}`
   })
@@ -31,6 +33,7 @@ export const verifyCard = async (t) => {
         labels: labels,
         url: trelloCard.url,
         description,
+        listName
       }
     })
     relativeCard = relativeCard.data.card
@@ -94,6 +97,17 @@ export const verifyCard = async (t) => {
         description: trelloCard.desc
       }
     })
+
+    if(listName !== relativeCard.listName) {
+      relativeCard = await axios({
+        method: 'POST',
+        url: '/updatelist',
+        data: {
+          cardId: relativeCard.cardId,
+          listName
+        }
+      })
+    }
   }
 
 

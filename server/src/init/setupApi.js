@@ -2,7 +2,16 @@ const Card = require('../models/card')
 const {Component, Property} = require('immutable-ics')
 const addNewCard = async (data) => {
 	try {
-		const {cardId, cardName, boardId, due_date, url, description, labels} = data
+		const {
+			cardId, 
+			cardName, 
+			boardId, 
+			due_date, 
+			url, 
+			description, 
+			labels,
+			listName
+		} = data
 		const baseCard = await Card.findOne({cardName, boardId: 'base'})
 		if (baseCard) {
 			const card = await new Card({
@@ -13,6 +22,7 @@ const addNewCard = async (data) => {
 				url,
 				description,
 				labels,
+				listName,
 				difference: baseCard.difference,
 				parent: baseCard.parent,
 				children: baseCard.children
@@ -26,7 +36,8 @@ const addNewCard = async (data) => {
 				due_date,
 				url,
 				description,
-				labels
+				labels,
+				listName
 			}).save()
 			return card
 		}
@@ -207,7 +218,7 @@ module.exports = (app) => {
 			res.send({card, message: 'OK'})
 		} catch(err) {
 			console.log(err)
-			res.status(500).send({message: 'Internal Server Error'})
+			res.status(500).send({message: 'Internal Server Error.'})
 		}
 	})
 	app.post('/updatedescription', async (req, res) => {
@@ -219,7 +230,20 @@ module.exports = (app) => {
 			res.send({card, message: 'OK'})
 		} catch(err) {
 			console.log(err)
-			res.status(500).send({message: 'Internal Server Error'})
+			res.status(500).send({message: 'Internal Server Error.'})
+		}
+	})
+
+	app.post('/updatelist', async (req, res) => {
+		try {
+			const {cardId, listName} = req.body
+			const card = await Card.findOne({cardId})
+			card.list = listName
+			await card.save()
+			res.send({card, message: 'OK'})
+		} catch(err) {
+			console.log(err)
+			res.status(500).send({message: 'Internal Server Error.'})
 		}
 	})
 
