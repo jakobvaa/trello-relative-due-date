@@ -37,11 +37,7 @@ export const verifyCard = async (t) => {
   }
   if(trelloCard.due !== relativeCard.due_date) {
     if(relativeCard.parent){
-      const {cardId, due_date, parent, boardId} = relativeCard
-      const parentCard = await axios({
-        url: `/getcard?cardname=${parent}&boardid=${boardId}`
-      })
-
+      const {cardId, due_date} = relativeCard
       const token = await t.getRestApi().getToken()
       await axios({
         method: 'PUT',
@@ -80,7 +76,6 @@ export const verifyCard = async (t) => {
   }
   const labels = trelloCard.labels.map(label => label.name)
   if(JSON.stringify(labels) !== JSON.stringify(relativeCard.labels)) {
-    console.log(trelloCard.labels, relativeCard.labels)
     relativeCard = await axios({
       method: 'POST',
       url: '/updatelabels',
