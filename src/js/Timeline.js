@@ -59,7 +59,7 @@ const Timeline = (props) => {
 			list.cards.forEach(card => {
 				const totalLength = card.labels.length + checkedLabels.length
 				const cardLabelNames = card.labels.map(label => label.id)
-				const labelSet = new Set([...cardLabelNames, checkedLabels])
+				const labelSet = new Set([...cardLabelNames, ...checkedLabels])
 				if(card.due && (totalLength !== labelSet.size || checkedLabels.length === 0)) {
 					card.list = list.name
 					parsedCards.push(card)
