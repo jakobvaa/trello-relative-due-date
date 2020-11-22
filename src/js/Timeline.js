@@ -40,8 +40,6 @@ const Timeline = (props) => {
 			setBoard(board)
 			const lists = await t.lists('all')
 			setLists(lists)
-			console.log('board', board)
-			console.log('lists', lists)
 		}
 		
 	})
@@ -51,7 +49,7 @@ const Timeline = (props) => {
 
 	return (
 		<Container>
-			{(!loading && lists.length > 0) &&
+			{(lists.length > 0) &&
 				<TimelineSidebar
 				labels={board.labels}
 				checkedLabels={checkedLabels}
