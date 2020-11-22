@@ -57,7 +57,7 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 						}),
 						axios({
 							method: 'PUT',
-							url: `${BASE_URL}cards/${childCard.cardId}?key=${appKey}&token=${token}&due=${childDate}`
+							url: `${BASE_URL}cards/${childCard.cardId}?key=${appKey}&token=${token}&due=${childMoment}`
 						})
 					])
 					await updateChildren(childCard, relativeCards, token)
