@@ -26,7 +26,7 @@ const openTimeline = (t) => {
   return t.modal({
     title: 'Conference Timeline',
     url: './timeline.html',
-    fullScreen: true,
+    fullscreen: true,
   })
 }
 
