@@ -22,6 +22,14 @@ const showIframe = (t) => {
   })
 }
 
+const openTimeline = (t) => {
+  return t.modal({
+    title: 'Conference Timeline',
+    url: './timeline.html',
+    fullScreen: true,
+  })
+}
+
 window.TrelloPowerUp.initialize({
   'card-buttons': (t) => {
     return t.getRestApi()
@@ -52,6 +60,10 @@ window.TrelloPowerUp.initialize({
           {
             text: 'Sync Calendar',
             callback: calendarPopup
+          },
+          {
+            text: 'Timeline',
+            callback: 
           }
       ]
       } else {
