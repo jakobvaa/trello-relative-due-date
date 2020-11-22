@@ -1,5 +1,6 @@
 const Card = require('../models/card')
 const {Component, Property} = require('immutable-ics')
+const moment = require('moment')
 const addNewCard = async (data) => {
 	try {
 		const {
@@ -76,10 +77,9 @@ const addParentToChild = async (childName, parentName, difference, boardId) => {
 		const newParent = await Card.findOne({cardName: parentName, boardId})
 		childCard.parent = parentName
 		if (newParent.due_date) {
-			const timestamp = Date.parse(newParent.due_date)
-			const childTimestamp = timestamp + 1000 * 3600 * 24 * 31 * difference
-			const childDate = new Date(childTimestamp).toISOString()
-			childCard.due_date = childDate
+			const childDate = moment(newParent.due_date).utc()
+			childDate.add(difference, 'M')
+			childCard.due_date = childDate.toISOString()
 		}
 		else {
 			childCard.due_date = null

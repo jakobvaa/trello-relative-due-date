@@ -1,7 +1,7 @@
 const axios = require('axios')
 const BASE_URL = 'https://api.trello.com/1/'
 const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
-
+const moment = require('moment')
 
 export const checkBoard = async (t, opts) => {
 	const trelloCards = await t.cards('all')
@@ -37,15 +37,14 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 		if(currentCard.children.length === 0) {
 			return
 		}
-		const currentTimestamp = Date.parse(currentCard.due_date)
+		const currentTimestamp = moment(currentCard.due_date).utc() //Date.parse(currentCard.due_date)
 		currentCard.children.forEach(async childName => {
 			const childCards = relativeCards.filter(card => card.cardName === childName)
 			childCards.forEach( async childCard => {
 				if(childCard.parent === currentCard.cardName) {   // ensure the card actually has the correct parent
-					const childTimestamp = currentTimestamp + 1000 * 3600 * 24 * 31 * childCard.difference
-					let childDate = new Date(childTimestamp)
-					if(isNaN(childDate)) {childDate = null}
-					else {childDate = childDate.toISOString()}
+					const childMoment = moment(currentCard.due_date).utc().add(difference, 'M')
+					if(moment.isDate(new Date(childMoment.toISOString()))) {childDate = null}
+					else {childDate = childMoment.toISOString()}
 					childCard.due_date = childDate
 					const [relativeResponse, trelloResponse] = await Promise.all([
 						axios({
