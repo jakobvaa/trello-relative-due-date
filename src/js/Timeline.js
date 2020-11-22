@@ -40,7 +40,7 @@ const Timeline = (props) => {
 			console.log(l)
 			const filteredList = l.filter(list => !ignoreList.includes(list.name))
 			console.log(filteredList)
-			setLists(l.filter(list => !ignoreList.includes(list.name)))
+			setLists(filteredList)
 			console.log(lists)
 			
 			setLoading(false)
