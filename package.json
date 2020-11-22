@@ -29,6 +29,7 @@
     "file-saver": "^2.0.2",
     "ics": "^2.26.1",
     "immutable-ics": "^0.4.0",
+    "moment": "^2.29.1",
     "mongoose": "^5.10.8",
     "oauth": "^0.9.15",
     "parcel-bundler": "^1.12.4",
