@@ -67,7 +67,7 @@ const Timeline = (props) => {
 	// 			</div>
 	// 		}
 	// 	</Container>
-	)
+	// )
 }
 
 ReactDOM.render(<Timeline />, document.getElementById('root'))
