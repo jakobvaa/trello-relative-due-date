@@ -40,7 +40,8 @@ const Timeline = (props) => {
 			setBoard(b)
 			const l = await t.lists('all')
 			const filteredList = l.filter(list => !ignoreList.includes(list.name))
-			setCards(generateCards(filteredList))
+			const parsedCards = generateCards(filteredList)
+			setCards(parsedCards)
 			setLists(filteredList)
 			setLoading(false)
 		}
