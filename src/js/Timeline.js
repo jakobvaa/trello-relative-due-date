@@ -78,6 +78,8 @@ const Timeline = (props) => {
 			<div>Loading</div>
 		)
 	}
+
+	console.log(checkedLabels)
 	
 	return (
 		<Container>
