@@ -52,7 +52,7 @@ const timelineModes = {
 
 export const CardTimeline = ({cards}) => {
 	console.log(cards)
-	const [mode, setMode] = useState('yer')
+	const [mode, setMode] = useState('year')
 	const renderColumn = (column) => {
 		return (
 			<Column>
