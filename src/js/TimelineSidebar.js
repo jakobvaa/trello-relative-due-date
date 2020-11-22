@@ -3,14 +3,20 @@ import styled from 'styled-components'
 const SidebarContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: 10%;
+	width: 15%;
 	background-color: lightgrey;
 `
 
 const CheckList = styled.div`
-	width: calc(100% - 10px);
-	padding: 5px;
+	width: calc(100% - 20px);
+	padding: 10px;
 	margin: 10px 0;
+`
+
+const CheckListItem = styled.div`
+	display: flex;
+	flex-direction: row;
+
 `
 
 
@@ -27,15 +33,15 @@ export const TimelineSidebar = (props) => {
 			{labels.map(label => {
 				const isChecked = checkedLabels.includes(label.id)
 				return (
-					<div 
-					key={label.id}
-					onClick={isChecked ? () => unsetLabel(label.id) :() => setLabel(label.id)}>
-					<input 
-						type='checkbox' 
-						checked={checkedLabels.includes(label.name)}
-						onChange={() => {return}}/>
-					<label>{label.name}</label>
-				</div>
+					<CheckListItem
+						key={label.id}
+						onClick={isChecked ? () => unsetLabel(label.id) :() => setLabel(label.id)}>
+						<input 
+							type='checkbox' 
+							checked={checkedLabels.includes(label.id)}
+							onChange={() => {return}}/>
+						<label>{label.name}</label>
+					</CheckListItem>
 				)
 			})}
 		</CheckList>
