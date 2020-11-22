@@ -23,8 +23,6 @@ const TimelineSidebar = (props) => {
 	} = props
 	console.log(props)
 	
-
-
 	const renderLines = () => (
 		<CheckList>
 			{labels.map(label => {
@@ -50,9 +48,8 @@ const TimelineSidebar = (props) => {
 	
 	return (
 		<SidebarContainer>
-			<CheckList>
-				{renderLines()}
-			</CheckList>
+
+			fdsfds
 		</SidebarContainer>
 	)
 }
