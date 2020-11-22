@@ -51,11 +51,13 @@ const Timeline = (props) => {
 
 	return (
 		<Container>
-			<TimelineSidebar
+			{(!loading && !!board) &&
+				<TimelineSidebar
 				labels={board.labels}
 				checkedLabels={checkedLabels}
 				setLabel={setLabel}
 				unsetLabel={unsetLabels}/>
+			}
 		</Container>
 	)
 }
