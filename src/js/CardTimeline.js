@@ -69,7 +69,7 @@ export const CardTimeline = ({cards}) => {
 	const renderColumns = () => {
 		const columns = []
 		const edgeValues = timelineModes[mode] 
-		currentColumn = 0
+		const currentColumn = 0
 		const todayTimestamp = new Date(Date.now()).valueOf()
 		let newColumn = []
 		for(const card of cards) {
