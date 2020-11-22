@@ -66,7 +66,9 @@ const Timeline = (props) => {
 			})
 		})
 		console.log(parsedCards)
-		return parsedCards.sort((a,b) => new Date(a.due) - new Date(b.due))
+		const sortedCards =  parsedCards.sort((a,b) => new Date(a.due) - new Date(b.due))
+		sortedCards.forEach(card => {console.log(card.due)})
+		return sortedCards
 	}	
 
 	const setLabel = (label) => setCheckedLabels([...checkedLabels, label])

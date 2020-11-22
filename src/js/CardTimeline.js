@@ -79,7 +79,6 @@ export const CardTimeline = ({cards}) => {
 		const todayTimestamp = new Date(Date.now()).valueOf()
 		let newColumn = []
 		for(const card of cards) {
-			console.log(card)
 			if(currentColumn >= edgeValues.length) {
 				break
 			}
@@ -88,7 +87,6 @@ export const CardTimeline = ({cards}) => {
 				new Date(card.due).valueOf() - todayTimestamp > 
 				1000 * 3600 * 24 * timelineModes[mode][currentColumn]) {
 					columns.push(newColumn)
-					console.log('fdf')
 					newColumn = [card]
 					currentColumn ++
 			} else {
