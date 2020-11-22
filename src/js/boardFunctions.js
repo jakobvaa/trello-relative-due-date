@@ -44,6 +44,7 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 				if(childCard.parent === currentCard.cardName) {   // ensure the card actually has the correct parent
 					let childMoment = moment(currentCard.due_date).utc().add(childCard.difference, 'M')
 					const decimals = childCard.difference.toString().split('.')[1]
+					console.log(decimals)
 					const dec = childCard.difference >= 0 ? parseInt(`0.${decimals}`) : -parseInt(`0.${decimals}`)
 					console.log(dec)
 					const daysRest = Math.floor(dec * 30)
