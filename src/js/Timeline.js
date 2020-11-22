@@ -27,29 +27,29 @@ const t = TrelloPowerUp.iframe({
 
 
 const Timeline = (props) => {
-	const [checkedLabels, setCheckedLabels] = useState([])
-	const [board, setBoard] = useState(null)
-	const [lists, setLists] = useState([])
-	const [loading, setLoading] = useState(false)
-	useEffect(async () => {
-		if(!loading && !board) {
-			setLoading(true)
-			const board = await t.board('all')
-			setBoard(board)
-			const lists = await t.lists('all')
-			setLists(lists.filter(list => !ignoreList.includes(list.name)))
-			setLoading(false)
-		}
-	})
+	// const [checkedLabels, setCheckedLabels] = useState([])
+	// const [board, setBoard] = useState(null)
+	// const [lists, setLists] = useState([])
+	// const [loading, setLoading] = useState(false)
+	// useEffect(async () => {
+	// 	if(!loading && !board) {
+	// 		setLoading(true)
+	// 		const board = await t.board('all')
+	// 		setBoard(board)
+	// 		const lists = await t.lists('all')
+	// 		setLists(lists.filter(list => !ignoreList.includes(list.name)))
+	// 		setLoading(false)
+	// 	}
+	// })
 
-	const setLabel = (label) => setCheckedLabels([...checkedLabels, label])
-	const unsetLabels = (label) => setCheckedLabels(checkedLabels.filter(l => label !== l)) 
+	// const setLabel = (label) => setCheckedLabels([...checkedLabels, label])
+	// const unsetLabels = (label) => setCheckedLabels(checkedLabels.filter(l => label !== l)) 
 
-	if(loading || !board) {
-		return (
-			<div>Loading</div>
-		)
-	}
+	// if(loading || !board) {
+	// 	return (
+	// 		<div>Loading</div>
+	// 	)
+	// }
 	return (
 		<div>fdfd</div>
 	)
