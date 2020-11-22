@@ -72,19 +72,15 @@ const Timeline = (props) => {
 			<div>Loading</div>
 		)
 	}
-
+	
 	return (
 		<Container>
-			{lists.length > 0 &&
-				<div>
-					<TimelineSidebar
-					labels={board.labels}
-					checkedLabels={checkedLabels}
-					setLabel={setLabel}
-					unsetLabel={unsetLabels}/>
-
-				</div>
-			}
+			<TimelineSidebar
+			labels={board.labels}
+			checkedLabels={checkedLabels}
+			setLabel={setLabel}
+			unsetLabel={unsetLabels}/>
+			<CardTimeline cards={cards} />
 		</Container>
 	)
 }
