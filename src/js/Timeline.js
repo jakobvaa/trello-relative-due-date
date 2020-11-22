@@ -67,7 +67,7 @@ const Timeline = (props) => {
 			})
 		})
 		console.log(parsedCards)
-		return parsedCards.sort((a,b) => new Date(a.due) - new Date(b.due))
+		return parsedCards.sort((a,b) => new Date(b.due) - new Date(a.due))
 	}	
 
 	const setLabel = (label) => setCheckedLabels([...checkedLabels, label])
