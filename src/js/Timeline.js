@@ -40,7 +40,7 @@ const Timeline = (props) => {
 			setLists(l.filter(list => !ignoreList.includes(list.name)))
 			setLoading(false)
 		}
-	})
+	}, [])
 
 	// const setLabel = (label) => setCheckedLabels([...checkedLabels, label])
 	// const unsetLabels = (label) => setCheckedLabels(checkedLabels.filter(l => label !== l)) 
