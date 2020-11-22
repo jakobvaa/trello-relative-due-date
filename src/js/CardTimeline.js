@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-
+import {timelineModes, colors} from './constants'
 
 const Container = styled.div`
 	display: flex;
@@ -17,10 +17,13 @@ const Column = styled.div`
 	justify-content: flex-start;
 	align-items: center;
 	padding: 5px;
+	overflow-y: scroll;
 `
 
 const ColumnHeader = styled.div`
 	border-bottom: 2px solid lightgrey;
+	width: 100%;
+	text-align: center;
 `
 
 const Card = styled.div`
@@ -30,25 +33,9 @@ const Card = styled.div`
 	width: calc(100% - 10px);
 	border-radius: 3px;
 	border: 1px solid lightgrey;
+	cursor: pointer;
 `
-const colors = {
-	'Application, AP-Fin-spons': 'red',
-	'Key Conference Dates': 'lightblue',
-	'Finance': 'green',
-	'Publicity/Website': 'red',
-	'IntEvents': 'red',
-	'Article/Review process': 'red',
-	'Technical Program': 'red',
-	'Venue/Registration': 'red',
-	'Proceedings': 'red',
-	'Social': 'red',
-}
 
-const timelineModes = {
-	'weeks': [7, 14, 21, 28, 35],
-	'year': [31, 93, 186, 365],
-	'complete': []
-}
 
 
 export const CardTimeline = ({cards}) => {
@@ -59,18 +46,54 @@ export const CardTimeline = ({cards}) => {
 			<Column>
 				<ColumnHeader>
 					<h3>
-						test
+						{column}
 					</h3>
 				</ColumnHeader>
 				{column.map(card => (
 					<Card>
 						<h3>{card.name}</h3>
-						<p>Due: {card.due}</p>
+						<p>Due: {new Date(card.due).toDateString()}</p>
 					</Card>
 				))}
 			</Column>
 		)
 	}
+
+	const renderColumns = () => {
+		const columns = timelineModes[mode].map(diff => (
+			{
+				name: diff.name,
+				diff: diff.value,
+				cards: []
+			}
+		))
+		let currentColumn = 0
+		const now = new Date().valueOf()
+		let finished = false
+		for(const card of cards) {
+			const cardTimestamp = new Date(card.due).valueOf()
+			const cardDiff = cardTimestamp - now
+			if(now > 1000 * 3600 * 24 * columns[currentColumn].diff) {
+				for (let i = currentColumn + 1 ; i < columns.length + 1 ; i++) {
+					if(i === columns.length){
+						finished = true
+						break
+					}
+					const newDiff = cardTimestamp - now
+					if(newDiff <= 1000 * 3600 * 24 * columns[i].diff) {
+						currentColumn = i
+						columns[currentColumn].cards.push(card)
+						break
+					}
+				}
+				if(finished) break
+			} else {
+				columns[currentColumn].cards.push(card)
+			}
+		}
+
+	}
+
 
 	const renderColumns = () => {
 		const columns = []
