@@ -49,22 +49,24 @@ const Timeline = (props) => {
 			<div>Loading</div>
 		)
 	}
-
 	return (
-		<Container>
-			dsfds
-			{lists.length > 0 &&
-				<div>
-					fdsfd
-					<TimelineSidebar
-					labels={board.labels}
-					checkedLabels={checkedLabels}
-					setLabel={setLabel}
-					unsetLabel={unsetLabels}/>
+		<div>fdfd</div>
+	)
+	// return (
+	// 	<Container>
+	// 		dsfds
+	// 		{lists.length > 0 &&
+	// 			<div>
+	// 				fdsfd
+	// 				<TimelineSidebar
+	// 				labels={board.labels}
+	// 				checkedLabels={checkedLabels}
+	// 				setLabel={setLabel}
+	// 				unsetLabel={unsetLabels}/>
 
-				</div>
-			}
-		</Container>
+	// 			</div>
+	// 		}
+	// 	</Container>
 	)
 }
 
