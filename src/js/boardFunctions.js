@@ -43,7 +43,7 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 			childCards.forEach( async childCard => {
 				if(childCard.parent === currentCard.cardName) {   // ensure the card actually has the correct parent
 					let childMoment = moment(currentCard.due_date).utc()
-					const [int,decimals] = childCard.difference.toString().split('.')[1]
+					const [int,decimals] = childCard.difference.toString().split('.')
 					childMoment.add(parseInt(int), 'M')
 					console.log(decimals)
 					const dec = childCard.difference >= 0 ? parseFloat(`0.${decimals}`) : -parseFloat(`0.${decimals}`)
