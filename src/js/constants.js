@@ -35,7 +35,7 @@ export const timelineModes = {
 			name: '5 week'
 		}
 	],
-	year: [
+	'year': [
 		{
 			value: 31,
 			name: '1 Month'
