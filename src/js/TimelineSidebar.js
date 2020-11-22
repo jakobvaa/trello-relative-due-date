@@ -38,7 +38,8 @@ const TimelineSidebar = ({labels, checkedLabels, setLabel, unsetLabel}) => {
 	)
 	
 
-
+	console.log(labels)
+	
 	return (
 		<SidebarContainer>
 			<CheckList>

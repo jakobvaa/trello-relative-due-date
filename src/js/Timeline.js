@@ -51,7 +51,7 @@ const Timeline = (props) => {
 
 	return (
 		<Container>
-			{(!loading && !!board) &&
+			{(!loading && labels.length > 0) &&
 				<TimelineSidebar
 				labels={board.labels}
 				checkedLabels={checkedLabels}
