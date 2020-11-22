@@ -32,7 +32,7 @@ const Timeline = (props) => {
 	const [lists, setLists] = useState([])
 	const [loading, setLoading] = useState(false)
 	useEffect(async () => {
-		if(!loading && !board) {
+		if(!loading && lists.length === 0) {
 			setLoading(true)
 			const b = await t.board('all')
 			setBoard(b)
