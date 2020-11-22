@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom'
 
 import styled from 'styled-components'
 import TimelineSidebar from './TimelineSidebar'
-
+import CardTimeline from './CardTimeline'
 const Container = styled.div`
 	display: flex;
-	flex-direction: column;
-	height: 100%;
+	flex-direction: row;
+	height: 100vh;
+	width: 100vw;
 `
 
 const Sidebar = styled.div`
@@ -30,6 +31,7 @@ const Timeline = (props) => {
 	const [checkedLabels, setCheckedLabels] = useState([])
 	const [board, setBoard] = useState(null)
 	const [lists, setLists] = useState([])
+	const [cards, setCards] = useState([])
 	const [loading, setLoading] = useState(false)
 	useEffect(async () => {
 		if(!loading && lists.length === 0) {
@@ -38,10 +40,29 @@ const Timeline = (props) => {
 			setBoard(b)
 			const l = await t.lists('all')
 			const filteredList = l.filter(list => !ignoreList.includes(list.name))
+			setCards(generateCards(filteredList))
 			setLists(filteredList)
 			setLoading(false)
 		}
 	}, [])
+
+	useEffect(() => {
+		const newCards = generateCards(lists)
+		setCards(newCards)
+	}, [checkedLabels])
+
+	const generateCards = (lists) => {
+		const cards = []
+		lists.forEach(list => {
+			list.forEach(card => {
+				if(card.due && checkedLabels.includes(card.label)) {
+					card.list = list.name
+					cards.push(card)
+				}
+			})
+		})
+		return cards.sort((a,b) => new Date(a.due) - new Date(b.due))
+	}
 
 	console.log(lists)
 	
