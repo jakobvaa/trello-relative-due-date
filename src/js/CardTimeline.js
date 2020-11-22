@@ -46,7 +46,7 @@ export const CardTimeline = ({cards}) => {
 			<Column>
 				<ColumnHeader>
 					<h3>
-						{column}
+						{column.name}
 					</h3>
 				</ColumnHeader>
 				{column.cards.map(card => (
