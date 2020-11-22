@@ -14,13 +14,13 @@ const Column = styled.div`
 	border: 1px solid lightgrey;
 	height: 100%;
 	width: calc(20% - 10px);
-	justify-content: center;
-	align-items: flex-start;
+	justify-content: flex-start;
+	align-items: center;
 	padding: 5px;
 `
 
 const ColumnHeader = styled.div`
-
+	border-bottom: 2px solid lightgrey;
 `
 
 const Card = styled.div`
@@ -29,6 +29,7 @@ const Card = styled.div`
 	padding: 5px;
 	width: calc(100% - 10px);
 	border-radius: 3px;
+	border: 1px solid lightgrey;
 `
 const colors = {
 	'Application, AP-Fin-spons': 'red',
@@ -56,6 +57,11 @@ export const CardTimeline = ({cards}) => {
 	const renderColumn = (column) => {
 		return (
 			<Column>
+				<ColumnHeader>
+					<h3>
+						test
+					</h3>
+				</ColumnHeader>
 				{column.map(card => (
 					<Card>
 						<h3>{card.name}</h3>
