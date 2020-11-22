@@ -14,8 +14,15 @@ const CheckList = styled.div`
 `
 
 
-const TimelineSidebar = ({labels, checkedLabels, setLabel, unsetLabel}) => {
-
+const TimelineSidebar = (props) => {
+	const {
+		labels,
+		checkedLabels,
+		setLabel,
+		unsetLabel
+	} = props
+	console.log(props)
+	
 
 
 	const renderLines = () => (
@@ -39,6 +46,7 @@ const TimelineSidebar = ({labels, checkedLabels, setLabel, unsetLabel}) => {
 	
 
 	console.log(labels)
+	console.log(checkedLabels)
 	
 	return (
 		<SidebarContainer>
