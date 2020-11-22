@@ -43,7 +43,7 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 			childCards.forEach( async childCard => {
 				if(childCard.parent === currentCard.cardName) {   // ensure the card actually has the correct parent
 					let childMoment = moment(currentCard.due_date).utc().add(childCard.difference, 'M')
-					console.log(childMoment.toISOString)
+					console.log(childMoment.toISOString())
 					if(moment.isDate(new Date(childMoment.toISOString()))) {childMoment = null}
 					else {childMoment = childMoment.toISOString()}
 					childCard.due_date = childMoment
