@@ -52,9 +52,10 @@ const Timeline = (props) => {
 		setCards(newCards)
 	}, [checkedLabels])
 
-	const generateCards = (cardlists) => {
+	const generateCards = (cardLists) => {
 		const cards = []
-		cardlists.forEach(list => {
+		console.log(cardLists)
+		cardLists.forEach(list => {
 			list.forEach(card => {
 				if(card.due && checkedLabels.includes(card.label)) {
 					card.list = list.name
