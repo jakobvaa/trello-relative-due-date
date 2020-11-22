@@ -85,7 +85,7 @@ export const CardTimeline = ({cards}) => {
 			}
 
 			else if (
-				todayTimestamp - new Date(card.due).valueOf() > 
+				new Date(card.due).valueOf() - todayTimestamp > 
 				1000 * 3600 * 24 * timelineModes[mode][currentColumn]) {
 					columns.push(newColumn)
 					console.log('fdf')
