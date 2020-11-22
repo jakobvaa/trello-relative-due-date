@@ -52,7 +52,7 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 							url: '/updatedate',
 							data: {
 								cardId: childCard.cardId,
-								due_date: childDate
+								due_date: childMoment
 							}
 						}),
 						axios({
