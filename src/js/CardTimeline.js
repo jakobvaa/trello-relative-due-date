@@ -92,43 +92,18 @@ export const CardTimeline = ({cards}) => {
 			}
 		}
 
-	}
-
-
-	const renderColumns = () => {
-		const columns = []
-		const edgeValues = timelineModes[mode] 
-		let currentColumn = 0
-		const todayTimestamp = new Date(Date.now()).valueOf()
-		let newColumn = []
-		for(const card of cards) {
-			if(currentColumn >= edgeValues.length) {
-				break
-			}
-
-			else if (
-				new Date(card.due).valueOf() - todayTimestamp > 
-				1000 * 3600 * 24 * timelineModes[mode][currentColumn]) {
-					columns.push(newColumn)
-					newColumn = [card]
-					currentColumn ++
-			} else {
-				newColumn.push(card)
-			}
-		}
 		return (
 			<Container>
-				{columns.map(col => (
-					renderColumn(col)
+				{columns.map(column => (
+					renderColumn(column)
 				))}
 			</Container>
 		)
+
 	}
 
 	return (
-		<Container>
-			{renderColumns()}
-		</Container>
+			renderColumns()
 	)
 }
 
