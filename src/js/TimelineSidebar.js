@@ -21,7 +21,6 @@ export const TimelineSidebar = (props) => {
 		setLabel,
 		unsetLabel
 	} = props
-	console.log(props)
 	
 	const renderLines = () => (
 		<CheckList>
@@ -49,7 +48,7 @@ export const TimelineSidebar = (props) => {
 	return (
 		<SidebarContainer>
 
-			fdsfds
+			{renderLines()}
 		</SidebarContainer>
 	)
 }
