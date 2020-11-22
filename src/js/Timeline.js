@@ -39,3 +39,5 @@ const Timeline = (props) => {
 		</div>
 	)
 }
+
+ReactDOM.render(<Timeline />, document.getElementById('root'))
