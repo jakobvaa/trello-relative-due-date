@@ -38,6 +38,8 @@ const Timeline = (props) => {
 			setBoard(b)
 			const l = await t.lists('all')
 			console.log(l)
+			const filteredList = l.filter(list => !ignoreList.includes(list.name))
+			console.log(filteredList)
 			setLists(l.filter(list => !ignoreList.includes(list.name)))
 			console.log(lists)
 			
