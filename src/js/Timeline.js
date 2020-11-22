@@ -50,11 +50,15 @@ const Timeline = (props) => {
 	return (
 		<Container>
 			{lists.length > 0 &&
-				<TimelineSidebar
-				labels={board.labels}
-				checkedLabels={checkedLabels}
-				setLabel={setLabel}
-				unsetLabel={unsetLabels}/>
+				<div>
+					fdsfd
+					<TimelineSidebar
+					labels={board.labels}
+					checkedLabels={checkedLabels}
+					setLabel={setLabel}
+					unsetLabel={unsetLabels}/>
+
+				</div>
 			}
 		</Container>
 	)
