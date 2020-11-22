@@ -34,10 +34,10 @@ const Timeline = (props) => {
 	useEffect(async () => {
 		if(!loading && !board) {
 			setLoading(true)
-			const board = await t.board('all')
-			setBoard(board)
-			const lists = await t.lists('all')
-			setLists(lists.filter(list => !ignoreList.includes(list.name)))
+			const b = await t.board('all')
+			setBoard(b)
+			const l = await t.lists('all')
+			setLists(l.filter(list => !ignoreList.includes(list.name)))
 			setLoading(false)
 		}
 	})
