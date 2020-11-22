@@ -16,6 +16,7 @@ const Column = styled.div`
 	border: 1px solid lightgrey;
 	height: 100%;
 	width: calc(20% - 10px);
+	flex-shrink: 0;
 	justify-content: flex-start;
 	align-items: center;
 	padding: 5px;
@@ -40,8 +41,14 @@ const Card = styled.div`
 
 const modes = {
 	monthly: (diff) => moment.utc().add(diff, 'M'),
-	weekly: (diff) => moment.utc.add(diff, 'w'),
-	quarterly: (diff) => moment.utc.add(diff * 3, 'M')
+	weekly: (diff) => moment.utc().add(diff, 'w'),
+	quarterly: (diff) => moment().utc.add(diff * 3, 'M')
+}
+
+const titleFunctions = {
+	monthly: (diff) => diff > 1 ? `${diff} Months` : `${diff} Month`,
+	weekly: (diff) => diff > 1 ? `${diff} Weeks` : `${diff} Week`,
+	quarterly: (diff) => `${diff} Months`
 }
 
 
@@ -72,7 +79,7 @@ export const CardTimeline = ({cards}) => {
 		let currentDiff = 1
 		let currentCard = 0 
 		let currentCardList = {
-			name: `test ${currentDiff}`,
+			name: titleFunctions[mode](currentDiff),
 			cards: []
 		}
 		while(currentCard !== cards.length) {
@@ -80,7 +87,7 @@ export const CardTimeline = ({cards}) => {
 				columns.push(currentCardList)
 				currentDiff++
 				currentCardList = {
-					name: `test ${currentDiff}`,
+					name: titleFunctions[mode](currentDiff),
 					cards: []
 				}
 			}
@@ -94,49 +101,6 @@ export const CardTimeline = ({cards}) => {
 				))}
 			</Container>
 		)
-	}
-
-	const renderColumns = () => {
-		const columns = timelineModes[mode].map(diff => (
-			{
-				name: diff.name,
-				diff: diff.value,
-				cards: []
-			}
-		))
-		let currentColumn = 0
-		const now = new Date().valueOf()
-		let finished = false
-		for(const card of cards) {
-			const cardTimestamp = new Date(card.due).valueOf()
-			const cardDiff = cardTimestamp - now
-			if(cardDiff > 1000 * 3600 * 24 * columns[currentColumn].diff) {
-				for (let i = currentColumn + 1 ; i < columns.length + 1 ; i++) {
-					if(i === columns.length){
-						finished = true
-						break
-					}
-					const newDiff = cardTimestamp - now
-					if(newDiff <= 1000 * 3600 * 24 * columns[i].diff) {
-						currentColumn = i
-						columns[currentColumn].cards.push(card)
-						break
-					}
-				}
-				if(finished) break
-			} else {
-				columns[currentColumn].cards.push(card)
-			}
-		}
-
-		return (
-			<Container>
-				{columns.map(column => (
-					renderColumn(column)
-				))}
-			</Container>
-		)
-
 	}
 
 	return (
