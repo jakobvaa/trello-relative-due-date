@@ -39,6 +39,8 @@ const Timeline = (props) => {
 			const l = await t.lists('all')
 			console.log(l)
 			setLists(l.filter(list => !ignoreList.includes(list.name)))
+			console.log(lists)
+			
 			setLoading(false)
 		}
 	}, [])
