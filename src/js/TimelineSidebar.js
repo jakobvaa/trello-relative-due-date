@@ -14,10 +14,6 @@ const CheckList = styled.div`
 `
 
 
-
-co
-
-
 const TimelineSidebar = ({labels, checkedLabels, setLabel, unsetLabel}) => {
 
 	const renderLines = () => (
