@@ -52,7 +52,7 @@ const timelineModes = {
 
 export const CardTimeline = ({cards}) => {
 	console.log(cards)
-	const [mode, setMode] = useState('weeks')
+	const [mode, setMode] = useState('yer')
 	const renderColumn = (column) => {
 		return (
 			<Column>
@@ -73,9 +73,13 @@ export const CardTimeline = ({cards}) => {
 		const todayTimestamp = new Date(Date.now()).valueOf()
 		let newColumn = []
 		for(const card of cards) {
+			console.log(card)		
+			console.log(todayTimestamp)
+			console.log(new Date(card.due).valueOf())
 			if(currentColumn >= edgeValues.length) {
 				break
 			}
+
 			else if (
 				todayTimestamp - new Date(card.due).valueOf() > 
 				1000 * 3600 * 24 * timelineModes[mode][currentColumn]) {
@@ -87,11 +91,11 @@ export const CardTimeline = ({cards}) => {
 			}
 		}
 		return (
-			<div>
+			<Container>
 				{columns.map(col => (
 					renderColumn(col)
 				))}
-			</div>
+			</Container>
 		)
 	}
 
