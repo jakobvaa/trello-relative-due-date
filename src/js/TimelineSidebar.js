@@ -14,7 +14,7 @@ const CheckList = styled.div`
 `
 
 
-const TimelineSidebar = (props) => {
+export const TimelineSidebar = (props) => {
 	const {
 		labels,
 		checkedLabels,

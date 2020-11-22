@@ -1,6 +1,6 @@
-import React, {useState, useEffect, cloneElement} from 'react'
+import React, {useState, useEffect} from 'react'
 import ReactDOM from 'react-dom'
-import axios from 'axios'
+
 import styled from 'styled-components'
 import TimelineSidebar from './TimelineSidebar'
 
@@ -25,8 +25,6 @@ const t = TrelloPowerUp.iframe({
 	appName: 'relative-due-date'
 })
 
-const BASE_URL = 'https://api.trello.com/1/'
-
 
 const Timeline = (props) => {
 	const [checkedLabels, setCheckedLabels] = useState([])
@@ -39,9 +37,8 @@ const Timeline = (props) => {
 			const board = await t.board('all')
 			setBoard(board)
 			const lists = await t.lists('all')
-			setLists(lists)
+			setLists(lists.filter(list => !ignoreList.includes(list.name)))
 		}
-		
 	})
 
 	const setLabel = (label) => setCheckedLabels([...checkedLabels, label])
