@@ -42,10 +42,10 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 			const childCards = relativeCards.filter(card => card.cardName === childName)
 			childCards.forEach( async childCard => {
 				if(childCard.parent === currentCard.cardName) {   // ensure the card actually has the correct parent
-					const childMoment = moment(currentCard.due_date).utc().add(childCard.difference, 'M')
-					if(moment.isDate(new Date(childMoment.toISOString()))) {childDate = null}
-					else {childDate = childMoment.toISOString()}
-					childCard.due_date = childDate
+					let childMoment = moment(currentCard.due_date).utc().add(childCard.difference, 'M')
+					if(moment.isDate(new Date(childMoment.toISOString()))) {childMoment = null}
+					else {childMoment = childMoment.toISOString()}
+					childCard.due_date = childMoment
 					const [relativeResponse, trelloResponse] = await Promise.all([
 						axios({
 							method: 'POST',
