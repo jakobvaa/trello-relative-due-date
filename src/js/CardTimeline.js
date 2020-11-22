@@ -49,7 +49,7 @@ export const CardTimeline = ({cards}) => {
 						{column}
 					</h3>
 				</ColumnHeader>
-				{column.map(card => (
+				{column.cards.map(card => (
 					<Card>
 						<h3>{card.name}</h3>
 						<p>Due: {new Date(card.due).toDateString()}</p>
