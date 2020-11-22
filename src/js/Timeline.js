@@ -41,11 +41,12 @@ const Timeline = (props) => {
 			const filteredList = l.filter(list => !ignoreList.includes(list.name))
 			console.log(filteredList)
 			setLists(filteredList)
-			console.log(lists)
-			
 			setLoading(false)
 		}
 	}, [])
+
+	console.log(lists)
+	
 
 	const setLabel = (label) => setCheckedLabels([...checkedLabels, label])
 	const unsetLabels = (label) => setCheckedLabels(checkedLabels.filter(l => label !== l)) 

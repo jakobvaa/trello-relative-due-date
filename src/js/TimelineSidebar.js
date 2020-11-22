@@ -42,8 +42,8 @@ export const TimelineSidebar = (props) => {
 	)
 	
 
-	console.log(labels)
-	console.log(checkedLabels)
+	// console.log(labels)
+	// console.log(checkedLabels)
 	
 	return (
 		<SidebarContainer>
