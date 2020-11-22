@@ -39,9 +39,9 @@ const Card = styled.div`
 
 
 export const CardTimeline = ({cards}) => {
-	console.log(cards)
 	const [mode, setMode] = useState('year')
 	const renderColumn = (column) => {
+		console.log(column)
 		return (
 			<Column>
 				<ColumnHeader>
@@ -73,7 +73,7 @@ export const CardTimeline = ({cards}) => {
 		for(const card of cards) {
 			const cardTimestamp = new Date(card.due).valueOf()
 			const cardDiff = cardTimestamp - now
-			if(now > 1000 * 3600 * 24 * columns[currentColumn].diff) {
+			if(cardDiff > 1000 * 3600 * 24 * columns[currentColumn].diff) {
 				for (let i = currentColumn + 1 ; i < columns.length + 1 ; i++) {
 					if(i === columns.length){
 						finished = true
