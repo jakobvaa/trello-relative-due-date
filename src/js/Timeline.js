@@ -56,7 +56,7 @@ const Timeline = (props) => {
 		const cards = []
 		console.log(cardLists)
 		cardLists.forEach(list => {
-			list.forEach(card => {
+			list.cards.forEach(card => {
 				if(card.due && checkedLabels.includes(card.label)) {
 					card.list = list.name
 					cards.push(card)
