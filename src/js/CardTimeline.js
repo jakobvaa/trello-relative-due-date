@@ -84,7 +84,7 @@ export const CardTimeline = ({cards}) => {
 					cards: []
 				}
 			}
-			currentCardList.cards.push(card)
+			currentCardList.cards.push(cards[currentCard])
 			currentCard ++
 		}
 		return (
