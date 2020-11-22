@@ -78,7 +78,12 @@ const addParentToChild = async (childName, parentName, difference, boardId) => {
 		childCard.parent = parentName
 		if (newParent.due_date) {
 			const childDate = moment(newParent.due_date).utc()
-			childDate.add(difference, 'M')
+			const [int, decimals] = difference.toString().split('.')
+
+			childDate.add(parseInt(int), 'M')
+			const dec = difference >= 0 ? parseFloat(`0.${decimals}`) : -parseFloat(`0.${decimals}`)
+			const daysRest = Math.floor(dec * 30)
+			childDate.add(daysRest, 'd')
 			childCard.due_date = childDate.toISOString()
 		}
 		else {
