@@ -63,7 +63,7 @@ window.TrelloPowerUp.initialize({
           },
           {
             text: 'Timeline',
-            callback: 
+            callback: openTimeline
           }
       ]
       } else {
