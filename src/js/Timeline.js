@@ -39,7 +39,7 @@ const Timeline = (props) => {
 			const board = await t.board('all')
 			setBoard(board)
 			const lists = await t.list('all')
-			const setLists(lists)
+			setLists(lists)
 			console.log('board', board)
 			console.log('lists', listst)
 		}
