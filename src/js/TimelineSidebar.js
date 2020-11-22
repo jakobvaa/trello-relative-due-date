@@ -16,11 +16,14 @@ const CheckList = styled.div`
 
 const TimelineSidebar = ({labels, checkedLabels, setLabel, unsetLabel}) => {
 
+
+
 	const renderLines = () => (
-		labels.map(label => {
-			isChecked = checkedLabels.includes(label.id)
-			return (
-				<div 
+		<CheckList>
+			{labels.map(label => {
+				const isChecked = checkedLabels.includes(label.id)
+				return (
+					<div 
 					key={label.id}
 					onClick={isChecked ? unsetLabel(label.id) : setLabel(label.id)}>
 					<input 
@@ -29,12 +32,14 @@ const TimelineSidebar = ({labels, checkedLabels, setLabel, unsetLabel}) => {
 						onChange={() => {return}}/>
 					<label>{label.name}</label>
 				</div>
-			)
-		}
-		)
+				)
+			})}
+		</CheckList>
 	)
+	
 
-	return(
+
+	return (
 		<SidebarContainer>
 			<CheckList>
 				{renderLines()}
