@@ -59,7 +59,7 @@ const Timeline = (props) => {
 			list.cards.forEach(card => {
 				if(card.due && checkedLabels.includes(card.label)) {
 					card.list = list.name
-					cards.push(card)
+					parsedCards.push(card)
 				}
 			})
 		})
