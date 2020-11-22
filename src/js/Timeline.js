@@ -81,7 +81,9 @@ const Timeline = (props) => {
 			checkedLabels={checkedLabels}
 			setLabel={setLabel}
 			unsetLabel={unsetLabels}/>
-			<CardTimeline cards={cards} />
+			{cards.length > 0 &&
+				<CardTimeline cards={cards} />
+			}
 		</Container>
 	)
 }

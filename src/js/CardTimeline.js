@@ -22,7 +22,7 @@ const ColumnHeader = styled.div`
 `
 
 export const CardTimeline = ({cards, checkedLabels}) => {
-	console.log(props.cards)
+	console.log(cards)
 	return (
 		<div>
 			Here comes the cards
