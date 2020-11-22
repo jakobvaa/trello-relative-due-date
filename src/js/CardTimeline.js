@@ -79,13 +79,7 @@ export const CardTimeline = ({cards}) => {
 		const todayTimestamp = new Date(Date.now()).valueOf()
 		let newColumn = []
 		for(const card of cards) {
-			console.log(card)		
-			console.log(todayTimestamp)
-			console.log(new Date(card.due).valueOf())
-			console.log(todayTimestamp - new Date(card.due).valueOf())
-
-			console.log(1000 * 3600 * 24 * timelineModes[mode][currentColumn])
-			
+			console.log(card)
 			if(currentColumn >= edgeValues.length) {
 				break
 			}
