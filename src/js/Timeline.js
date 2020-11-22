@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import ReactDOM from 'react-dom'
 
 import styled from 'styled-components'
-import TimelineSidebar from './TimelineSidebar'
+// import TimelineSidebar from './TimelineSidebar'
 
 const Container = styled.div`
 	display: flex;
@@ -38,6 +38,7 @@ const Timeline = (props) => {
 			setBoard(board)
 			const lists = await t.lists('all')
 			setLists(lists.filter(list => !ignoreList.includes(list.name)))
+			setLoading(false)
 		}
 	})
 
