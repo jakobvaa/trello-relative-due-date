@@ -42,33 +42,31 @@ const Timeline = (props) => {
 		}
 	}, [])
 
-	// const setLabel = (label) => setCheckedLabels([...checkedLabels, label])
-	// const unsetLabels = (label) => setCheckedLabels(checkedLabels.filter(l => label !== l)) 
+	const setLabel = (label) => setCheckedLabels([...checkedLabels, label])
+	const unsetLabels = (label) => setCheckedLabels(checkedLabels.filter(l => label !== l)) 
 
-	// if(loading || !board) {
-	// 	return (
-	// 		<div>Loading</div>
-	// 	)
-	// }
+	if(loading || !board) {
+		return (
+			<div>Loading</div>
+		)
+	}
+
 	return (
-		<div>fdfd</div>
-	)
-	// return (
-	// 	<Container>
-	// 		dsfds
-	// 		{lists.length > 0 &&
-	// 			<div>
-	// 				fdsfd
-	// 				<TimelineSidebar
-	// 				labels={board.labels}
-	// 				checkedLabels={checkedLabels}
-	// 				setLabel={setLabel}
-	// 				unsetLabel={unsetLabels}/>
+		<Container>
+			dsfds
+			{lists.length > 0 &&
+				<div>
+					fdsfd
+					<TimelineSidebar
+					labels={board.labels}
+					checkedLabels={checkedLabels}
+					setLabel={setLabel}
+					unsetLabel={unsetLabels}/>
 
-	// 			</div>
-	// 		}
-	// 	</Container>
-	// )
+				</div>
+			}
+		</Container>
+	)
 }
 
 ReactDOM.render(<Timeline />, document.getElementById('root'))
