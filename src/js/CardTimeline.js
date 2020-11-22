@@ -76,7 +76,7 @@ export const CardTimeline = ({cards}) => {
 			cards: []
 		}
 		while(currentCard !== cards.length) {
-			while(!moment(cards[currentCard].due).utc.isBefore(modes[mode](currentDiff))){
+			while(!moment(cards[currentCard].due).utc().isBefore(modes[mode](currentDiff))){
 				columns.push(currentCardList)
 				currentDiff++
 				currentCardList = {
