@@ -47,6 +47,12 @@ const Timeline = (props) => {
 	const setLabel = (label) => setCheckedLabels([...checkedLabels, label])
 	const unsetLabels = (label) => setCheckedLabels(checkedLabels.filter(l => label !== l)) 
 
+	if(loading || !board) {
+		return (
+			<div>Loading</div>
+		)
+	}
+
 	return (
 		<Container>
 			dsfds
