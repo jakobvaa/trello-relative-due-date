@@ -60,7 +60,6 @@ const Timeline = (props) => {
 			dsfds
 			{lists.length > 0 &&
 				<div>
-					fdsfd
 					<TimelineSidebar
 					labels={board.labels}
 					checkedLabels={checkedLabels}
