@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, cloneElement} from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 import styled from 'styled-components'
@@ -29,17 +29,33 @@ const BASE_URL = 'https://api.trello.com/1/'
 
 
 const Timeline = (props) => {
+	const [checkedLabels, setCheckedLabels] = useState([])
+	const [board, setBoard] = useState(null)
+	const [lists, setLists] = useState([])
+	const [loading, setLoading] = useState(false)
 	useEffect(async () => {
-		const board = await t.board('all')
-		const lists = await t.list('all')
-		console.log('board', board)
-		console.log('lists', listst)
+		if(loading && !board) {
+			setLoading(true)
+			const board = await t.board('all')
+			setBoard(board)
+			const lists = await t.list('all')
+			const setLists(lists)
+			console.log('board', board)
+			console.log('lists', listst)
+		}
 		
 	})
 
+	const setLabel = (label) => setCheckedLabels([...checkedLabels, label])
+	const unsetLabels = (label) => setCheckedLabels(checkedLabels.filter(l => label !== l)) 
+
 	return (
 		<Container>
-			
+			<TimelineSidebar
+				labels={board.labels}
+				checkedLabels={checkedLabels}
+				setLabel={setLabel}
+				unsetLabel={unsetLabels}/>
 		</Container>
 	)
 }
