@@ -51,9 +51,9 @@ const Timeline = (props) => {
 		setCards(newCards)
 	}, [checkedLabels])
 
-	const generateCards = (lists) => {
+	const generateCards = (cardlists) => {
 		const cards = []
-		lists.forEach(list => {
+		cardlists.forEach(list => {
 			list.forEach(card => {
 				if(card.due && checkedLabels.includes(card.label)) {
 					card.list = list.name
@@ -62,10 +62,7 @@ const Timeline = (props) => {
 			})
 		})
 		return cards.sort((a,b) => new Date(a.due) - new Date(b.due))
-	}
-
-	console.log(lists)
-	
+	}	
 
 	const setLabel = (label) => setCheckedLabels([...checkedLabels, label])
 	const unsetLabels = (label) => setCheckedLabels(checkedLabels.filter(l => label !== l)) 
