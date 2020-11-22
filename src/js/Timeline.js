@@ -54,7 +54,6 @@ const Timeline = (props) => {
 
 	const generateCards = (cardLists) => {
 		const parsedCards = []
-		console.log(cardLists)
 		cardLists.forEach(list => {
 			list.cards.forEach(card => {
 				const totalLength = card.labels.length + checkedLabels.length
@@ -78,8 +77,6 @@ const Timeline = (props) => {
 			<div>Loading</div>
 		)
 	}
-
-	console.log(checkedLabels)
 	
 	return (
 		<Container>
