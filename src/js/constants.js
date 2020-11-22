@@ -17,7 +17,7 @@ export const timelineModes = {
 		{
 			value: 7,
 			na,me: '1 week'
-		}
+		},
 		{
 			value: 14,
 			name: '2 weeks'
