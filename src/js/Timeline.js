@@ -85,7 +85,9 @@ const Timeline = (props) => {
 			labels={board.labels}
 			checkedLabels={checkedLabels}
 			setLabel={setLabel}
-			unsetLabel={unsetLabels}/>
+			unsetLabel={unsetLabels}
+			setMode={setMode}
+			mode={setMode}/>
 			{cards.length > 0 &&
 				<CardTimeline cards={cards} mode={mode}/>
 			}
