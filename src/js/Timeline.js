@@ -32,7 +32,7 @@ const Timeline = (props) => {
 	const [board, setBoard] = useState(null)
 	const [lists, setLists] = useState([])
 	const [cards, setCards] = useState([])
-	const [mode, setMode] = useState('mothly')
+	const [mode, setMode] = useState('monthly')
 	const [loading, setLoading] = useState(false)
 	useEffect(async () => {
 		if(!loading && lists.length === 0) {
