@@ -42,7 +42,7 @@ const Card = styled.div`
 const modes = {
 	monthly: (diff) => moment.utc().add(diff, 'M'),
 	weekly: (diff) => moment.utc().add(diff, 'w'),
-	quarterly: (diff) => moment().utc.add(diff * 3, 'M')
+	quarterly: (diff) => moment.utc().add(diff * 3, 'M')
 }
 
 const titleFunctions = {
@@ -56,7 +56,6 @@ const titleFunctions = {
 export const CardTimeline = ({cards}) => {
 	const [mode, setMode] = useState('monthly')
 	const renderColumn = (column) => {
-		console.log(column)
 		return (
 			<Column>
 				<ColumnHeader>
