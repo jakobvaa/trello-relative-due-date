@@ -53,8 +53,7 @@ const titleFunctions = {
 
 
 
-export const CardTimeline = ({cards}) => {
-	const [mode, setMode] = useState('monthly')
+export const CardTimeline = ({cards, mode}) => {
 	const renderColumn = (column) => {
 		return (
 			<Column>

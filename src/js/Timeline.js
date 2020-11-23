@@ -32,6 +32,7 @@ const Timeline = (props) => {
 	const [board, setBoard] = useState(null)
 	const [lists, setLists] = useState([])
 	const [cards, setCards] = useState([])
+	const [mode, setMode] = useState('mothly')
 	const [loading, setLoading] = useState(false)
 	useEffect(async () => {
 		if(!loading && lists.length === 0) {
@@ -86,7 +87,7 @@ const Timeline = (props) => {
 			setLabel={setLabel}
 			unsetLabel={unsetLabels}/>
 			{cards.length > 0 &&
-				<CardTimeline cards={cards} />
+				<CardTimeline cards={cards} mode={mode}/>
 			}
 		</Container>
 	)
