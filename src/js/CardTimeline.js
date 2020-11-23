@@ -48,7 +48,7 @@ const modes = {
 const titleFunctions = {
 	monthly: (diff) => diff > 1 ? `${diff} Months` : `${diff} Month`,
 	weekly: (diff) => diff > 1 ? `${diff} Weeks` : `${diff} Week`,
-	quarterly: (diff) => `${diff} Months`
+	quarterly: (diff) => `${diff * 3} Months`
 }
 
 
