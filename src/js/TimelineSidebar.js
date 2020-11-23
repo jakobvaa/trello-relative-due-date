@@ -25,7 +25,9 @@ export const TimelineSidebar = (props) => {
 		labels,
 		checkedLabels,
 		setLabel,
-		unsetLabel
+		unsetLabel,
+		mode,
+		setMode
 	} = props
 	
 	const renderLines = () => (
