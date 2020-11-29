@@ -66,6 +66,8 @@ const Timeline = (props) => {
 				}
 			})
 		})
+		console.log(parsedCards.push.length)
+		
 		const sortedCards =  parsedCards.sort((a,b) => new Date(a.due) - new Date(b.due))
 		return sortedCards
 	}	
