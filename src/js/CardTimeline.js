@@ -37,6 +37,7 @@ const Card = styled.div`
 	border-radius: 3px;
 	border: 1px solid lightgrey;
 	cursor: pointer;
+	background-color: ${props => props.color ? props.color : 'white'};
 `
 
 const modes = {
@@ -54,7 +55,7 @@ const titleFunctions = {
 
 
 export const CardTimeline = ({cards, mode}) => {
-	const renderColumn = (column) => {
+	const renderColumn = (column) => { 
 		return (
 			<Column>
 				<ColumnHeader>
@@ -62,12 +63,15 @@ export const CardTimeline = ({cards, mode}) => {
 						{column.name}
 					</h3>
 				</ColumnHeader>
-				{column.cards.map(card => (
-					<Card>
-						<h3>{card.name}</h3>
-						<p>Due: {new Date(card.due).toDateString()}</p>
-					</Card>
-				))}
+				{column.cards.map(card => {
+					const cardColor = colors[card.list] ? colors[card.list] : 'white'
+					return (
+						<Card color={cardColor}>
+							<h3>{card.name}</h3>
+							<p>Due: {new Date(card.due).toDateString()}</p>
+						</Card>
+					)
+				})}
 			</Column>
 		)
 	}
@@ -80,7 +84,7 @@ export const CardTimeline = ({cards, mode}) => {
 			name: titleFunctions[mode](currentDiff),
 			cards: []
 		}
-		while(currentCard !== cards.length) {
+		while(currentCardIndex !== cards.length) {
 			while(!moment(cards[currentCardIndex].due).utc().isBefore(modes[mode](currentDiff))){
 				columns.push(currentCardList)
 				currentDiff++
