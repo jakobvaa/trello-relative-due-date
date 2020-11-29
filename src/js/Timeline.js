@@ -33,6 +33,7 @@ const Timeline = (props) => {
 	const [lists, setLists] = useState([])
 	const [cards, setCards] = useState([])
 	const [mode, setMode] = useState('monthly')
+	const [collapsed, setCollapsed] = useState(false)
 	const [loading, setLoading] = useState(false)
 	useEffect(async () => {
 		if(!loading && lists.length === 0) {
@@ -66,7 +67,6 @@ const Timeline = (props) => {
 				}
 			})
 		})
-		console.log(parsedCards.push.length)
 		
 		const sortedCards =  parsedCards.sort((a,b) => new Date(a.due) - new Date(b.due))
 		return sortedCards
@@ -89,9 +89,11 @@ const Timeline = (props) => {
 			setLabel={setLabel}
 			unsetLabel={unsetLabels}
 			setMode={setMode}
-			mode={setMode}/>
+			mode={setMode}
+			collapsed={collapsed}
+			setCollapsed={setCollapsed}/>
 			{cards.length > 0 &&
-				<CardTimeline cards={cards} mode={mode}/>
+				<CardTimeline cards={cards} mode={mode} collapsed={collapsed}/>
 			}
 		</Container>
 	)

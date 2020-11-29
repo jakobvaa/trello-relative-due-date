@@ -63,8 +63,7 @@ const titleFunctions = {
 
 
 
-export const CardTimeline = ({cards, mode}) => {
-	console.log(cards.length)
+export const CardTimeline = ({cards, mode, collapsed}) => {
 	const renderColumn = (column) => { 
 		return (
 			<Column>
@@ -87,7 +86,7 @@ export const CardTimeline = ({cards, mode}) => {
 	}
 
 	const renderColumns2 = () => {
-		const columns = []
+		let columns = []
 		const eventStart = cards.find(card => card.name === 'Event Start')
 		const eventStartMoment = moment(eventStart.due).utc()
 		let currentDiff = diffs[mode](moment(cards[0].due).utc(), eventStartMoment)
@@ -111,6 +110,7 @@ export const CardTimeline = ({cards, mode}) => {
 			currentCardIndex ++
 		}
 		columns.push(currentCardList)
+		columns = collapsed ? columns.filter(col => col.cards.length > 0): columns
 		return (
 			<Container>
 				{columns.map(column => (

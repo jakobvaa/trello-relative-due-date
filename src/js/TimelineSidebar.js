@@ -27,7 +27,9 @@ export const TimelineSidebar = (props) => {
 		setLabel,
 		unsetLabel,
 		mode,
-		setMode
+		setMode,
+		collapsed,
+		setCollapsed
 	} = props
 	
 	const renderLines = () => (
@@ -65,6 +67,14 @@ export const TimelineSidebar = (props) => {
 				<CheckListItem onClick={() => setMode('quarterly')}>
 					<input type='radio' checked={mode === 'quarterly'}/>
 					<label>Quarterly</label>
+				</CheckListItem>
+			</CheckList>
+			<CheckList>
+				<CheckListItem onClick={() => setCollapsed(!collapsed)}>
+					<input type='checkbox'
+						checked={collapsed}
+					/>
+					<label>Collapse empty columns</label>
 				</CheckListItem>
 			</CheckList>
 		</SidebarContainer>
