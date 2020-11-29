@@ -27,6 +27,7 @@ const ColumnHeader = styled.div`
 	border-bottom: 2px solid lightgrey;
 	width: 100%;
 	text-align: center;
+	margin-bottom: 5px;
 `
 
 const Card = styled.div`
@@ -38,6 +39,7 @@ const Card = styled.div`
 	border: 1px solid lightgrey;
 	cursor: pointer;
 	background-color: ${props => props.color ? props.color : 'white'};
+	margin-bottom: 3px;
 `
 
 const modes = {
