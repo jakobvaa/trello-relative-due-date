@@ -15,7 +15,7 @@ const Column = styled.div`
 	flex-direction: column;
 	border: 1px solid lightgrey;
 	height: 100%;
-	width: calc(20% - 10px);
+	width: calc(15% - 10px);
 	flex-shrink: 0;
 	justify-content: flex-start;
 	align-items: center;
@@ -75,13 +75,13 @@ export const CardTimeline = ({cards, mode}) => {
 	const renderColumns2 = () => {
 		const columns = []
 		let currentDiff = 1
-		let currentCard = 0 
+		let currentCardIndex = 0 
 		let currentCardList = {
 			name: titleFunctions[mode](currentDiff),
 			cards: []
 		}
 		while(currentCard !== cards.length) {
-			while(!moment(cards[currentCard].due).utc().isBefore(modes[mode](currentDiff))){
+			while(!moment(cards[currentCardIndex].due).utc().isBefore(modes[mode](currentDiff))){
 				columns.push(currentCardList)
 				currentDiff++
 				currentCardList = {
@@ -89,8 +89,8 @@ export const CardTimeline = ({cards, mode}) => {
 					cards: []
 				}
 			}
-			currentCardList.cards.push(cards[currentCard])
-			currentCard ++
+			currentCardList.cards.push(cards[currentCardIndex])
+			currentCardIndex ++
 		}
 		return (
 			<Container>
