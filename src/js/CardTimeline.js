@@ -48,8 +48,8 @@ const modes = {
 
 const diffs = {
 	monthly: (eventStart, checkDate) => eventStart.diff(checkDate, 'M'),
-	weeklt: (eventStart, checkDate) => eventStart.diff(checkDate, 'w'),
-	quarterly: (eventStart, checkDate) => eventStart.diff(checkDate * 3, 'M')
+	weekly: (eventStart, checkDate) => eventStart.diff(checkDate, 'w'),
+	quarterly: (eventStart, checkDate) => eventStart.diff(checkDate, 'M')
 }
 
 const titleFunctions = {
@@ -89,6 +89,7 @@ export const CardTimeline = ({cards, mode}) => {
 		const eventStart = cards.find(card => card.name === 'Event Start')
 		const eventStartMoment = eventStart ? moment(eventStart.due).utc() : moment().utc()
 		let currentDiff = diffs[mode](eventStartMoment, moment(cards[0].due).utc()) + 1
+
 		let currentCardIndex = 0 
 		let currentCardList = {
 			name: titleFunctions[mode](currentDiff),
