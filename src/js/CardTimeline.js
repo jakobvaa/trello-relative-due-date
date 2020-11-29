@@ -89,7 +89,7 @@ export const CardTimeline = ({cards, mode}) => {
 		
 		const eventStartMoment = moment(eventStart.due).utc()
 		console.log(eventStartMoment)
-		
+
 		
 		let currentDiff = diffs[mode](moment(cards[0].due).utc(), eventStartMoment)
 		let currentCardIndex = 0 
@@ -100,7 +100,7 @@ export const CardTimeline = ({cards, mode}) => {
 
 
 		while(currentCardIndex !== cards.length) {
-			while(!moment(cards[currentCardIndex].due).utc().isSameOrBefore(modes[mode](currentDiff))){
+			while(!moment(cards[currentCardIndex].due).utc().isSameOrBefore(modes[mode](currentDiff, eventStartMoment))){
 				columns.push(currentCardList)
 				currentDiff++
 				currentCardList = {
