@@ -110,6 +110,7 @@ export const CardTimeline = ({cards, mode}) => {
 			currentCardList.cards.push(cards[currentCardIndex])
 			currentCardIndex ++
 		}
+		columns.push(currentCardList)
 		return (
 			<Container>
 				{columns.map(column => (
