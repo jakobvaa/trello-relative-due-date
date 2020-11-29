@@ -64,6 +64,7 @@ const titleFunctions = {
 
 
 export const CardTimeline = ({cards, mode}) => {
+	console.log(cards.length)
 	const renderColumn = (column) => { 
 		return (
 			<Column>
