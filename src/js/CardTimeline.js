@@ -41,15 +41,9 @@ const Card = styled.div`
 `
 
 const modes = {
-	monthly: (diff, eventStart) => eventStart.add(diff, 'M'),
-	weekly: (diff, eventStart) => eventStart.add(diff, 'w'),
-	quarterly: (diff, eventStart) => eventStart.add(diff * 3, 'M')
-}
-
-const diffs = {
-	monthly: (eventStart, checkDate) => eventStart.diff(checkDate, 'M'),
-	weekly: (eventStart, checkDate) => eventStart.diff(checkDate, 'w'),
-	quarterly: (eventStart, checkDate) => eventStart.diff(checkDate, 'M')
+	monthly: (diff) => moment.utc().add(diff, 'M'),
+	weekly: (diff) => moment.utc().add(diff, 'w'),
+	quarterly: (diff) => moment.utc().add(diff * 3, 'M')
 }
 
 const titleFunctions = {
@@ -57,8 +51,6 @@ const titleFunctions = {
 	weekly: (diff) => diff > 1 ? `${diff} Weeks` : `${diff} Week`,
 	quarterly: (diff) => `${diff * 3} Months`
 }
-
-
 
 
 
@@ -84,28 +76,21 @@ export const CardTimeline = ({cards, mode}) => {
 		)
 	}
 
-	const renderColumns = () => {
+	const renderColumns2 = () => {
 		const columns = []
-		const eventStart = cards.find(card => card.name === 'Event Start')
-		const eventStartMoment = eventStart ? moment(eventStart.due).utc() : moment().utc()
-		let currentDiff = diffs[mode](eventStartMoment, moment(cards[0].due).utc()) + 1
-		console.log(currentDiff)
+		let currentDiff = 1
 		let currentCardIndex = 0 
 		let currentCardList = {
 			name: titleFunctions[mode](currentDiff),
-			cards: [],
-			diff: currentDiff
+			cards: []
 		}
 		while(currentCardIndex !== cards.length) {
-			console.log(currentCardIndex)
-			while(!moment(cards[currentCardIndex].due).utc().isBefore(modes[mode](currentDiff, eventStartMoment))){
-				console.log(currentDiff)
+			while(!moment(cards[currentCardIndex].due).utc().isBefore(modes[mode](currentDiff))){
 				columns.push(currentCardList)
 				currentDiff++
 				currentCardList = {
 					name: titleFunctions[mode](currentDiff),
-					cards: [],
-					diff: currentDiff
+					cards: []
 				}
 			}
 			currentCardList.cards.push(cards[currentCardIndex])
@@ -120,9 +105,8 @@ export const CardTimeline = ({cards, mode}) => {
 		)
 	}
 
-
 	return (
-			renderColumns()
+			renderColumns2()
 	)
 }
 
