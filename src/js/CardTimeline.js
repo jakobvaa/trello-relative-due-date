@@ -88,6 +88,9 @@ export const CardTimeline = ({cards, mode}) => {
 		console.log(eventStart)
 		
 		const eventStartMoment = moment(eventStart.due).utc()
+		console.log(eventStartMoment)
+		
+		
 		let currentDiff = diffs[mode](moment(cards[0].due).utc(), eventStartMoment)
 		let currentCardIndex = 0 
 		let currentCardList = {
