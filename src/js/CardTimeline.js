@@ -43,7 +43,7 @@ const Card = styled.div`
 `
 
 const modes = {
-	monthly: (diff, eventStart) => moment(eventStart.toIsoString()).utc().add(diff, 'M'),
+	monthly: (diff, eventStart) => moment(eventStart.toISOString()).utc().add(diff, 'M'),
 	weekly: (diff) => moment.utc().add(diff, 'w'),
 	quarterly: (diff) => moment.utc().add(diff * 3, 'M')
 }
