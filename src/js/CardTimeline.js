@@ -53,9 +53,9 @@ const diffs = {
 }
 
 const titleFunctions = {
-	monthly: (diff) => diff > 1 ? `${diff} Months` : `${diff} Month`,
-	weekly: (diff) => diff > 1 ? `${diff} Weeks` : `${diff} Week`,
-	quarterly: (diff) => `${diff * 3} Months`
+	monthly: (diff) => diff > 1 ? `T + ${diff} Months` : `T ${diff} Month`,
+	weekly: (diff) => diff > 1 ? `T + ${diff} Weeks` : `T ${diff} Week`,
+	quarterly: (diff) => diff > 1? `T + ${diff * 3} Months` : `T ${diff} Months`
 }
 
 
