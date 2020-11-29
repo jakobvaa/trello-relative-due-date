@@ -43,9 +43,13 @@ const Card = styled.div`
 `
 
 const modes = {
-	monthly: (diff) => moment.utc().add(diff, 'M'),
+	monthly: (diff, eventStart) => moment(eventStart.toIsoString()).utc().add(diff, 'M'),
 	weekly: (diff) => moment.utc().add(diff, 'w'),
 	quarterly: (diff) => moment.utc().add(diff * 3, 'M')
+}
+
+const diffs = {
+	monthly: (checkDate, eventStart) => checkDate.diff(eventStart, 'M')
 }
 
 const titleFunctions = {
@@ -80,14 +84,18 @@ export const CardTimeline = ({cards, mode}) => {
 
 	const renderColumns2 = () => {
 		const columns = []
-		let currentDiff = 1
+		const eventStart = cards.find(card => card.name === 'Event Start')
+		const eventStartMoment = moment(eventStart.due).utc()
+		let currentDiff = diffs[mode](moment(cards[0].due).utc(), eventStartMoment)
 		let currentCardIndex = 0 
 		let currentCardList = {
 			name: titleFunctions[mode](currentDiff),
 			cards: []
 		}
+
+
 		while(currentCardIndex !== cards.length) {
-			while(!moment(cards[currentCardIndex].due).utc().isBefore(modes[mode](currentDiff))){
+			while(!moment(cards[currentCardIndex].due).utc().isSameOrBefore(modes[mode](currentDiff))){
 				columns.push(currentCardList)
 				currentDiff++
 				currentCardList = {
