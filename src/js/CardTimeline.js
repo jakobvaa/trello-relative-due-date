@@ -41,9 +41,15 @@ const Card = styled.div`
 `
 
 const modes = {
-	monthly: (diff) => moment.utc().add(diff, 'M'),
-	weekly: (diff) => moment.utc().add(diff, 'w'),
-	quarterly: (diff) => moment.utc().add(diff * 3, 'M')
+	monthly: (diff, eventStart) => eventStart.add(diff, 'M'),
+	weekly: (diff, eventStart) => eventStart.add(diff, 'w'),
+	quarterly: (diff, eventStart) => eventStart.add(diff * 3, 'M')
+}
+
+const diffs = {
+	monthly: (eventStart, checkDate) => eventStart.diff(checkDate, 'M'),
+	weeklt: (eventStart, checkDate) => eventStart.diff(checkDate, 'w'),
+	quarterly: (eventStart, checkDate) => eventStart.diff(checkDate * 3, 'M')
 }
 
 const titleFunctions = {
@@ -51,6 +57,8 @@ const titleFunctions = {
 	weekly: (diff) => diff > 1 ? `${diff} Weeks` : `${diff} Week`,
 	quarterly: (diff) => `${diff * 3} Months`
 }
+
+
 
 
 
@@ -76,13 +84,16 @@ export const CardTimeline = ({cards, mode}) => {
 		)
 	}
 
-	const renderColumns2 = () => {
+	const renderColumns = () => {
 		const columns = []
-		let currentDiff = 1
+		const eventStart = cards.find(card => card.name === 'Event Start')
+		const eventStartMoment = eventStart ? moment(eventStart.due).utc() : moment().utc()
+		let currentDiff = diffs[mode](eventStartMoment, moment(cards[0].due).utc()) + 1
 		let currentCardIndex = 0 
 		let currentCardList = {
 			name: titleFunctions[mode](currentDiff),
-			cards: []
+			cards: [],
+			diff: currentDiff
 		}
 		while(currentCardIndex !== cards.length) {
 			while(!moment(cards[currentCardIndex].due).utc().isBefore(modes[mode](currentDiff))){
@@ -90,7 +101,8 @@ export const CardTimeline = ({cards, mode}) => {
 				currentDiff++
 				currentCardList = {
 					name: titleFunctions[mode](currentDiff),
-					cards: []
+					cards: [],
+					diff: currentDiff
 				}
 			}
 			currentCardList.cards.push(cards[currentCardIndex])
@@ -105,8 +117,9 @@ export const CardTimeline = ({cards, mode}) => {
 		)
 	}
 
+
 	return (
-			renderColumns2()
+			renderColumns()
 	)
 }
 
