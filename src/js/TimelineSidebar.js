@@ -35,8 +35,7 @@ const Label = styled.label`
 `
 
 
-export const TimelineSidebar = (props) => {
-	const {
+export const TimelineSidebar = ({
 		labels,
 		checkedLabels,
 		setLabel,
@@ -45,7 +44,7 @@ export const TimelineSidebar = (props) => {
 		setMode,
 		collapsed,
 		setCollapsed
-	} = props
+	}) => {
 	
 	const renderLines = () => (
 		<CheckList>

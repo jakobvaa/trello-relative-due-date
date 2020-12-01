@@ -92,7 +92,7 @@ const Timeline = (props) => {
 			setLabel={setLabel}
 			unsetLabel={unsetLabels}
 			setMode={setMode}
-			mode={setMode}
+			mode={mode}
 			collapsed={collapsed}
 			setCollapsed={setCollapsed}/>
 			{cards.length > 0 &&
