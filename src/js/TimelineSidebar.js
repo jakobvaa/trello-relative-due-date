@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 const SidebarContainer = styled.div`
+	box-sizing: border-box;
+	padding: 
 	display: flex;
 	flex-direction: column;
 	width: 15%;
@@ -16,6 +18,19 @@ const CheckList = styled.div`
 const CheckListItem = styled.div`
 	display: flex;
 	flex-direction: row;
+	align-items: center;
+	padding: 5px;
+	cursor: pointer;
+	margin-bottom: 5px;
+`
+
+const CheckBox = styled.input`
+	margin-right: 10px;
+	font-size: 12px;
+`
+
+const Label = styled.label`
+	margin: 0;
 
 `
 
@@ -40,11 +55,11 @@ export const TimelineSidebar = (props) => {
 					<CheckListItem
 						key={label.id}
 						onClick={isChecked ? () => unsetLabel(label.id) :() => setLabel(label.id)}>
-						<input 
+						<CheckBox 
 							type='checkbox' 
 							checked={checkedLabels.includes(label.id)}
 							onChange={() => {return}}/>
-						<label>{label.name}</label>
+						<Label>{label.name}</Label>
 					</CheckListItem>
 				)
 			})}
