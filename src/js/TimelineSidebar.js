@@ -50,6 +50,8 @@ const ColorBullet = styled.div`
 	margin-right: 12px;
 `
 
+const 
+
 
 export const TimelineSidebar = ({
 		labels,
@@ -88,7 +90,7 @@ export const TimelineSidebar = ({
 				{Object.entries(colors).map(entry => (
 					<ColorLine>
 						<ColorBullet color={entry[1]}/>
-						<p>{entry[0]}</p>
+						<p style={{margin: 0}}>{entry[0]}</p>
 					</ColorLine>
 				))}
 			</CheckList>
