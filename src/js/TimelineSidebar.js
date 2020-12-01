@@ -48,7 +48,7 @@ export const TimelineSidebar = (props) => {
 	
 	const renderLines = () => (
 		<CheckList>
-			<p>Select Labels for Timeline</p>
+			<h4>Select Labels for Timeline</h4>
 			{labels.map(label => {
 				const isChecked = checkedLabels.includes(label.id)
 				return (
@@ -71,6 +71,7 @@ export const TimelineSidebar = (props) => {
 
 			{renderLines()}
 			<CheckList>
+				<h4>Select Time Interval</h4>
 				<CheckListItem onClick={() => setMode('weekly')}>
 					<CheckBox type='radio' checked={mode === 'weekly'}/>
 					<Label>Weekly</Label>
