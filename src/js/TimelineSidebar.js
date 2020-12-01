@@ -76,8 +76,8 @@ export const TimelineSidebar = ({
 		return (
 			<CheckList>
 				{Object.entries(colors).map(entry => (
-					<ColorBox color={entry[0]}>
-						<p>{entry[1]}</p>
+					<ColorBox color={entry[1]}>
+						<p>{entry[0]}</p>
 					</ColorBox>
 				))}
 			</CheckList>
