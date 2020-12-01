@@ -48,6 +48,7 @@ export const TimelineSidebar = (props) => {
 	
 	const renderLines = () => (
 		<CheckList>
+			<h3>Select Labels for Timeline</h3>
 			{labels.map(label => {
 				const isChecked = checkedLabels.includes(label.id)
 				return (
