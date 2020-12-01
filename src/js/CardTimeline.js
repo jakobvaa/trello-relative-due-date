@@ -14,8 +14,8 @@ const Column = styled.div`
 	display: flex;
 	flex-direction: column;
 	border: 1px solid lightgrey;
-	height: 100%;
 	width: calc(15% - 10px);
+	height: calc(100% - 10px);
 	flex-shrink: 0;
 	justify-content: flex-start;
 	align-items: center;
