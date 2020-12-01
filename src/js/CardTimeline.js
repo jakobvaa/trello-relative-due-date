@@ -57,17 +57,17 @@ const diffs = {
 const titleFunctions = {
 	monthly: (diff) => {
 		const plural = Math.abs(diff) > 1 || Math.abs(diff) < 1 ? 'Months' : 'Month'
-		const num = diff >= 0 ? `+ ${diff.toFixed(0)}` : `${diff.toFixed(0)}`
+		const num = diff >= 0 ? `+ ${diff.toFixed(0)}` : `- ${diff.toFixed(Math.abs(0))}`
 		return `Event Start ${num} ${plural}`
 	},
 	weekly: (diff) => {
 		const plural = Math.abs(diff) > 1 || Math.abs(diff) < 1 ? 'Weeks' : 'Week'
-		const num = diff >= 0 ? `+ ${diff.toFixed(0)}` : `${diff.toFixed(0)}`
+		const num = diff >= 0 ? `+ ${diff.toFixed(0)}` : ` - ${diff.toFixed(Math.abs(0))}`
 		return `Event Start ${num} ${plural}`
 	},
 	quarterly: (diff) => {
 		const plural = Math.abs(diff) > 1 || Math.abs(diff) < 1 ? 'Months' : 'Month'
-		const num = diff >= 0 ? `+ ${diff.toFixed(0) * 3}` : `${diff.toFixed(0) * 3}`
+		const num = diff >= 0 ? `+ ${diff.toFixed(Math.abs(0)) * 3}` : `- ${diff.toFixed(Math.abs(0)) * 3}`
 		return `Event Start ${num} ${plural}`
 	}
 }
