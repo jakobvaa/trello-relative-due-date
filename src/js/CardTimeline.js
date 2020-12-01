@@ -65,7 +65,7 @@ const titleFunctions = {
 		const num = diff > 0 ? `+ ${diff.toFixed(0)}` : `${diff.toFixed(0)}`
 		return `Event Start ${num} ${plural}`
 	},
-	quarterly: (diff) => monthly(diff)
+	quarterly: monthly
 }
 
 
