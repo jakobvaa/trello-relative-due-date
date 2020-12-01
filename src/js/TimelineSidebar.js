@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import {colors} from './constants'
 const SidebarContainer = styled.div`
 	box-sizing: border-box;
 	overflow-y: scroll;
@@ -34,6 +35,12 @@ const Label = styled.label`
 	cursor: pointer;
 `
 
+const ColorBox = styled.div`
+	padding: 5px;
+	background-color: ${props => props.color};
+
+`
+
 
 export const TimelineSidebar = ({
 		labels,
@@ -65,7 +72,19 @@ export const TimelineSidebar = ({
 			})}
 		</CheckList>
 	)
-	console.log(mode === 'monthly')
+
+	const renderColorCoding = () => {
+		return (
+			<CheckList>
+				{Object.entries.map((key, value) => (
+					<ColorBox color={value}>
+						<p>{key}</p>
+					</ColorBox>
+				))}
+			</CheckList>
+		)
+	}
+
 	return (
 		<SidebarContainer>
 
@@ -93,6 +112,7 @@ export const TimelineSidebar = ({
 					<Label>Collapse empty columns</Label>
 				</CheckListItem>
 			</CheckList>
+			{renderColorCoding()}
 		</SidebarContainer>
 	)
 }
