@@ -84,7 +84,7 @@ export const CardTimeline = ({cards, mode, collapsed}) => {
 		)
 	}
 
-	const renderColumns2 = () => {
+	const renderColumns = () => {
 		let columns = []
 		const eventStart = cards.find(card => card.name === 'Event Start')
 		const eventStartMoment = moment(eventStart.due).utc()
@@ -120,7 +120,7 @@ export const CardTimeline = ({cards, mode, collapsed}) => {
 	}
 
 	return (
-			renderColumns2()
+			renderColumns()
 	)
 }
 

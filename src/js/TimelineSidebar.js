@@ -66,7 +66,7 @@ export const TimelineSidebar = (props) => {
 			})}
 		</CheckList>
 	)
-	
+	console.log(mode === 'monthly')
 	return (
 		<SidebarContainer>
 
