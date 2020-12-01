@@ -71,24 +71,24 @@ export const TimelineSidebar = (props) => {
 			{renderLines()}
 			<CheckList>
 				<CheckListItem onClick={() => setMode('weekly')}>
-					<input type='radio' checked={mode === 'weekly'}/>
-					<label>Weekly</label>
+					<CheckBox type='radio' checked={mode === 'weekly'}/>
+					<Label>Weekly</Label>
 				</CheckListItem>
 				<CheckListItem onClick={() => setMode('monthly')}>
-					<input type='radio' checked={mode === 'monthly'}/>
-					<label>Monthly</label>
+					<CheckBox type='radio' checked={mode === 'monthly'}/>
+					<Label>Monthly</Label>
 				</CheckListItem>
 				<CheckListItem onClick={() => setMode('quarterly')}>
-					<input type='radio' checked={mode === 'quarterly'}/>
-					<label>Quarterly</label>
+					<CheckBox type='radio' checked={mode === 'quarterly'}/>
+					<Label>Quarterly</Label>
 				</CheckListItem>
 			</CheckList>
 			<CheckList>
 				<CheckListItem onClick={() => setCollapsed(!collapsed)}>
-					<input type='checkbox'
+					<CheckBox type='checkbox'
 						checked={collapsed}
 					/>
-					<label>Collapse empty columns</label>
+					<Label>Collapse empty columns</Label>
 				</CheckListItem>
 			</CheckList>
 		</SidebarContainer>
