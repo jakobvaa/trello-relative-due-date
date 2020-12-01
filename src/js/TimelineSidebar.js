@@ -12,7 +12,6 @@ const SidebarContainer = styled.div`
 const CheckList = styled.div`
 	width: calc(100% - 20px);
 	padding: 10px;
-	margin: 10px 0;
 `
 
 const CheckListItem = styled.div`
@@ -24,13 +23,15 @@ const CheckListItem = styled.div`
 	margin: 0 5px 0 0;
 `
 
-const CheckBox = styled.input.attrs({type: 'checkbox'})`
+const CheckBox = styled.input`
 	margin: 0 12px 0 0 !important;
 	font-size: 12px;
+	cursor: pointer;
 `
 
 const Label = styled.label`
 	margin: 0;
+	cursor: pointer;
 `
 
 
