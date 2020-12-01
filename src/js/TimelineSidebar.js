@@ -25,7 +25,7 @@ const CheckListItem = styled.div`
 `
 
 const CheckBox = styled.input`
-	margin-right: 10px;
+	margin: 0 12px 0 0;
 	font-size: 12px;
 `
 
