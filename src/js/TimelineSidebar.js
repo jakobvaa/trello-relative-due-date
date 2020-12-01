@@ -36,9 +36,18 @@ const Label = styled.label`
 	cursor: pointer;
 `
 
-const ColorBox = styled.div`
-	padding: 5px;
-	background-color: ${props => props.color};
+const ColorLine = styled.span`
+	display: flex;
+	flex-direction: row;
+	align-items: center; 
+`
+
+const ColorBullet = styled.div`
+	width: 5px;
+	height: 5px;
+	background-color: ${props => props.color? props.color : 'inherit'};
+	border-radius: 100%;
+	margin-right: 12px;
 `
 
 
@@ -77,9 +86,10 @@ export const TimelineSidebar = ({
 		return (
 			<CheckList>
 				{Object.entries(colors).map(entry => (
-					<ColorBox color={entry[1]}>
+					<ColorLine>
+						<ColorBullet color={entry[1]}/>
 						<p>{entry[0]}</p>
-					</ColorBox>
+					</ColorLine>
 				))}
 			</CheckList>
 		)
