@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import ReactDOM from 'react-dom'
-
+import moment from 'moment'
 import styled from 'styled-components'
 import TimelineSidebar from './TimelineSidebar'
 import CardTimeline from './CardTimeline'
