@@ -16,6 +16,7 @@ const Column = styled.div`
 	border: 1px solid lightgrey;
 	width: calc(15% - 10px);
 	flex-shrink: 0;
+	max-width: 250px;
 	justify-content: flex-start;
 	align-items: center;
 	padding: 5px;
