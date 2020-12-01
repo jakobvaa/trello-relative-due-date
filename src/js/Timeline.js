@@ -57,12 +57,14 @@ const Timeline = (props) => {
 
 	const generateCards = (cardLists) => {
 		const parsedCards = []
+		const today = moment().utc()
 		cardLists.forEach(list => {
 			list.cards.forEach(card => {
 				const totalLength = card.labels.length + checkedLabels.length
 				const cardLabelNames = card.labels.map(label => label.id)
 				const labelSet = new Set([...cardLabelNames, ...checkedLabels])
-				if(card.due && ((totalLength !== labelSet.size || checkedLabels.length === 0) || card.name === 'Event Start')) {
+				if(card.due && today.isBefore(card.due) && 
+				((totalLength !== labelSet.size || checkedLabels.length === 0) || card.name === 'Event Start')) {
 					card.list = list.name
 					parsedCards.push(card)
 				}
