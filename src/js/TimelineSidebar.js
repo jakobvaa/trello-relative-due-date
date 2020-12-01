@@ -38,7 +38,6 @@ const Label = styled.label`
 const ColorBox = styled.div`
 	padding: 5px;
 	background-color: ${props => props.color};
-
 `
 
 
@@ -76,9 +75,9 @@ export const TimelineSidebar = ({
 	const renderColorCoding = () => {
 		return (
 			<CheckList>
-				{Object.entries(colors).map((key, value) => (
-					<ColorBox color={value}>
-						<p>{key}</p>
+				{Object.entries(colors).map(entry => (
+					<ColorBox color={entry[0]}>
+						<p>{entry[1]}</p>
 					</ColorBox>
 				))}
 			</CheckList>
