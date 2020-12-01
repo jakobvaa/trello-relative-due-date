@@ -50,7 +50,7 @@ const ColorBullet = styled.div`
 	margin-right: 12px;
 `
 
-const 
+
 
 
 export const TimelineSidebar = ({
