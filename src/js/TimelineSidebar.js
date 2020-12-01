@@ -21,7 +21,7 @@ const CheckListItem = styled.div`
 	align-items: center;
 	padding: 5px;
 	cursor: pointer;
-	margin-bottom: 5px;
+	margin: 0 5px 0 0;
 `
 
 const CheckBox = styled.input`
