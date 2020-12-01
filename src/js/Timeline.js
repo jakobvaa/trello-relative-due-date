@@ -7,6 +7,7 @@ import CardTimeline from './CardTimeline'
 const Container = styled.div`
 	display: flex;
 	flex-direction: row;
+	box-sizing: border-box;
 	height: 100vh;
 	width: 100vw;
 `

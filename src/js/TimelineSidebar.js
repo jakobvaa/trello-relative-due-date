@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 const SidebarContainer = styled.div`
 	box-sizing: border-box;
-
+	overflow-y: scroll;
 	display: flex;
 	flex-direction: column;
 	width: 15%;
@@ -31,7 +31,6 @@ const CheckBox = styled.input`
 
 const Label = styled.label`
 	margin: 0;
-
 `
 
 
