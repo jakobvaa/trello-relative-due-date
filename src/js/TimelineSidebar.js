@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 const SidebarContainer = styled.div`
 	box-sizing: border-box;
-	padding: 
+
 	display: flex;
 	flex-direction: column;
 	width: 15%;
