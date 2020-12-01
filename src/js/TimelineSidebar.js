@@ -8,6 +8,7 @@ const SidebarContainer = styled.div`
 	flex-direction: column;
 	width: 15%;
 	background-color: lightgrey;
+	max-width: 300px;
 `
 
 const CheckList = styled.div`
