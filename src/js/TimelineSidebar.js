@@ -20,12 +20,12 @@ const CheckListItem = styled.div`
 	flex-direction: row;
 	align-items: center;
 	padding: 5px;
-	cursor: pointer;
+	cursor: pointer !important;
 	margin: 0 5px 0 0;
 `
 
 const CheckBox = styled.input.attrs({type: 'checkbox'})`
-	margin: 0 12px 0 0;
+	margin: 0 12px 0 0 !important;
 	font-size: 12px;
 `
 
