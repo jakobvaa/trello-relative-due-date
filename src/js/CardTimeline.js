@@ -67,7 +67,7 @@ const titleFunctions = {
 	},
 	quarterly: (diff) => {
 		const plural = Math.abs(diff) > 1 || Math.abs(diff) < 1 ? 'Months' : 'Month'
-		const num = diff >= 0 ? `+ ${diff.toFixed(0)}` : `${diff.toFixed(0)}`
+		const num = diff >= 0 ? `+ ${diff.toFixed(0) * 3}` : `${diff.toFixed(0) * 3}`
 		return `Event Start ${num} ${plural}`
 	}
 }
