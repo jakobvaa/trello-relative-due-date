@@ -43,8 +43,8 @@ const ColorLine = styled.span`
 `
 
 const ColorBullet = styled.div`
-	width: 5px;
-	height: 5px;
+	width: 15px;
+	height: 15px;
 	background-color: ${props => props.color? props.color : 'inherit'};
 	border-radius: 100%;
 	margin-right: 12px;
@@ -90,7 +90,7 @@ export const TimelineSidebar = ({
 				{Object.entries(colors).map(entry => (
 					<ColorLine>
 						<ColorBullet color={entry[1]}/>
-						<p style={{margin: 0}}>{entry[0]}</p>
+						<p style={{margin: '0'}}>{entry[0]}</p>
 					</ColorLine>
 				))}
 			</CheckList>
