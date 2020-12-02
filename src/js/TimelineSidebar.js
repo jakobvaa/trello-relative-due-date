@@ -40,6 +40,8 @@ const ColorLine = styled.span`
 	display: flex;
 	flex-direction: row;
 	align-items: center; 
+	margin: 0 5px 2px 0; 
+	padding: 5px;
 `
 
 const ColorBullet = styled.div`
