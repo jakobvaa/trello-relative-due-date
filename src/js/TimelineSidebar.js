@@ -89,6 +89,7 @@ export const TimelineSidebar = ({
 	const renderColorCoding = () => {
 		return (
 			<CheckList>
+				<h4>Colors </h4>
 				{Object.entries(colors).map(entry => (
 					<ColorLine>
 						<ColorBullet color={entry[1]}/>
