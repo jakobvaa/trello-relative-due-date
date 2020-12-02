@@ -36,7 +36,7 @@ const Label = styled.label`
 	cursor: pointer;
 `
 
-const ColorLine = styled.span`
+const ColorLine = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center; 
@@ -92,7 +92,7 @@ export const TimelineSidebar = ({
 				{Object.entries(colors).map(entry => (
 					<ColorLine>
 						<ColorBullet color={entry[1]}/>
-						<p style={{margin: '0'}}>{entry[0]}</p>
+						<label style={{margin: '0'}}>{entry[0]}</label>
 					</ColorLine>
 				))}
 			</CheckList>
