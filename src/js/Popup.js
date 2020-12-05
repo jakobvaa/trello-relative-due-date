@@ -73,7 +73,6 @@ const Popup = (props) => {
 			])
       
 			setCurrentCard(myCard)
-			console.log(myCard)
 			setCards(boardCards.filter(card => card.id !== myCard.id ))
       const relativeCard = await axios({
         url: `/getcard?cardid=${myCard.id}`
@@ -128,7 +127,7 @@ const Popup = (props) => {
 
 	const removeParent = async () => {
 		await axios({
-			method: 'DELETE',
+			method: 'PUT',
 			data: {
 				cardId: relativeCard.cardId
 			}

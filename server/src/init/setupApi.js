@@ -281,7 +281,7 @@ module.exports = (app) => {
 		}
 	})
 
-	app.delete('/removeparent', async (req, res) => {
+	app.put('/removeparent', async (req, res) => {
 		try {
 			const {cardId} = req.body
 			const card = await Card.findOne({cardId})
