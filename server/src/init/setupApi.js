@@ -1,7 +1,7 @@
 const Card = require('../models/card')
 const {Component, Property} = require('immutable-ics')
 const moment = require('moment')
-const { default: CardTimeline } = require('../../../src/js/CardTimeline')
+
 const addNewCard = async (data) => {
 	try {
 		const {
