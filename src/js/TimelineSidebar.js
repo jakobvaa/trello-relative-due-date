@@ -67,7 +67,8 @@ export const TimelineSidebar = ({
 		setMode,
 		collapsed,
 		setCollapsed,
-		cards
+		cards,
+		boardId
 	}) => {
 	
 	const downloadCalendar = () => {
