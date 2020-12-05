@@ -71,6 +71,7 @@ export const TimelineSidebar = ({
 	}) => {
 	
 	const downloadCalendar = () => {
+		const versionProperty = new Property({name: 'VERSION', value: 2})
 		let calendar
 		calendar = new Component({name: 'VCALENDAR'})
 		calendar = calendar.pushProperty(versionProperty)
