@@ -287,6 +287,7 @@ module.exports = (app) => {
 			const card = await Card.findOne({cardId})
 			const parent = await Card.findOne({boardId: card.boardId, cardName: card.parent})
 			const childrenWithName = await Card.find({boardId: card.boardId, cardName: card.cardName})
+			console.log(childrenWithName)
 			if(childrenWithName.length === 1) {
 				parent.children = parent.children.filter(child => child.cardName !== card.cardName)
 			}
