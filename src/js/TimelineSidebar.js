@@ -112,6 +112,7 @@ export const TimelineSidebar = ({
 	}
 
 	const copyToClipboard = () => {
+		console.log(checkedLabels)
 		const el = `ieee.martinnj.com/calendar?boardid=${boardId}&labels=${checkedLabels.toString()}`
 		el.select()
 		document.execCommand('copy')
