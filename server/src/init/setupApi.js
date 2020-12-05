@@ -109,7 +109,6 @@ const createCalendarLink = async (boardId, labels) => {
 		cards.forEach(card => {
 			const totalLength = card.labels.length + labels.length
 			const labelSet = new Set([...labels, ...card.labels])
-			console.log(labelSet)
 			if(totalLength === labelSet.size && card.due_date) {
 				calendarCards.push(card)
 				let event
