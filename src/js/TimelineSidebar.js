@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import styled from 'styled-components'
 import {Component, Property} from 'immutable-ics'
 import {saveAs} from 'file-saver'
 import {colors} from './constants'
+import { text } from 'body-parser'
 
 const SidebarContainer = styled.div`
 	box-sizing: border-box;
@@ -70,7 +71,7 @@ export const TimelineSidebar = ({
 		cards,
 		boardId
 	}) => {
-	
+	const textRef = useRef(null)
 	const downloadCalendar = () => {
 		const versionProperty = new Property({name: 'VERSION', value: 2})
 		let calendar
@@ -112,9 +113,8 @@ export const TimelineSidebar = ({
 	}
 
 	const copyToClipboard = () => {
-		console.log(checkedLabels)
-		const el = `ieee.martinnj.com/calendar?boardid=${boardId}&labels=${checkedLabels}`
-		el.select()
+		
+		textRef.current.select()
 		document.execCommand('copy')
 		console.log('success')
 	}
@@ -137,6 +137,10 @@ export const TimelineSidebar = ({
 				)
 			})}
 			<button onClick={downloadCalendar}>Download as Calendar</button>
+			<textarea
+				style={{visibility: 'hidden'}}
+				ref={textRef}
+				value={`ieee.martinnj.com/calendar?boardid=${boardId}&labels=${checkedLabels}`}/>
 			<button onClick={copyToClipboard}>Copy Calendar Link to Clipboard</button>
 		</CheckList>
 	)
