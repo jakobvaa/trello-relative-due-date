@@ -123,6 +123,7 @@ export const CardTimeline = ({cards, mode, collapsed}) => {
 		}
 		columns.push(currentCardList)
 		columns = collapsed ? columns.filter(col => col.cards.length > 0): columns
+		
 		return (
 			<Container>
 				{columns.map(column => (

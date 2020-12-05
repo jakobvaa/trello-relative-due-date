@@ -126,6 +126,15 @@ const Popup = (props) => {
 		t.closePopup()
 	}
 
+	const removeParent = async () => {
+		await axios({
+			method: 'DELETE',
+			data: {
+				cardId: relativeCard.cardId
+			}
+		})
+	}
+
 	const generateDifference = (card) => {
 		const beforeOrAfter = card.difference > 0 ? 'After' : 'Before'
 		const isPlural = card.difference !== 1 ? 's' : ''
@@ -162,6 +171,7 @@ const Popup = (props) => {
 			{relativeCard.parent && 
 			<div>
 				<p>Current parent: {relativeCard.parent}({generateDifference(relativeCard)})</p>
+				<button onClick={removeParent}>Remove Parent</button>
 			</div>}
 			<SearchField>
 				<input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Type Card Name'/>

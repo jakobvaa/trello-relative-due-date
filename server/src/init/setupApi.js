@@ -281,6 +281,24 @@ module.exports = (app) => {
 		}
 	})
 
+	app.delete('/removeparent', async (req, res) => {
+		try {
+			const {cardId} = req.body
+			const card = await Card.findOne({cardId})
+			const parent = await Card.findOne({boardId: card.boardId, cardName: card.parent})
+			const childrenWithName = await Card.find({boardId: card.boardId, cardName: card.cardName})
+			if(childrenWithName.length === 1) {
+				parent.children = parent.children.filter(child => child.cardName !== card.cardName)
+			}
+			card.parent = null
+			res.send({ card })
+
+		} catch (err) {
+			console.log(err)
+			res.status(500).send({message: 'Internal Server Error.'})
+		}
+	})
+
 	app.get('/calendar', async (req, res) => {
 		try {
 			const {boardid, label} = req.query

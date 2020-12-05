@@ -77,7 +77,7 @@ export const TimelineSidebar = ({
 						onClick={isChecked ? () => unsetLabel(label.id) :() => setLabel(label.id)}>
 						<CheckBox 
 							type='checkbox' 
-							checked={checkedLabels.includes(label.id)}
+							checked={isChecked}
 							onChange={() => {return}}/>
 						<Label>{label.name}</Label>
 					</CheckListItem>
