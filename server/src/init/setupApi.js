@@ -291,7 +291,7 @@ module.exports = (app) => {
 				console.log(card.cardName)
 				
 				console.log(parent.children)
-				parent.children = parent.children.filter(child => child.cardName !== card.cardName)
+				parent.children = parent.children.filter(child => child !== card.cardName)
 				console.log(parent.children)
 				await parent.save()
 			}
