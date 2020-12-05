@@ -137,7 +137,8 @@ export const TimelineSidebar = ({
 				)
 			})}
 			<button onClick={downloadCalendar}>Download as Calendar</button>
-			<textarea
+			<input
+				disabled
 				style={{visibility: 'hidden'}}
 				ref={textRef}
 				value={`ieee.martinnj.com/calendar?boardid=${boardId}&labels=${checkedLabels}`}/>
