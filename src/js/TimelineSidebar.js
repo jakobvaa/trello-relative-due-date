@@ -138,8 +138,6 @@ export const TimelineSidebar = ({
 			})}
 			<button onClick={downloadCalendar}>Download as Calendar</button>
 			<input
-				disabled
-				style={{visibility: 'hidden'}}
 				ref={textRef}
 				value={`ieee.martinnj.com/calendar?boardid=${boardId}&labels=${checkedLabels}`}/>
 			<button onClick={copyToClipboard}>Copy Calendar Link to Clipboard</button>
