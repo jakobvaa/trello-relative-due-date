@@ -139,7 +139,7 @@ export const TimelineSidebar = ({
 			<button onClick={downloadCalendar}>Download as Calendar</button>
 			<input
 				ref={textRef}
-				value={`ieee.martinnj.com/calendar?boardid=${boardId}&labels=${checkedLabels}`}/>
+				value={`https://ieee.martinnj.com/calendar?boardid=${boardId}&labels=${checkedLabels}`}/>
 			<button onClick={copyToClipboard}>Copy Calendar Link to Clipboard</button>
 		</CheckList>
 	)
