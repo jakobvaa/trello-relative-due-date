@@ -126,13 +126,14 @@ const Popup = (props) => {
 	}
 
 	const removeParent = async () => {
-		await axios({
+		const newCard = await axios({
 			method: 'PUT',
 			url: '/removeparent',
 			data: {
 				cardId: relativeCard.cardId
 			}
 		})
+		setRelativeCard(newCard.data.card)
 	}
 
 	const generateDifference = (card) => {
