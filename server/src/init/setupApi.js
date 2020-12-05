@@ -142,6 +142,8 @@ const createCalendarLink = async (boardId, labels) => {
 				calendar = calendar.pushComponent(event)
 			}
 		})
+		console.log(calendarCards.length)
+		
 		return calendar.toString()
 	} catch(err) {
 		throw err
