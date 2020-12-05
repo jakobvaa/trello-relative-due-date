@@ -4,6 +4,8 @@ import moment from 'moment'
 import styled from 'styled-components'
 import TimelineSidebar from './TimelineSidebar'
 import CardTimeline from './CardTimeline'
+
+
 const Container = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -94,7 +96,8 @@ const Timeline = (props) => {
 			setMode={setMode}
 			mode={mode}
 			collapsed={collapsed}
-			setCollapsed={setCollapsed}/>
+			setCollapsed={setCollapsed}
+			cards={cards}/>
 			{cards.length > 0 &&
 				<CardTimeline cards={cards} mode={mode} collapsed={collapsed}/>
 			}

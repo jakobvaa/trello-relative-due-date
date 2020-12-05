@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import {Component, Property} from 'immutable-ics'
+import {saveAs} from 'file-saver'
 import {colors} from './constants'
+
 const SidebarContainer = styled.div`
 	box-sizing: border-box;
 	overflow-y: scroll;
@@ -63,9 +66,49 @@ export const TimelineSidebar = ({
 		mode,
 		setMode,
 		collapsed,
-		setCollapsed
+		setCollapsed,
+		cards
 	}) => {
 	
+	const downloadCalendar = () => {
+		let calendar
+		calendar = new Component({name: 'VCALENDAR'})
+		calendar = calendar.pushProperty(versionProperty)
+		cards.forEach(card => {
+			let event
+			event = new Component({name: 'VEVENT'})
+			const start = new Property({
+				name: 'DTSTART',
+				parameters: {VALUE: 'DATE'},
+				value: new Date(card.due)
+			})
+			event = event.pushProperty(start)
+			const duration = new Property({
+				name: 'DURATION',
+				value: 'PT1H'
+			})
+			event = event.pushProperty(duration)
+			const description = new Property({
+				name: 'DESCRIPTION',
+				value: card.desc
+			})
+			event = event.pushProperty(description)
+			const url = new Property({
+				name: 'URL',
+				value: card.url
+			})
+			event = event.pushProperty(url)
+			const title = new Property({
+				name: 'SUMMARY',
+				value: card.name
+			})
+			event = event.pushProperty(title)
+			calendar = calendar.pushComponent(event)
+		})
+		const blob = new Blob([calendar.toString()], {type: 'text/plain;charset=utf-8'})
+		saveAs(blob, `${label}-calendar.ics`)
+	}
+
 	const renderLines = () => (
 		<CheckList>
 			<h4>Select Labels for Timeline</h4>
@@ -83,6 +126,7 @@ export const TimelineSidebar = ({
 					</CheckListItem>
 				)
 			})}
+			<button onClick={downloadCalendar}>Download as Calendar</button>
 		</CheckList>
 	)
 
