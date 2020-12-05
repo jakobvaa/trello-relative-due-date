@@ -107,7 +107,7 @@ export const TimelineSidebar = ({
 			calendar = calendar.pushComponent(event)
 		})
 		const blob = new Blob([calendar.toString()], {type: 'text/plain;charset=utf-8'})
-		saveAs(blob, `${label}-calendar.ics`)
+		saveAs(blob, 'calendar.ics')
 	}
 
 	const renderLines = () => (
