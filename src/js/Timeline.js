@@ -79,7 +79,7 @@ const Timeline = (props) => {
 
 	const setLabel = (label) => setCheckedLabels([...checkedLabels, label])
 	const unsetLabels = (label) => setCheckedLabels(checkedLabels.filter(l => label !== l)) 
-	console.log(board)
+
 	if(loading || lists.length === 0) {
 		return (
 			<div>Loading</div>

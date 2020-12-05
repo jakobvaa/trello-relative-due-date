@@ -113,7 +113,7 @@ export const TimelineSidebar = ({
 
 	const copyToClipboard = () => {
 		console.log(checkedLabels)
-		const el = `ieee.martinnj.com/calendar?boardid=${boardId}&labels=${checkedLabels.toString()}`
+		const el = `ieee.martinnj.com/calendar?boardid=${boardId}&labels=${checkedLabels}`
 		el.select()
 		document.execCommand('copy')
 		console.log('success')
@@ -123,7 +123,7 @@ export const TimelineSidebar = ({
 		<CheckList>
 			<h4>Select Labels for Timeline</h4>
 			{labels.map(label => {
-				const isChecked = checkedLabels.includes(label.nae)
+				const isChecked = checkedLabels.includes(label.name)
 				return (
 					<CheckListItem
 						key={label.id}
