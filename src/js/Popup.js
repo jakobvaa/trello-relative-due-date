@@ -128,6 +128,7 @@ const Popup = (props) => {
 	const removeParent = async () => {
 		await axios({
 			method: 'PUT',
+			url: '/removeparent',
 			data: {
 				cardId: relativeCard.cardId
 			}
