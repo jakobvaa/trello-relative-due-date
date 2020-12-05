@@ -1,6 +1,7 @@
 const Card = require('../models/card')
 const {Component, Property} = require('immutable-ics')
 const moment = require('moment')
+const { default: CardTimeline } = require('../../../src/js/CardTimeline')
 const addNewCard = async (data) => {
 	try {
 		const {
@@ -97,7 +98,7 @@ const addParentToChild = async (childName, parentName, difference, boardId) => {
 	}
 }
 
-const createCalendarLink = async (boardId, label) => {
+const createCalendarLink = async (boardId, labels) => {
 	try {
 		const cards = await Card.find({boardId})
 		const versionProperty = new Property({name: 'VERSION', value: 2})
@@ -106,7 +107,9 @@ const createCalendarLink = async (boardId, label) => {
 		calendar = calendar.pushProperty(versionProperty)
 		const calendarCards = []
 		cards.forEach(card => {
-			if(card.labels.includes(label) && card.due_date) {
+			const totalLength = card.labels.length + labels.length
+			const labelSet = new Set([...labels, ...card.labels])
+			if(totalLength === labelSet.size() && card.due_date) {
 				calendarCards.push(card)
 				let event
 				event = new Component({name: 'VEVENT'})
@@ -303,8 +306,8 @@ module.exports = (app) => {
 
 	app.get('/calendar', async (req, res) => {
 		try {
-			const {boardid, label} = req.query
-			const calendar = await createCalendarLink(boardid, label)
+			const {boardid, labels} = req.query
+			const calendar = await createCalendarLink(boardid, labels.split(','))
 			res.send(calendar)
 		} catch (err) {
 			console.log(err) 

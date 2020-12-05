@@ -110,15 +110,22 @@ export const TimelineSidebar = ({
 		saveAs(blob, 'calendar.ics')
 	}
 
+	const copyToClipboard = () => {
+		const el = `ieee.martinnj.com/calendar?boardid=${boardId}&labels=${checkedLabels.toString()}`
+		el.select()
+		document.execCommand('copy')
+		console.log('success')
+	}
+
 	const renderLines = () => (
 		<CheckList>
 			<h4>Select Labels for Timeline</h4>
 			{labels.map(label => {
-				const isChecked = checkedLabels.includes(label.id)
+				const isChecked = checkedLabels.includes(label.nae)
 				return (
 					<CheckListItem
 						key={label.id}
-						onClick={isChecked ? () => unsetLabel(label.id) :() => setLabel(label.id)}>
+						onClick={isChecked ? () => unsetLabel(label.name) :() => setLabel(label.name)}>
 						<CheckBox 
 							type='checkbox' 
 							checked={isChecked}
@@ -128,6 +135,7 @@ export const TimelineSidebar = ({
 				)
 			})}
 			<button onClick={downloadCalendar}>Download as Calendar</button>
+			<button onClick={copyToClipboard}>Copy Calendar Link to Clipboard</button>
 		</CheckList>
 	)
 

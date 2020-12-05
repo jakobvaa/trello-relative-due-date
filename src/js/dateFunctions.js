@@ -1,4 +1,3 @@
-const ics = require('ics')
 const {Component, Property} = require('immutable-ics')
 const {saveAs} = require('file-saver')
 const generateCalendar = async (t, label) => {
