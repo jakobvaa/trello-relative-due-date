@@ -291,6 +291,8 @@ module.exports = (app) => {
 				parent.children = parent.children.filter(child => child.cardName !== card.cardName)
 			}
 			card.parent = null
+			await card.save()
+			await parent.save()
 			res.send({ card })
 
 		} catch (err) {
