@@ -38,7 +38,7 @@ const Timeline = (props) => {
 	const [lists, setLists] = useState([])
 	const [cards, setCards] = useState([])
 	const [relativeCards, setRelativeCards] = useState([])
-	const [useRelativedates, setUseRelativeDates] = useState(false)
+	const [useRelativeDates, setUseRelativeDates] = useState(false)
 	const [mode, setMode] = useState('monthly')
 	const [collapsed, setCollapsed] = useState(false)
 	const [loading, setLoading] = useState(false)
@@ -57,6 +57,17 @@ const Timeline = (props) => {
 			setRelativeCards(relCards.data.board)
 			setCards(parsedCards)
 			setLists(filteredList)
+			let eventHasStartDate
+			for(const list in cardLists) {
+				for(const card in list.cards) {
+					if(card.name = 'Event Start' && card.due){
+						eventHasStartDate = true
+						break
+					}
+				}
+				if (eventHasStartDate) break	
+			}
+			setUseRelativeDates(eventHasStartDate)
 			setLoading(false)
 		}
 	}, [])
@@ -69,24 +80,13 @@ const Timeline = (props) => {
 	const generateCards = (cardLists, relativeCards) => {
 		const parsedCards = []
 		const today = moment().utc()
-		let eventHasStartDate = false
-		for(const list in cardLists) {
-			for(const card in list.cards) {
-				if(card.name = 'Event Start' && card.due){
-					eventHasStartDate = true
-					break
-				}
-			}
-			if (eventHasStartDate) break
-		}
-		setUseRelativeDates(eventHasStartDate)
 		cardLists.forEach(list => {
 			list.cards.forEach(card => {
 				const relativeCard = relativeCards.find(relCard => relCard.cardId === card.id)
 				const totalLength = card.labels.length + checkedLabels.length
 				const cardLabelNames = card.labels.map(label => label.name)
 				const labelSet = new Set([...cardLabelNames, ...checkedLabels])
-				if(!eventHasStartDate &&
+				if(!useRelativeDates &&
 				(totalLength !== labelSet.size || checkedLabels.length === 0 || card.name === 'Event Start') && 
 				relativeCard.parent) {
 					card.list = list.name
@@ -130,7 +130,7 @@ const Timeline = (props) => {
 			setCollapsed={setCollapsed}
 			cards={cards}/>
 			{cards.length > 0 &&
-				<CardTimeline cards={cards} mode={mode} collapsed={collapsed} useRelativedates={useRelativedates}/>
+				<CardTimeline cards={cards} mode={mode} collapsed={collapsed} useRelativeDates={useRelativeDates}/>
 			}
 		</Container>
 	)
