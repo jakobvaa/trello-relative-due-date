@@ -53,8 +53,9 @@ const Timeline = (props) => {
 				method: 'GET',
 				url: `/getboard?boardid=${b.id}`
 			})
-			const parsedCards = generateCards(filteredList, relCards.data.board)
 			setRelativeCards(relCards.data.board)
+			const r = relCard.data.board
+			const parsedCards = generateCards(filteredList, r)
 			setCards(parsedCards)
 			setLists(filteredList)
 			let eventHasStartDate = false
