@@ -112,7 +112,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 				cards: [currentCard]
 			}
 			columns.push(newColumn)
-		} else column.cards.push(newColumn)
+		} else column.cards.push(currentCard)
 		if(currentCard.children.length === 0) {
 			return columns
 		}
