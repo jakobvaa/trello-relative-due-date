@@ -124,7 +124,7 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 		return columns
 	}
 
-	const renderColumnsWitoutDueDates = () => {
+	const renderColumnsWithoutDueDates = () => {
 		let columns = []
 		const eventStart = cards.find(card => card.cardName === 'Event Start')
 		columns = generateColumnsWithoutDueDates(eventStart, columns, 0, cards)
@@ -171,8 +171,11 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 			</Container>
 		)
 	}
+	if(useRelativeDates) {
+		renderColumnsWithoutDueDates()
+	}
 	return (
-			renderColumns()
+			renderColumnsWithDueDates()
 	)
 }
 
