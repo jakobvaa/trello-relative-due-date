@@ -77,8 +77,7 @@ const titleFunctions = {
 
 
 
-export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
-	console.log(useRelativeDates)
+export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelativeDates}) => {
 	
 	const renderColumn = (column) => { 
 		return (
@@ -101,10 +100,10 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 		)
 	}
 
-	const generateColumnsWithoutDueDates = (currentCard, columns, currentDiff) => {
+	const generateColumnsWithoutDueDates = (currentCard, columns, currentDiff, includeList) => {
 		const newDiff = currentDiff + currentCard.diff
 		console.log('ssss')
-		
+
 		const column = columns.find(col => col.difference === Math.floor(currentDiff))
 		if(!column) {
 			const newColumn = {
@@ -119,12 +118,14 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 			return columns
 		}
 		currentCard.children.forEach(cardName => {
-			console.log('new child')
-			console.log(cardName)
-			const childCard = cards.find(card => card.name === cardName)
-			console.log(childCard)
-			if(childCard.parent === currentCard.name) {
-				columns = generateColumnsWithoutDueDates(childCard, columns, newDiff)
+			if(includeList.includes(cardName)) {
+				console.log('new child')
+				console.log(cardName)
+				const childCard = cards.find(card => card.name === cardName)
+				console.log(childCard)
+				if(childCard.parent === currentCard.name) {
+					columns = generateColumnsWithoutDueDates(childCard, columns, newDiff)
+				}
 			}
 		})
 		return columns
@@ -135,8 +136,9 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 		const eventStart = cards.find(card => card.name === 'Event Start')
 		eventStart.difference = 0
 		console.log('starting')
+		const includeList = cards.map(card => card.name)
 		
-		columns = generateColumnsWithoutDueDates(eventStart, columns, 0)
+		columns = generateColumnsWithoutDueDates(eventStart, columns, 0, includeList)
 		console.log(columns)
 		return (
 			<Container>
