@@ -69,7 +69,7 @@ const Timeline = (props) => {
 		const today = moment().utc()
 		let eventHasStartDate
 		for(const list in cardLists) {
-			for(const card in list) {
+			for(const card in list.cards) {
 				if(card.name = 'Event Start'){
 					eventHasStartDate = card.due
 					break
