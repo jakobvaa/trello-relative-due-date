@@ -58,7 +58,7 @@ const Timeline = (props) => {
 			setCards(parsedCards)
 			setLists(filteredList)
 			let eventHasStartDate
-			for(const list in cardLists) {
+			for(const list in filteredList) {
 				for(const card in list.cards) {
 					if(card.name = 'Event Start' && card.due){
 						eventHasStartDate = true
