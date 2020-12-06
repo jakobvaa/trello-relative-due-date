@@ -62,7 +62,7 @@ const Timeline = (props) => {
 	}, [])
 
 	useEffect(() => {
-		const newCards = generateCards(lists)
+		const newCards = generateCards(lists, relativeCards)
 		setCards(newCards)
 	}, [checkedLabels])
 
