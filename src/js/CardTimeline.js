@@ -89,10 +89,10 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 		
 		const newDiff = currentDiff + currentCard.difference
 
-		const column = columns.find(col => col.difference === Math.floor(currentDiff))
+		const column = columns.find(col => col.difference === Math.floor(newDiff))
 		if(!column && includeList.includes(currentCard.name)) {
 			const newColumn = {
-				difference: currentDiff,
+				difference: newDiff,
 				cards: [currentCard]
 			}
 			columns.push(newColumn)
