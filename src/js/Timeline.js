@@ -67,7 +67,7 @@ const Timeline = (props) => {
 				}
 				if (eventHasStartDate) break	
 			}
-			setUseRelativeDates(eventHasStartDate)
+			setUseRelativeDates(!eventHasStartDate)
 			setLoading(false)
 		}
 	}, [])
