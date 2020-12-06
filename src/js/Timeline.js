@@ -55,8 +55,6 @@ const Timeline = (props) => {
 			})
 			setRelativeCards(relCards.data.board)
 			const r = relCards.data.board
-			const parsedCards = generateCards(filteredList, r)
-			setCards(parsedCards)
 			setLists(filteredList)
 			let eventHasStartDate = false
 			for(let list of filteredList) {
@@ -68,8 +66,9 @@ const Timeline = (props) => {
 				}
 				if (eventHasStartDate) break	
 			}
-			console.log(eventHasStartDate)
 			setUseRelativeDates(!eventHasStartDate)
+			const parsedCards = generateCards(filteredList, r)
+			setCards(parsedCards)
 			setLoading(false)
 		}
 	}, [])
@@ -80,8 +79,6 @@ const Timeline = (props) => {
 	}, [checkedLabels])
 
 	const generateCards = (cardLists, relativeCardsList) => {
-		console.log(relativeCardsList.length)
-		
 		const parsedCards = []
 		const today = moment().utc()
 		cardLists.forEach(list => {
