@@ -60,13 +60,14 @@ const Timeline = (props) => {
 			let eventHasStartDate = false
 			for(const list in filteredList) {
 				for(const card in list.cards) {
-					if(card.name === 'Event Start' && card.due){
+					if(card.name === 'Event Start' && !!card.due){
 						eventHasStartDate = true
 						break
 					}
 				}
 				if (eventHasStartDate) break	
 			}
+			console.log(eventHasStartDate)
 			setUseRelativeDates(!eventHasStartDate)
 			setLoading(false)
 		}
