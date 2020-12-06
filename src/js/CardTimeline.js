@@ -135,7 +135,7 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 			</Container>
 		)
 	}
-
+	console.log(cards)
 	return (
 			renderColumns()
 	)
