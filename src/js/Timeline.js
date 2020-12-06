@@ -80,6 +80,8 @@ const Timeline = (props) => {
 	}, [checkedLabels])
 
 	const generateCards = (cardLists, relativeCardsList) => {
+		console.log(relativeCardsList.length)
+		
 		const parsedCards = []
 		const today = moment().utc()
 		cardLists.forEach(list => {
