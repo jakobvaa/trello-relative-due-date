@@ -42,6 +42,7 @@ const Timeline = (props) => {
 	const [mode, setMode] = useState('monthly')
 	const [collapsed, setCollapsed] = useState(false)
 	const [loading, setLoading] = useState(false)
+	
 	useEffect(async () => {
 		if(!loading && lists.length === 0) {
 			setLoading(true)
