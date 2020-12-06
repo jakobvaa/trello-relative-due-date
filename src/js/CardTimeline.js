@@ -119,7 +119,7 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 			return columns
 		}
 		currentCard.children.forEach(cardName => {
-			console.log('new addition')
+			console.log('new child')
 			
 			const childCard = cards.find(card => card.cardName === cardName)
 			if(childCard.parent === currentCard.cardName) {
