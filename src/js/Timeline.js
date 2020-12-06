@@ -132,7 +132,8 @@ const Timeline = (props) => {
 			mode={mode}
 			collapsed={collapsed}
 			setCollapsed={setCollapsed}
-			cards={cards}/>
+			cards={cards}
+			useRelativeDates={useRelativeDates}/>
 			{cards.length > 0 &&
 				<CardTimeline cards={cards} relativeCards={relativeCards} mode={mode} collapsed={collapsed} useRelativeDates={useRelativeDates}/>
 			}

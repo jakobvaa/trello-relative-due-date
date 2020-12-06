@@ -107,7 +107,6 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 					columns = generateColumnsWithoutDueDates(childCard, columns, newDiff, relativeCards, includeList)
 				}
 			} else {
-				console.log('different card', cardName)
 				const childCard = relativeCards.find(card => card.cardName === cardName) || {}
 				if(childCard.parent === currentCard.name) {
 					childCard.name = cardName
@@ -171,11 +170,8 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 		let columns = []
 		const eventStart = cards.find(card => card.name === 'Event Start')
 		eventStart.difference = 0
-		console.log('starting')
 		const includeList = cards.map(card => card.name)
-		
 		columns = generateColumnsWithoutDueDates(eventStart, columns, 0, relativeCards, includeList)
-		console.log(columns)
 		if(!collapsed) {
 			const firstCol = columns[0].difference
 			const lastCol = columns[columns.length - 1].difference

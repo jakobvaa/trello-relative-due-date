@@ -70,7 +70,8 @@ export const TimelineSidebar = ({
 		collapsed,
 		setCollapsed,
 		cards,
-		boardId
+		boardId,
+		useRelativeDates
 	}) => {
 	const textRef = useRef(null)
 	const downloadCalendar = () => {
@@ -137,11 +138,16 @@ export const TimelineSidebar = ({
 					</CheckListItem>
 				)
 			})}
-			<button onClick={downloadCalendar}>Download as Calendar</button>
-			<input
-				ref={textRef}
-				value={`https://ieee.martinnj.com/calendar?boardid=${boardId}&labels=${checkedLabels}`}/>
-			<button onClick={copyToClipboard}>Copy Calendar Link to Clipboard</button>
+			{useRelativeDates && 
+			<div>
+				<button onClick={downloadCalendar}>Download as Calendar</button>
+					<input
+						ref={textRef}
+						value={`https://ieee.martinnj.com/calendar?boardid=${boardId}&labels=${checkedLabels}`}/>
+					<button onClick={copyToClipboard}>Copy Calendar Link to Clipboard</button>
+			</div>
+			
+			}
 		</CheckList>
 	)
 
@@ -165,10 +171,12 @@ export const TimelineSidebar = ({
 			{renderLines()}
 			<CheckList>
 				<h4>Select Time Interval</h4>
+				{useRelativeDates && 
 				<CheckListItem onClick={() => setMode('weekly')}>
 					<CheckBox type='radio' checked={mode === 'weekly'}/>
 					<Label>Weekly</Label>
 				</CheckListItem>
+				}
 				<CheckListItem onClick={() => setMode('monthly')}>
 					<CheckBox type='radio' checked={mode === 'monthly'}/>
 					<Label>Monthly</Label>
