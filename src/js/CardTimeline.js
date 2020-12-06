@@ -118,9 +118,9 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 			return columns
 		}
 		currentCard.children.forEach(cardName => {
+			console.log('new child')
+			console.log(cardName)
 			if(includeList.includes(cardName)) {
-				console.log('new child')
-				console.log(cardName)
 				const childCard = cards.find(card => card.name === cardName)
 				console.log(childCard)
 				if(childCard.parent === currentCard.name) {
@@ -137,6 +137,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 		eventStart.difference = 0
 		console.log('starting')
 		const includeList = cards.map(card => card.name)
+		console.log(includeList)
 		
 		columns = generateColumnsWithoutDueDates(eventStart, columns, 0, includeList)
 		console.log(columns)
