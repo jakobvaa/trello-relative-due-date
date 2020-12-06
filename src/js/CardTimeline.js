@@ -108,7 +108,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 				}
 			}
 		})
-		return columns
+		return columns.sort((a,b) => a.difference - b.difference)
 	}
 
 	const generateColumnsWithDueDates = () => {
