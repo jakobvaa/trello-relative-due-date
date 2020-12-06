@@ -54,7 +54,11 @@ const diffs = {
 	monthly: (checkDate, eventStart) => checkDate.diff(eventStart, 'M'),
 	weekly: (checkDate, eventStart) => checkDate.diff(eventStart, 'w'),
 	quarterly: (checkDate, eventStart) => checkDate.diff(eventStart, 'M') / 3,
-	
+}
+
+const relativeDiffs = {
+	monthly: (diff) => Math.floor(diff),
+	quarterly: (diff) => Math.floor(diff/3)
 }
 
 const titleFunctions = {
@@ -89,10 +93,10 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 		
 		const newDiff = currentDiff + currentCard.difference
 
-		const column = columns.find(col => col.difference === Math.floor(newDiff))
+		const column = columns.find(col => col.difference === relativeDiffs[mode](newDiff))
 		if(!column && includeList.includes(currentCard.name)) {
 			const newColumn = {
-				difference: Math.floor(newDiff),
+				difference: relativeDiffs[mode](newDiff),
 				cards: [currentCard],
 				name: titleFunctions[mode](newDiff)
 			}
