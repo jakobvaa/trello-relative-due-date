@@ -160,7 +160,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 					return (
 						<Card color={cardColor}>
 							<h3>{card.name}</h3>
-							{card.due ? <p>Due: {new Date(card.due).toDateString()}</p> : <p>{card.difference} {card.parent}</p>}
+							{card.due && <p>Due: {new Date(card.due).toDateString()}</p>}
 						</Card>
 					)
 				})}
