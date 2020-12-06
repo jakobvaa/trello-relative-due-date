@@ -15,6 +15,7 @@ const Column = styled.div`
 	flex-direction: column;
 	border: 1px solid lightgrey;
 	width: calc(15% - 10px);
+	min-width: 150px;
 	flex-shrink: 0;
 	max-width: 250px;
 	justify-content: flex-start;
