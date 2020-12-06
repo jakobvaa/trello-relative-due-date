@@ -79,26 +79,7 @@ const titleFunctions = {
 
 export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelativeDates}) => {
 	
-	const renderColumn = (column) => { 
-		return (
-			<Column>
-				<ColumnHeader>
-					<h3>
-						{column.name}
-					</h3>
-				</ColumnHeader>
-				{column.cards.map(card => {
-					const cardColor = colors[card.list] ? colors[card.list] : 'white'
-					return (
-						<Card color={cardColor}>
-							<h3>{card.name}</h3>
-							<p>Due: {new Date(card.due).toDateString()}</p>
-						</Card>
-					)
-				})}
-			</Column>
-		)
-	}
+	
 
 	const generateColumnsWithoutDueDates = (currentCard, columns, currentDiff, includeList) => {
 		const newDiff = currentDiff + currentCard.difference
@@ -126,6 +107,55 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 		return columns
 	}
 
+	const generateColumnsWithDueDates = () => {
+		let columns = []
+		const eventStart = cards.find(card => card.name === 'Event Start')
+		const eventStartMoment = moment(eventStart.due).utc()
+		let currentDiff = diffs[mode](moment(cards[0].due).utc(), eventStartMoment)
+		let currentCardIndex = 0 
+		let currentCardList = {
+			name: titleFunctions[mode](currentDiff),
+			cards: []
+		}
+
+		while(currentCardIndex !== cards.length) {
+			while(!moment(cards[currentCardIndex].due).utc().isSameOrBefore(modes[mode](currentDiff, eventStartMoment))){
+				columns.push(currentCardList)
+				currentDiff++
+				currentCardList = {
+					name: titleFunctions[mode](currentDiff),
+					cards: []
+				}
+			}
+			currentCardList.cards.push(cards[currentCardIndex])
+			currentCardIndex ++
+		}
+		columns.push(currentCardList)
+		columns = collapsed ? columns.filter(col => col.cards.length > 0): columns
+		return columns 
+	}
+
+	const renderColumn = (column) => { 
+		return (
+			<Column>
+				<ColumnHeader>
+					<h3>
+						{column.name}
+					</h3>
+				</ColumnHeader>
+				{column.cards.map(card => {
+					const cardColor = colors[card.list] ? colors[card.list] : 'white'
+					return (
+						<Card color={cardColor}>
+							<h3>{card.name}</h3>
+							<p>Due: {new Date(card.due).toDateString()}</p>
+						</Card>
+					)
+				})}
+			</Column>
+		)
+	}
+
 	const renderColumnsWithoutDueDates = () => {
 		let columns = []
 		const eventStart = cards.find(card => card.name === 'Event Start')
@@ -144,32 +174,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 	}
 
 	const renderColumnsWithDueDates = () => {
-		let columns = []
-		const eventStart = cards.find(card => card.name === 'Event Start')
-		const eventStartMoment = moment(eventStart.due).utc()
-		let currentDiff = diffs[mode](moment(cards[0].due).utc(), eventStartMoment)
-		let currentCardIndex = 0 
-		let currentCardList = {
-			name: titleFunctions[mode](currentDiff),
-			cards: []
-		}
-
-
-		while(currentCardIndex !== cards.length) {
-			while(!moment(cards[currentCardIndex].due).utc().isSameOrBefore(modes[mode](currentDiff, eventStartMoment))){
-				columns.push(currentCardList)
-				currentDiff++
-				currentCardList = {
-					name: titleFunctions[mode](currentDiff),
-					cards: []
-				}
-			}
-			currentCardList.cards.push(cards[currentCardIndex])
-			currentCardIndex ++
-		}
-		columns.push(currentCardList)
-		columns = collapsed ? columns.filter(col => col.cards.length > 0): columns
-
+		const columns = generateColumnsWithDueDates()
 		return (
 			<Container>
 				{columns.map(column => (
@@ -178,6 +183,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 			</Container>
 		)
 	}
+
 	console.log(cards)
 	if(useRelativeDates) {
 		return renderColumnsWithoutDueDates()
