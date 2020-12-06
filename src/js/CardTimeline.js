@@ -189,7 +189,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 		}
 
 		console.log(includeList.length)
-		console.log(columns.reduce((a,b)=> a + b.cards.length), 0)
+		console.log(columns.reduce((a,b)=> a + b.cards.length, 0))
 		return (
 			<Container>
 				{columns.map(column =>(
