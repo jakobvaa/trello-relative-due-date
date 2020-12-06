@@ -4,6 +4,7 @@ import moment from 'moment'
 import styled from 'styled-components'
 import TimelineSidebar from './TimelineSidebar'
 import CardTimeline from './CardTimeline'
+import axios from 'axios'
 
 
 const Container = styled.div`
@@ -35,6 +36,7 @@ const Timeline = (props) => {
 	const [board, setBoard] = useState(null)
 	const [lists, setLists] = useState([])
 	const [cards, setCards] = useState([])
+	const [useRelativedates, setUseRelativeDates] = useState(false)
 	const [mode, setMode] = useState('monthly')
 	const [collapsed, setCollapsed] = useState(false)
 	const [loading, setLoading] = useState(false)
@@ -45,7 +47,11 @@ const Timeline = (props) => {
 			setBoard(b)
 			const l = await t.lists('all')
 			const filteredList = l.filter(list => !ignoreList.includes(list.name))
-			const parsedCards = generateCards(filteredList)
+			const relCards = await axios({
+				method: 'GET',
+				url: `/getboard?boardid=${b.id}`
+			})
+			const parsedCards = generateCards(filteredList, relCards.data.board)
 			setCards(parsedCards)
 			setLists(filteredList)
 			setLoading(false)
@@ -57,15 +63,27 @@ const Timeline = (props) => {
 		setCards(newCards)
 	}, [checkedLabels])
 
-	const generateCards = (cardLists) => {
+	const generateCards = (cardLists, relativeCards) => {
 		const parsedCards = []
 		const today = moment().utc()
+		const eventHasStartDate = cardList.find(card => card.name === 'Event Start').due
+		setUseRelativeDates(!!eventHasStartDate)
 		cardLists.forEach(list => {
 			list.cards.forEach(card => {
+				const relativeCard = relativeCards.find(relCard => relCard.cardId === card.id)
 				const totalLength = card.labels.length + checkedLabels.length
 				const cardLabelNames = card.labels.map(label => label.name)
 				const labelSet = new Set([...cardLabelNames, ...checkedLabels])
-				if(card.due && today.isBefore(card.due) && 
+				if(!eventHasStartDate &&
+				(totalLength !== labelSet.size || checkedLabels.length === 0 || card.name === 'Event Start') && 
+				relativeCard.parent) {
+					card.list = list.name
+					card.parent = relativeCard.parent
+					card.children = relativeCard.children
+					card.difference = relativeCard.difference
+					parsedCards.push(card)
+				}
+				else if(card.due && today.isBefore(card.due) && 
 				((totalLength !== labelSet.size || checkedLabels.length === 0) || card.name === 'Event Start')) {
 					card.list = list.name
 					parsedCards.push(card)
@@ -100,7 +118,7 @@ const Timeline = (props) => {
 			setCollapsed={setCollapsed}
 			cards={cards}/>
 			{cards.length > 0 &&
-				<CardTimeline cards={cards} mode={mode} collapsed={collapsed}/>
+				<CardTimeline cards={cards} mode={mode} collapsed={collapsed} useRelativedates={useRelativedates}/>
 			}
 		</Container>
 	)
