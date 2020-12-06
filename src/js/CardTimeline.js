@@ -108,7 +108,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 				}
 			} else {
 				console.log('different card', cardName)
-				const childCard = relativeCards.find(card => card.cardName === cardName)
+				const childCard = relativeCards.find(card => card.cardName === cardName) || {}
 				if(childCard.parent === currentCard.name) {
 					childCard.name = cardName
 					columns = generateColumnsWithoutDueDates(childCard, columns, newDiff, relativeCards, includeList)
