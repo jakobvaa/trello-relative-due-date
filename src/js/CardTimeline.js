@@ -81,7 +81,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 	
 	
 
-	const generateColumnsWithoutDueDates = (currentCard, columns, currentDiff, relativeCards, includeList) => {
+	const generateColumnsWithoutDueDates = (currentCard, columns, currentDiff, includeList) => {
 		console.log('current diff', currentDiff)
 		console.log('current card', currentCard.name)
 		console.log('current parent', currentCard.parent)
@@ -104,13 +104,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 			if(includeList.includes(cardName)) {
 				const childCard = cards.find(card => card.name === cardName)
 				if(childCard.parent === currentCard.name) {
-					columns = generateColumnsWithoutDueDates(childCard, columns, newDiff, relativeCards, includeList)
-				}
-			} else {
-				const childCard = relativeCards.find(card => card.cardName === cardName)
-				childCard.name = cardName
-				if(childCard.parent === currentCard.name) {
-					columns = generateColumnsWithDueDates(childCard, columns, newDiff, relativeCards, includeList)
+					columns = generateColumnsWithoutDueDates(childCard, columns, newDiff, includeList)
 				}
 			}
 		})
@@ -173,7 +167,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 		console.log('starting')
 		const includeList = cards.map(card => card.name)
 		
-		columns = generateColumnsWithoutDueDates(eventStart, columns, 0, relativeCards, includeList)
+		columns = generateColumnsWithoutDueDates(eventStart, columns, 0, includeList)
 		console.log(columns)
 		return (
 			<Container>
