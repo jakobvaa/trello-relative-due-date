@@ -106,7 +106,6 @@ const Timeline = (props) => {
 		})
 		
 		const sortedCards =  parsedCards.sort((a,b) => new Date(a.due) - new Date(b.due))
-		console.log(sortedCards.length)
 		return sortedCards
 	}	
 
@@ -118,8 +117,7 @@ const Timeline = (props) => {
 			<div>Loading</div>
 		)
 	}
-	console.log(useRelativeDates)
-	
+
 	return (
 		<Container>
 			<TimelineSidebar

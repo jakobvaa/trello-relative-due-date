@@ -188,8 +188,6 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 			columns = columns.sort((a,b) => a.difference - b.difference)
 		}
 
-		console.log(includeList.length)
-		console.log(columns.reduce((a,b)=> a + b.cards.length, 0))
 		return (
 			<Container>
 				{columns.map(column =>(
