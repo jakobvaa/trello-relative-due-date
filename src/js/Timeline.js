@@ -67,18 +67,18 @@ const Timeline = (props) => {
 				if (eventHasStartDate) break	
 			}
 			setUseRelativeDates(!eventHasStartDate)
-			const parsedCards = generateCards(filteredList, r)
+			const parsedCards = generateCards(filteredList, r, !eventHasStartDate)
 			setCards(parsedCards)
 			setLoading(false)
 		}
 	}, [])
 
 	useEffect(() => {
-		const newCards = generateCards(lists, relativeCards)
+		const newCards = generateCards(lists, relativeCards, useRelativeDates)
 		setCards(newCards)
 	}, [checkedLabels])
 
-	const generateCards = (cardLists, relativeCardsList) => {
+	const generateCards = (cardLists, relativeCardsList, useRel) => {
 		const parsedCards = []
 		const today = moment().utc()
 		cardLists.forEach(list => {
@@ -87,7 +87,7 @@ const Timeline = (props) => {
 				const totalLength = card.labels.length + checkedLabels.length
 				const cardLabelNames = card.labels.map(label => label.name)
 				const labelSet = new Set([...cardLabelNames, ...checkedLabels])
-				if(useRelativeDates &&
+				if(useRel &&
 				((totalLength !== labelSet.size || checkedLabels.length === 0) && 
 				relativeCard.parent) || card.name === 'Event Start') {
 					card.list = list.name
