@@ -77,12 +77,12 @@ const Timeline = (props) => {
 		setCards(newCards)
 	}, [checkedLabels])
 
-	const generateCards = (cardLists, relativeCards) => {
+	const generateCards = (cardLists, relativeCardsList) => {
 		const parsedCards = []
 		const today = moment().utc()
 		cardLists.forEach(list => {
 			list.cards.forEach(card => {
-				const relativeCard = relativeCards.find(relCard => relCard.cardId === card.id)
+				const relativeCard = relativeCardsList.find(relCard => relCard.cardId === card.id)
 				const totalLength = card.labels.length + checkedLabels.length
 				const cardLabelNames = card.labels.map(label => label.name)
 				const labelSet = new Set([...cardLabelNames, ...checkedLabels])
