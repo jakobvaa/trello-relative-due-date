@@ -85,7 +85,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 		console.log('current diff', currentDiff)
 		console.log('current card', currentCard.name)
 		console.log('current parent', currentCard.parent)
-		console.log('diff', currentCard.diff)
+		console.log('diff', currentCard.difference)
 		
 		const newDiff = currentDiff + currentCard.difference
 
