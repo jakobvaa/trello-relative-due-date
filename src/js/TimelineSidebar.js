@@ -138,7 +138,7 @@ export const TimelineSidebar = ({
 					</CheckListItem>
 				)
 			})}
-			{useRelativeDates && 
+			{!useRelativeDates && 
 			<div>
 				<button onClick={downloadCalendar}>Download as Calendar</button>
 					<input
@@ -171,7 +171,7 @@ export const TimelineSidebar = ({
 			{renderLines()}
 			<CheckList>
 				<h4>Select Time Interval</h4>
-				{useRelativeDates && 
+				{!useRelativeDates && 
 				<CheckListItem onClick={() => setMode('weekly')}>
 					<CheckBox type='radio' checked={mode === 'weekly'}/>
 					<Label>Weekly</Label>
