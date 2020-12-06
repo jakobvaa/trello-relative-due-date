@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import TimelineSidebar from './TimelineSidebar'
 import CardTimeline from './CardTimeline'
 import axios from 'axios'
+import card from '../../server/src/models/card'
 
 
 const Container = styled.div`
@@ -66,7 +67,16 @@ const Timeline = (props) => {
 	const generateCards = (cardLists, relativeCards) => {
 		const parsedCards = []
 		const today = moment().utc()
-		const eventHasStartDate = cardLists.find(card => card.name === 'Event Start').due
+		let eventHasStartDate
+		for(const list in cardLists) {
+			for(const card in list) {
+				if(card.name = 'Event Start'){
+					eventHasStartDate = card.due
+					break
+				}
+			}
+			if (eventHasStartDate !== undefined) break
+		}
 		setUseRelativeDates(!!eventHasStartDate)
 		cardLists.forEach(list => {
 			list.cards.forEach(card => {
