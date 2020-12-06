@@ -166,7 +166,6 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 		eventStart.difference = 0
 		console.log('starting')
 		const includeList = cards.map(card => card.name)
-		console.log(includeList)
 		
 		columns = generateColumnsWithoutDueDates(eventStart, columns, 0, includeList)
 		console.log(columns)
