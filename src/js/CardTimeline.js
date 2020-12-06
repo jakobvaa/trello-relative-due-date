@@ -102,6 +102,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 
 	const generateColumnsWithoutDueDates = (currentCard, columns, currentDiff, includeList) => {
 		const newDiff = currentDiff + currentCard.diff
+		console.log(newDiff)
 		console.log('ssss')
 
 		const column = columns.find(col => col.difference === Math.floor(currentDiff))
@@ -110,19 +111,13 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 				difference: currentDiff,
 				cards: [currentCard]
 			}
-			columns.push(newColumn)
 		} else column.cards.push(currentCard)
 		if(currentCard.children.length === 0) {
-			console.log('break')
-			
 			return columns
 		}
 		currentCard.children.forEach(cardName => {
-			console.log('new child')
-			console.log(cardName)
 			if(includeList.includes(cardName)) {
 				const childCard = cards.find(card => card.name === cardName)
-				console.log(childCard)
 				if(childCard.parent === currentCard.name) {
 					columns = generateColumnsWithoutDueDates(childCard, columns, newDiff, includeList)
 				}
