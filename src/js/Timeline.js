@@ -66,7 +66,7 @@ const Timeline = (props) => {
 	const generateCards = (cardLists, relativeCards) => {
 		const parsedCards = []
 		const today = moment().utc()
-		const eventHasStartDate = cardList.find(card => card.name === 'Event Start').due
+		const eventHasStartDate = cardLists.find(card => card.name === 'Event Start').due
 		setUseRelativeDates(!!eventHasStartDate)
 		cardLists.forEach(list => {
 			list.cards.forEach(card => {
