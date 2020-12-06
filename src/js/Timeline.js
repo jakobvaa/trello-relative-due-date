@@ -37,6 +37,7 @@ const Timeline = (props) => {
 	const [board, setBoard] = useState(null)
 	const [lists, setLists] = useState([])
 	const [cards, setCards] = useState([])
+	const [relativeCards, setRelativeCards] = useState([])
 	const [useRelativedates, setUseRelativeDates] = useState(false)
 	const [mode, setMode] = useState('monthly')
 	const [collapsed, setCollapsed] = useState(false)
@@ -53,6 +54,7 @@ const Timeline = (props) => {
 				url: `/getboard?boardid=${b.id}`
 			})
 			const parsedCards = generateCards(filteredList, relCards.data.board)
+			setRelativeCards(relCards.data.board)
 			setCards(parsedCards)
 			setLists(filteredList)
 			setLoading(false)

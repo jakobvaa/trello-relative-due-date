@@ -13,6 +13,7 @@ const SidebarContainer = styled.div`
 	width: 15%;
 	background-color: lightgrey;
 	max-width: 300px;
+	min-width: 200px;
 `
 
 const CheckList = styled.div`
