@@ -130,7 +130,7 @@ const Timeline = (props) => {
 			setCollapsed={setCollapsed}
 			cards={cards}/>
 			{cards.length > 0 &&
-				<CardTimeline cards={cards} mode={mode} collapsed={collapsed} useRelativeDates={useRelativeDates}/>
+				<CardTimeline cards={cards} allCards={} mode={mode} collapsed={collapsed} useRelativeDates={useRelativeDates}/>
 			}
 		</Container>
 	)

@@ -131,7 +131,7 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 
 	const renderColumnsWithoutDueDates = () => {
 		let columns = []
-		const eventStart = cards.find(card => card.cardName === 'Event Start')
+		const eventStart = cards.find(card => card.name === 'Event Start')
 		eventStart.difference = 0
 		console.log('starting')
 		
