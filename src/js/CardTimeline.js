@@ -102,8 +102,6 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 
 	const generateColumnsWithoutDueDates = (currentCard, columns, currentDiff, includeList) => {
 		const newDiff = currentDiff + currentCard.difference
-		console.log(newDiff)
-		console.log('ssss')
 
 		const column = columns.find(col => col.difference === Math.floor(currentDiff))
 		if(!column) {
