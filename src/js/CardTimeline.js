@@ -210,7 +210,6 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 		)
 	}
 
-	console.log(cards)
 	if(useRelativeDates) {
 		return renderColumnsWithoutDueDates()
 	}
