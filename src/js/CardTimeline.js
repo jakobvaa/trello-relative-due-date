@@ -178,11 +178,11 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 		)
 	}
 	if(useRelativeDates) {
-		renderColumnsWithoutDueDates()
+		return renderColumnsWithoutDueDates()
 	}
-	return (
-			renderColumnsWithDueDates()
-	)
+	else {
+		return renderColumnsWithDueDates()
+	}
 }
 
 export default CardTimeline
