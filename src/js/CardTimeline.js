@@ -177,6 +177,21 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 		
 		columns = generateColumnsWithoutDueDates(eventStart, columns, 0, relativeCards, includeList)
 		console.log(columns)
+		if(!collapsed) {
+			const firstCol = columns[0].difference
+			const lastCol = columns[columns.length - 1].difference
+			for(let i = firstCol + 1 ; i <= lastCol; i++){
+				const column = columns.find(col => col.difference === i)
+				if(!column) {
+					columns.push({
+						name: titleFunctions[mode](i),
+						cards: [],
+						difference: i
+					})
+				}
+			}
+			columns = columns.sort((a,b) => a.difference - b.difference)
+		}
 		return (
 			<Container>
 				{columns.map(column =>(
