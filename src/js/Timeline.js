@@ -33,7 +33,7 @@ const t = TrelloPowerUp.iframe({
 
 
 const Timeline = (props) => {
-	const [checkedLabels, setCheckedLabels] = useState([])
+	const [checkedLabels, setCheckedLabels] = useState(['PrC'])
 	const [board, setBoard] = useState(null)
 	const [lists, setLists] = useState([])
 	const [cards, setCards] = useState([])
@@ -60,9 +60,7 @@ const Timeline = (props) => {
 			let eventHasStartDate = false
 			for(let list of filteredList) {
 				for(let card of list.cards) {
-
 					if(card.name === 'Event Start' && card.due){
-						console.log(card)
 						eventHasStartDate = true
 						break
 					}
