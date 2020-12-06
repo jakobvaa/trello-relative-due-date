@@ -33,7 +33,7 @@ const t = TrelloPowerUp.iframe({
 
 
 const Timeline = (props) => {
-	const [checkedLabels, setCheckedLabels] = useState(['PrC'])
+	const [checkedLabels, setCheckedLabels] = useState([])
 	const [board, setBoard] = useState(null)
 	const [lists, setLists] = useState([])
 	const [cards, setCards] = useState([])
