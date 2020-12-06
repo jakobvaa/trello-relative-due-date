@@ -101,7 +101,7 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 		)
 	}
 
-	const generateColumnsWithoutDueDates = (currentCard, columns, currentDiff, allCards) => {
+	const generateColumnsWithoutDueDates = (currentCard, columns, currentDiff) => {
 		const newDiff = currentDiff + currentCard.diff
 		console.log('ssss')
 		
@@ -121,9 +121,9 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 		currentCard.children.forEach(cardName => {
 			console.log('new addition')
 			
-			const childCard = allCards.find(card => card.cardName === cardName)
+			const childCard = cards.find(card => card.cardName === cardName)
 			if(childCard.parent === currentCard.cardName) {
-				columns = generateColumnsWithoutDueDates(childCard, columns, newDiff, allCards)
+				columns = generateColumnsWithoutDueDates(childCard, columns, newDiff)
 			}
 		})
 		return columns
@@ -133,7 +133,9 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 		let columns = []
 		const eventStart = cards.find(card => card.cardName === 'Event Start')
 		eventStart.difference = 0
-		columns = generateColumnsWithoutDueDates(eventStart, columns, 0, cards)
+		console.log('starting')
+		
+		columns = generateColumnsWithoutDueDates(eventStart, columns, 0)
 		console.log(columns)
 		return (
 			<Container>
