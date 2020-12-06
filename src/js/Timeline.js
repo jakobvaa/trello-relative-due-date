@@ -87,8 +87,8 @@ const Timeline = (props) => {
 				const cardLabelNames = card.labels.map(label => label.name)
 				const labelSet = new Set([...cardLabelNames, ...checkedLabels])
 				if(!useRelativeDates &&
-				(totalLength !== labelSet.size || checkedLabels.length === 0 || card.name === 'Event Start') && 
-				relativeCard.parent) {
+				(totalLength !== labelSet.size || checkedLabels.length === 0 && 
+				relativeCard.parent) || card.name === 'Event Start') {
 					card.list = list.name
 					card.parent = relativeCard.parent
 					card.children = relativeCard.children

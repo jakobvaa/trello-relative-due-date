@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import styled from 'styled-components'
 import {timelineModes, colors} from './constants'
 import moment from 'moment'
+import card from '../../server/src/models/card'
 
 
 const Container = styled.div`
@@ -100,7 +101,42 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 		)
 	}
 
-	const renderColumns = () => {
+	const generateColumnsWithoutDueDates = (currentCard, columns, currentDiff, allCards) => {
+		const newDiff = currentDiff + currentCard.diff
+		
+		const column = columns.find(col => col.difference === Math.floor(currentDiff))
+		if(!column) {
+			const newColumn = {
+				difference: currentDiff,
+				cards: [currentCard]
+			}
+			columns.push(newColumn)
+		} else column.cards.push(currentCard)
+		if(currentCard.children.length === 0) {
+			return columns
+		}
+		currentCard.children.forEach(cardName => {
+			const childCard = allCards.find(card => card.cardName === cardName)
+			if(childCard.parent === currentCard.cardName) {
+				columns = generateColumnsWithoutDueDates(childCard, columns, newDiff, allCards)
+			}
+		})
+		return columns
+	}
+
+	const renderColumnsWitoutDueDates = () => {
+		let columns = []
+		const eventStart = cards.find(card => card.cardName === 'Event Start')
+		columns = generateColumnsWithoutDueDates(eventStart, columns, 0, cards)
+		console.log(columns)
+		return (
+			<Container>
+				Dette er en test
+			</Container>
+		)
+	}
+
+	const renderColumnsWithDueDates = () => {
 		let columns = []
 		const eventStart = cards.find(card => card.name === 'Event Start')
 		const eventStartMoment = moment(eventStart.due).utc()
@@ -135,7 +171,6 @@ export const CardTimeline = ({cards, mode, collapsed, useRelativeDates}) => {
 			</Container>
 		)
 	}
-	console.log(cards)
 	return (
 			renderColumns()
 	)
