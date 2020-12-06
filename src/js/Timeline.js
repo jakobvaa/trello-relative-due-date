@@ -54,7 +54,7 @@ const Timeline = (props) => {
 				url: `/getboard?boardid=${b.id}`
 			})
 			setRelativeCards(relCards.data.board)
-			const r = relCard.data.board
+			const r = relCards.data.board
 			const parsedCards = generateCards(filteredList, r)
 			setCards(parsedCards)
 			setLists(filteredList)
