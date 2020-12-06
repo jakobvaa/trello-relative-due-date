@@ -115,6 +115,7 @@ const Timeline = (props) => {
 			<div>Loading</div>
 		)
 	}
+	console.log(useRelativeDates)
 	
 	return (
 		<Container>
