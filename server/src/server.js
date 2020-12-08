@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-
+const path = require('path')
 const setupDB = require('./init/setupDB')
 const setupLogger = require('./init/setupLogger')
 const setupApi = require('./init/setupApi')
@@ -24,7 +24,7 @@ const start = async() => {
 		app.use(express.static('dist'));
 		setupApi(app)
 		app.get('*', (req, res) => {
-			res.sendFile('../dist/index.html')
+			res.sendFile(path.resolve(__dirname, '../../dist/index.html'))
 		})
 
 		const listener = app.listen(3000, () => {
