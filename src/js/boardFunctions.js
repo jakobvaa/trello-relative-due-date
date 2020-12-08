@@ -69,7 +69,7 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 				}
 			})
 		})
-		return 
+		return
 	} catch (err) {
 		console.log(err)
 	}

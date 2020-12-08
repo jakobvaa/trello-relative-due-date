@@ -14,7 +14,7 @@ const addNewCard = async (data) => {
 			labels,
 			listName
 		} = data
-		const baseCard = await Card.findOne({cardName, boardId: 'base'})
+		const baseCard = await Card.findOne({cardName, boardId: '5f6dd3af5cf53082745f7c01'})
 		if (baseCard) {
 			const card = await new Card({
 				cardId,
