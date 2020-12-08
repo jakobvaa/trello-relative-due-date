@@ -191,6 +191,8 @@ module.exports = (app) => {
 			card.due_date = due_date
 			console.log('hei')
 			await card.save()
+			console.log('this worked')
+			
 			return res.status(200).send({message: 'OK'})
 		} catch (err) {
 			console.log(err)
