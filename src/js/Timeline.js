@@ -39,8 +39,8 @@ const Timeline = (props) => {
 	const [cards, setCards] = useState([])
 	const [relativeCards, setRelativeCards] = useState([])
 	const [useRelativeDates, setUseRelativeDates] = useState(false)
-	const [mode, setMode] = useState('monthly')
-	const [collapsed, setCollapsed] = useState(false)
+	const [mode, setMode] = useState('quarterly')
+	const [collapsed, setCollapsed] = useState(true)
 	const [loading, setLoading] = useState(false)
 	
 	useEffect(async () => {
