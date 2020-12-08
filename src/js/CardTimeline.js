@@ -157,7 +157,7 @@ export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelative
 					const cardColor = colors[card.list] ? colors[card.list] : 'white'
 					return (
 						<a href={card.url} target='_blank' style={{width: '100%', textDecoration: 'none'}}>
-							<Card color={cardColor} onClick={() => window.location.assign(card.url)}>
+							<Card color={cardColor}>
 								<h3>{card.name}</h3>
 								{card.due && <p>Due: {new Date(card.due).toDateString()}</p>}
 							</Card>
