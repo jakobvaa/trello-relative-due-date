@@ -24,7 +24,7 @@ const start = async() => {
 		app.use(express.static('dist'));
 		setupApi(app)
 		app.get('*', (req, res) => {
-			res.sendFile(__dirname + '/dist/index.html')
+			res.sendFile('../dist/index.html')
 		})
 
 		const listener = app.listen(3000, () => {
