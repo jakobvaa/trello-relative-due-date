@@ -121,7 +121,8 @@ const Popup = (props) => {
 			method: 'PUT',
 			url: `${BASE_URL}cards/${card.cardId}?key=${appKey}&token=${token}&due=${card.due_date}`
 		})
-		await updateChildren(response.data.card, relativeBoard.data.board, token)
+		const relativeCards = relativeBoard.data.board
+		await updateChildren(response.data.card, relativeCards, token)
 		t.closePopup()
 	}
 
