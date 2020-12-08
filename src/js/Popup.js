@@ -123,7 +123,7 @@ const Popup = (props) => {
 		})
 		const relativeCards = relativeBoard.data.board
 		const update = await updateChildren(response.data.card, relativeCards, token)
-		t.closePopup()
+
 	}
 
 	const removeParent = async () => {
