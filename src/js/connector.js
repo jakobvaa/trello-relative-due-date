@@ -38,8 +38,13 @@ window.TrelloPowerUp.initialize({
         if (isAuthorized) {
           return [{
             text: 'Relative due date',
-            callback: openPopup
-          }];
+            callback: openPopup,
+          }, 
+          {
+            text: 'Timeline',
+            callback: openTimeline
+          }
+        ];
         } else {
           return [{
             text: 'Relative due date',
