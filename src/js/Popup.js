@@ -108,6 +108,7 @@ const Popup = (props) => {
 			data: {
 				cardName: currentCard.name,
 				newParent: selectedParent.name,
+				cardId: relativeCard.cardId,
 				difference,
 				boardId
 			}

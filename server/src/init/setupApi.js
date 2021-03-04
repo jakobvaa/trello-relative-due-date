@@ -66,9 +66,11 @@ const addChildToParent = async (childName, parentName, boardId) => {
 
 
 // Add parent to child, and remove the child from previous parent if applicable
-const addParentToChild = async (childName, parentName, difference, boardId) => {
+const addParentToChild = async (childName, parentName, difference, cardId) => {
 	try {
-		const childCard = await Card.findOne({cardName: childName, boardId})
+		const childCard = await Card.findOne({cardName: childName, cardId})
+		console.log(childCard)
+		
 		childCard.difference = difference
 		console.log(childCard)
 		if(childCard.parent && childCard.parent !== parentName) {
@@ -155,10 +157,10 @@ const createCalendarLink = async (boardId, labels) => {
 
 module.exports = (app) => {
 	app.post('/addParent', async (req, res) => {
-		const { cardName, newParent, difference, boardId } = req.body
+		const { cardName, newParent, difference, boardId, cardId } = req.body
 		try {
 			await addChildToParent(cardName, newParent, boardId)
-			const newChild = await addParentToChild(cardName, newParent, difference, boardId)
+			const newChild = await addParentToChild(cardName, newParent, difference, cardId)
 			return res.send({card: newChild})
 		} catch(err) {
 			console.log(err)
