@@ -95,6 +95,7 @@ const addParentToChild = async (childName, parentName, difference, boardId) => {
 
 		}
 		await childCard.save()
+		console.log(childCard)
 		return childCard
 	} catch (err) {
 		throw err
