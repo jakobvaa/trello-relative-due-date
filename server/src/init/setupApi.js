@@ -73,8 +73,10 @@ const addParentToChild = async (childName, parentName, difference, boardId) => {
 		console.log(childCard)
 		if(childCard.parent && childCard.parent !== parentName) {
 			const previousParent = await Card.findOne({ cardName: childCard.parent, boardId })
-			previousParent.children = previousParent?.children.filter(name => name !== childName)
-			await previousParent.save()
+			if(previousParent) {
+				previousParent.children = previousParent.children.filter(name => name !== childName)
+				await previousParent.save()
+			}
 		}
 		const newParent = await Card.findOne({cardName: parentName, boardId})
 		childCard.parent = parentName
