@@ -71,13 +71,17 @@ const Popup = (props) => {
 				t.card('all'),
 				t.cards('all')
 			])
-      
+			const board = await t.board('all')
+			console.log(myCard)
+			console.log(board)
 			setCurrentCard(myCard)
 			setCards(boardCards.filter(card => card.id !== myCard.id ))
       const relativeCard = await axios({
         url: `/getcard?cardid=${myCard.id}`
       })
+			console.log(relativeCard.data.card)
       setRelativeCard(relativeCard.data.card)
+
 			setLoading(false)
 		}
 	},[])
