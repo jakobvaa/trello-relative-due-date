@@ -66,7 +66,7 @@ const addChildToParent = async (childName, parentName, boardId) => {
 
 
 // Add parent to child, and remove the child from previous parent if applicable
-const addParentToChild = async (childName, parentName, difference, cardId) => {
+const addParentToChild = async (childName, parentName, difference, cardId, boardId) => {
 	try {
 		const childCard = await Card.findOne({cardName: childName, cardId})
 		console.log(childCard)
@@ -160,7 +160,7 @@ module.exports = (app) => {
 		const { cardName, newParent, difference, boardId, cardId } = req.body
 		try {
 			await addChildToParent(cardName, newParent, boardId)
-			const newChild = await addParentToChild(cardName, newParent, difference, cardId)
+			const newChild = await addParentToChild(cardName, newParent, difference, cardId, boardId)
 			return res.send({card: newChild})
 		} catch(err) {
 			console.log(err)
