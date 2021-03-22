@@ -130,11 +130,13 @@ const Popup = (props) => {
 	}
 
 	const removeParent = async () => {
+		const board = await t.board('id')
 		const newCard = await axios({
 			method: 'PUT',
 			url: '/removeparent',
 			data: {
-				cardId: relativeCard.cardId
+				cardId: relativeCard.cardId,
+				boardId: board.id
 			}
 		})
 		setRelativeCard(newCard.data.card)
