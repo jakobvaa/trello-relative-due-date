@@ -277,7 +277,7 @@ module.exports = (app) => {
 		try {
 			const {boardid} = req.query
 			const del  = await Card.deleteMany({boardId: boardid})
-			return res.send({del })
+			return res.send({ del })
 		} catch (err) {
 			res.status(500).send({message: 'Internal server error. '})
 		}
@@ -289,10 +289,9 @@ module.exports = (app) => {
 			console.log(cardIds.length)
 			cardIds.map(async card => {
 				const duplicates = await Card.find({ cardId: card })
-				console.log(duplicates.length)
-				
+				const del = await Card.deleteMany({cardId: duplicates.slice(1, -1)})
 			})
-			res.send({cardIds})
+			res.send({message: 'OK', del })
 		} catch(err) {
 			res.status.send({message: 'Internal server error.'})
 		}
