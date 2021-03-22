@@ -286,7 +286,8 @@ module.exports = (app) => {
 	app.delete('/deletedup', async (req, res) => {
 		try {
 			const cardIds = await Card.distinct('cardId')
-			console.log(cardId.length)
+			console.log(cardIds.length)
+			res.send({cardIds})
 		} catch(err) {
 			res.status.send({message: 'Internal server error.'})
 		}
