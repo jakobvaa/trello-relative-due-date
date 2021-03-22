@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import ReactDOM from 'react-dom'
 import { updateChildren } from './boardFunctions'
 import axios from 'axios'
@@ -72,12 +72,11 @@ const Popup = (props) => {
 				t.cards('all')
 			])
 			const board = await t.board('all')
-			console.log(myCard)
-			console.log(board)
 			setCurrentCard(myCard)
 			setCards(boardCards.filter(card => card.id !== myCard.id ))
+			const board = await t.board('id')
       const relativeCard = await axios({
-        url: `/getcard?cardid=${myCard.id}`
+        url: `/getcard?cardid=${myCard.id}&boardid=${board.id}`
       })
 			console.log(relativeCard.data.card)
       setRelativeCard(relativeCard.data.card)

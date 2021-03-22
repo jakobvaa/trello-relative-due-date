@@ -13,20 +13,20 @@ const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
 export const verifyCard = async (t) => {
   const trelloCard = await t.card('all')
   const list = await t.list('name')
+  const board = await t.board('id')
   const listName = list.name
   const cardMetadata = await axios({
-    url: `/getcard?cardid=${trelloCard.id}`
+    url: `/getcard?cardid=${trelloCard.id}&boardid=${board.id}`
   })
   let relativeCard = cardMetadata.data.card
   if(!relativeCard) {
-    const boardId = await t.board('id')
     const labels = trelloCard.labels.map(label => label.name)
     const description = trelloCard.desc
     relativeCard = await axios({
       method: 'PUT',
       url: '/addcard',
       data: {
-        boardId: boardId.id,
+        boardId: board.id,
         cardId: trelloCard.id,
         due_date: trelloCard.due,
         cardName: trelloCard.name,
@@ -54,14 +54,14 @@ export const verifyCard = async (t) => {
       url: '/updatedate',
       data: {
         cardId: relativeCard.cardId,
-        due_date: relativeCard.due_date
+        due_date: relativeCard.due_date,
+        boardId: board.id
       }
     })
     const token = await t.getRestApi().getToken()
-    const board = await t.board('id')
-    const { id } = board
+
     const relativeBoard = await axios({
-      url: `/getboard?boardid=${id}`
+      url: `/getboard?boardid=${board.id}`
     })
     const relativeCards = relativeBoard.data.board
     console.log(relativeCard.cardName)
@@ -75,7 +75,8 @@ export const verifyCard = async (t) => {
       url: '/updatename',
       data: {
           cardId: relativeCard.cardId,
-          cardName: trelloCard.name
+          cardName: trelloCard.name,
+          boardId: relativeCard.boardId
       }
     })
   }
@@ -86,6 +87,7 @@ export const verifyCard = async (t) => {
       url: '/updatelabels',
       data: {
         cardId: relativeCard.cardId,
+        boardId: board.id,
         labels
       }
     })
@@ -96,6 +98,7 @@ export const verifyCard = async (t) => {
       url: '/updatedescription',
       data: {
         cardId: relativeCard.cardId,
+        boardId: board.id,
         description: trelloCard.desc
       }
     })
@@ -106,6 +109,7 @@ export const verifyCard = async (t) => {
         url: '/updatelist',
         data: {
           cardId: relativeCard.cardId,
+          boardId: board.id,
           listName
         }
       })

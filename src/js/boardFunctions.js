@@ -57,6 +57,7 @@ export const updateChildren = async (currentCard, relativeCards, token) => {
 							url: '/updatedate',
 							data: {
 								cardId: childCard.cardId,
+								boardId: currentCard.boardId,
 								due_date: childMoment
 							}
 						}),

@@ -68,7 +68,7 @@ const addChildToParent = async (childName, parentName, boardId) => {
 // Add parent to child, and remove the child from previous parent if applicable
 const addParentToChild = async (childName, parentName, difference, cardId, boardId) => {
 	try {
-		const childCard = await Card.findOne({cardName: childName, cardId})
+		const childCard = await Card.findOne({cardName: childName, cardId, boardId})
 		console.log(childCard)
 		
 		childCard.difference = difference
@@ -172,7 +172,7 @@ module.exports = (app) => {
 		try {
 			const { cardid, cardname, boardid } = req.query
 			let card
-			if(cardid) card = await Card.findOne({cardId: cardid})
+			if(cardid) card = await Card.findOne({cardId: cardid, boardId: boardid})
 			else card = await Card.findOne({ cardName: cardname, boardId: boardid })
 			return res.send({card})
 		} catch(err) {
@@ -192,12 +192,10 @@ module.exports = (app) => {
 
 	app.post('/updatedate', async (req, res) => {
 		try {
-			const {cardId, due_date} = req.body
-			const card = await Card.findOne({cardId})
+			const {cardId, due_date, boardId} = req.body
+			const card = await Card.findOne({cardId, boardId })
 			card.due_date = due_date
-			console.log('hei')
 			await card.save()
-			console.log('this worked')
 			
 			return res.status(200).send({message: 'OK'})
 		} catch (err) {
@@ -205,30 +203,31 @@ module.exports = (app) => {
 			res.status(500).send({message: 'Internal Server Error.'})
 		}
 	})
-    app.post('/updatename', async (req, res) => {
-			try {
-				const {cardId, cardName} = req.body
-				const card = await Card.findOne({cardId: cardId})
-				const oldName = card.cardName
-				console.log(oldName)
-				if(card.parent) {
-					const parentCard = await Card.findOne({boardId: card.boardId, cardName: card.parent})
-					parentCard.children = [...parentCard.children.filter(child => child !== oldName), cardName]
-					await parentCard.save()
-				}
-				card.cardName = cardName
-				await Card.updateMany({parent: oldName}, {parent: cardName})
-				await card.save()
-				return res.send({card, message: 'ok'})
-			} catch(err) {
-				console.log(err)
-				res.status(500).send({message: 'Internal Server Error.'})
-			} 
+
+	app.post('/updatename', async (req, res) => {
+		try {
+			const {cardId, cardName, boardId} = req.body
+			const card = await Card.findOne({cardId, boardId})
+			const oldName = card.cardName
+			console.log(oldName)
+			if(card.parent) {
+				const parentCard = await Card.findOne({boardId: card.boardId, cardName: card.parent})
+				parentCard.children = [...parentCard.children.filter(child => child !== oldName), cardName]
+				await parentCard.save()
+			}
+			card.cardName = cardName
+			await Card.updateMany({parent: oldName}, {parent: cardName})
+			await card.save()
+			return res.send({card, message: 'ok'})
+		} catch(err) {
+			console.log(err)
+			res.status(500).send({message: 'Internal Server Error.'})
+		} 
 	})
 	app.post('/updatelabels', async (req, res) => {
 		try {
-			const {cardId, labels} = req.body
-			const card = await Card.findOne({cardId})
+			const {cardId, labels, boardId} = req.body
+			const card = await Card.findOne({cardId, boardId})
 			card.labels = labels
 			await card.save()
 			res.send({card, message: 'OK'})
@@ -239,8 +238,8 @@ module.exports = (app) => {
 	})
 	app.post('/updatedescription', async (req, res) => {
 		try {
-			const {cardId, description} = req.body
-			const card = await Card.findOne({cardId})
+			const {cardId, description, boardId} = req.body
+			const card = await Card.findOne({cardId, boardId})
 			card.description = description
 			await card.save()
 			res.send({card, message: 'OK'})
@@ -252,8 +251,8 @@ module.exports = (app) => {
 
 	app.post('/updatelist', async (req, res) => {
 		try {
-			const {cardId, listName} = req.body
-			const card = await Card.findOne({cardId})
+			const {cardId, listName, boardId} = req.body
+			const card = await Card.findOne({cardId, boardId})
 			card.list = listName
 			await card.save()
 			res.send({card, message: 'OK'})
@@ -295,8 +294,8 @@ module.exports = (app) => {
 
 	app.put('/removeparent', async (req, res) => {
 		try {
-			const {cardId} = req.body
-			const card = await Card.findOne({cardId})
+			const {cardId, boardId} = req.body
+			const card = await Card.findOne({cardId, boardId})
 			const parent = await Card.findOne({boardId: card.boardId, cardName: card.parent})
 			const childrenWithName = await Card.find({boardId: card.boardId, cardName: card.cardName})
 			if(childrenWithName.length === 1) {
