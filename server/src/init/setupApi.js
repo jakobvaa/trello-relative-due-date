@@ -287,7 +287,7 @@ module.exports = (app) => {
 		try {
 			const cardIds = await Card.distinct('cardId')
 			console.log(cardIds.length)
-			cardIds.map(card => {
+			cardIds.map(async card => {
 				const duplicates = await Card.find({ cardId: card })
 				console.log(duplicates.length)
 				
