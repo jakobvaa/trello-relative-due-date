@@ -294,7 +294,7 @@ module.exports = (app) => {
 			})
 			res.send({message: 'OK', del })
 		} catch(err) {
-			res.status.send({message: 'Internal server error.'})
+			res.status(500).send({message: 'Internal server error.'})
 		}
 	})
 
