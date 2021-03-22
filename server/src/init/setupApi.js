@@ -283,6 +283,15 @@ module.exports = (app) => {
 		}
 	})
 
+	app.delete('/deletedup', async (req, res) => {
+		try {
+			const cardIds = await Card.distinct('cardId')
+			console.log(cardId.length)
+		} catch(err) {
+			res.status.send({message: 'Internal server error.'})
+		}
+	})
+
 	app.put('/addcard', async (req, res) => {
 		try { 
 			const card = await addNewCard(req.body)
