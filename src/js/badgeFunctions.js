@@ -64,6 +64,8 @@ export const verifyCard = async (t) => {
       url: `/getboard?boardid=${id}`
     })
     const relativeCards = relativeBoard.data.board
+    console.log(relativeCard.cardName)
+    console.log('test')
     await updateChildren(relativeCard, relativeCards, token)
   }
 
