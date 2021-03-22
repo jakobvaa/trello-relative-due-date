@@ -287,6 +287,11 @@ module.exports = (app) => {
 		try {
 			const cardIds = await Card.distinct('cardId')
 			console.log(cardIds.length)
+			cardIds.map(card => {
+				const duplicates = await Card.find({ cardId: card })
+				console.log(duplicates.length)
+				
+			})
 			res.send({cardIds})
 		} catch(err) {
 			res.status.send({message: 'Internal server error.'})
