@@ -74,7 +74,6 @@ const Popup = (props) => {
 			const board = await t.board('all')
 			setCurrentCard(myCard)
 			setCards(boardCards.filter(card => card.id !== myCard.id ))
-			const board = await t.board('id')
       const relativeCard = await axios({
         url: `/getcard?cardid=${myCard.id}&boardid=${board.id}`
       })
