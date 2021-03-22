@@ -290,9 +290,10 @@ module.exports = (app) => {
 			cardIds.map(async card => {
 				const duplicates = await Card.find({ cardId: card })
 				const duplicateIds = duplicates.map(card => card._id)
-				await Card.deleteMany({cardId: duplicateIds.slice(1, -1)})
+				const del = await Card.deleteMany({cardId: duplicateIds.slice(1, -1)})
+				console.log(del)
 			})
-			res.send({message: 'OK', del })
+			res.send({message: 'OK' })
 		} catch(err) {
 			console.log(err)
 			res.status(500).send({message: 'Internal server error.'})
