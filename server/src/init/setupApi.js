@@ -289,7 +289,8 @@ module.exports = (app) => {
 			console.log(cardIds.length)
 			cardIds.map(async card => {
 				const duplicates = await Card.find({ cardId: card })
-				const del = await Card.deleteMany({cardId: duplicates.slice(1, -1)})
+				const duplicateIds = duplicates.map(card => card._id)
+				const del = await Card.deleteMany({cardId: duplicateIds.slice(1, -1)})
 			})
 			res.send({message: 'OK', del })
 		} catch(err) {
