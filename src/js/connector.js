@@ -22,6 +22,14 @@ const showIframe = (t) => {
   })
 }
 
+const openDocumentation = (t) => {
+  return t.modal({
+    title: 'FAQ',
+    url: './marked.html',
+    fullscreen: true
+  })
+}
+
 const openTimeline = (t) => {
   return t.modal({
     title: 'Conference Timeline',
@@ -60,6 +68,7 @@ window.TrelloPowerUp.initialize({
         return [
           {
             text: 'FAQ',
+            callback: openDocumentation
           },
           {
             text: 'Timeline',

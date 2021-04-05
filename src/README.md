@@ -49,5 +49,6 @@ By clicking one of the card names that appear, you will be prompted to define th
 
 ### Timeline 
 
+The IEEE CIS Conference Template can be a little overwhelming, and getting a general timeline of when things happen can be hard by looking a the Kanban board. Therefore, we created a timeline visualization of the cards on your board. The timeline can be opened by clicking the timeline button on the boards toolbar (see picture) 
 
-
+<img src='./assets/timelinebtn.png' width='500'>
