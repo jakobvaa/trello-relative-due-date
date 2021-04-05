@@ -69,10 +69,7 @@ const addChildToParent = async (childName, parentName, boardId) => {
 const addParentToChild = async (childName, parentName, difference, cardId, boardId) => {
 	try {
 		const childCard = await Card.findOne({cardName: childName, cardId, boardId})
-		console.log(childCard)
-		
 		childCard.difference = difference
-		console.log(childCard)
 		if(childCard.parent && childCard.parent !== parentName) {
 			const previousParent = await Card.findOne({ cardName: childCard.parent, boardId })
 			if(previousParent) {
@@ -94,10 +91,8 @@ const addParentToChild = async (childName, parentName, difference, cardId, board
 		}
 		else {
 			childCard.due_date = null
-
 		}
 		await childCard.save()
-		console.log(childCard)
 		return childCard
 	} catch (err) {
 		throw err
@@ -283,23 +278,7 @@ module.exports = (app) => {
 		}
 	})
 
-	app.delete('/deletedup', async (req, res) => {
-		try {
-			const cardIds = await Card.distinct('cardId')
-			console.log(cardIds.length)
-			await cardIds.map(async card => {
-				const duplicates = await Card.find({ cardId: card })
-				const duplicateIds = duplicates.map(card => card._id)
-				const del = await Card.deleteMany({_id: duplicateIds.slice(1)})
-				console.log(del)
-			})
-			res.send({message: 'OK' })
-		} catch(err) {
-			console.log(err)
-			res.status(500).send({message: 'Internal server error.'})
-		}
-	})
-
+	
 	app.put('/addcard', async (req, res) => {
 		try { 
 			const card = await addNewCard(req.body)

@@ -115,10 +115,8 @@ export const TimelineSidebar = ({
 	}
 
 	const copyToClipboard = () => {
-		
 		textRef.current.select()
 		document.execCommand('copy')
-		console.log('success')
 	}
 
 	const renderLines = () => (

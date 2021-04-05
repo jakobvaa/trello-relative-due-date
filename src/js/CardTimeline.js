@@ -83,8 +83,6 @@ const titleFunctions = {
 
 export const CardTimeline = ({cards, mode, collapsed, relativeCards, useRelativeDates}) => {
 	
-	
-
 	const generateColumnsWithoutDueDates = (currentCard, columns, currentDiff, relativeCards, includeList) => {
 		const newDiff = currentDiff + currentCard.difference
 

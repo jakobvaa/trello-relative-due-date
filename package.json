@@ -19,24 +19,25 @@
   },
   "homepage": "https://github.com/martinjoha/trello-relative-due-date#readme",
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "babel": "^6.23.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1",
-    "file-saver": "^2.0.2",
-    "ics": "^2.26.1",
+    "file-saver": "^2.0.5",
+    "ics": "^2.27.0",
     "immutable-ics": "^0.4.0",
+    "marked": "^2.0.1",
     "moment": "^2.29.1",
-    "mongoose": "^5.10.8",
+    "mongoose": "^5.12.3",
     "oauth": "^0.9.15",
-    "parcel-bundler": "^1.12.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "parcel-bundler": "^1.12.5",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "rimraf": "^3.0.2",
-    "styled-components": "^5.2.0",
+    "styled-components": "^5.2.3",
     "url": "^0.11.0",
     "winston": "^3.3.3"
   },
@@ -44,7 +45,7 @@
     "last 2 Chrome versions"
   ],
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/plugin-proposal-decorators": "^7.10.5"
+    "@babel/core": "^7.13.14",
+    "@babel/plugin-proposal-decorators": "^7.13.5"
   }
 }

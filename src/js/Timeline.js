@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import TimelineSidebar from './TimelineSidebar'
 import CardTimeline from './CardTimeline'
 import axios from 'axios'
-import card from '../../server/src/models/card'
 
 
 const Container = styled.div`

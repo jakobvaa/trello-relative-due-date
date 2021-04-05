@@ -59,12 +59,7 @@ window.TrelloPowerUp.initialize({
       if(isAuth) {
         return [
           {
-            text: 'Sync relative Due Dates',
-            callback: checkBoard 
-          },
-          {
-            text: 'Sync Calendar',
-            callback: calendarPopup
+            text: 'FAQ',
           },
           {
             text: 'Timeline',

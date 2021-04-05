@@ -77,7 +77,6 @@ const Popup = (props) => {
       const relativeCard = await axios({
         url: `/getcard?cardid=${myCard.id}&boardid=${board.id}`
       })
-			console.log(relativeCard.data.card)
       setRelativeCard(relativeCard.data.card)
 
 			setLoading(false)
@@ -126,7 +125,6 @@ const Popup = (props) => {
 		})
 		const relativeCards = relativeBoard.data.board
 		const update = await updateChildren(response.data.card, relativeCards, token)
-
 	}
 
 	const removeParent = async () => {
@@ -188,7 +186,15 @@ const Popup = (props) => {
 				<h3>Set difference in months</h3>
 				<div style={{display: 'flex', alignItems: 'center'}}>
 					<button disabled={!selectedParent} style ={{ margin: 0 }} onClick={() => decrement()}>-</button>
-					<input type='number' step={0.01} placeholder={difference} onChange={(e) => setDifference(e.target.value)} value={difference}/>
+					<input 
+					type='number' 
+					step={0.01} 
+					placeholder={difference} 
+					onChange={(e) => setDifference(e.target.value)} 
+					value={difference}
+					style={{
+						marginBottom: 0
+					}}/>
 					<button disabled={!selectedParent} style={{margin: 0}} onClick={() => increment()}>+</button>
 				</div>
 				<button ref={ref} disabled={canSetDate()} onClick={() => setRelativeDueDate()}>Set Relative Due Date</button>
