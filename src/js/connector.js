@@ -25,7 +25,7 @@ const showIframe = (t) => {
 const openDocumentation = (t) => {
   return t.modal({
     title: 'FAQ',
-    url: './marked.html',
+    url: './test.html',
     fullscreen: true
   })
 }

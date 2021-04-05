@@ -11,8 +11,7 @@
 1. [Other Power-Ups](#other)
 
 
-## Introduction to Trello (#){name=introduction}
-
+## Introduction to Trello
 
 ## Adding members
 
@@ -49,6 +48,17 @@ By clicking one of the card names that appear, you will be prompted to define th
 
 ### Timeline 
 
-The IEEE CIS Conference Template can be a little overwhelming, and getting a general timeline of when things happen can be hard by looking a the Kanban board. Therefore, we created a timeline visualization of the cards on your board. The timeline can be opened by clicking the timeline button on the boards toolbar (see picture) 
+The IEEE CIS Conference Template can be a little overwhelming, and getting a general timeline of when things happen can be hard by looking a the Kanban board. Therefore, we created a timeline visualization of the cards on your board. The timeline can be opened by clicking the timeline button on the boards toolbar (see picture) or by clicking the timeline button inside a card. 
 
 <img src='./assets/timelinebtn.png' width='500'>
+
+The timeline can be grouped by week, month or quarterly depending on how compact you want the timeline too look. You can also define the different labels that are shown in the timeline by clicking the cehckboxes in the sidebar. 
+
+### Calendar
+
+When the date for the conference has been set, a calendar file for the event can be downloaded for the conference. Inside the timeline, you will get the option to download an `ics` file that can be imported to your personal calendar containing the different cards on the board. If you only want the cards that are relevant for a specific label, you can check the boxes and then download the calendar.
+
+If you want a calendar that is always up to date with the latest changes to the board, you can subscribe to the calendar by copying the url below the download button in the sidebar. 
+
+<img src='./assets/cal.png' width='500'>
+ 
