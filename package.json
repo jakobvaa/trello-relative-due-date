@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf ./dist && rimraf ./cache && parcel build src/html/*.html --out-dir ./dist",
-    "start": "parcel src/html/*.html"
+    "start:client": "parcel src/html/*.html",
+    "start": "npm run build && node server/src/server.js"
   },
   "repository": {
     "type": "git",
