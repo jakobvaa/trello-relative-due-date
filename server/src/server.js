@@ -27,7 +27,7 @@ const start = async() => {
 			res.sendFile(path.resolve(__dirname, '../../dist/index.html'))
 		})
 
-		const listener = app.listen(3000, () => {
+		const listener = app.listen(process.env.PORT || 3000, () => {
 			console.log(`Server Ready on port ${listener.address().port}`)
 		})
 	}
