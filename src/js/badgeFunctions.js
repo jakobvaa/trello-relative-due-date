@@ -40,11 +40,14 @@ export const verifyCard = async (t) => {
   }
   if(trelloCard.due !== relativeCard.due_date) {
     if(relativeCard.parent){
-      const {cardId, due_date} = relativeCard
-      const token = await t.getRestApi().getToken()
+      const {cardId, due_date, boardId} = relativeCard
       await axios({
+        url: `/removeparent`,
         method: 'PUT',
-        url: `${BASE_URL}cards/${cardId}?key=${appKey}&token=${token}&due=${due_date}`
+        data: {
+          boardId,
+          cardId
+        }
       })
       return
     }
