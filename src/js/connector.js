@@ -24,8 +24,8 @@ const showIframe = (t) => {
 
 const openDocumentation = (t) => {
   return t.modal({
-    title: 'FAQ',
-    url: './documentation.html',
+    title: 'Help',
+    url: './marked.html',
     fullscreen: true
   })
 }
@@ -67,7 +67,7 @@ window.TrelloPowerUp.initialize({
       if(isAuth) {
         return [
           {
-            text: 'FAQ',
+            text: 'Help',
             callback: openDocumentation
           },
           {

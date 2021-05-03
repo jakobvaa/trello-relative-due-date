@@ -1,15 +1,18 @@
 import fs from 'fs'
-import marked from 'marked'
+import MarkdownIT from 'markdown-it'
 import React, {useMemo, useCallback} from 'react'
 import ReactDOM from 'react-dom'
 const Marked = () => {
 	const markdown = useMemo(() => {
+		const md = MarkdownIT({
+			html: true
+		})
 		const file = fs.readFileSync('./src/README.md', {encoding: 'utf-8'})
-		const rawMarkup = marked(file, {sanitize: true})
-		return { __html: rawMarkup}
+		const result = md.render(file)
+		return { __html: result}
 	}, [])
 
-	console.log('markdo', markdown)
+	console.log('markdown', markdown)
 	if(markdown.__html) {
 		return (
 			<div dangerouslySetInnerHTML={markdown}/>

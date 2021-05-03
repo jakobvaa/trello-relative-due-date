@@ -1,64 +1,205 @@
-# Table of contents
+## Table of contents
 
 1. [Introduction to Trello](#introduction) 
-1. [Adding members to board](#addmembers)
-1. [Assigning Roles](#roles)
-1. [Labels](#labels)
-1. [Filtering Cards](#filtering)
-1. [Using Trello Power-up](#power-up)
-1. [Adding relative due date](#power-up)
-1. [Timeline](#timeline)
-1. [Other Power-Ups](#other)
+1. [Setting up conference board from template](#setup)
+1. [Add key dates for the Event](#key-dates)
+1. [Timeline View](#timeline)
+1. [Calendar](#calendar)
+1. [Adding members to a board](#members)
+1. [Labels: filtering information](#labels-filter)
+1. [Labels: create, change or delete](#labels-change)
+1. [Assigning tasks](#tasks)
+1. [Search cards](#search)
+1. [Relative Due Date Power-Up](#power-up)
 
 
-## Introduction to Trello
 
-## Adding members
+<h2 id="introduction">Introduction to Trello</h2>
 
-Adding a new team member to a board is done by clicking the invite button in the board's toolbar. There are two different member roles available, observer and member. A member will be able to edit, comment and invite other people to the board, while an observer is only able to view and comment. It is useful to keep the number of members limited, otherwise a board's content may be hard to keep track of. For the IEEE CIS Conferences it will be useful to only have a few members, as there are many cards and limiting the number of people with edit permission will make it easier for the General Chair to have an overview of the board. 
+Many of our IEEE CIS General Chairs have vast conference organization experience but may need fast access to the latest rules and updated information provided in this tool. Further, many of our General Chairs support bringing on our next generation of conference organisers (CO)s and this tool provides much of the hints and guidelines that our IEEE CIS COs have contributed to over the years. The tool also provides filtering of the information for specific roles. 
 
-## Assign Teammates to cards
+The default tool provides
 
-It is useful for people to know who is responsible for a specific task throughout the planning of the event, and assigning a card to a specific team member is a great way of doing that. A member type user can assign a specific card to one of the board's members, regardless of the member being an observer or a member. When someone is assigned a card, that member will automatically receive notifications when changes are made to that card. This also gives that team member an overview over their specific tasks and can plan accordingly.  
+1. An accessible and searchable information source, with all activities listed under suitable themes, including hints and guidelines, IEEE CIS rules and links to further information. 
+2. Relative dates. All activities include relative dates wrt key conference dates. The tool provides automatic conversion of such deadlines to actual calendar dates when the key conference dates are entered. 
+3. Simplified information view due to the possibility to filter information shown
+4. A detailed timeline view for all activities together with the possibility to filter information shown i.e. show only activity for a specific role
+5. Option to include the entire timeline or role specific timeline in the users daily calendar. Each activity linking directly back to the activity card in Trello. 
 
-## Labels
+For those GCs that wish to use Trello as an active conference organization tool, linking to slack or google docs or using many of the other functions that Trello provides, the team may purchase suitable business licenses.  More information about this option will be made available on the IEEE CIS Conferences Website.  
 
-Labels in Trello is a way of grouping categories of cards together. 
-In the IEEE CIS Conference template labels are used to group cards that are related to a specific chair's tasks. All the financial type cards will have the FC label, and so forth. This makes it easier to assign tasks to team member within the chair's team. 
+<h2 id='setup'>Setting up conference board from template</h2>
 
-## Filtering
 
-Trello allows for searching and filtering among the board's cards. By typing `f` or clicking the `Search cards` button in the menu, a list of search parameters will become available. It is possible to search for specific cards, but also to search for labels, team members or due date. This feature is especially useful for the specific chairs. The IEEE CIS Conference Template has a lot of cards, and allowing to filter away unrelated cards makes it a little less overwhelming for the chair. It also gives the chair an overview of their team's task distribution. 
+To use the template together with the relative due date power-up created, contact IEEE to help setup the team. 
 
-## Relative Due Date Power-Up
+<h2 id='key-dates'>Add key dates for the Event</h2>
 
-The relative due date power-up was created to allow a card's due date to be dependent on another. If the parent card's due date changes, the original card's will also change. That way a General Chair only needs to set the due date of the conference's start date and all tentative dates will be set on the cards that are depending on that card. Almost all the cards in the IEEE CIS Conference Template will have a relative due date, but it is also possible to change som dependencies if that works better for conference planning. 
 
-### Adding a parent to card
+All deadlines in the default tool have been provided as relative dates either to the conference start or
+to other key dates i.e. relative to the paper submission deadline.
 
-Adding, changing or removing a parent card is easy. By clicking on the `Relative Due Date` button inside the card (see image below).
+To add your event dates and update all relative dates to calendar dates, go to the Key Conference
+Dates list. First update the Event Start:
 
-<img src='./assets/relbutton.png' width='300'/>
+* Click on the Event Start card
+* Click on the Due date
+* Select start date from calendar
+* Click Save
 
-This will open a popup in which you can search for the parent card. You can also remove a parent if applicable. 
+Note that the relative dates are still using default deadlines for your other key dates
 
-<img src='./assets/popup.png' width='300'/>
+Update your Event with your approved key dates, following the same process for each card:
 
-By clicking one of the card names that appear, you will be prompted to define the difference between the parent card and the original card. The difference is how many months before or after the due date of the parent card, the original card's due date will be. If the parent card has a due date, the due date of the original card will change according to the difference set. If the original card has cards that are dependant on it, their due dates will also change. 
+* ADCOM Approval received
+* Paper Submission Deadline
+* Paper Acceptance Deadline
+* Camera Copy Deadline
 
-### Timeline 
+<h2 id='timeline'>Timeline View</h2>
 
-The IEEE CIS Conference Template can be a little overwhelming, and getting a general timeline of when things happen can be hard by looking a the Kanban board. Therefore, we created a timeline visualization of the cards on your board. The timeline can be opened by clicking the timeline button on the boards toolbar (see picture) or by clicking the timeline button inside a card. 
+The DEFAULT VIEW is an information view of all the activities grouped into themes. 
+The TIMELINE VIEW rearranges the activities in terms of their timing relative to the conference start, 
+click the Timeline button on the toolbar (see picture) or 
+click the Timeline button on any card.
+* To return to the Default View
+* Click on any activity (card)
 
-<img src='./assets/timelinebtn.png' width='500'>
 
-The timeline can be grouped by week, month or quarterly depending on how compact you want the timeline too look. You can also define the different labels that are shown in the timeline by clicking the cehckboxes in the sidebar. 
 
-### Calendar
+### Adjusting Timeline View
 
-When the date for the conference has been set, a calendar file for the event can be downloaded for the conference. Inside the timeline, you will get the option to download an `ics` file that can be imported to your personal calendar containing the different cards on the board. If you only want the cards that are relevant for a specific label, you can check the boxes and then download the calendar.
+View timing of activities for a specific role (adjusting roles – see labels)
 
-If you want a calendar that is always up to date with the latest changes to the board, you can subscribe to the calendar by copying the url below the download button in the sidebar. 
+*	Click on role e.g. Finance Chair (FC)
 
-<img src='./assets/cal.png' width='500'>
+Change the time interval (3 months default):
+* Click Weekly (Monthly) Time interval (on the left hand side) 
+Reduce number of empty columns (no activity deadlines in those time periode)
+* Click Collapse empty columns
+
+<h2 id='calendar'>Calendar</h2>
+
+
+
+The timeline view also allows for subscribtion to an event calendar that will be up to date whenever there is a change to the board. This will be possible as long as the Event Start date is set. 
+
+This is done in the following way:
+
+* Inside the timeline view, check the relevant labels that are wanted for the calendar on the left hand side. 
+* Click the `Copy Calendar Link To Clipboard` button. This link will contain the calendar that mirrors the timeline view that is filtered on. 
+
+<img src='https://i.imgur.com/nTWHL48.png' width='500'>
+
+<h2 id='members'>Adding members to a board</h2>
+
+
+To add a new member, 
+
+* Click the Invite button in the board's toolbar. 
+* Add the members email address and 
+* Select either member or observer.  
+
+A member will be able to edit, comment and invite other people to the board whilst an observer is only able to view and comment. 
+It is recommended to have few members, limited to 
+
+*  those that need to be able to edit the board
+*  those that need to be able to assign activities/tasks.  
+
+The member or observer invited, will receive the invite, be asked to create a login (if one does not already exist) and asked to join the board
+
+
+<h2 id='labels-filter'>Labels: filtering information</h2>
+
+The template includes a number of LABELS for key roles in the conference organization. 
+Each role may involve one or more chairs.  
+Each activity (card) may have one or more labels ie one or more roles might be commonly involved in such an activity.  
+To view the activities for a given role:
+ * Type f, choose label (role).
+
+<h2 id='labels-change'>Labels: create, change or delete</h2>
+
+The GC can change the allocation of roles to cards by creating/changing/deleting labels on cards. Further, any ‘member’ of the board has such privileges. 
+
+<img src='https://i.imgur.com/U58zioW.png' width='500'>
+
+### Create a new label (role):  
+* click on menu on the boards toolbar, 
+* click more, 
+* click labels (can also be accessed from labels button within a card), 
+* click create a new label ie a new chair label
+
+### Change the colour/pattern of a label:  
+* as above but 
+* click on the edit beside the chosen label
+* choose colour
+
+### Add or remove a label to a card: 
+* click on card, 
+* click ‘+’ or labels button (to the right).  
+* Click on edit beside label to add or delete from card
+
+<h2 id='tasks'>Assigning tasks</h2>
+
+
+
+Labels provide for filtering of information, as stated, providing a simplified tailored view of activities in terms of the key roles in organizing a conference. 
+Chairs may wish to assign tasks to other chairs or to their team e.g. local organizing team. 
+
+### To assign an activity(card): 
+* Click on the card
+* Click on Members button
+* Select member(s) or observer(s) from list
+
+Assignees will be notified of any changes to this activity (card).
+Any member can assign tasks. For example, the local chair can assign an activity to his local team. His team can be registered as observers. 
+
+
+### View assigned tasks
+
+A member or observer can view assigned tasks. Further, a chair can get an overview of his/her team's assigned task distribution.
+	
+Activities (Cards) assigned are marked with a round label with the assignee labels
+To filter view to one or more assignees:
+
+* Type `f` or click menu button and `Search cards`
+* Click on the given member(s) or observer(s)
+
+<h2 id='search'>Search cards</h2>
+
+To find specific information such as activities with upcoming deadlines, completed or incomplete activities 
+
+* Type `f` or click menu button and Search cards 
+* Select relevant parameter from list
+
+To search for a topic
+
+* Type `f` or click menu button and `Search cards` 
+* Write in search word(s)
+
+
+
+<h2 id='power-up'>Relative Due Date Power-Up</h2>
+The relative due date power-up was created to allow a card's due date to be dependent on another – the parent card. The dependency is based on X months prior to or after the deadline for the parent. 
+
+If the parent card's due date is changed, the child cards relative due date to this card will remain unchanged but the calendar date will be automatically adjusted accordingly. For example, when the GC updates the start date card with the calendar date, all child cards will be updated accordingly.  
+
+### Changing the relative date on a card
+
+The GC (or another chair with member status) may wish to adjust the deadline for a given activity. There are two ways to do this. 
+
+1. Change the relative due date
+
+	* Click on Relative due date (under Power-ups to the right)
+	* Select the parent card (current parent shown under PARENT at top left of the card ie Paper Submission)
+	* Set difference in months i.e. if 1 week set 0.25
+	* Click set Relative Due Date
+
+2. Change to fixed calendar date
+	*  	Click on Relative due date
+	* Select Remove Parent (removes relative date)
+	* Click on Due date (on card)
+	* Select fixed calendar date
+
+
  
