@@ -82,9 +82,10 @@ window.TrelloPowerUp.initialize({
       } else {
         return [{
             text: 'Authorize Power up',
-            callback: async (t) => {
-              await t.getRestApi()
-              .authorize({scope: 'read,write'})
+            callback: (t) => {
+              t.getRestApi()
+                .authorize({scope: 'read,write'})
+                .then(t => alert('success'))
             }
         }]
       }
