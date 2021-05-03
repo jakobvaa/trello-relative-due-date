@@ -11,6 +11,7 @@
 1. [Assigning tasks](#tasks)
 1. [Search cards](#search)
 1. [Relative Due Date Power-Up](#power-up)
+1. [Trello 101](#https://trello.com/guide/trello-101)
 
 
 
@@ -30,8 +31,7 @@ For those GCs that wish to use Trello as an active conference organization tool,
 
 <h2 id='setup'>Setting up conference board from template</h2>
 
-
-To use the template together with the relative due date power-up created, contact IEEE to help setup the team. 
+If you want to 
 
 <h2 id='key-dates'>Add key dates for the Event</h2>
 
@@ -202,5 +202,6 @@ The GC (or another chair with member status) may wish to adjust the deadline for
 	* Select fixed calendar date
 
 
-
+<h2 id='tutorial'>Trello 101</h2>
  
+If you want to use the Conference template as a complete planning tool for your conference, it is useful 

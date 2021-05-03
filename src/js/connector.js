@@ -22,6 +22,10 @@ const showIframe = (t) => {
   })
 }
 
+const authorize = (t) => {
+
+}
+
 const openDocumentation = (t) => {
   return t.modal({
     title: 'Help',
@@ -78,7 +82,10 @@ window.TrelloPowerUp.initialize({
       } else {
         return [{
             text: 'Authorize Power up',
-            callback: showIframe
+            callback: async (t) => {
+              await t.getRestApi()
+              .authorize({scope: 'read,write'})
+            }
         }]
       }
   },
