@@ -82,11 +82,7 @@ window.TrelloPowerUp.initialize({
       } else {
         return [{
             text: 'Authorize Power up',
-            callback: (t) => {
-              t.getRestApi()
-                .authorize({scope: 'read,write'})
-                .then(t => alert('success'))
-            }
+            callback: showIframe
         }]
       }
   },
