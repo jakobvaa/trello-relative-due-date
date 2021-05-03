@@ -23,3 +23,12 @@ p {
 	margin-bottom: 1em;
 }
 
+.container {
+	margin: 1em 0 1em 0;
+	max-width: 800px;
+	width: 80%;
+	padding: 1.5em;
+	border-radius: 5px;
+	border: 1px solid lightgray;
+}
+

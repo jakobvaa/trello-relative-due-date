@@ -31,7 +31,12 @@ For those GCs that wish to use Trello as an active conference organization tool,
 
 <h2 id='setup'>Setting up conference board from template</h2>
 
-If you want to 
+In order to get the board running properly, it is useful to contact the IEEE CIS team. They will provide you with a proper team that has the custom built relative due date power-up. When you have received your team page, there is some setup steps that will ensure you get the best experience possible. 
+
+1. Ensure that the power-up is authorized to edit your board, otherwise the due dates will not be generated. You authorize the power-up by clicking the `Authorize Power up` button in the board toolbar. This will open a popup window that will allow the power-up to edit your board. By scrolling to the bottom of the popup window, and clicking `Allow`, the power-up will be authorized.
+ 
+
+<img src='https://i.imgur.com/IsvYLaE.png' width='500'>
 
 <h2 id='key-dates'>Add key dates for the Event</h2>
 
@@ -106,7 +111,7 @@ It is recommended to have few members, limited to
 *  those that need to be able to edit the board
 *  those that need to be able to assign activities/tasks.  
 
-The member or observer invited, will receive the invite, be asked to create a login (if one does not already exist) and asked to join the board
+The member or observer invited, will receive the invite, be asked to create a login (if one does not already exist) and asked to join the board.
 
 
 <h2 id='labels-filter'>Labels: filtering information</h2>

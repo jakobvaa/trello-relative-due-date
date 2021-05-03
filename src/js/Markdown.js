@@ -16,14 +16,7 @@ const Marked = () => {
 	console.log('markdown', markdown)
 	if(markdown.__html) {
 		return (
-			<div dangerouslySetInnerHTML={markdown} style={{
-				margin: '1em 0 1rm 0',
-				maxWidth: '800px',
-				width: '80%',
-				padding: '1.5em',
-				borderRadius: '5px',
-				border: '1px solid lightgray'
-			}}/>
+			<div dangerouslySetInnerHTML={markdown} className='container'/>
 		)
 	}
 	return null
