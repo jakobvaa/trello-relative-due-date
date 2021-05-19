@@ -38,7 +38,7 @@ This 'power up' has been created by IEEE CIS to enable relative dating. All dead
 
 a) AUTHORISE the power-up
 * click the `Authorize Power up` button in the board toolbar. 
-* scroll down the popup window that appears and clock 'allow'. 
+* scroll down the popup window that appears and click 'allow'. 
  
 
 <img src='https://i.imgur.com/IsvYLaE.png' width='500'>
@@ -64,18 +64,21 @@ When you receive ADCOM approval, you can update your event with all your actual 
 
 <h2 id='timeline'>Timeline View</h2>
 
-The DEFAULT VIEW is an information view of all the activities grouped into themes. 
-The TIMELINE VIEW rearranges the activities in terms of their timing relative to the conference start, 
-click the Timeline button on the toolbar (see picture) or 
-click the Timeline button on any card.
-* To return to the Default View
-* Click on any activity (card)
+The DEFAULT VIEW is an information view of all the activities (cards) grouped into themes (lists). 
+
+The TIMELINE VIEW is a calendar view of all the activities (cards) grouped under their deadlines ( relative dates (in default template), actual dates (for an Event))
+
+To switch from DEFAULT VIEW to TIMELINE VIEW: 
+* click the Timeline button on the toolbar (to the right) or click the Timeline button (to the right) on any card.
+
+Top switch from TIMELINE VIEW to DEFAULT VIEW:
+* Click on any activity (card) in the timeline. 
 
 
 
 ### Adjusting Timeline View
 
-View timing of activities for a specific role (adjusting roles – see labels)
+View timing of activities for a specific role (for adjusting roles – see labels)
 
 *	Click on role e.g. Finance Chair (FC)
 
