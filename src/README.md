@@ -31,30 +31,31 @@ For those GCs that wish to use Trello as an active conference organization tool,
 
 <h2 id='setup'>Setting up conference board from template</h2>
 
-In order to get the board running properly, it is useful to contact the IEEE CIS team. They will provide you with a proper team that has the custom built relative due date power-up. When you have received your team page, there is some setup steps that will ensure you get the best experience possible. 
+1. If not already in contact with IEEE CIS support, contact IEEE CIS Conference Support to establish your Trello board as a  IEEE CIS Conference Organisers Board with IEEE CIS support and extensions.  
 
-1. Ensure that the power-up is authorized to edit your board, otherwise the due dates will not be generated. You authorize the power-up by clicking the `Authorize Power up` button in the board toolbar. This will open a popup window that will allow the power-up to edit your board. By scrolling to the bottom of the popup window, and clicking `Allow`, the power-up will be authorized.
+2. Authorise the relative Due date power up
+This 'power up' has been created by IEEE CIS to enable relative dating. All deadlines in the default template have been provided as relative dates either to the conference start or to other key dates e.g. paper submission deadline. The power up allows such relative dates to become actual calendar dates for your particular conference. However, two setup steps are needed as follows:  
+
+a) AUTHORISE the power-up
+* click the `Authorize Power up` button in the board toolbar. 
+* scroll down the popup window that appears and clock 'allow'. 
  
 
 <img src='https://i.imgur.com/IsvYLaE.png' width='500'>
 
 <h2 id='key-dates'>Add key dates for the Event</h2>
 
+b) ADD Key Dates
+Go to the Key Conference Dates list. 
+* Update the Event Start card:
+   * Click on the Event Start card
+   * Click on the Due date
+   * Select start date from calendar
+   * Click Save
 
-All deadlines in the default tool have been provided as relative dates either to the conference start or
-to other key dates i.e. relative to the paper submission deadline.
+Your other Key Dates will be updated relative to your Event start Date. These dates provide you with suggested deadlines, in keeping with the IEEE CIS conference oragnisers experience. 
 
-To add your event dates and update all relative dates to calendar dates, go to the Key Conference
-Dates list. First update the Event Start:
-
-* Click on the Event Start card
-* Click on the Due date
-* Select start date from calendar
-* Click Save
-
-Note that the relative dates are still using default deadlines for your other key dates
-
-Update your Event with your approved key dates, following the same process for each card:
+When you receive ADCOM approval, you can update your event with all your actual approved key dates, following the same process, as above, for each card:
 
 * ADCOM Approval received
 * Paper Submission Deadline
