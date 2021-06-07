@@ -235,4 +235,6 @@ The GC (or another chair with member status) may wish to adjust the deadline for
 
 <h2 id='tutorial'>Trello 101</h2>
  
-If you want to use the Conference template as a complete planning tool for your conference, it is useful 
+Further information general information about Trello can be found at: 
+
+https://trello.com/guide/trello-101
