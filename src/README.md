@@ -1,21 +1,22 @@
 ## Table of contents
 
-1. [Introduction to Trello](#introduction) 
-1. [Setting up conference board from template](#setup)
+1. [Introduction to the CIS Conference Organisers Tool](#introduction) 
+1. [Set up your event's board from the template](#setup)
 1. [Add key dates for the Event](#key-dates)
-1. [Timeline View](#timeline)
-1. [Calendar](#calendar)
+1. [CIS Timeline View](#timeline)
+1. [Link your CIS Timeline to your Calendar](#calendar)
 1. [Adding members to a board](#members)
 1. [Labels: filtering information](#labels-filter)
 1. [Labels: create, change or delete](#labels-change)
 1. [Assigning tasks](#tasks)
 1. [Search cards](#search)
-1. [Relative Due Date Power-Up](#power-up)
+1. [Relative Due Dates](#power-up)
+1. [Feedback and Support](#feedback)
 1. [Trello 101](#https://trello.com/guide/trello-101)
 
 
 
-<h2 id="introduction">Introduction to Trello</h2>
+<h2 id="introduction">Introduction to the CIS Conference Organisers Tool</h2>
 
 Many of our IEEE CIS Volunteers have vast conference organization experience but may need fast access to the latest rules and updated information, as well as having access to useful hints and guidelines for particular conference organisation activities. Further, support is needed for the important role that our conference organisers play in  training up our next generation of conference organisers.  The IEEE CIS CO-Tool is designed to provide such a valuable information source to meet these needs as well as providing filtering of the information source, tuned to particular conference organiser roles.  
 
@@ -55,7 +56,7 @@ In summary, the default tool provides
  
 	<img src='https://i.imgur.com/IsvYLaE.png' width='500'>
 
-	b) ADD Key Dates
+	b) ADD Event Start Date
 	* Go to the Key Conference Dates list. 
 	* Update the Event Start card:
 	
@@ -65,15 +66,17 @@ In summary, the default tool provides
    		* Click Save
 
 	Your other Key Dates will be updated relative to your Event start Date. These dates provide you with suggested deadlines, in keeping with the IEEE CIS conference 		organisers experience. 
+	
+<h2 id='key-dates'>Add Key Dates for the Event</h2>
 
-	When you receive ADCOM approval, you can update your event with all your actual approved key dates, following the same process, as above, for each card:
+When you receive ADCOM approval, you can update your event with all your actual approved key dates, following the same process, as for Event start date, for each relevant card including: 
 
 		* ADCOM Approval received
 		* Paper Submission Deadline
 		* Paper Acceptance Deadline
 		* Camera Copy Deadline
 
-<h2 id='timeline'>Timeline View</h2>
+<h2 id='timeline'>CIS Timeline View</h2>
 
 The default view is the CIS INFORMATION view of all the activities (cards) grouped into themes (lists). 
 
@@ -232,9 +235,10 @@ The GC (or another chair with member status) may wish to adjust the deadline for
 	* Click on Due date (on card)
 	* Select fixed calendar date
 
+<h2 id='feedback'>Feedback and Support</h2>
+
+The CIS Conference Organisers Tool is under continued development and your comments are very welcome. Whether information needs further clarification, further information needed or any other improvements that you would like to see, please let us know. Otherwise if you need further assistance, whether technical or regarding conference organisation, please contact IEEE CIS Conference Organisation Tool support. 
 
 <h2 id='tutorial'>Trello 101</h2>
- 
-Further information general information about Trello can be found at: 
 
-https://trello.com/guide/trello-101
+This help file has highlighted the unique features introduced by IEEE CIS as well as key Trello featuers that are important to understand to use the CIS Conference Organisation Tool. However, if you wish to introduce new lists, new cards or apply more Trello functions, please follow the instructions in the Trello tutorial: https://trello.com/guide/trello-101. 
