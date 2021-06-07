@@ -125,7 +125,7 @@ To add a new member,
 * Select either member or observer.  
 
 A member will be able to edit, comment and invite other people to the board whilst an observer is only able to view and comment. 
-It is recommended to have few members, limited to 
+It is recommended to have few members, limited to: 
 
 *  those that need to be able to edit the board
 *  those that need to be able to assign activities/tasks.  
@@ -136,10 +136,16 @@ The member or observer invited, will receive the invite, be asked to create a lo
 <h2 id='labels-filter'>Labels: filtering information</h2>
 
 The template includes a number of LABELS for key roles in the conference organization. 
+
 Each role may involve one or more chairs.  
+
 Each activity (card) may have one or more labels ie one or more roles might be commonly involved in such an activity.  
+
 To view the activities for a given role:
  * Type f, choose label (role).
+
+To go back to the original (unfiltered) view
+ * close search results ('X search results' button showing on toolbar)
 
 <h2 id='labels-change'>Labels: create, change or delete</h2>
 
@@ -165,10 +171,7 @@ The GC can change the allocation of roles to cards by creating/changing/deleting
 
 <h2 id='tasks'>Assigning tasks</h2>
 
-
-
-Labels provide for filtering of information, as stated, providing a simplified tailored view of activities in terms of the key roles in organizing a conference. 
-Chairs may wish to assign tasks to other chairs or to their team e.g. local organizing team. 
+In addition to roles which enable filtering og information, a chair may wish to assign tasks to other chairs or to their team e.g. local organizing team. Only a 'member' can assign tasks. Tasks may be assigned to either member(s) or observor(s). 
 
 ### To assign an activity(card): 
 * Click on the card
@@ -176,7 +179,6 @@ Chairs may wish to assign tasks to other chairs or to their team e.g. local orga
 * Select member(s) or observer(s) from list
 
 Assignees will be notified of any changes to this activity (card).
-Any member can assign tasks. For example, the local chair can assign an activity to his local team. His team can be registered as observers. 
 
 
 ### View assigned tasks
@@ -186,27 +188,31 @@ A member or observer can view assigned tasks. Further, a chair can get an overvi
 Activities (Cards) assigned are marked with a round label with the assignee labels
 To filter view to one or more assignees:
 
-* Type `f` or click menu button and `Search cards`
-* Click on the given member(s) or observer(s)
+	* Type `f` (or click menu button and then `Search cards`)
+	* Click on the given member(s) or observer(s)
 
 <h2 id='search'>Search cards</h2>
 
 To find specific information such as activities with upcoming deadlines, completed or incomplete activities 
 
-* Type `f` or click menu button and Search cards 
-* Select relevant parameter from list
+	* Type `f` (or click menu button and then 'Search cards') 
+	* scroll down to list of deadline searches
+	* click on appropriate search
 
 To search for a topic
 
-* Type `f` or click menu button and `Search cards` 
-* Write in search word(s)
+	* Type `f` (or click menu button and `Search cards`) 
+	* Write in search word(s)
 
 
 
-<h2 id='power-up'>Relative Due Date Power-Up</h2>
-The relative due date power-up was created to allow a card's due date to be dependent on another – the parent card. The dependency is based on X months prior to or after the deadline for the parent. 
+<h2 id='power-up'>Relative Due Dates</h2>
 
-If the parent card's due date is changed, the child cards relative due date to this card will remain unchanged but the calendar date will be automatically adjusted accordingly. For example, when the GC updates the start date card with the calendar date, all child cards will be updated accordingly.  
+All conference activities deadlines are relative to key dates i.e. what needs to happen X months before the Paper Submission Deadline or what needs to happen X months after ADCOM approval. 
+
+Every card (activity), except the Event Start, has a due date dependant on another card - the parent card. The dependency is based on X months prior to or after the deadline for the parent. 
+
+If the parent card's due date is changed, the child cards 'relative' due date to this card will remain unchanged. However,  the calendar date will be automatically adjusted according to the new calendar date for the parent card. For example, when the GC updates the Event Start date with the calendar date, all child cards will be updated accordingly.  
 
 ### Changing the relative date on a card
 
