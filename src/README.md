@@ -220,13 +220,14 @@ The GC (or another chair with member status) may wish to adjust the deadline for
 
 1. Change the relative due date
 
-	* Click on Relative due date (under Power-ups to the right)
-	* Select the parent card (current parent shown under PARENT at top left of the card ie Paper Submission)
-	* Set difference in months i.e. if 1 week set 0.25
-	* Click set Relative Due Date
+	* Click on Relative due date (under POWER_UPS to the right)
+	* 'Current parent' information provided at top
+	* Select the same parent card or a new parent from list over cards
+	* 'Set difference in months' i.e. if 1 week after set 0.25, 2 weeks before set -0.5
+	* Click Set Relative Due Date
 
-2. Change to fixed calendar date
-	*  	Click on Relative due date
+2. Change from relative to fixed due date (calendar date)
+	*  Click on Relative due date
 	* Select Remove Parent (removes relative date)
 	* Click on Due date (on card)
 	* Select fixed calendar date
