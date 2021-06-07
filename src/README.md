@@ -19,17 +19,15 @@
 
 Many of our IEEE CIS Volunteers have vast conference organization experience but may need fast access to the latest rules and updated information, as well as having access to useful hints and guidelines for particular conference organisation activities. Further, support is needed for the important role that our conference organisers play in  training up our next generation of conference organisers.  The IEEE CIS CO-Tool is designed to provide such a valuable information source to meet these needs as well as providing filtering of the information source, tuned to particular conference organiser roles.  
 
-Organising such an event, not only requires access to information, but planning support for the many deadlines involved in the various activities leading up to, during and after  such an event. Due to the introduction of a unique feature in the CO-Tool that allows for relative dates, the default activity deadlines are automatically converted to actual calendar deadlines  for the particular event when the actual key conference dates are added e.g. Event start Date, Paper Sumbmission deadline etc. This feature thus provides the much needed planning support, through a calendar view of all activities, tuned to the given event, where the user can swap easily between the calendar view and the more detailed information view for a particular activity in question. 
+Organising such an event, not only requires access to information, but planning support for the many deadlines involved in the various activities leading up to, during and after  such an event. Due to the introduction of a unique feature in the Conference Organising Tool that allows for relative dates, the default activity deadlines are automatically converted to actual calendar deadlines  for the particular event when the actual key conference dates are added e.g. Event start Date, Paper Sumbmission deadline etc. This feature thus provides the much needed planning support, through a CIS Timeline view of all activities, tuned to the given event. The user can easily swap between the CIS Timeline View and the more detailed CIS Information View for a particular activity in question. 
 
 In summary, the default tool provides
 
 1. An accessible and searchable information source, with all activities listed under suitable themes, including hints and guidelines, IEEE CIS rules and links to further information. 
-2. Relative dates. All activities include relative dates wrt key conference dates. The tool provides automatic conversion of such deadlines to actual calendar dates when the key conference dates are entered. 
-3. Simplified information view due to the possibility to filter information shown
-4. A detailed timeline view for all activities together with the possibility to filter the information shown i.e. show only activity for a specific role
-5. Option to include the entire timeline or role specific timeline in the users daily calendar. Each activity links directly back to the activity card in te CO-Tool.  
-
-For those GCs that wish to use Trello as an active conference organization tool, linking to slack or google docs or using many of the other functions that Trello provides, the team may purchase suitable business licenses.  More information about this option will be made available on the IEEE CIS Conferences Website.  
+2. Relative dates. All activities include relative dates wrt key conference dates. The tool provides automatic conversion of such deadlines to actual calendar dates when the key conference dates are entered, both preliminary and IEEE CIS ADCOM approved dates.  
+3. A simplified CIS Information View due to the possibility to filter the information shown i.e. show only activity for a specific role.
+4. A detailed CIS Timeline View for all activities together with the possibility to filter the information shown. 
+5. Option to include the entire timeline or role specific timeline in the users daily calendar. Each activity links directly back to the activity card in the Conference Organisation Tool.  
 
 <h2 id='setup'>Set up your event's board from the template</h2>
 
