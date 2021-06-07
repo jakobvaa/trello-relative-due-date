@@ -64,26 +64,28 @@ In summary, the default tool provides
    		* Select start date from calendar
    		* Click Save
 
-Your other Key Dates will be updated relative to your Event start Date. These dates provide you with suggested deadlines, in keeping with the IEEE CIS conference oragnisers experience. 
+	Your other Key Dates will be updated relative to your Event start Date. These dates provide you with suggested deadlines, in keeping with the IEEE CIS conference 		organisers experience. 
 
-When you receive ADCOM approval, you can update your event with all your actual approved key dates, following the same process, as above, for each card:
+	When you receive ADCOM approval, you can update your event with all your actual approved key dates, following the same process, as above, for each card:
 
-* ADCOM Approval received
-* Paper Submission Deadline
-* Paper Acceptance Deadline
-* Camera Copy Deadline
+		* ADCOM Approval received
+		* Paper Submission Deadline
+		* Paper Acceptance Deadline
+		* Camera Copy Deadline
 
 <h2 id='timeline'>Timeline View</h2>
 
-The DEFAULT VIEW is an information view of all the activities (cards) grouped into themes (lists). 
+The default view is the CIS INFORMATION view of all the activities (cards) grouped into themes (lists). 
 
-The TIMELINE VIEW is a calendar view of all the activities (cards) grouped under their deadlines ( relative dates (in default template), actual dates (for an Event))
+The CIS TIMELINE view is a calendar view of all the activities (cards) grouped under their deadlines ( relative dates (default), actual dates (for an Event))
 
-To switch from DEFAULT VIEW to TIMELINE VIEW: 
-* click the Timeline button on the toolbar (to the right) or click the Timeline button (to the right) on any card.
+To switch from CIS INFORMATION view to CIS TIMELINE view: 
 
-Top switch from TIMELINE VIEW to DEFAULT VIEW:
-* Click on any activity (card) in the timeline. 
+	* click the Timeline button on the toolbar (to the right) or click the Timeline button (to the right) on any card.
+
+To switch from CIS TIMELINE view to CIS INFORMATION view:
+
+	* Click on any activity (card) in the timeline. 
 
 
 
@@ -91,25 +93,27 @@ Top switch from TIMELINE VIEW to DEFAULT VIEW:
 
 View timing of activities for a specific role (for adjusting roles – see labels)
 
-*	Click on role e.g. Finance Chair (FC)
+	* Click on role e.g. Finance Chair (FC)
 
 Change the time interval (3 months default):
-* Click Weekly (Monthly) Time interval (on the left hand side) 
+
+	* Click Weekly (Monthly) Time interval (on the left hand side) 
+
 Reduce number of empty columns (no activity deadlines in those time periode)
-* Click Collapse empty columns
 
-<h2 id='calendar'>Calendar</h2>
+	* Click Collapse empty columns
 
+<h2 id='calendar'>Link your CIS Timeline to your Calendar</h2>
 
-
-The timeline view also allows for subscribtion to an event calendar that will be up to date whenever there is a change to the board. This will be possible as long as the Event Start date is set. 
-
-This is done in the following way:
-
-* Inside the timeline view, check the relevant labels that are wanted for the calendar on the left hand side. 
-* Click the `Copy Calendar Link To Clipboard` button. This link will contain the calendar that mirrors the timeline view that is filtered on. 
-
-<img src='https://i.imgur.com/nTWHL48.png' width='500'>
+	* Inside the timeline view, adjust view to those deadlines you want to include
+		* select roles to include	
+	* Click the `Copy Calendar Link To Clipboard` button. This link will contain the filtered calendar.
+	
+	<img src='https://i.imgur.com/nTWHL48.png' width='500'>
+	
+	* add to your personal calendar in the normal way
+	
+	All activities entered in your calendar will link directly back to the activity card on your event board
 
 <h2 id='members'>Adding members to a board</h2>
 
