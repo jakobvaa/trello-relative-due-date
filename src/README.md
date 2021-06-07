@@ -31,25 +31,38 @@ In summary, the default tool provides
 
 <h2 id='setup'>Set up your event's board from the template</h2>
 
-1. If not already in contact with IEEE CIS support, contact IEEE CIS Conference Support to establish your Trello board as a  IEEE CIS Conference Organisers Board with IEEE CIS support and extensions.  
+1. Create CIS Conference Organising Tool Board for your event
 
-2. Authorise the relative due date power up
-This 'power up' has been created by IEEE CIS to enable relative dating. All deadlines in the default template have been provided as relative dates either to the conference start or to other key dates e.g. paper submission deadline. The power up allows such relative dates to become actual calendar dates for your particular conference. However, two setup steps are needed as follows:  
+	 * click on CREATE BOARD FROM TEMPLATE
+	 * title: insert name of your event (with year)
+	 * choose workspace
+	 * click create
+
+2. Register your event board with IEEE CIS
+
+	* Contact IEEE CIS Conference Organising Tool Support
+	
+	Your board will now have both Technical and IEEE CIS Conference Committee support for any questions you may have. 
+
+3. Establish due dates
+
+	A 'power up' has been created by IEEE CIS to enable the default relative dates to be automatically converted to actual calendar dates for your event. Two setup steps are 	needed as follows:  
 
 	a) AUTHORISE the power-up
-	* click the `Authorize Power up` button in the board toolbar. 
-	* scroll down the popup window that appears and click 'allow'. 
+	
+	* click the `Authorize Power up` button in the board toolbar 
+	* scroll down the popup window and click 'allow'
  
-
 	<img src='https://i.imgur.com/IsvYLaE.png' width='500'>
 
 	b) ADD Key Dates
-	Go to the Key Conference Dates list. 
+	* Go to the Key Conference Dates list. 
 	* Update the Event Start card:
-   	* Click on the Event Start card
-   	* Click on the Due date
-   	* Select start date from calendar
-   	* Click Save
+	
+   		* Click on the Event Start card
+   		* Click on the Due date
+   		* Select start date from calendar
+   		* Click Save
 
 Your other Key Dates will be updated relative to your Event start Date. These dates provide you with suggested deadlines, in keeping with the IEEE CIS conference oragnisers experience. 
 
