@@ -67,20 +67,20 @@ export const verifyRules = async (t, card, list) => {
 
 
 
-				const correctCheckItems = faultyChecklist.checkItems.filter(checkItem => 
-					correctNames.includes(checkItem.name))
-				const correctCheckItemNames = correctCheckItems.map(item => item.name)
-				const addCheckItems = requirements.checkItems.filter(item => 
-					!correctCheckItemNames.includes(item))
-				addCheckItems.forEach(item => {
-					promises.push(axios({
-						method: 'POST',
-						url: `
-						${BASE_URL}/checklists/${faultyChecklist.id}/checkItems?
-						key=${appKey}&token=${token}&name=${item.name}&checked=${item.state === 'complete'}
-						`
-					}))
-				})
+				// const correctCheckItems = faultyChecklist.checkItems.filter(checkItem => 
+				// 	correctNames.includes(checkItem.name))
+				// const correctCheckItemNames = correctCheckItems.map(item => item.name)
+				// const addCheckItems = requirements.checkItems.filter(item => 
+				// 	!correctCheckItemNames.includes(item))
+				// addCheckItems.forEach(item => {
+				// 	promises.push(axios({
+				// 		method: 'POST',
+				// 		url: `
+				// 		${BASE_URL}/checklists/${faultyChecklist.id}/checkItems?
+				// 		key=${appKey}&token=${token}&name=${item.name}&checked=${item.state === 'complete'}
+				// 		`
+				// 	}))
+				// })
 				await Promise.all(promises)
 			}
 		} else {
