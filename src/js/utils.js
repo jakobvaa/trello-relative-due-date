@@ -38,19 +38,23 @@ export const verifyRules = async (t, card, list) => {
 		if (requirements) {
 			const faultyChecklist = currentChecklists.find(checklist => checklist.name === newCard.name)
 			if (!faultyChecklist) {
-				const newChecklist = await axios({
-					method: 'POST',
-					url: `${BASE_URL}checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
-				})				
-				const promises = requirements.checkItems.map(requirement => {
-					return axios({
+				try {
+					const newChecklist = await axios({
 						method: 'POST',
-						url: `${BASE_URL}checklists/${newChecklist.data.id}/checkItems?
-						key=${appKey}&token=${token}&name=${requirement.name}&checked=${requirement.state === 'complete'}
-						`
+						url: `${BASE_URL}checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
+					})				
+					const promises = requirements.checkItems.map(requirement => {
+						return axios({
+							method: 'POST',
+							url: `${BASE_URL}checklists/${newChecklist.data.id}/checkItems?
+							key=${appKey}&token=${token}&name=${requirement.name}&checked=${requirement.state === 'complete'}
+							`
+						})
 					})
-				})
-				await Promise.all(promises)
+					await Promise.all(promises)
+				} catch(e) {
+					console.log('56', e)
+				}
 			} else {
 				const promises = []
 				const correctNames = requirements.checkItems.map(checkItem => checkItem.name)
