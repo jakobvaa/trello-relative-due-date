@@ -55,7 +55,7 @@ export const verifyRules = async (t, card, list) => {
 				const correctNames = requirements.checkItems.map(async checkItem => checkItem.name)
 				const faultyCheckItems = faultyChecklist.checkItems.filter(checkItem => 
 					!correctNames.includes(checkItem.name))
-				faultyCheckItems.forEach(checkItem => {
+				faultyCheckItems.forEach(async checkItem => {
 					await axios({
 						method: 'DELETE',
 						url: `
