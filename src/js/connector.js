@@ -53,7 +53,7 @@ window.TrelloPowerUp.initialize({
             callback: openPopup,
           }, 
           {
-            text: 'Timeline',
+            text: 'CIS Timeline',
             callback: openTimeline
           }
         ];
@@ -75,7 +75,7 @@ window.TrelloPowerUp.initialize({
             callback: openDocumentation
           },
           {
-            text: 'Timeline',
+            text: 'CIS Timeline',
             callback: openTimeline
           }
       ]

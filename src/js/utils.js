@@ -82,6 +82,7 @@ export const verifyRules = async (t, card, list) => {
 					}))
 				})
 				await Promise.all(promises)
+				
 			}
 		} else {
 			const shouldDelete = currentChecklists.find(checklist => checklist.name === newCard.name)
