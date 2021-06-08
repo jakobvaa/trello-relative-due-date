@@ -80,7 +80,7 @@ export const verifyRules = async (t, card, list) => {
 						key=${appKey}&token=${token}&name=${item.name}&checked=${item.state === 'complete'}
 						`
 					}))
-				// })
+				})
 				await Promise.all(promises)
 			}
 		} else {
