@@ -76,7 +76,7 @@ export const verifyRules = async (t, card, list) => {
 					promises.push(axios({
 						method: 'POST',
 						url: `
-						${BASE_URL}/checklists/${faultyChecklist.data.id}/checkItems?
+						${BASE_URL}/checklists/${faultyChecklist.id}/checkItems?
 						key=${appKey}&token=${token}&name=${item.name}&checked=${item.state === 'complete'}
 						`
 					}))
