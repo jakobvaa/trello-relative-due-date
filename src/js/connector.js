@@ -95,7 +95,7 @@ window.TrelloPowerUp.initialize({
   },
   'card-detail-badges': async (t, opts) => {
     const card = await t.card('all')
-    const board = await t.board('id')
+    const board = await t.board('all')
     const list = await t.list('all')
     const lists = await t.list('all')
     console.log(list)
