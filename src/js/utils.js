@@ -47,7 +47,7 @@ export const verifyRules = async (t, card, list) => {
 				const promises = requirements.checkItems.map(requirement => {
 					return axios({
 						method: 'POST',
-						url: `${BASE_URL}/checklists/${newChecklist.id}/checkItems?
+						url: `${BASE_URL}/checklists/${newChecklist.data.id}/checkItems?
 						key=${appKey}&token=${token}&name=${requirement.name}&checked=${requirement.state === 'complete'}
 						`
 					})
