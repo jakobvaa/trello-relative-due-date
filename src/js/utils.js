@@ -42,7 +42,7 @@ export const verifyRules = async (t, card, list) => {
 			if(!exists) {
 				const newChecklist = await axios({
 					method: 'POST',
-					url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${card.name}`
+					url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${card.name}&idCard=${card.id}`
 				})
 				console.log(newChecklist)
 			}
