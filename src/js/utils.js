@@ -52,8 +52,8 @@ export const verifyRules = async (t, card, list) => {
 				await Promise.all(promises)
 			} else {
 				const responses = []
-				const correctNames = requirements.map(checkItem => checkItem.name)
-				const faultyCheckItems = faultyChecklist.filter(checkItem => !correctNames.includes(checkItem.name))
+				const correctNames = requirements.checkItems.map(checkItem => checkItem.name)
+				const faultyCheckItems = faultyChecklist.checkItems.filter(checkItem => !correctNames.includes(checkItem.name))
 				console.log(faultyCheckItems)
 			}
 		} else {
