@@ -13,7 +13,7 @@ export const verifyRules = async (t, card, list) => {
 	console.log(currentChecklists)
 	const l = await t.lists('all')
 	console.log(l)
-	const rulesList = l.find(newList => newList.name.includes(list.name))
+	const rulesList = l.find(newList => newList.name.includes(list.name) && !newList.id === list.id)
 	console.log(rulesList)
 	const { cards } = rulesList
 	cards.forEach(async newCard => {
