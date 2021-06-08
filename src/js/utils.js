@@ -14,6 +14,7 @@ export const verifyRules = async (t, card, list) => {
 	const l = t.lists('all')
 	console.log(lists)
 	const rulesList = l.find(newList => newList.name.includes(list.name))
+	console.log(rulesList)
 	const { cards } = rulesList
 	cards.forEach(async newCard => {
 		const response = await axios({
@@ -21,6 +22,7 @@ export const verifyRules = async (t, card, list) => {
 			url: `${BASE_URL}/cards/${newCard.id}/checklists?key=${appKey}&token=${token}`
 		})
 		const checklists = response.data
+		console.log(checklists)
 		const requirements = checklists.find(checklist => checklist.name === 'IEEE CIS Requirements')
 		if(requirements) {
 			const exists = !!currentChecklists.find(checklist => checklist.name === newCard.name)
