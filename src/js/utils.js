@@ -42,6 +42,7 @@ export const verifyRules = async (t, card, list) => {
 					url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
 				})				
 				const promises = requirements.checkItems.map(requirement => {
+					console.log(requirement)
 					return axios({
 						method: 'POST',
 						url: `${BASE_URL}/checklists/${newChecklist.data.id}/checkItems?
@@ -51,10 +52,35 @@ export const verifyRules = async (t, card, list) => {
 				})
 				await Promise.all(promises)
 			} else {
-				const responses = []
+				const promises = []
 				const correctNames = requirements.checkItems.map(checkItem => checkItem.name)
-				const faultyCheckItems = faultyChecklist.checkItems.filter(checkItem => !correctNames.includes(checkItem.name))
-				console.log(faultyCheckItems)
+				const faultyCheckItems = faultyChecklist.checkItems.filter(checkItem => 
+					!correctNames.includes(checkItem.name))
+				faultyCheckItems.forEach(checkItem => {
+					promises.push(axios({
+						method: 'DELETE',
+						url: `
+							${BASE_URL}/checklists/${faultyChecklist.id}/checkItems/${checkItem.id}
+						`
+					}))
+				})
+
+
+
+				const correctCheckItems = faultyChecklist.checkItems.filter(checkItem => 
+					correctNames.includes(checkItem.name))
+				const correctCheckItemNames = correctCheckItems.map(item => item.name)
+				const addCheckItems = requirements.checkItems.filter(item => 
+					!correctCheckItemNames.includes(item))
+				addCheckItems.forEach(item => {
+					promises.push(axios({
+						method: 'POST',
+						url: `
+						${BASE_URL}/checklists/${faultyChecklist.data.id}/checkItems?
+						key=${appKey}&token=${token}&name=${item.name}&checked=${item.state === 'complete'}
+						`
+					}))
+				})
 			}
 		} else {
 			const shouldDelete = currentChecklists.find(checklist => checklist.name === newCard.name)
