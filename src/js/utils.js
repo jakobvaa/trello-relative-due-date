@@ -7,7 +7,7 @@ export const verifyRules = async (t, card, list) => {
 	const token = await t.getRestApi().getToken()
 	const response = await axios({
 		method: 'GET',
-		url: `${BASE_URL}/cards/${card.id}/checklists?key=${appKey}&token=${token}`
+		url: `${BASE_URL}cards/${card.id}/checklists?key=${appKey}&token=${token}`
 	})
 	let currentChecklists = response.data
 
@@ -19,19 +19,19 @@ export const verifyRules = async (t, card, list) => {
 		if(!cards.find(card => card.name === checklist.name)) {
 			await axios({
 				method: 'DELETE',
-				url: `${BASE_URL}/checklists/${checklist.id}?key=${appKey}&token=${token}`
+				url: `${BASE_URL}checklists/${checklist.id}?key=${appKey}&token=${token}`
 			})
 		}
 	})
 	const newChecklist = await axios({
 		method: 'GET',
-		url: `${BASE_URL}/cards/${card.id}/checklists?key=${appKey}&token=${token}`
+		url: `${BASE_URL}cards/${card.id}/checklists?key=${appKey}&token=${token}`
 	})
 	currentChecklists = newChecklist.data
 	cards.forEach(async newCard => {
 		const response = await axios({
 			method: 'GET',
-			url: `${BASE_URL}/cards/${newCard.id}/checklists?key=${appKey}&token=${token}`
+			url: `${BASE_URL}cards/${newCard.id}/checklists?key=${appKey}&token=${token}`
 		})
 		const checklists = response.data
 		const requirements = checklists.find(checklist => checklist.name === 'IEEE CIS Requirements')
@@ -40,12 +40,12 @@ export const verifyRules = async (t, card, list) => {
 			if (!faultyChecklist) {
 				const newChecklist = await axios({
 					method: 'POST',
-					url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
+					url: `${BASE_URL}checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
 				})				
 				const promises = requirements.checkItems.map(requirement => {
 					return axios({
 						method: 'POST',
-						url: `${BASE_URL}/checklists/${newChecklist.data.id}/checkItems?
+						url: `${BASE_URL}checklists/${newChecklist.data.id}/checkItems?
 						key=${appKey}&token=${token}&name=${requirement.name}&checked=${requirement.state === 'complete'}
 						`
 					})
@@ -60,7 +60,7 @@ export const verifyRules = async (t, card, list) => {
 					promises.push(axios({
 						method: 'DELETE',
 						url: `
-							${BASE_URL}/checklists/${faultyChecklist.id}/checkItems/${checkItem.id}?key=${appKey}&token=${token}
+							${BASE_URL}checklists/${faultyChecklist.id}/checkItems/${checkItem.id}?key=${appKey}&token=${token}
 						`
 					}))
 				})
@@ -76,7 +76,7 @@ export const verifyRules = async (t, card, list) => {
 					promises.push(axios({
 						method: 'POST',
 						url: `
-						${BASE_URL}/checklists/${faultyChecklist.id}/checkItems?
+						${BASE_URL}checklists/${faultyChecklist.id}/checkItems?
 						key=${appKey}&token=${token}&name=${item.name}&checked=${item.state === 'complete'}
 						`
 					}))
@@ -89,7 +89,7 @@ export const verifyRules = async (t, card, list) => {
 			if (shouldDelete) {
 				await axios({
 					method: 'DELETE',
-					url: `${BASE_URL}/checklists/${shouldDelete.id}?key=${appKey}&token=${token}`
+					url: `${BASE_URL}checklists/${shouldDelete.id}?key=${appKey}&token=${token}`
 				})
 			}
 		}
