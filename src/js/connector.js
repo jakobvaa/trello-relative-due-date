@@ -102,7 +102,7 @@ window.TrelloPowerUp.initialize({
     console.log(card)
     console.log(lists)
     console.log(board)
-    const checklist = await t.checklist('all')
+    const checklist = await t.card('checklists')
     console.log(checklist)
     
     
