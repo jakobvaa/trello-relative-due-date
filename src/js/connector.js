@@ -97,6 +97,7 @@ window.TrelloPowerUp.initialize({
     const card = await t.card('all')
     const board = await t.board('id')
     const list = await t.list('all')
+    const lists = await t.list('all')
     console.log(list)
     console.log(card)
     const response = await axios(`/getcard?cardid=${card.id}&boardid=${board.id}`)
