@@ -98,6 +98,7 @@ window.TrelloPowerUp.initialize({
     const board = await t.board('id')
     const list = await t.list('all')
     const lists = await t.list('all')
+    const checklist = await t.checklist('all')
     console.log(list)
     console.log(card)
     console.log(lists)
