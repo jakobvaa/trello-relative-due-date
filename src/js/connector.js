@@ -6,7 +6,7 @@ const appName = 'relative-due-date'
 const { checkBoard, updateChildren } = require('./boardFunctions')
 const {verifyCard, generateBadgeText} = require('./badgeFunctions')
 const {calendarPopup} = require('./dateFunctions')
-
+const {verifyRules } = require('./utils')
 const openPopup = (t, opts) => {
   return t.popup({
     title: 'Cards',
@@ -96,12 +96,11 @@ window.TrelloPowerUp.initialize({
   'card-detail-badges': async (t, opts) => {
     const card = await t.card('all')
     const board = await t.board('all')
-    const list = await t.list('all')
-    const lists = await t.list('all')
-    console.log(list)
-    console.log(card)
-    console.log(lists)
-    console.log(board)
+    const list = await t.list('name')
+    if (list.name === 'IEEE CIS Rules Summary') { 
+      await varifyRules(t, card)
+    }
+
     const checklist = await t.card('checklists')
     console.log(checklist)
     
