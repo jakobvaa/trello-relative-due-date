@@ -65,7 +65,7 @@ export const verifyRules = async (t, card, list) => {
 					}))
 				})
 
-				const correctNamesInFaulty = faultyCheckList.checkItems.filter(checkItem => (
+				const correctNamesInFaulty = faultyChecklist.checkItems.filter(checkItem => (
 					correctNames.includes(checkItem.name)
 				))
 				const correctItemNames = correctNamesInFaulty.map(item => item.name)
