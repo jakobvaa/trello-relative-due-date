@@ -82,7 +82,7 @@ export const verifyRules = async (t, card, list) => {
 							method: 'POST',
 							url: `
 							${BASE_URL}checklists/${faultyChecklist.id}/checkItems?
-							key=${appKey}&token=${token}&name=${item.name}&checked=${item.state === 'complete'}
+							key=${appKey}&token=${token}&name=${encodeURI(item.name)}&checked=${item.state === 'complete'}
 							`
 						}))
 					})
