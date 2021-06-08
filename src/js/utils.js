@@ -11,7 +11,7 @@ export const verifyRules = async (t, card, list) => {
 	})
 	const currentChecklists = response.data
 	console.log(currentChecklists)
-	const l = t.lists('all')
+	const l = await t.lists('all')
 	console.log(lists)
 	const rulesList = l.find(newList => newList.name.includes(list.name))
 	console.log(rulesList)
