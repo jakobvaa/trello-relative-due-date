@@ -56,36 +56,40 @@ export const verifyRules = async (t, card, list) => {
 					console.log('56', e)
 				}
 			} else {
-				const promises = []
-				const correctNames = requirements.checkItems.map(checkItem => checkItem.name)
-				const faultyCheckItems = faultyChecklist.checkItems.filter(checkItem => 
-					!correctNames.includes(checkItem.name))
-				faultyCheckItems.forEach(checkItem => {
-					promises.push(axios({
-						method: 'DELETE',
-						url: `
-							${BASE_URL}checklists/${faultyChecklist.id}/checkItems/${checkItem.id}?key=${appKey}&token=${token}
-						`
-					}))
-				})
-
-				const correctNamesInFaulty = faultyChecklist.checkItems.filter(checkItem => (
-					correctNames.includes(checkItem.name)
-				))
-				const correctItemNames = correctNamesInFaulty.map(item => item.name)
-				const addCheckItems = requirements.checkItems.filter(item => (
-					!correctItemNames.includes(item.name)
-				))
-				addCheckItems.forEach(item => {
-					promises.push(axios({
-						method: 'POST',
-						url: `
-						${BASE_URL}checklists/${faultyChecklist.id}/checkItems?
-						key=${appKey}&token=${token}&name=${item.name}&checked=${item.state === 'complete'}
-						`
-					}))
-				})
-				await Promise.all(promises)
+				try {
+					const promises = []
+					const correctNames = requirements.checkItems.map(checkItem => checkItem.name)
+					const faultyCheckItems = faultyChecklist.checkItems.filter(checkItem => 
+						!correctNames.includes(checkItem.name))
+					faultyCheckItems.forEach(checkItem => {
+						promises.push(axios({
+							method: 'DELETE',
+							url: `
+								${BASE_URL}checklists/${faultyChecklist.id}/checkItems/${checkItem.id}?key=${appKey}&token=${token}
+							`
+						}))
+					})
+	
+					const correctNamesInFaulty = faultyChecklist.checkItems.filter(checkItem => (
+						correctNames.includes(checkItem.name)
+					))
+					const correctItemNames = correctNamesInFaulty.map(item => item.name)
+					const addCheckItems = requirements.checkItems.filter(item => (
+						!correctItemNames.includes(item.name)
+					))
+					addCheckItems.forEach(item => {
+						promises.push(axios({
+							method: 'POST',
+							url: `
+							${BASE_URL}checklists/${faultyChecklist.id}/checkItems?
+							key=${appKey}&token=${token}&name=${item.name}&checked=${item.state === 'complete'}
+							`
+						}))
+					})
+					await Promise.all(promises)
+				} catch(e) {
+					console.log(91, e)
+				}
 
 			}
 		} else {
