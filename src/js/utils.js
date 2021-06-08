@@ -9,13 +9,19 @@ export const verifyRules = async (t, card, list) => {
 		method: 'GET',
 		url: `${BASE_URL}/cards/${card.id}/checklists?key=${appKey}&token=${token}`
 	})
-	const currentChecklists = response.data
-	console.log(currentChecklists)
+	let currentChecklists = response.data
+
 	const l = await t.lists('all')
-	console.log(l)
 	const rulesList = l.find(newList => card.name.includes(newList.name))
-	console.log(rulesList)
 	const { cards } = rulesList
+	currentChecklists.forEach(checklist => {
+		if(!cards.find(card => card.name === checklist.name)) {
+			await axios({
+				method: 'DELETE',
+				url: `${BASE_URL}/checklists/${checklist.id}?key=${appKey}&token=${token}`
+			})
+		}
+	})
 	cards.forEach(async newCard => {
 		const response = await axios({
 			method: 'GET',
