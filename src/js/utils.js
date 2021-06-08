@@ -15,7 +15,7 @@ export const verifyRules = async (t, card, list) => {
 	console.log(lists)
 	const rulesList = l.find(newList => newList.name.includes(list.name))
 	const { cards } = rulesList
-	cards.forEach(newCard => {
+	cards.forEach(async newCard => {
 		const checklists = await axios({
 			method: 'GET',
 			url: `${BASE_URL}/cards/${newCard.id}/checklists?key=${appKey}&token=${token}`
