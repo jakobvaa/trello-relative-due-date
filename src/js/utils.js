@@ -41,13 +41,13 @@ export const verifyRules = async (t, card, list) => {
 				try {
 					const newChecklist = await axios({
 						method: 'POST',
-						url: `${BASE_URL}checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
+						url: `${BASE_URL}checklists?key=${appKey}&token=${token}&name=${encodeURI(newCard.name)}&idCard=${card.id}`
 					})				
 					const promises = requirements.checkItems.map(requirement => {
 						return axios({
 							method: 'POST',
 							url: `${BASE_URL}checklists/${newChecklist.data.id}/checkItems?
-							key=${appKey}&token=${token}&name=${requirement.name}&checked=${requirement.state === 'complete'}
+							key=${appKey}&token=${token}&name=${encodeURI(requirement.name)}&checked=${requirement.state === 'complete'}
 							`
 						})
 					})
