@@ -35,14 +35,12 @@ export const verifyRules = async (t, card, list) => {
 		const checklists = response.data
 		const requirements = checklists.find(checklist => checklist.name === 'IEEE CIS Requirements')
 		if (requirements) {
-			const exists = !!currentChecklists.find(checklist => checklist.name === newCard.name)
-			if (!exists) {
+			const faultyChecklist = currentChecklists.find(checklist => checklist.name === newCard.name)
+			if (!faultyChecklist) {
 				const newChecklist = await axios({
 					method: 'POST',
 					url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
-				})
-				console.log(newChecklist)
-				
+				})				
 				const promises = requirements.checkItems.map(requirement => {
 					return axios({
 						method: 'POST',
@@ -52,9 +50,13 @@ export const verifyRules = async (t, card, list) => {
 					})
 				})
 				await Promise.all(promises)
-			} 
+			} else {
+				const responses = []
+				const correctNames = requirements.map(checkItem => checkItem.name)
+				const faultyCheckItems = faultyChecklist.filter(checkItem => !correctNames.includes(checkItem.name))
+				console.log(faultyCheckItems)
+			}
 		} else {
-			
 			const shouldDelete = currentChecklists.find(checklist => checklist.name === newCard.name)
 			if (shouldDelete) {
 				await axios({
