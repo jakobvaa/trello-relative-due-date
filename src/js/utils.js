@@ -53,7 +53,7 @@ export const verifyRules = async (t, card, list) => {
 					})
 					await Promise.all(promises)
 				} catch(e) {
-					console.log('56', e)
+					console.log('56', e, newCard.name)
 				}
 			} else {
 				try {
