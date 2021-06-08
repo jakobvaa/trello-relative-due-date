@@ -75,8 +75,8 @@ export const verifyRules = async (t, card, list) => {
 					))
 					const correctItemNames = correctNamesInFaulty.map(item => item.name)
 					correctNamesInFaulty.forEach(item => {
-						const correspondingRequirement = requirements.filter(req => req.name === item.name)[0]
-						if (item.state !== req.state) {
+						const correspondingRequirement = requirements.checkItems.filter(req => req.name === item.name)[0]
+						if (item.state !== correspondingRequirement.state) {
 							promises.push(axios({
 								method: 'DELETE',
 								url: `${BASE_URL}checklists/${faultyChecklist.id}/checkItems/${checkItem.id}?key=${appKey}&token=${token}`
@@ -85,7 +85,8 @@ export const verifyRules = async (t, card, list) => {
 								method: 'POST',
 								url: `
 									${BASE_URL}checklists/${faultyChecklist.id}/checkItems?
-									key=${appKey}&token=${token}&name=${encodeURI(req.name)}&checked=${req.state === 'complete'}&pos=top
+									key=${appKey}&token=${token}&name=${encodeURI(correspondingRequirement.name)}
+									&checked=${correspondingRequirement.state === 'complete'}&pos=top
 								`
 							})
 						}
