@@ -14,7 +14,7 @@ export const verifyRules = async (t, card, list) => {
 	const l = await t.lists('all')
 	const rulesList = l.find(newList => card.name.includes(newList.name))
 	const { cards } = rulesList
-	currentChecklists.forEach(checklist => {
+	currentChecklists.forEach(async checklist => {
 		if(!cards.find(card => card.name === checklist.name)) {
 			await axios({
 				method: 'DELETE',
