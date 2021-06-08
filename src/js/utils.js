@@ -16,10 +16,11 @@ export const verifyRules = async (t, card, list) => {
 	const rulesList = l.find(newList => newList.name.includes(list.name))
 	const { cards } = rulesList
 	cards.forEach(async newCard => {
-		const checklists = await axios({
+		const response = await axios({
 			method: 'GET',
 			url: `${BASE_URL}/cards/${newCard.id}/checklists?key=${appKey}&token=${token}`
 		})
+		const checklists = response.data
 		const requirements = checklists.find(checklist => checklist.name === 'IEEE CIS Requirements')
 		if(requirements) {
 			const exists = !!currentChecklists.find(checklist => checklist.name === newCard.name)
