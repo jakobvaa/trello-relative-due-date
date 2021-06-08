@@ -59,7 +59,7 @@ export const verifyRules = async (t, card, list) => {
 			if (shouldDelete) {
 				await axios({
 					method: 'DELETE',
-					url: `${BASE_URL}/checklists/${checklist.id}?key=${appKey}&token=${token}`
+					url: `${BASE_URL}/checklists/${shouldDelete.id}?key=${appKey}&token=${token}`
 				})
 			}
 		}
