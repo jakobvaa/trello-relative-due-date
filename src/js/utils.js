@@ -55,7 +55,7 @@ export const verifyRules = async (t, card, list) => {
 			} 
 		} else {
 			
-			const shouldDelete = checklists.find(checklist => checklist.name === card.name)
+			const shouldDelete = checklists.find(checklist => checklist.name === newCard.name)
 			if (shouldDelete) {
 				await axios({
 					method: 'DELETE',
