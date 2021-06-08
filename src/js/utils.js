@@ -33,17 +33,16 @@ export const verifyRules = async (t, card, list) => {
 			url: `${BASE_URL}/cards/${newCard.id}/checklists?key=${appKey}&token=${token}`
 		})
 		const checklists = response.data
-		console.log(checklists)
 		const requirements = checklists.find(checklist => checklist.name === 'IEEE CIS Requirements')
-		console.log(requirements, newCard.name)
-		if(requirements) {
+		if (requirements) {
 			const exists = !!currentChecklists.find(checklist => checklist.name === newCard.name)
-			console.log(newCard.name, exists)
-			if(!exists) {
-				const newChecklist = await axios({
-					method: 'POST',
-					url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
-				})
+			const newChecklist = await axios({
+				method: 'POST',
+				url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
+			})
+			if (!exists) {
+				console.log(newChecklist)
+				
 				const promises = requirements.checkItems.map(requirement => {
 					return axios({
 						method: 'POST',
@@ -53,8 +52,19 @@ export const verifyRules = async (t, card, list) => {
 					})
 				})
 				await Promise.all(promises)
+			} 
+		} else {
+			const newChecklist = await axios({
+				method: 'POST',
+				url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
+			})
+			const shouldDelete = !newChecklist.data.find(checklist => checklist.name === card.name)
+			if (shouldDelete) {
+				await axios({
+					method: 'DELETE',
+					url: `${BASE_URL}/checklists/${checklist.id}?key=${appKey}&token=${token}`
+				})
 			}
 		}
 	})
-	
 }
