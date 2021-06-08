@@ -79,7 +79,7 @@ export const verifyRules = async (t, card, list) => {
 						if (item.state !== correspondingRequirement.state) {
 							promises.push(axios({
 								method: 'DELETE',
-								url: `${BASE_URL}checklists/${faultyChecklist.id}/checkItems/${checkItem.id}?key=${appKey}&token=${token}`
+								url: `${BASE_URL}checklists/${faultyChecklist.id}/checkItems/${item.id}?key=${appKey}&token=${token}`
 							}))
 							promises.push({
 								method: 'POST',
