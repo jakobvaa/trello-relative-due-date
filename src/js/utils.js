@@ -12,7 +12,7 @@ export const verifyRules = async (t, card, list) => {
 	const currentChecklists = response.data
 	console.log(currentChecklists)
 	const l = await t.lists('all')
-	console.log(lists)
+	console.log(l)
 	const rulesList = l.find(newList => newList.name.includes(list.name))
 	console.log(rulesList)
 	const { cards } = rulesList
