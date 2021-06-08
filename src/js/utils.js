@@ -42,7 +42,7 @@ export const verifyRules = async (t, card, list) => {
 					method: 'POST',
 					url: `${BASE_URL}checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
 				})				
-				requirements.checkItems.forEach(requirement => {
+				requirements.checkItems.forEach(async requirement => {
 					await axios({
 						method: 'POST',
 						url: `${BASE_URL}checklists/${newChecklist.data.id}/checkItems?
@@ -52,7 +52,7 @@ export const verifyRules = async (t, card, list) => {
 				})
 				
 			} else {
-				const correctNames = requirements.checkItems.map(checkItem => checkItem.name)
+				const correctNames = requirements.checkItems.map(async checkItem => checkItem.name)
 				const faultyCheckItems = faultyChecklist.checkItems.filter(checkItem => 
 					!correctNames.includes(checkItem.name))
 				faultyCheckItems.forEach(checkItem => {
@@ -71,7 +71,7 @@ export const verifyRules = async (t, card, list) => {
 				const addCheckItems = requirements.checkItems.filter(item => (
 					!correctItemNames.includes(item.name)
 				))
-				addCheckItems.forEach(item => {
+				addCheckItems.forEach(async item => {
 					await axios({
 						method: 'POST',
 						url: `
