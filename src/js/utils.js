@@ -36,11 +36,11 @@ export const verifyRules = async (t, card, list) => {
 		const requirements = checklists.find(checklist => checklist.name === 'IEEE CIS Requirements')
 		if (requirements) {
 			const exists = !!currentChecklists.find(checklist => checklist.name === newCard.name)
-			const newChecklist = await axios({
-				method: 'POST',
-				url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
-			})
 			if (!exists) {
+				const newChecklist = await axios({
+					method: 'POST',
+					url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
+				})
 				console.log(newChecklist)
 				
 				const promises = requirements.checkItems.map(requirement => {
@@ -54,11 +54,8 @@ export const verifyRules = async (t, card, list) => {
 				await Promise.all(promises)
 			} 
 		} else {
-			const newChecklist = await axios({
-				method: 'POST',
-				url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
-			})
-			const shouldDelete = !newChecklist.data.find(checklist => checklist.name === card.name)
+			
+			const shouldDelete = !checklists.find(checklist => checklist.name === card.name)
 			if (shouldDelete) {
 				await axios({
 					method: 'DELETE',
