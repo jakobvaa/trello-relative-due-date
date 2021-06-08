@@ -35,7 +35,7 @@ export const verifyRules = async (t, card, list) => {
 		const checklists = response.data
 		console.log(checklists)
 		const requirements = checklists.find(checklist => checklist.name === 'IEEE CIS Requirements')
-		console.log(!!requirements, newCard.name)
+		console.log(requirements, newCard.name)
 		if(requirements) {
 			const exists = !!currentChecklists.find(checklist => checklist.name === newCard.name)
 			console.log(newCard.name, exists)
