@@ -98,7 +98,7 @@ window.TrelloPowerUp.initialize({
     const board = await t.board('all')
     const list = await t.list('name')
     if (list.name === 'IEEE CIS Rules Summary') { 
-      await varifyRules(t, card)
+      await verifyRules(t, card)
     }
 
     const checklist = await t.card('checklists')
