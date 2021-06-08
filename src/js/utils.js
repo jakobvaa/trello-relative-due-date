@@ -53,17 +53,17 @@ export const verifyRules = async (t, card, list) => {
 				await Promise.all(promises)
 			} else {
 				const promises = []
-				// const correctNames = requirements.checkItems.map(checkItem => checkItem.name)
-				// const faultyCheckItems = faultyChecklist.checkItems.filter(checkItem => 
-				// 	!correctNames.includes(checkItem.name))
-				// faultyCheckItems.forEach(checkItem => {
-				// 	promises.push(axios({
-				// 		method: 'DELETE',
-				// 		url: `
-				// 			${BASE_URL}/checklists/${faultyChecklist.id}/checkItems/${checkItem.id}
-				// 		`
-				// 	}))
-				// })
+				const correctNames = requirements.checkItems.map(checkItem => checkItem.name)
+				const faultyCheckItems = faultyChecklist.checkItems.filter(checkItem => 
+					!correctNames.includes(checkItem.name))
+				faultyCheckItems.forEach(checkItem => {
+					promises.push(axios({
+						method: 'DELETE',
+						url: `
+							${BASE_URL}/checklists/${faultyChecklist.id}/checkItems/${checkItem.id}
+						`
+					}))
+				})
 
 
 
