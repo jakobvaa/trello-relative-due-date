@@ -42,9 +42,17 @@ export const verifyRules = async (t, card, list) => {
 			if(!exists) {
 				const newChecklist = await axios({
 					method: 'POST',
-					url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${card.name}&idCard=${card.id}`
+					url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
 				})
-				console.log(newChecklist)
+				const promises = requirements.map(requirement => {
+					return axios({
+						method: 'POST',
+						url: `${BASE_URL}/checklists/${newChecklist.id}/checkItems?
+						key=${appKey}&token=${token}&name=${requirement.name}
+						`
+					})
+				})
+				await Promise.all(promises)
 			}
 		}
 	})
