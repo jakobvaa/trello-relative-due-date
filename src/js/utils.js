@@ -14,6 +14,7 @@ export const verifyRules = async (t, card, list) => {
 	const l = await t.lists('all')
 	const rulesList = l.find(newList => card.name.includes(newList.name))
 	const { cards } = rulesList
+	if(cards.length === 0) return
 	currentChecklists.forEach(async checklist => {
 		if(!cards.find(card => card.name === checklist.name)) {
 			await axios({
@@ -42,7 +43,6 @@ export const verifyRules = async (t, card, list) => {
 					url: `${BASE_URL}/checklists?key=${appKey}&token=${token}&name=${newCard.name}&idCard=${card.id}`
 				})				
 				const promises = requirements.checkItems.map(requirement => {
-					console.log(requirement)
 					return axios({
 						method: 'POST',
 						url: `${BASE_URL}/checklists/${newChecklist.data.id}/checkItems?
@@ -82,7 +82,7 @@ export const verifyRules = async (t, card, list) => {
 					}))
 				})
 				await Promise.all(promises)
-				
+
 			}
 		} else {
 			const shouldDelete = currentChecklists.find(checklist => checklist.name === newCard.name)
