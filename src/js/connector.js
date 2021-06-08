@@ -100,6 +100,7 @@ window.TrelloPowerUp.initialize({
     const lists = await t.list('all')
     console.log(list)
     console.log(card)
+    console.log(lists)
     const response = await axios(`/getcard?cardid=${card.id}&boardid=${board.id}`)
     const relativeCard = response.data.card
     if(relativeCard.parent) {
