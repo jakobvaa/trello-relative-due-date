@@ -7,7 +7,7 @@ export const verifyRules = async (t, card) => {
 	const token = await t.getRestApi().getToken()
 	const currentChecklists = await axios({
 		method: 'GET',
-		url: `${BASE_URL}/cards/${card.id}/checklists/`
+		url: `${BASE_URL}/cards/${card.id}/checklists?key=${appKey}&token=${token}`
 	})
 	console.log(currentChecklists)
 	
