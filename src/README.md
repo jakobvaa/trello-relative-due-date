@@ -18,7 +18,7 @@
 
 <h2 id="introduction">Introduction to the CIS Conference Organisers Tool</h2>
 
-Many of our IEEE CIS Volunteers have vast conference organization experience but may need fast access to the latest rules and updated information, as well as having access to useful hints and guidelines for particular conference organisation activities. Further, support is needed for the important role that our conference organisers play in  training up our next generation of conference organisers.  The IEEE CIS CO-Tool is designed to provide such a valuable information source to meet these needs as well as providing filtering of the information source, tuned to particular conference organiser roles.  
+Many of our IEEE CIS Volunteers have vast conference organization experience but may need fast access to the latest rules and updated information, as well as having access to useful hints and guidelines for particular conference organisation activities. Further, support is needed for the important role that our conference organisers play in  training up our next generation of conference organisers.  The IEEE CIS Conference Organisation Tool is designed to provide such a valuable information source to meet these needs as well as providing filtering of the information source, tuned to particular conference organiser roles.  
 
 Organising such an event, not only requires access to information, but planning support for the many deadlines involved in the various activities leading up to, during and after  such an event. Due to the introduction of a unique feature in the Conference Organising Tool that allows for relative dates, the default activity deadlines are automatically converted to actual calendar deadlines  for the particular event when the actual key conference dates are added e.g. Event start Date, Paper Sumbmission deadline etc. This feature thus provides the much needed planning support, through a CIS Timeline view of all activities, tuned to the given event. The user can easily swap between the CIS Timeline View and the more detailed CIS Information View for a particular activity in question. 
 
@@ -29,19 +29,14 @@ In summary, the default tool provides
 3. A simplified CIS Information View due to the possibility to filter the information shown i.e. show only activity for a specific role.
 4. A detailed CIS Timeline View for all activities together with the possibility to filter the information shown. 
 5. Option to include the entire timeline or role specific timeline in the users daily calendar. Each activity links directly back to the activity card in the Conference Organisation Tool.  
+6. IEEE CIS online support for technical questions or conference organising questions
 
 <h2 id='setup'>Set up your event's board from the template</h2>
 
-1. Create CIS Conference Organising Tool Board for your event
 
-	 * click on CREATE BOARD FROM TEMPLATE
-	 * title: insert name of your event (with year)
-	 * choose workspace
-	 * click create
+1.Request IEEE CIS support
 
-2. Register your event board with IEEE CIS
-
-	* Contact IEEE CIS Conference Organising Tool Support
+	* Contact IEEE CIS Conference Organising Tool Support : pauline@ntnu.no
 	
 	Your board will now have both Technical and IEEE CIS Conference Committee support for any questions you may have. 
 
@@ -237,7 +232,19 @@ The GC (or another chair with member status) may wish to adjust the deadline for
 
 <h2 id='feedback'>Feedback and Support</h2>
 
-The CIS Conference Organisers Tool is under continued development and your comments are very welcome. Whether information needs further clarification, further information needed or any other improvements that you would like to see, please let us know. Otherwise if you need further assistance, whether technical or regarding conference organisation, please contact IEEE CIS Conference Organisation Tool support. 
+If you have any technical issues please contact IEEE CIS support. 
+
+The CIS Conference Organisers Tool is under continued development and your comments are very welcome. Whether information needs further clarification, further information is needed or if there are any other improvements that you would like to see, please let us know. 
+
+To contact CIS Support you can just add an issue (card) on your CIS Conference Organisation board and both our technical and conference organisation support will be automatically notified: 
+	Go to IEEE CIS Support - Issues list (far right)
+	* click on add card
+	* add title - Something to do with the issue you have
+	* click on card
+	* add description of issue
+	* click on save
+	
+We will contact the GC when the issue is resolved and update your board accordingly, if needed and close the issue. 	
 
 <h2 id='tutorial'>Trello 101</h2>
 
