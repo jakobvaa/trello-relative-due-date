@@ -103,6 +103,8 @@ Reduce number of empty columns (no activity deadlines in those time periode)
 
 <h2 id='calendar'>Link your CIS Timeline to your Calendar</h2>
 
+ Remember to add your key dates for your event first so that all deadlines are shown as calendar dates before proceeding. 
+
 	* Inside the timeline view, adjust view to those deadlines you want to include
 		* select roles to include	
 	* Click the `Copy Calendar Link To Clipboard` button. This link will contain the filtered calendar.
