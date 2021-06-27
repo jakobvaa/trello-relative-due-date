@@ -67,6 +67,7 @@ export const verifyRules = async (t, card, list) => {
 				try {
 					const promises = []
 					const correctNames = requirements.checkItems.map(checkItem => checkItem.name)
+					correctNames.push(card.url)
 					const faultyCheckItems = faultyChecklist.checkItems.filter(checkItem => 
 						!correctNames.includes(checkItem.name))
 					faultyCheckItems.forEach(checkItem => {
