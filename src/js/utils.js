@@ -37,6 +37,13 @@ export const verifyRules = async (t, card, list) => {
 		const requirements = checklists.find(checklist => checklist.name === 'IEEE CIS Requirements')
 		if (requirements) {
 			const faultyChecklist = currentChecklists.find(checklist => checklist.name === newCard.name)
+			if(!faultyChecklist.find(item => item.name === card.url)) {
+				await axios({
+					method: 'POST',
+					url: `${BASE_URL}checklists/${newChecklist.data.id}/checkItems?
+					key=${appKey}&token=${token}&name=${encodeURI(card.url)}&checked=true}`
+				})
+			}
 			if (!faultyChecklist) {
 				try {
 					const newChecklist = await axios({
