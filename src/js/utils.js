@@ -39,7 +39,7 @@ export const verifyRules = async (t, card, list) => {
 			const faultyChecklist = currentChecklists.find(checklist => checklist.name === newCard.name)
 			console.log(faultyChecklist)
 			
-			if(!faultyChecklist.find(item => item.name === card.url)) {
+			if(!faultyChecklist.checkItems.find(item => item.name === card.url)) {
 				await axios({
 					method: 'POST',
 					url: `${BASE_URL}checklists/${newChecklist.data.id}/checkItems?
