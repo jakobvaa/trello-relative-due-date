@@ -42,7 +42,7 @@ export const verifyRules = async (t, card, list) => {
 				await axios({
 					method: 'POST',
 					url: `${BASE_URL}checklists/${faultyChecklist.id}/checkItems?
-					key=${appKey}&token=${token}&name=${encodeURI(card.url)}`
+					key=${appKey}&token=${token}&name=${encodeURI(newCard.url)}`
 				})
 			}
 			if (!faultyChecklist) {
@@ -68,7 +68,7 @@ export const verifyRules = async (t, card, list) => {
 					const promises = []
 					const correctNames = requirements.checkItems.map(checkItem => checkItem.name)
 					const faultyCheckItems = faultyChecklist.checkItems.filter(checkItem => 
-						!correctNames.includes(checkItem.name) && checkItem.name !== card.url)
+						!correctNames.includes(checkItem.name) && checkItem.name !== newCard.url)
 					faultyCheckItems.forEach(checkItem => {
 						promises.push(axios({
 							method: 'DELETE',
