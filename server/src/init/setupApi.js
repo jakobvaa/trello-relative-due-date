@@ -145,7 +145,7 @@ const createCalendarLink = async (boardId, labels) => {
 		})
 		return calendar.toString()
 	} catch(err) {
-		throw err
+		console.err(err)
 	}
 }
 

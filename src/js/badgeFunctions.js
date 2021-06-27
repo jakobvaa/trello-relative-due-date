@@ -1,8 +1,9 @@
 const axios = require('axios')
 const {updateChildren } = require('./boardFunctions')
+
 export const generateBadgeText = (card) => {
   const beforeOrAfter = card.difference > 0 ? 'After' : 'Before'
-  const isPlural = card.difference !== 1 ? 's' : ''
+  const isPlural = Math.abs(card.difference) !== 1 ? 's' : ''
   return `${Math.abs(card.difference)} month${isPlural} ${beforeOrAfter} ${card.parent} `
 }
 
