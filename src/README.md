@@ -36,7 +36,7 @@ In summary, the default tool provides
 
 1.Request IEEE CIS support
 
-	* Contact IEEE CIS Conference Organising Tool Support : pauline@ntnu.no
+	* Contact IEEE CIS Conference Organising Tool Support : CIS-CO-TOOL-SUPPORT@LISTSERV.IEEE.ORG
 	
 	Your board will now have both Technical and IEEE CIS Conference Committee support for any questions you may have. 
 
