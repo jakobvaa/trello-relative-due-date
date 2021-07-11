@@ -234,7 +234,6 @@ The GC (or another chair with member status) may wish to adjust the deadline for
 
 <h2 id='feedback'>Feedback and Support</h2>
 
-If you have any technical issues please contact IEEE CIS support. 
 
 The CIS Conference Organisers Tool is under continued development and your comments are very welcome. Whether information needs further clarification, further information is needed or if there are any other improvements that you would like to see, please let us know. 
 
@@ -246,7 +245,9 @@ To contact CIS Support you can just add an issue (card) on your CIS Conference O
 	* add description of issue
 	* click on save
 	
-We will contact the GC when the issue is resolved and update your board accordingly, if needed and close the issue. 	
+We will contact the GC when the issue is resolved and update your board accordingly, if needed, and close the issue. 	
+
+Alternatively you can contact us direct: CIS-CO-TOOL-SUPPORT@LISTSERV.IEEE.ORG
 
 <h2 id='tutorial'>Trello 101</h2>
 
