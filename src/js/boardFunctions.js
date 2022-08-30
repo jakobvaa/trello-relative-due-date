@@ -1,6 +1,6 @@
 const axios = require('axios')
 const BASE_URL = 'https://api.trello.com/1/'
-const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
+const appKey = 'a21948406b564382c19a797995373c5a'
 const moment = require('moment')
 
 export const checkBoard = async (t, opts) => {

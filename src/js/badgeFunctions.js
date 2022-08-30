@@ -9,7 +9,7 @@ export const generateBadgeText = (card) => {
 
 
 const BASE_URL = 'https://api.trello.com/1/'
-const appKey = 'f37ab50db205f3dc8f32dc97971117f4'    
+const appKey = 'a21948406b564382c19a797995373c5a'    
 
 export const verifyCard = async (t) => {
   const trelloCard = await t.card('all')

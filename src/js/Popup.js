@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom'
 import { updateChildren } from './boardFunctions'
 import axios from 'axios'
 import styled from 'styled-components'
-const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
+const appKey = 'a21948406b564382c19a797995373c5a'
 
 const t = TrelloPowerUp.iframe({
-	appKey: 'f37ab50db205f3dc8f32dc97971117f4',
+	appKey: 'a21948406b564382c19a797995373c5a',
 	appName: 'relative-due-date'
 })
 const BASE_URL = 'https://api.trello.com/1/'

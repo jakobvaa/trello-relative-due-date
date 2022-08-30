@@ -26,7 +26,7 @@ const ignoreList = ['Application, AP-Tech-spons', 'Tech-spons']
 
 
 const t = TrelloPowerUp.iframe({
-	appKey: 'f37ab50db205f3dc8f32dc97971117f4',
+	appKey: 'a21948406b564382c19a797995373c5a',
 	appName: 'relative-due-date'
 })
 
