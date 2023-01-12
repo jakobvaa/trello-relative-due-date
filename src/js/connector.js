@@ -88,7 +88,7 @@ window.TrelloPowerUp.initialize({
   },
   'on-enable': (t, opts) => {
     return t.modal({
-      url: './board-form.html',
+      url: './popup.html',
       height: 500,
       title: 'Welcome to the Trello template for IEEE Conferences'
     })
