@@ -12,5 +12,5 @@ export const colors = {
 }
 
 export const BASE_URL = 'https://api.trello.com/1/'
-export const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
+export const appKey = '2b5b1498c9d31b7c37165ba976fda1d8'
 export const appName = 'relative-due-date'
