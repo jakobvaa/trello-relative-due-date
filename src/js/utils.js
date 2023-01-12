@@ -1,6 +1,6 @@
-const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
-const appName = 'relative-due-date'
-const BASE_URL = 'https://api.trello.com/1/'
+const {BASE_URL} = require('./constants')
+const {appKey} = require('./constants')
+const {appName} = require('./constants')
 const axios = require('axios')
 
 export const verifyRules = async (t, card, list) => {

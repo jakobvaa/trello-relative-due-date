@@ -10,3 +10,7 @@ export const colors = {
 	'Proceedings': 'rgb(255,51,255,0.4)',
 	'Social': 'rgb(255,51,153,0.4)',
 }
+
+export const BASE_URL = 'https://api.trello.com/1/'
+export const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
+export const appName = 'relative-due-date'

@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom'
 import { updateChildren } from './boardFunctions'
 import axios from 'axios'
 import styled from 'styled-components'
-const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
+const {BASE_URL} = require('./constants')
+const {appKey} = require('./constants')
+const {appName} = require('./constants')
 
 const t = TrelloPowerUp.iframe({
-	appKey: 'f37ab50db205f3dc8f32dc97971117f4',
-	appName: 'relative-due-date'
+	appKey: appKey,
+	appName: appName
 })
-const BASE_URL = 'https://api.trello.com/1/'
 
 const scrollToRef = (ref) => window.scrollTo(200, ref.current.offsetTop)
 

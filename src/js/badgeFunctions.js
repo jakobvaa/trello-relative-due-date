@@ -1,15 +1,13 @@
 const axios = require('axios')
 const {updateChildren } = require('./boardFunctions')
+const {BASE_URL} = require('./constants')
+const {appKey} = require('./constants')
 
 export const generateBadgeText = (card) => {
   const beforeOrAfter = card.difference > 0 ? 'After' : 'Before'
   const isPlural = Math.abs(card.difference) !== 1 ? 's' : ''
   return `${Math.abs(card.difference)} month${isPlural} ${beforeOrAfter} ${card.parent} `
 }
-
-
-const BASE_URL = 'https://api.trello.com/1/'
-const appKey = 'f37ab50db205f3dc8f32dc97971117f4'    
 
 export const verifyCard = async (t) => {
   const trelloCard = await t.card('all')

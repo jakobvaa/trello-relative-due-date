@@ -1,8 +1,8 @@
 const axios = require('axios')
 const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg'
-const BASE_URL = 'https://api.trello.com/1/'
-const appKey = 'f37ab50db205f3dc8f32dc97971117f4'
-const appName = 'relative-due-date'
+const {BASE_URL} = require('./constants')
+const {appKey} = require('./constants')
+const {appName} = require('./constants')
 const { checkBoard, updateChildren } = require('./boardFunctions')
 const {verifyCard, generateBadgeText} = require('./badgeFunctions')
 const {calendarPopup} = require('./dateFunctions')
@@ -111,6 +111,6 @@ window.TrelloPowerUp.initialize({
   }
 },
 {
-  appKey: 'f37ab50db205f3dc8f32dc97971117f4',
-	appName: 'relative-due-date'
+  appKey: appKey,
+	appName: appName
 })

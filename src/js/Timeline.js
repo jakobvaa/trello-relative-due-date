@@ -5,6 +5,9 @@ import styled from 'styled-components'
 import TimelineSidebar from './TimelineSidebar'
 import CardTimeline from './CardTimeline'
 import axios from 'axios'
+const {BASE_URL} = require('./constants')
+const {appKey} = require('./constants')
+const {appName} = require('./constants')
 
 
 const Container = styled.div`
@@ -26,8 +29,8 @@ const ignoreList = ['Application, AP-Tech-spons', 'Tech-spons']
 
 
 const t = TrelloPowerUp.iframe({
-	appKey: 'f37ab50db205f3dc8f32dc97971117f4',
-	appName: 'relative-due-date'
+	appKey: appKey,
+	appName: appName
 })
 
 
