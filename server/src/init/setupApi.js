@@ -15,6 +15,7 @@ const addNewCard = async (data) => {
 			listName
 		} = data
 		const baseCard = await Card.findOne({cardName, boardId: '5f6dd3af5cf53082745f7c01'})
+		//const baseCard = await Card.findOne({cardName, boardId})
 		if (baseCard) {
 			const card = await new Card({
 				cardId,
@@ -30,7 +31,7 @@ const addNewCard = async (data) => {
 				children: baseCard.children
 			}).save()
 			return card
-		} else {
+		} else { 
 			const card = await new Card({
 				cardId,
 				cardName,

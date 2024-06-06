@@ -43,10 +43,10 @@ const openTimeline = (t) => {
 }
 
 window.TrelloPowerUp.initialize({
-  'card-buttons': (t) => {
+  'card-buttons': function(t) {
     return t.getRestApi()
       .isAuthorized()
-      .then((isAuthorized) => {
+      .then(function(isAuthorized) {
         if (isAuthorized) {
           return [{
             text: 'Relative due date',
@@ -112,5 +112,7 @@ window.TrelloPowerUp.initialize({
 },
 {
   appKey: appKey,
-	appName: appName
-})
+  appName: appName,
+  appAuthor: 'IEEE'
+
+});
